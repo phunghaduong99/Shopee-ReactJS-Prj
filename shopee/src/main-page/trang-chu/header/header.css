@@ -1,0 +1,39 @@
+.header .img-ficon {
+    width: 80px;
+}
+.header-main {
+    height: 83px;
+    position: absolute;
+    right: 0;
+    left: 0;
+}
+.header {
+    width: 100%;
+    z-index: 30;
+    position: relative;
+    background-size: cover;
+    background-position: 50% 0;
+    transition: background-color .3s,opacity .3s;
+}
+
+.header .header-wrap {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.btn.btn-outline {
+    text-transform: uppercase;
+    border-radius: 25px;
+    color: #fff;
+    border: 2px solid #fff;
+}
+.btn.btn-outline:hover {
+    color: #f99044;
+    background-color: #fff;
+}
+
+.header .container {
+    max-width: 1170px ;
+}

@@ -1,0 +1,117 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#main-section {
+    padding-top: 100px;
+    padding-bottom: 0;
+}
+
+.section {
+    padding: 30px 0;
+    position: relative;
+    min-height: auto;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.section-bg .bg-loaded {
+    background: #ffc400;
+    background: linear-gradient(90deg,#ffc400,#ff981d 50%,#ff842f);
+}
+
+.fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+    padding: 0!important;
+    margin: 0!important;
+}
+
+.bg-fill {
+    background-size: cover!important;
+    background-repeat: no-repeat!important;
+    background-position: 50% 50%;
+}
+
+
+/* .section .section-content {
+    width: 100%;
+} */
+.text-center {
+    text-align: center;
+}
+.relative {
+    position: relative;
+}
+
+.section-content {
+    margin: auto;
+}
+
+.row {
+    margin: auto;
+    max-width: 1170px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row .col {
+    position: relative;
+    margin: 0;
+    padding: 0 15px 30px;
+    width: 100%;
+}
+
+h2.title2 {
+    color: #fff;
+    font-size: 38px;
+    font-weight: 700;
+}
+
+.section .section-content p {
+    font-size: 17px;
+}
+p {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+.text-white {
+    color: #fff;
+}
+.subtitle {
+    font-size: 18px;
+}
+span {
+    font-family: myregularfont ;
+}
+
+a {
+    font-family: myboldfont !important;
+}
+
+.btn.white, .btn.white:hover {
+    color: #575757;
+}
+.btn.btn-outline:hover {
+    color: #f99044;
+    background-color: #fff;
+}
+.btn.btn-outline {
+    text-transform: uppercase;
+    border-radius: 25px;
+    color: #fff;
+    border: 2px solid #fff;
+}
+a:active, a:hover {
+    outline: 0;
+    text-decoration: none;
+}
+
