@@ -1,33 +1,25 @@
 import React, { Component } from 'react';
 import logo from './logo2.png';
 import './navbar.css';
-import Dropdown from 'react-bootstrap/Dropdown';
+
 class Header extends Component {
     state = {}
     render() {
         return (
             <nav className="navbar navbar-expand navbar-dark bg-dark static-top">
-                <img src={logo} alt="logo" className="Spa" ></img>
+                <img src={logo} alt="logo" className="Spa m-r-95" ></img>
                 <a className="navbar-brand mr-1" href="index.html"></a>
 
-                <button className="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="/">
+                <button className="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="/" onClick={this.props.OpenSidebar}>
                     <i className="fas fa-bars"></i>
                 </button>
 
 
-                <form className="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                    <div className="input-group">
-                        <input type="text" className="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-                        <div className="input-group-append">
-                            <button className="btn btn-primary" type="button">
-                                <i className="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
+                <div className="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                </div>
 
                 {/* <!-- Navbar --> */}
-                <ul className="navbar-nav ml-auto ml-md-0">
+                <ul className="navbar-nav ml-auto ml-md-0  ml-auto mr-0 mr-md-3 my-2 my-md-0">
                     <li className="nav-item dropdown no-arrow mx-1">
                         <a className="nav-link dropdown-toggle" href="/" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i className="fas fa-bell fa-fw"></i>
@@ -40,18 +32,7 @@ class Header extends Component {
                             <a className="dropdown-item" href="/">Something else here</a>
                         </div>
                     </li>
-                    <li className="nav-item dropdown no-arrow mx-1">
-                        <a className="nav-link dropdown-toggle" href="/" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i className="fas fa-envelope fa-fw"></i>
-                            <span className="badge badge-danger">7</span>
-                        </a>
-                        <div className="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-                            <a className="dropdown-item" href="/">Action</a>
-                            <a className="dropdown-item" href="/">Another action</a>
-                            <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="/">Something else here</a>
-                        </div>
-                    </li>
+                    
                     <li className="nav-item dropdown no-arrow">
                         <a className="nav-link dropdown-toggle" href="/" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i className="fas fa-user-circle fa-fw"></i>
@@ -83,17 +64,7 @@ class Header extends Component {
                         </div>
                     </div>
                 </div>
-                <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Dropdown Button
-                    </Dropdown.Toggle>
-
-                    <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
+               
             </nav>
 
 

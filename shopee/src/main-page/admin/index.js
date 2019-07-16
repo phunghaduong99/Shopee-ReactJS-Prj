@@ -8,14 +8,19 @@ import './library/css/sb-admin.css';
 
 
 class Admin extends Component {
-    state = {}
+    state = {OpenSidebar: true}
+
+    OpenSidebar=(e)=> {
+        e.preventDefault();
+        this.setState({OpenSidebar: !this.state.OpenSidebar});
+    }
     render() {
         return (
-            <div id="page-top">
-                <Navbar/>
+            <div id="page-top" >
+                <Navbar OpenSidebar = {this.OpenSidebar}/>
 
                 <div id="wrapper">
-                    <Sidebar/>
+                    <Sidebar OpenSidebar = {this.state.OpenSidebar}/>
                     <Content/>
                 </div>
                    
@@ -23,6 +28,7 @@ class Admin extends Component {
                 <a className="scroll-to-top rounded" href="#page-top">
                     <i className="fas fa-angle-up"></i>
                 </a>
+                
             </div>
 
         );
