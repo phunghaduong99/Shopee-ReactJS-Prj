@@ -1,31 +1,144 @@
 import React, { Component } from 'react';
 import logo from './library/images/logo.png';
 import './login.css';
+
+const emailRegex = RegExp(
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+  );
+  
+const formValid = ({ formErrors, ...rest }) => {
+    let valid = true;
+  
+    // validate form errors being empty
+    Object.values(formErrors).forEach(val => {
+      val.length > 0 && (valid = false);
+    });
+  
+    // validate the form was filled out
+    Object.values(rest).forEach(val => {
+      val === null && (valid = false);
+    });
+  
+    return valid;
+  };
+  
+// function FormError(props) {
+//     if (props.isHidden) {return null;}
+//     return (
+//       <div className="form-warning txt4">
+//           {props.errorMessage}
+//       </div>
+//     )
+//   }
+//   const validateInput = (checkingText) => {
+//     const regexp = /^\d{10,11}$/; 
+    
+//     if (regexp.exec(checkingText) !== null ){
+//               return {
+//                   isInputValid: true,
+//                   errorMessage: ''
+//               };
+//           } else {
+//               return {
+//                   isInputValid: false,
+//                   errorMessage:'Hãy nhập địa chỉ email hợp lệ'
+//               };
+//           }
+//   }
+  
+//   const validatePass =(event)=>{
+//       if (this.state.pass=== this.state.confilmPass){
+//           return{
+//               isInputPass:true,
+//               errorPass:''
+//           };
+//       }
+//       else{
+//           return{
+//             isInputPass:false,
+//             errorPass:'Mật khẩu xác thực không đúng'
+//           }
+//       }
+//   }
 class Register extends Component {
     constructor(props){
         super(props);
         this.state =({
-            gmail :'',
+            email :'',
             username:'',
             pass:'',
-            confilmPass:''
-
+            confilmPass:'',
+            formErrors: {
+                email: "",
+                username: "",
+                pass: "",
+                confilmPass: ""
+              }
+            
         });
+        
     }
-    onChange=(event)=>{
-        var target = event.target;
-        var name = target.name;
-        var value= target.value;
-        this.setState({
-            [name]:value
-        });
-    }
+    // handleInputValidation = event => {
+    //     const { isInputValid, errorMessage } = validateInput(this.state.value);
+    //     this.setState({
+    //       isInputValid: isInputValid,
+    //       errorMessage: errorMessage
+    //     })
+        
+    //   }
+    onChange = e => {
+        e.preventDefault();
+        const { name, value } = e.target;
+        let formErrors = {...this.state.formErrors };
+    
+        switch (name) {
+          case "email":
+            formErrors.email = emailRegex.test(value)
+            ? ""
+            : "Email không hợp lệ";
+              break;
+          case "username":
+            formErrors.username =
+              value.length < 5 ? "Tên đăng kí tối thiểu 5 kí tự" : "";
+            break;
+          case "pass":
+            formErrors.pass =
+            value.length < 6 ? "Mật khẩu tối thiểu 6 kí tự" : "";
+              break;
+          case "confilmPass":
+            formErrors.confilmPass =
+             ( this.state.confilmPass !=this.state.pass) ? "Mật khẩu không khớp" : "";
+            break;
+          default:
+            break;
+        }
+    
+        this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+      };
     
     onSubmit=(event)=>{
         event.preventDefault();
-        console.log(this.state);
+        if (formValid(this.state)) {
+          console.log(`
+            --Data--
+            username: ${this.state.username}
+            Email: ${this.state.email}
+            Password: ${this.state.pass}
+            confilmPassword: ${this.state.confilmPass}
+          `);
+        } else {
+          console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
+        }
     }
-    render() { 
+    // checkPass=(event)=>{
+        
+    //     const { isInputPass,errorPass } = validatePass(this.state.value);
+    //     this.setState({
+    //       isInputPass: isInputPass,
+    //       errorPass: errorPass
+    //     })
+    // }
+    render() {
         return (
              <div className="limiter">
                 <div className="container-login100" >
@@ -35,73 +148,81 @@ class Register extends Component {
                             <img src={logo} alt="logo" className="logo"></img>
                             </span>
                             <div className="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
-                                <span className="label-input100">Gmail</span>
+                                <span className="label-input100">Email</span>
                                 <input
                                  className="input100"
                                  type="text"
-                                  name="gmail" 
-                                  placeholder="Type your gmail"
+                                  name="email" 
+                                  placeholder="Nhập địa chỉ email..."
                                   onChange={this.onChange}
-                                  value={this.state.gmail}
-                                  />
+                                  required></input>
                                 <span className="focus-input100" data-symbol="&#xf206;"></span>
+                                {
+                                    <span className="errorMessage txt4">{this.state.formErrors.email}</span>
+                                }
                             </div>
                             <div className="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
-                                <span className="label-input100">Username</span>
+                                <span className="label-input100">Tên tài khoản</span>
                                 <input
                                  className="input100"
                                  type="text"
                                   name="username" 
-                                  placeholder="Type your username"
+                                  placeholder="Nhập tên đăng ký..."
                                   onChange={this.onChange}
-                                  value={this.state.username}
-                                  />
+                                  required></input>
                                 <span className="focus-input100" data-symbol="&#xf206;"></span>
+                                {
+                                    <span className="errorMessage txt4">{this.state.formErrors.username}</span>
+                                }
                             </div>
 
                             <div className="wrap-input100 validate-input m-b-23" data-validate="Password is required">
-                                <span className="label-input100">Password</span>
+                                <span className="label-input100">Mật Khẩu</span>
                                 <input 
                                     className="input100"
                                     type="password"
                                     name="pass"
-                                    placeholder="Type your password"
+                                    placeholder="Nhập mật khẩu..."
                                     onChange={this.onChange}
-                                    value={this.state.pass}
-                                    />
-                                <span className="focus-input100" data-symbol="&#xf206;"></span>
+                                    required></input>
+                                <span className="focus-input100" data-symbol="&#xf190;"></span>
+                                {
+                                    <span className="errorMessage txt4">{this.state.formErrors.pass}</span>
+                                }
                             </div>
                             
                             <div className="wrap-input100 validate-input m-b-23" data-validate="Password is required">
-                                <span className="label-input100">Confilm Password</span>
+                                <span className="label-input100">Xác nhận mật khẩu</span>
                                 <input 
                                     className="input100"
                                     type="password"
                                     name="confilmPass"
-                                    placeholder="Type your password"
+                                    placeholder="Nhập lại mật khẩu..."
                                     onChange={this.onChange}
-                                    value={this.state.confilmPass}
-                                    />
-                                <span className="focus-input100" data-symbol="&#xf190;"></span>
+                                    required></input>
+                                <span className="focus-input100" data-symbol="&#xf190;"></span>             
+                                {
+                                    <span className="errorMessage txt4">{this.state.formErrors.confilmPass }</span>
+                                }
                             </div> 
                             <br/>
                             
                             <div className="container-login100-form-btn">
                                 <div className="wrap-login100-form-btn m-b-23">
                                     <div className="login100-form-bgbtn"></div>
-                                    <button className="login100-form-btn">
-                                        Register
+                                    <button type="submit" className="login100-form-btn">
+                                        ĐĂNG KÝ
                                     </button>
                                 </div>
                                 &nbsp;
-                                <button type="button" className="txt3" onClick={this.props.onCancelRegister}>CANCEL</button>
+                                <button type="button" className="txt3" onClick={this.props.onCancelRegister}>HỦY</button>
                             </div>
 
 
                             
                             <div className="txt1 text-center p-t-34 p-b-20">
                                 <span>
-                                    Or Sign Up Using
+                                    Hoặc đăng ký bằng
                                 </span>
                             </div>
 

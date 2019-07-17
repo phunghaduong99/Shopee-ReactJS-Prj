@@ -25,8 +25,10 @@
   src: url('../fonts/poppins/Poppins-SemiBold.ttf'); 
 }
 
-
-
+@font-face {
+  font-family: Metrophobic;
+  src: url('../fonts/poppins/Metrophobic-Regular.ttf'); 
+}
 
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
@@ -39,12 +41,12 @@
 
 body, html {
 	height: 100%;
-	font-family: Poppins-Regular, sans-serif;
+	font-family: Metrophobic, sans-serif;
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: Poppins-Regular;
+	font-family: Metrophobic;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -70,7 +72,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-	font-family: Poppins-Regular;
+	font-family: Metrophobic;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -136,21 +138,27 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Utility ]*/
 .txt1 {
-  font-family: Poppins-Regular;
-  font-size: 14px;
+  font-family: Metrophobic;
+  font-size: 16px;
   line-height: 1.5;
   color: #666666;
 }
 .txt3 {
-  font-family: Poppins-Regular;
+  font-family: Metrophobic;
   font-size: 18px;
   line-height: 1.5;
   color: #f3740c;
 }
+.txt4 {
+  font-family: Metrophobic;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #ee410c;
+}
 
 .txt2 {
-  font-family: Poppins-Regular;
-  font-size: 14px;
+  font-family: Metrophobic;
+  font-size: 16px;
   line-height: 1.5;
   color: #333333;
   text-transform: uppercase;
@@ -203,7 +211,7 @@ iframe {
 
 .login100-form-title {
   display: block;
-  font-family: Poppins-Bold;
+  font-family: Metrophobic;
   font-size: 39px;
   color: #333333;
   line-height: 1.2;
@@ -222,7 +230,7 @@ iframe {
 }
 
 .label-input100 {
-  font-family: Poppins-Regular;
+  font-family: Metrophobic;
   font-size: 14px;
   color: #333333;
   line-height: 1.5;
@@ -230,7 +238,7 @@ iframe {
 }
 
 .input100 {
-  font-family: Poppins-Medium;
+  font-family: Metrophobic;
   font-size: 16px;
   color: #333333;
   line-height: 1.2;

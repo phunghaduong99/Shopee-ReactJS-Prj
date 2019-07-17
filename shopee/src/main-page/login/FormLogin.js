@@ -35,12 +35,12 @@ class FormLogin extends Component {
                             
 
                             <div className="wrap-input100 validate-input m-b-23" data-validate = "Username is required">
-                                <span className="label-input100">Username</span>
+                                <span className="label-input100">Tên đăng nhập</span>
                                 <input
                                  className="input100"
                                  type="text"
                                   name="username" 
-                                  placeholder="Type your username"
+                                  placeholder="Nhập tên đăng nhập..."
                                   onChange={this.onChange}
                                   value={this.state.username}
                                   />
@@ -48,12 +48,12 @@ class FormLogin extends Component {
                             </div>
 
                             <div className="wrap-input100 validate-input" data-validate="Password is required">
-                                <span className="label-input100">Password</span>
+                                <span className="label-input100">Mật khẩu</span>
                                 <input 
                                     className="input100"
                                     type="password"
                                     name="pass"
-                                    placeholder="Type your password"
+                                    placeholder="Nhập mật khẩu..."
                                     onChange={this.onChange}
                                     value={this.state.pass}
                                     />
@@ -62,7 +62,7 @@ class FormLogin extends Component {
                             
                             <div className="text-right p-t-8 p-b-31">
                                 <a href="/">
-                                    Forgot password?
+                                    Quên mật khẩu?
                                 </a>
                             </div>
                             
@@ -70,14 +70,14 @@ class FormLogin extends Component {
                                 <div className="wrap-login100-form-btn">
                                     <div className="login100-form-bgbtn"></div>
                                     <button className="login100-form-btn" onClick={this.props.isAdmin}>
-                                        Login
+                                        ĐĂNG NHẬP
                                     </button>
                                 </div>
                             </div>
 
                             <div className="txt1 text-center p-t-54 p-b-20">
                                 <span>
-                                    Or Sign Up Using
+                                    Hoặc đăng nhập bằng
                                 </span>
                             </div>
 
@@ -93,10 +93,10 @@ class FormLogin extends Component {
 
                             <div className="flex-col-c p-t-55">
                                 <span className="txt1 p-b-17">
-                                    Have not account yet?
+                                    Bạn chưa có tài khoản?
                                 </span>
                                 
-                                <button type="button" className="txt3" onClick={this.props.onRegister}>SIGN UP</button>
+                                <button type="button" className="txt3" onClick={this.props.onRegister}>ĐĂNG KÝ</button>
                                 
                             </div>
                         </form>
