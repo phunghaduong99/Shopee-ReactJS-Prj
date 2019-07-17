@@ -83,11 +83,12 @@ class FormLogin extends Component {
 
                             <div className="flex-c-m">
                                 <a href="/" className="login100-social-item bg1">
-                                    <i className="fab fa-facebook-f"></i>
+                                    {/* <i className="fab fa-facebook-f"></i> */}{this.props.fbcontent}
                                 </a>
 
                                 <a href="/" className="login100-social-item bg3">
-                                    <i className="fab fa-google"></i>
+                                {this.props.Ggcontent} 
+                                 {/* <i className="fab fa-google"></i> */}
                                 </a>
                             </div>
 
