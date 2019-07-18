@@ -61,7 +61,7 @@ const formValid = ({ formErrors, ...rest }) => {
 //       }
 //   }
 class Register extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state =({
             email :'',
@@ -140,12 +140,12 @@ class Register extends Component {
     // }
     render() {
         return (
-             <div className="limiter">
+            <div className="limiter">
                 <div className="container-login100" >
                     <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-55">
                         <form className="login100-form validate-form" onSubmit={this.onSubmit}>
                             <span className="login100-form-title p-b-49">
-                            <img src={logo} alt="logo" className="logo"></img>
+                                <img src={logo} alt="logo" className="logo"></img>
                             </span>
                             <div className="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
                                 <span className="label-input100">Email</span>
@@ -190,7 +190,7 @@ class Register extends Component {
                                     <span className="errorMessage txt4">{this.state.formErrors.pass}</span>
                                 }
                             </div>
-                            
+
                             <div className="wrap-input100 validate-input m-b-23" data-validate="Password is required">
                                 <span className="label-input100">Xác nhận mật khẩu</span>
                                 <input 
@@ -219,7 +219,7 @@ class Register extends Component {
                             </div>
 
 
-                            
+
                             <div className="txt1 text-center p-t-34 p-b-20">
                                 <span>
                                     Hoặc đăng ký bằng
@@ -228,11 +228,11 @@ class Register extends Component {
 
                             <div className="flex-c-m">
                                 <a href="/" className="login100-social-item bg1">
-                                    <i className="fab fa-facebook-f"></i>
+                                {this.props.fbcontent}
                                 </a>
-
                                 <a href="/" className="login100-social-item bg3">
-                                    <i className="fab fa-google"></i>
+                                {this.props.Ggcontent}    
+                                {/* <i className="fab fa-google"></i> */}
                                 </a>
                             </div>
                         </form>
@@ -242,5 +242,5 @@ class Register extends Component {
         );
     }
 }
- 
+
 export default Register;
