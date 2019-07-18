@@ -25,8 +25,8 @@ class App extends Component {
     e.preventDefault();
     this.setState({
       isChangChu: false,
-      isLoGin: true,
-      isAdmin: false
+      isLoGin: false,
+      isAdmin: true
     })
   }
   render() { 

@@ -1,37 +1,54 @@
 import React, { Component } from 'react';
+import Aside from './aside/aside';
+import Header from './header/header';
+import './index.css';
 
-import Navbar from './navbar/navbar';
-import Sidebar from './wrapper/sidebar/sidebar';
-import Content from './wrapper/content-wrapper/content';
-import './library/vendor/fontawesome-free/css/all.min.css';
-import './library/css/sb-admin.css';
+// import './assets/js/main';
 
 
+import './assets/css/style.css';
+import './assets/css/cs-skin-elastic.css';
 class Admin extends Component {
-    state = {OpenSidebar: true}
-
-    OpenSidebar=(e)=> {
+    state = {
+        open: false,
+    }
+    open = (e) => {
         e.preventDefault();
-        this.setState({OpenSidebar: !this.state.OpenSidebar});
+        this.setState({
+            open: !this.state.open,
+        });
     }
     render() {
         return (
-            <div id="page-top" >
-                <Navbar OpenSidebar = {this.OpenSidebar}/>
+            <div className= {this.state.open? "body open": "body"}>
+            <Aside />
+             {/* <!-- Right Panel -->  */}
+            <div id="right-panel" className="right-panel">
+                <Header open = {this.open} />
+                {/* <!-- Content --> */}
+                <div className="content">
 
-                <div id="wrapper">
-                    <Sidebar OpenSidebar = {this.state.OpenSidebar}/>
-                    <Content/>
                 </div>
-                   
-                {/* <!-- Scroll to Top Button--> */}
-                <a className="scroll-to-top rounded" href="#page-top">
-                    <i className="fas fa-angle-up"></i>
-                </a>
-                
+                {/* <!-- /.content --> */}
+                <div className="clearfix"></div>
+                {/* <!-- Footer --> */}
+                <footer className="site-footer">
+                    <div className="footer-inner bg-white">
+                        <div className="row">
+                            <div className="col-sm-6">
+                                Copyright &copy; 2018 Ela Admin
+                    </div>
+                            <div className="col-sm-6 text-right">
+                                Designed by <a href="https://colorlib.com">Colorlib</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                {/* <!-- /.site-footer --> */}
             </div>
-
-        );
+            </div>
+  
+         );
     }
 }
 
