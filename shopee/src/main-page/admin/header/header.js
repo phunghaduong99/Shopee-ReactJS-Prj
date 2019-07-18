@@ -3,10 +3,10 @@ import admin from  './../images/admin.jpg';
 import logo from './../images/logospa.png';
 import './header.css';
 
-// import './../assets/js/main';
 class Header extends Component {
     state = {}
     render() {
+        let responseF = this.props.responseF;
         return (
             < header id="header" className="header" >
                 <div className="top-left">
@@ -93,17 +93,12 @@ class Header extends Component {
                         </div>
 
                         <div className="user-area dropdown float-right">
-                            <a href="/" className="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img className="user-avatar rounded-circle" src={admin} alt="User Avatar" />
-                            </a>
+                            <button href="/" className="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img className="user-avatar rounded-circle" src={responseF?responseF.picture.data.url: admin} alt="User Avatar" />
+                                <span className="username">Phùng Hà Dương</span>
+                            </button>
 
                             <div className="user-menu dropdown-menu">
-                                <a className="nav-link" href="/"><i className="fa fa- user"></i>My Profile</a>
-
-                                <a className="nav-link" href="/"><i className="fa fa- user"></i>Notifications <span className="count">13</span></a>
-
-                                <a className="nav-link" href="/"><i className="fa fa -cog"></i>Settings</a>
-
                                 <a className="nav-link" href="/"><i className="fa fa-power -off"></i>Logout</a>
                             </div>
                         </div>

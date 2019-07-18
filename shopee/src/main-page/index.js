@@ -7,7 +7,9 @@ class App extends Component {
   state = {
     isChangChu: false,
     isLoGin: false,
-    isAdmin: true
+    isAdmin: true,
+
+    responseF: null
     }
 
 
@@ -29,11 +31,31 @@ class App extends Component {
       isAdmin: true
     })
   }
+
+  responseFacebook = (response) => {
+    console.log(response);
+    this.setState({
+      isLoggedInFacebook: true,
+      responseF: response,
+      isChangChu: false,
+      isLoGin: false,
+      isAdmin: true
+    })
+  }
+  componentClicked = () => {
+    console.log("clicked");
+  }
+
+
   render() { 
     let status = null;
-    if(this.state.isChangChu) status = <TrangChu  isLoGin = {this.isLoGin}/>
-    else if(this.state.isLoGin) status =  <Login isAdmin = {this.isAdmin} />;
-    else if(this.state.isAdmin)  status =  <Admin />;
+    if(this.state.isChangChu) status = <TrangChu  isLoGin = {this.isLoGin} />
+    else if(this.state.isLoGin) status =  
+    <Login isAdmin = {this.isAdmin} 
+    componentClicked = {this.componentClicked} 
+    responseFacebook = {this.responseFacebook} 
+    />;
+    else if(this.state.isAdmin)  status =  <Admin responseF= {this.state.responseF} />;
     
 
     return (

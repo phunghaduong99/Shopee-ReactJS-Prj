@@ -64,8 +64,8 @@ class User extends Component {
           autoLoad={true}
           auto_logout_link={true}
           fields="name,email,picture"
-          onClick={this.componentClicked}
-          callback={this.responseFacebook}
+          onClick={this.props.componentClicked}
+          callback={this.props.responseFacebook}
           render={renderProps => (
             <i className="fa fa-facebook-f" onClick={renderProps.onClick}></i>
           )}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Aside from './aside/aside';
 import Header from './header/header';
+import Content from './content/content';
+
 import './index.css';
 
 // import './assets/js/main';
@@ -24,10 +26,10 @@ class Admin extends Component {
             <Aside />
              {/* <!-- Right Panel -->  */}
             <div id="right-panel" className="right-panel">
-                <Header open = {this.open} />
+                <Header open = {this.open} responseF = {this.props.responseF} />
                 {/* <!-- Content --> */}
                 <div className="content">
-
+                    <Content/>
                 </div>
                 {/* <!-- /.content --> */}
                 <div className="clearfix"></div>

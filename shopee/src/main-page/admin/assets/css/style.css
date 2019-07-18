@@ -1059,7 +1059,7 @@ header .form-inline {
 .user-area .dropdown-toggle {
   position: relative;
   z-index: 0; }
-  .user-area .dropdown-toggle:before {
+  /* .user-area .dropdown-toggle:before {
     content: "";
     position: absolute;
     right: -3px;
@@ -1071,7 +1071,7 @@ header .form-inline {
     border: 2px  solid white;
     z-index: 1; }
   .user-area .dropdown-toggle.active:before {
-    background: #49a342; }
+    background: #49a342; } */
 
 .dropdown-menu {
   border-radius: 0;

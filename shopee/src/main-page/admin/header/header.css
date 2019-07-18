@@ -1,3 +1,14 @@
 .logo {
     height: 34px;
 }
+
+.user-area .user-menu {
+    right: 0px !important;
+}
+
+.username {
+    line-height: 4.4px;
+    font-size: 12px;
+    margin: 3px;
+    color: black;
+}
