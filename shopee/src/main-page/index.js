@@ -5,9 +5,9 @@ import Login from './login/index';
 import Admin from './admin/index';
 class App extends Component {
   state = {
-    isChangChu: false,
+    isChangChu: true,
     isLoGin: false,
-    isAdmin: true
+    isAdmin: false
     }
 
 
@@ -25,8 +25,8 @@ class App extends Component {
     e.preventDefault();
     this.setState({
       isChangChu: false,
-      isLoGin: true,
-      isAdmin: false
+      isLoGin: false,
+      isAdmin: true
     })
   }
   render() { 

@@ -8,13 +8,9 @@ const emailRegex = RegExp(
   
 const formValid = ({ formErrors, ...rest }) => {
     let valid = true;
-  
-    // validate form errors being empty
     Object.values(formErrors).forEach(val => {
       val.length > 0 && (valid = false);
     });
-  
-    // validate the form was filled out
     Object.values(rest).forEach(val => {
       val === null && (valid = false);
     });
@@ -22,44 +18,7 @@ const formValid = ({ formErrors, ...rest }) => {
     return valid;
   };
   
-// function FormError(props) {
-//     if (props.isHidden) {return null;}
-//     return (
-//       <div className="form-warning txt4">
-//           {props.errorMessage}
-//       </div>
-//     )
-//   }
-//   const validateInput = (checkingText) => {
-//     const regexp = /^\d{10,11}$/; 
-    
-//     if (regexp.exec(checkingText) !== null ){
-//               return {
-//                   isInputValid: true,
-//                   errorMessage: ''
-//               };
-//           } else {
-//               return {
-//                   isInputValid: false,
-//                   errorMessage:'Hãy nhập địa chỉ email hợp lệ'
-//               };
-//           }
-//   }
-  
-//   const validatePass =(event)=>{
-//       if (this.state.pass=== this.state.confilmPass){
-//           return{
-//               isInputPass:true,
-//               errorPass:''
-//           };
-//       }
-//       else{
-//           return{
-//             isInputPass:false,
-//             errorPass:'Mật khẩu xác thực không đúng'
-//           }
-//       }
-//   }
+
 class Register extends Component {
     constructor(props) {
         super(props);
@@ -67,29 +26,28 @@ class Register extends Component {
             email :'',
             username:'',
             pass:'',
-            confilmPass:'',
+            confirmPass:'',
             formErrors: {
                 email: "",
                 username: "",
                 pass: "",
-                confilmPass: ""
+                confirmPass: ""
               }
             
         });
         
     }
-    // handleInputValidation = event => {
-    //     const { isInputValid, errorMessage } = validateInput(this.state.value);
-    //     this.setState({
-    //       isInputValid: isInputValid,
-    //       errorMessage: errorMessage
-    //     })
-        
-    //   }
+    
     onChange = e => {
         e.preventDefault();
-        const { name, value } = e.target;
+        var target = e.target;
+        var name = target.name;
+        var value= target.value;
+        this.setState({
+          [name]:value
+       });
         let formErrors = {...this.state.formErrors };
+        
     
         switch (name) {
           case "email":
@@ -105,17 +63,15 @@ class Register extends Component {
             formErrors.pass =
             value.length < 6 ? "Mật khẩu tối thiểu 6 kí tự" : "";
               break;
-          case "confilmPass":
-            formErrors.confilmPass =
-             ( this.state.confilmPass !=this.state.pass) ? "Mật khẩu không khớp" : "";
-            break;
           default:
             break;
         }
-    
         this.setState({ formErrors, [name]: value }, () => console.log(this.state));
-      };
+        
     
+      };
+      
+         
     onSubmit=(event)=>{
         event.preventDefault();
         if (formValid(this.state)) {
@@ -124,20 +80,13 @@ class Register extends Component {
             username: ${this.state.username}
             Email: ${this.state.email}
             Password: ${this.state.pass}
-            confilmPassword: ${this.state.confilmPass}
+            confirmPassword: ${this.state.confirmPass}
           `);
         } else {
           console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
         }
     }
-    // checkPass=(event)=>{
-        
-    //     const { isInputPass,errorPass } = validatePass(this.state.value);
-    //     this.setState({
-    //       isInputPass: isInputPass,
-    //       errorPass: errorPass
-    //     })
-    // }
+    
     render() {
         return (
             <div className="limiter">
@@ -196,13 +145,13 @@ class Register extends Component {
                                 <input 
                                     className="input100"
                                     type="password"
-                                    name="confilmPass"
+                                    name="confirmPass"
                                     placeholder="Nhập lại mật khẩu..."
                                     onChange={this.onChange}
                                     required></input>
                                 <span className="focus-input100" data-symbol="&#xf190;"></span>             
                                 {
-                                    <span className="errorMessage txt4">{this.state.formErrors.confilmPass }</span>
+                                    <span className="errorMessage txt4">{(this.state.pass!=this.state.confirmPass) ? "Mật khẩu không khớp" : "" }</span>
                                 }
                             </div> 
                             <br/>
