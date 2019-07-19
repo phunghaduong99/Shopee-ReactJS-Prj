@@ -23,10 +23,10 @@ class Register extends Component {
     constructor(props) {
         super(props);
         this.state =({
-            email :'',
-            username:'',
-            pass:'',
-            confirmPass:'',
+            email : null,
+            username:null,
+            pass: null,
+            confirmPass: null,
             formErrors: {
                 email: "",
                 username: "",
@@ -151,7 +151,7 @@ class Register extends Component {
                                     required></input>
                                 <span className="focus-input100" data-symbol="&#xf190;"></span>             
                                 {
-                                    <span className="errorMessage txt4">{(this.state.pass!=this.state.confirmPass) ? "Mật khẩu không khớp" : "" }</span>
+                                    <span className="errorMessage txt4">{(this.state.confirmPass!= null && this.state.pass!=this.state.confirmPass) ? "Mật khẩu không khớp" : "" }</span>
                                 }
                             </div> 
                             <br/>
