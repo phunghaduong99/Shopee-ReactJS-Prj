@@ -34,19 +34,19 @@ class User extends Component {
   }
 
 
-  responseFacebook = (response) => {
-    console.log(response);
-    this.setState({
-      isLoggedInFacebook: true,
-      userIDF: response.userID,
-      nameF: response.name,
-      emailF: response.email,
-      // pictureF: response.picture.data.url
-    })
-  }
-  componentClicked = () => {
-    console.log("clicked");
-  }
+  // responseFacebook = (response) => {
+  //   console.log(response);
+  //   this.setState({
+  //     isLoggedInFacebook: true,
+  //     userIDF: response.userID,
+  //     nameF: response.name,
+  //     emailF: response.email,
+  //     // pictureF: response.picture.data.url
+  //   })
+  // }
+  // componentClicked = () => {
+  //   console.log("clicked");
+  // }
 
   responseGoogle = (response) => {
     console.log(response);
