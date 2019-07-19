@@ -5,10 +5,9 @@ import Login from './login/index';
 import Admin from './admin/index';
 class App extends Component {
   state = {
-    isChangChu: false,
+    isChangChu: true,
     isLoGin: false,
     isAdmin: true,
-
     responseF: null
     }
 
