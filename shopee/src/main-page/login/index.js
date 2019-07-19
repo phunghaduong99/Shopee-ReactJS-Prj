@@ -64,10 +64,10 @@ class User extends Component {
           autoLoad={true}
           auto_logout_link={true}
           fields="name,email,picture"
-          onClick={this.componentClicked}
-          callback={this.responseFacebook}
+          onClick={this.props.componentClicked}
+          callback={this.props.responseFacebook}
           render={renderProps => (
-            <i className="fab fa-facebook-f" onClick={renderProps.onClick}></i>
+            <i className="fa fa-facebook-f" onClick={renderProps.onClick}></i>
           )}
         />
       )
@@ -81,7 +81,7 @@ class User extends Component {
       Ggcontent  = <GoogleLogin
         clientId="94719664507-ha2lgivg66lnr4jhm182n627u9hf9299.apps.googleusercontent.com"
         render={renderProps => (
-          <i className="fab fa-google" onClick={renderProps.onClick} disabled={renderProps.disabled} ></i>
+          <i className="fa fa-google" onClick={renderProps.onClick} disabled={renderProps.disabled} ></i>
           
         )}
         buttonText="Login"
