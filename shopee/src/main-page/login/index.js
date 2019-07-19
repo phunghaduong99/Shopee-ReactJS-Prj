@@ -9,7 +9,7 @@ import './library/css/util.css';
 import './login.css';
 
 
-import FacebookLogin from 'react-facebook-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import { GoogleLogin } from 'react-google-login';
 
 class User extends Component {
