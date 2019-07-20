@@ -30,8 +30,13 @@ import './fonts/font-awesome-4.7.0/css/font-awesome.css';
 class New extends Component {
     constructor(props) {
         super(props);
-        this.state = {scrolling: false,
-            transform: null};
+        this.state = {
+            scrolling: false,
+            services: false,
+            portfolio: false,
+            team: false,
+            contact: false
+        };
       }
 
       componentDidMount() {
@@ -45,20 +50,63 @@ class New extends Component {
     handleScroll = (event) => {
         let scrollTop1 = event.target.body.scrollTop;
         let scrollTop2 = event.target.documentElement.scrollTop;
-        if(scrollTop1 > 100 || scrollTop2>100){
+        let scrollTop = Math.max(scrollTop1,scrollTop2);
+        console.log(scrollTop);
+        if(scrollTop>100){
             this.setState({
-                scrolling: true
+                scrolling: true,
+               
             });
         }
         else {
             this.setState({
-                scrolling: false
+                scrolling: false,
+               
+            });
+        }
+        if(scrollTop <600){
+            this.setState({
+                services: false,
+                portfolio: false,
+                team: false,
+                contact: false  
+            });
+        }
+        else if( scrollTop <1500 ){
+            this.setState({
+                services: true,
+                portfolio: false,
+                team: false,
+                contact: false
+            });
+        }
+        else if(scrollTop <2710   ){
+            this.setState({
+                services: false,
+                portfolio: true,
+                team: false,
+                contact: false
+            });
+        }
+        else if(scrollTop <4220){
+            this.setState({
+                services: false,
+                portfolio: false,
+                team: true,
+                contact: false
+            });
+        }
+        else if(scrollTop >=4220){
+            this.setState({
+                services: false,
+                portfolio: false,
+                team: false,
+                contact: true
             });
         }
         
     }
     render() { 
-        
         return (
             <div>
                   <nav className={this.state.scrolling ?'navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink': 'navbar navbar-expand-lg navbar-dark fixed-top' } id="mainNav">
@@ -71,16 +119,16 @@ class New extends Component {
                             <div className="collapse navbar-collapse" id="navbarResponsive">
                                 <ul className="navbar-nav text-uppercase ml-auto">
                                 <li className="nav-item">
-                                    <a className="nav-link js-scroll-trigger" href="#services">Dịch Vụ</a>
+                                    <a  className={this.state.services? "nav-link js-scroll-trigger active" : "nav-link js-scroll-trigger"} href="#services" >Dịch Vụ</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link js-scroll-trigger" href="#portfolio">Danh mục cửa hàng</a>
+                                    <a  className={this.state.portfolio? "nav-link js-scroll-trigger active" : "nav-link js-scroll-trigger"} href="#portfolio" >Danh mục cửa hàng</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link js-scroll-trigger" href="#team">Đội phát triển</a>
+                                    <a  className={this.state.team? "nav-link js-scroll-trigger active text-center" : "nav-link js-scroll-trigger text-center"} href="#team" >Đội phát triển</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link js-scroll-trigger" href="#contact">Liên hệ</a>
+                                    <a className={this.state.contact? "nav-link js-scroll-trigger active" : "nav-link js-scroll-trigger"} href="#contact">Liên hệ</a>
                                 </li>
                                 </ul>
                                 <div className="menu-buttons">
@@ -132,8 +180,8 @@ class New extends Component {
                         <div className="container">
                             <div className="row">
                             <div className="col-lg-12 text-center">
-                                <h2 className="section-heading text-uppercase">Danh mục cửa hàng</h2>
-                                <h3 className="section-subheading text-muted"></h3>
+                                <h2 className="section-heading text-uppercase m-b-20">Danh mục cửa hàng</h2>
+                                <h3 className="section-subheading text-muted"> </h3>
                             </div>
                             </div>
                             <div className="row">
