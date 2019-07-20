@@ -563,7 +563,7 @@ aside.left-panel {
   height: 100vh;
   padding: 0;
   vertical-align: top;
-  width: 280px;
+  width: 250px;
   -webkit-box-shadow: 1px 0 20px rgba(0, 0, 0, 0.08);
           box-shadow: 1px 0 20px rgba(0, 0, 0, 0.08);
   position: fixed;
@@ -607,8 +607,8 @@ aside.left-panel {
     float: none;
     position: relative; }
     .navbar .navbar-nav > li {
-      padding-left: 30px;
-      padding-right: 30px; }
+      padding-left: 19px;
+      padding-right: 19px; }
       .navbar .navbar-nav > li.active {
         background: #fafafa; }
     .navbar .navbar-nav li {
@@ -619,6 +619,7 @@ aside.left-panel {
       .navbar .navbar-nav li .dropdown-toggle:after {
         display: none; }
       .navbar .navbar-nav li > a {
+        text-decoration: none;
         background: none !important;
         color: #607d8b;
         display: inline-block;
@@ -633,7 +634,7 @@ aside.left-panel {
           color: #607d8b;
           float: left;
           margin-top: 8px;
-          width: 55px;
+          width: 30px;
           text-align: left;
           z-index: 9; }
         .navbar .navbar-nav li > a .menu-title-text {
@@ -822,7 +823,7 @@ aside.left-panel {
 /* Right panel */
 .right-panel {
   background: #f1f2f7;
-  margin-left: 280px;
+  margin-left: 250px;
   margin-top: 55px; }
   .right-panel .top-left {
     width: 350px;
@@ -863,16 +864,16 @@ aside.left-panel {
   -webkit-box-shadow: none;
           box-shadow: none;
   clear: both;
-  padding: 0 30px;
+  padding: 0 14px;
   height: 55px;
   position: fixed;
-  left: 280px;
+  left: 250px;
   left: 0;
   right: 0;
   top: 0;
   z-index: 999; }
 .right-panel .navbar-brand {
-  width: 250px;
+  width: 200px;
   display: inline-block; }
 .right-panel .menutoggle {
   padding-top: 7px; }
@@ -2199,8 +2200,8 @@ footer.site-footer {
     font-size: 12px; } }
 @media (max-width: 1024px) {
   .open aside.left-panel {
-    width: 280px;
-    max-width: 280px; }
+    width: 255px;
+    max-width: 255px; }
 
   aside.left-panel:hover {
     overflow-x: inherit; }
@@ -2289,8 +2290,8 @@ footer.site-footer {
     aside.left-panel .menutoggle {
       display: none; }
     aside.left-panel.open-menu {
-      max-width: 280px;
-      width: 280px; }
+      max-width: 250px;
+      width: 250px; }
       aside.left-panel.open-menu .navbar .navbar-nav li > a {
         width: 100%;
         max-width: 100%;

@@ -5,9 +5,9 @@ import Login from './login/index';
 import Admin from './admin/index';
 class App extends Component {
   state = {
-    isChangChu: true,
+    isChangChu: false,
     isLoGin: false,
-    isAdmin: false,
+    isAdmin: true,
 
     responseF: null
     }
@@ -34,13 +34,18 @@ class App extends Component {
 
   responseFacebook = (response) => {
     console.log(response);
-    this.setState({
-      isLoggedInFacebook: true,
-      responseF: response,
-      isChangChu: false,
-      isLoGin: false,
-      isAdmin: true
-    })
+    if(response.userID){
+      this.setState({
+        isLoggedInFacebook: true,
+        responseF: response,
+        isChangChu: false,
+        isLoGin: false,
+        isAdmin: true
+      })
+    }
+    else {
+      this.setState({responseF: null});
+    }
   }
   componentClicked = () => {
     console.log("clicked");

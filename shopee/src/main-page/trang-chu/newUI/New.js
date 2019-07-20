@@ -66,7 +66,7 @@ class New extends Component {
                         <div className="intro-text">
                         <div className="intro-lead-in">Welcome To Our Application!</div>
                         <div className="intro-heading text-uppercase">It's Nice To Meet You</div>
-                        <a className="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
+                        <a className="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="/services">Tell Me More</a>
                         </div>
                     </div>
                     </header>
@@ -118,7 +118,7 @@ class New extends Component {
                             </div>
                             <div className="row">
                             <div className="col-md-4 col-sm-6 portfolio-item">
-                                <a className="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                                <a className="portfolio-link" data-toggle="modal" href="/portfolioModal1">
                                 <div className="portfolio-hover">
                                     <div className="portfolio-hover-content">
                                     <i className="fas fa-plus fa-3x"></i>
@@ -132,7 +132,7 @@ class New extends Component {
                                 </div>
                             </div>
                             <div className="col-md-4 col-sm-6 portfolio-item">
-                                <a className="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+                                <a className="portfolio-link" data-toggle="modal" href="/portfolioModal2">
                                 <div className="portfolio-hover">
                                     <div className="portfolio-hover-content">
                                     <i className="fas fa-plus fa-3x"></i>
@@ -146,7 +146,7 @@ class New extends Component {
                                 </div>
                             </div>
                             <div className="col-md-4 col-sm-6 portfolio-item">
-                                <a className="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+                                <a className="portfolio-link" data-toggle="modal" href="/portfolioModal3">
                                 <div className="portfolio-hover">
                                     <div className="portfolio-hover-content">
                                     <i className="fas fa-plus fa-3x"></i>
@@ -160,7 +160,7 @@ class New extends Component {
                                 </div>
                             </div>
                             <div className="col-md-4 col-sm-6 portfolio-item">
-                                <a className="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+                                <a className="portfolio-link" data-toggle="modal" href="/portfolioModal4">
                                 <div className="portfolio-hover">
                                     <div className="portfolio-hover-content">
                                     <i className="fas fa-plus fa-3x"></i>
@@ -174,7 +174,7 @@ class New extends Component {
                                 </div>
                             </div>
                             <div className="col-md-4 col-sm-6 portfolio-item">
-                                <a className="portfolio-link" data-toggle="modal" href="#portfolioModal5">
+                                <a className="portfolio-link" data-toggle="modal" href="/portfolioModal5">
                                 <div className="portfolio-hover">
                                     <div className="portfolio-hover-content">
                                     <i className="fas fa-plus fa-3x"></i>
@@ -188,7 +188,7 @@ class New extends Component {
                                 </div>
                             </div>
                             <div className="col-md-4 col-sm-6 portfolio-item">
-                                <a className="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+                                <a className="portfolio-link" data-toggle="modal" href="/portfolioModal6">
                                 <div className="portfolio-hover">
                                     <div className="portfolio-hover-content">
                                     <i className="fas fa-plus fa-3x"></i>
@@ -302,17 +302,17 @@ class New extends Component {
                             <p className="text-muted">Lead Designer</p>
                             <ul className="list-inline social-buttons">
                                 <li className="list-inline-item">
-                                <a href="#">
+                                <a href="/">
                                     <i className="fab fa-twitter"></i>
                                 </a>
                                 </li>
                                 <li className="list-inline-item">
-                                <a href="#">
+                                <a href="/">
                                     <i className="fab fa-facebook-f"></i>
                                 </a>
                                 </li>
                                 <li className="list-inline-item">
-                                <a href="#">
+                                <a href="/">
                                     <i className="fab fa-linkedin-in"></i>
                                 </a>
                                 </li>
@@ -326,17 +326,17 @@ class New extends Component {
                             <p className="text-muted">Lead Marketer</p>
                             <ul className="list-inline social-buttons">
                                 <li className="list-inline-item">
-                                <a href="#">
+                                <a href="/">
                                     <i className="fab fa-twitter"></i>
                                 </a>
                                 </li>
                                 <li className="list-inline-item">
-                                <a href="#">
+                                <a href="/">
                                     <i className="fab fa-facebook-f"></i>
                                 </a>
                                 </li>
                                 <li className="list-inline-item">
-                                <a href="#">
+                                <a href="/">
                                     <i className="fab fa-linkedin-in"></i>
                                 </a>
                                 </li>
@@ -350,17 +350,17 @@ class New extends Component {
                             <p className="text-muted">Lead Developer</p>
                             <ul className="list-inline social-buttons">
                                 <li className="list-inline-item">
-                                <a href="#">
+                                <a href="/">
                                     <i className="fab fa-twitter"></i>
                                 </a>
                                 </li>
                                 <li className="list-inline-item">
-                                <a href="#">
+                                <a href="/">
                                     <i className="fab fa-facebook-f"></i>
                                 </a>
                                 </li>
                                 <li className="list-inline-item">
-                                <a href="#">
+                                <a href="/">
                                     <i className="fab fa-linkedin-in"></i>
                                 </a>
                                 </li>
@@ -380,22 +380,22 @@ class New extends Component {
                     <div className="container">
                         <div className="row">
                         <div className="col-md-3 col-sm-6">
-                            <a href="#">
+                            <a href="/">
                             <img className="img-fluid d-block mx-auto" src={logo1} alt=""/>
                             </a>
                         </div>
                         <div className="col-md-3 col-sm-6">
-                            <a href="#">
+                            <a href="/">
                             <img className="img-fluid d-block mx-auto" src={logo2} alt=""/>
                             </a>
                         </div>
                         <div className="col-md-3 col-sm-6">
-                            <a href="#">
+                            <a href="/">
                             <img className="img-fluid d-block mx-auto" src={logo3} alt=""/>
                             </a>
                         </div>
                         <div className="col-md-3 col-sm-6">
-                            <a href="#">
+                            <a href="/">
                             <img className="img-fluid d-block mx-auto" src={logo4} alt=""/>
                             </a>
                         </div>
@@ -456,17 +456,17 @@ class New extends Component {
                         <div className="col-md-4">
                             <ul className="list-inline social-buttons">
                             <li className="list-inline-item">
-                                <a href="#">
+                                <a href="/">
                                 <i className="fab fa-twitter"></i>
                                 </a>
                             </li>
                             <li className="list-inline-item">
-                                <a href="#">
+                                <a href="/">
                                 <i className="fab fa-facebook-f"></i>
                                 </a>
                             </li>
                             <li className="list-inline-item">
-                                <a href="#">
+                                <a href="/">
                                 <i className="fab fa-linkedin-in"></i>
                                 </a>
                             </li>
@@ -475,10 +475,10 @@ class New extends Component {
                         <div className="col-md-4">
                             <ul className="list-inline quicklinks">
                             <li className="list-inline-item">
-                                <a href="#">Privacy Policy</a>
+                                <a href="/">Privacy Policy</a>
                             </li>
                             <li className="list-inline-item">
-                                <a href="#">Terms of Use</a>
+                                <a href="/">Terms of Use</a>
                             </li>
                             </ul>
                         </div>

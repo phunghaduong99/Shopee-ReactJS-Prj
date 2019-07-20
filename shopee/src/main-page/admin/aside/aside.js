@@ -15,7 +15,7 @@ class Aside extends Component {
                             <li className="menu-title">UI elements</li>
                             {/* <!-- /.menu-title --> */}
                             <li className="menu-item-has-children dropdown">
-                                <a href="/" className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-cogs"></i>Quản lí tài khoản</a>
+                                <a href="/" className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-cogs"></i>Quản lý tài khoản</a>
                                 <ul className="sub-menu children dropdown-menu">                            <li><i className="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Buttons</a></li>
                                     <li><i className="fa fa-id-badge"></i><a href="ui-badges.html">Badges</a></li>
                                     <li><i className="fa fa-bars"></i><a href="ui-tabs.html">Tabs</a></li>
@@ -30,7 +30,7 @@ class Aside extends Component {
                                 </ul>
                             </li>
                             <li className="menu-item-has-children dropdown">
-                                <a href="/" className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-table"></i>Quản lí sản phẩm</a>
+                                <a href="/" className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-table"></i>Quản lý sản phẩm</a>
                                 <ul className="sub-menu children dropdown-menu">
                                     <li><i className="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
                                     <li><i className="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>

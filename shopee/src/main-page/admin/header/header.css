@@ -1,5 +1,6 @@
 .logo {
-    height: 34px;
+    height: 37px !important;
+   max-width: 500px !important;
 }
 
 .user-area .user-menu {
@@ -11,4 +12,7 @@
     font-size: 12px;
     margin: 3px;
     color: black;
+}
+.navbar-brand {
+    font-size: 2.25rem !important;
 }
