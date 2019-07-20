@@ -28,11 +28,40 @@ import service2 from './image/services/services2.jpg';
 import service3 from './image/services/services3.jpg';
 import './agency.css';
 class New extends Component {
-    state = {  }
+    constructor(props) {
+        super(props);
+        this.state = {scrolling: false,
+            transform: null};
+      }
+
+      componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    handleScroll = (event) => {
+        let scrollTop1 = event.target.body.scrollTop;
+        let scrollTop2 = event.target.documentElement.scrollTop;
+        if(scrollTop1 > 100 || scrollTop2>100){
+            this.setState({
+                scrolling: true
+            });
+        }
+        else {
+            this.setState({
+                scrolling: false
+            });
+        }
+        
+    }
     render() { 
+        
         return (
             <div>
-                  <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+                  <nav className={this.state.scrolling ?'navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink': 'navbar navbar-expand-lg navbar-dark fixed-top' } id="mainNav">
                         <div className="container" >
                             <div className="logohome">
                                 <a href="/">
