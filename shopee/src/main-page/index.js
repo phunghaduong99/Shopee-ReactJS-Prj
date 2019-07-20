@@ -7,7 +7,12 @@ class App extends Component {
   state = {
     isChangChu: true,
     isLoGin: false,
+<<<<<<< Updated upstream
     isAdmin: true,
+=======
+    isAdmin: false,
+
+>>>>>>> Stashed changes
     responseF: null
     }
 

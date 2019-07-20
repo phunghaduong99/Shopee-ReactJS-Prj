@@ -6,13 +6,12 @@ import image3 from './image/portfolio/03-thumbnail.jpg';
 import image4 from './image/portfolio/04-thumbnail.jpg';
 import image5 from './image/portfolio/05-thumbnail.jpg';
 import image6 from './image/portfolio/06-thumbnail.jpg';
-import about1 from './image/about/1.jpg';
-import about2 from './image/about/2.jpg';
-import about3 from './image/about/3.jpg';
-import about4 from './image/about/4.jpg';
 import team1 from './image/team/1.jpg';
-import team2 from './image/team/2.jpg';
+import team2 from './image/team/2.png';
 import  team3 from './image/team/3.jpg';
+import team4 from './image/team/4.jpg';
+import team5 from './image/team/5.jpg';
+import  team6 from './image/team/6.jpeg';
 import logo1 from './image/logos/envato.jpg';
 import logo2 from './image/logos/designmodo.jpg';
 import logo3 from './image/logos/themeforest.jpg';
@@ -27,6 +26,7 @@ import service1 from './image/services/services1.jpg';
 import service2 from './image/services/services2.jpg';
 import service3 from './image/services/services3.jpg';
 import './agency.css';
+import './fonts/font-awesome-4.7.0/css/font-awesome.css';
 class New extends Component {
     state = {  }
     render() { 
@@ -83,17 +83,17 @@ class New extends Component {
                         <div className="col-md-4">
                             <img className="img-services" src={service1} alt=""/>
                             <h4 className="service-heading">Quản lý bán hàng</h4>
-                            <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                            <p className="text-muted">Quản lý hàng hóa không giới hạn. Dễ dàng tìm kiếm thông tin sản phẩm. Cập nhập thông tin hàng hóa tức thời mọi lúc mọi nơi</p>
                         </div>
                         <div className="col-md-4">
                             <img className="img-services" src={service2} alt=""/> 
                             <h4 className="service-heading">Làm chủ thị trường</h4>
-                            <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                            <p className="text-muted">Theo dõi sát diễn biến giá cả thị trường. Tính toán mức độ và thời điểm điều chỉnh phù hợp giúp kiểm kiểm soát mặt bằng giá chung</p>
                         </div>
                         <div className="col-md-4">
                             <img className="img-services" src={service3} alt=""/>
                             <h4 className="service-heading">Điều chỉnh giá đối thủ</h4>
-                            <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                            <p className="text-muted">Xác định và theo dõi biến động giá của đối thủ trên sàn TMĐT Shopee. Cho phép điều chỉnh giá của sản phầm cho phù hợp nâng cao sức cạnh tranh</p>
                         </div>
                         </div>
                     </div>
@@ -103,8 +103,8 @@ class New extends Component {
                         <div className="container">
                             <div className="row">
                             <div className="col-lg-12 text-center">
-                                <h2 className="section-heading text-uppercase">Portfolio</h2>
-                                <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                                <h2 className="section-heading text-uppercase">Danh mục cửa hàng</h2>
+                                <h3 className="section-subheading text-muted"></h3>
                             </div>
                             </div>
                             <div className="row">
@@ -196,34 +196,29 @@ class New extends Component {
                         </div>
                     </section>
                 
-                    <section className="bg-light page-section" id="team">
+                    <section className="bg-warning page-section" id="team">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12 text-center">
-                                <h2 className="section-heading text-uppercase">Our Amazing Team</h2>
-                                <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                                <h2 className="section-heading text-uppercase">Đội Phát Triển</h2>
+                                <h3 className="section-subheading text-muted">Vì mục tiêu muốn giúp các khách hàng và đối tác khai thác tối đa tài nguyên dữ liệu để bán hàng thông minh và hiệu quả hơn</h3>
                             </div>
                         </div>
                         <div className="row">
                         <div className="col-sm-4">
                             <div className="team-member">
                             <img className="mx-auto rounded-circle" src={team1} alt=""/>
-                            <h4>Kay Garland</h4>
-                            <p className="text-muted">Lead Designer</p>
+                            <h4>Trương Thành Duy</h4>
+                            <p className="text-Job">Lead Deverloper</p>
                             <ul className="list-inline social-buttons">
                                 <li className="list-inline-item">
                                 <a href="/">
-                                    <i className="fab fa-twitter"></i>
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
                                 </a>
                                 </li>
                                 <li className="list-inline-item">
                                 <a href="/">
-                                    <i className="fab fa-facebook-f"></i>
-                                </a>
-                                </li>
-                                <li className="list-inline-item">
-                                <a href="/">
-                                    <i className="fab fa-linkedin-in"></i>
+                                    <i class="fa fa-google" aria-hidden="true"></i>
                                 </a>
                                 </li>
                             </ul>
@@ -232,22 +227,17 @@ class New extends Component {
                         <div className="col-sm-4">
                             <div className="team-member">
                             <img className="mx-auto rounded-circle" src={team2} alt=""/>
-                            <h4>Larry Parker</h4>
-                            <p className="text-muted">Lead Marketer</p>
+                            <h4>Đỗ Linh Nam</h4>
+                            <p className="text-Job">Lead BA</p>
                             <ul className="list-inline social-buttons">
                                 <li className="list-inline-item">
                                 <a href="/">
-                                    <i className="fab fa-twitter"></i>
+                                     <i class="fa fa-facebook" aria-hidden="true"></i>
                                 </a>
                                 </li>
                                 <li className="list-inline-item">
                                 <a href="/">
-                                    <i className="fab fa-facebook-f"></i>
-                                </a>
-                                </li>
-                                <li className="list-inline-item">
-                                <a href="/">
-                                    <i className="fab fa-linkedin-in"></i>
+                                    <i class="fa fa-google" aria-hidden="true"></i>
                                 </a>
                                 </li>
                             </ul>
@@ -256,22 +246,17 @@ class New extends Component {
                         <div className="col-sm-4">
                             <div className="team-member">
                             <img className="mx-auto rounded-circle" src={team3} alt=""/>
-                            <h4>Diana Pertersen</h4>
-                            <p className="text-muted">Lead Developer</p>
+                            <h4>Nguyễn Trọng Cảnh</h4>
+                            <p className="text-Job">Lead Back-End</p>
                             <ul className="list-inline social-buttons">
                                 <li className="list-inline-item">
                                 <a href="/">
-                                    <i className="fab fa-twitter"></i>
+                                     <i class="fa fa-facebook" aria-hidden="true"></i>
                                 </a>
                                 </li>
                                 <li className="list-inline-item">
                                 <a href="/">
-                                    <i className="fab fa-facebook-f"></i>
-                                </a>
-                                </li>
-                                <li className="list-inline-item">
-                                <a href="/">
-                                    <i className="fab fa-linkedin-in"></i>
+                                     <i class="fa fa-google" aria-hidden="true"></i>
                                 </a>
                                 </li>
                             </ul>
@@ -281,23 +266,18 @@ class New extends Component {
                         <div className="row">
                         <div className="col-sm-4">
                             <div className="team-member">
-                            <img className="mx-auto rounded-circle" src={team1} alt=""/>
-                            <h4>Kay Garland</h4>
-                            <p className="text-muted">Lead Designer</p>
+                            <img className="mx-auto rounded-circle" src={team4} alt=""/>
+                            <h4>Phùng Hà Dương</h4>
+                            <p className="text-Job">Lead Font-End</p>
                             <ul className="list-inline social-buttons">
                                 <li className="list-inline-item">
                                 <a href="/">
-                                    <i className="fab fa-twitter"></i>
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
                                 </a>
                                 </li>
                                 <li className="list-inline-item">
                                 <a href="/">
-                                    <i className="fab fa-facebook-f"></i>
-                                </a>
-                                </li>
-                                <li className="list-inline-item">
-                                <a href="/">
-                                    <i className="fab fa-linkedin-in"></i>
+                                     <i class="fa fa-google" aria-hidden="true"></i>
                                 </a>
                                 </li>
                             </ul>
@@ -305,23 +285,18 @@ class New extends Component {
                         </div>
                         <div className="col-sm-4">
                             <div className="team-member">
-                            <img className="mx-auto rounded-circle" src={team2} alt=""/>
-                            <h4>Larry Parker</h4>
-                            <p className="text-muted">Lead Marketer</p>
+                            <img className="mx-auto rounded-circle" src={team5} alt=""/>
+                            <h4>Phạm Ngọc Minh</h4>
+                            <p className="text-Job">Lead IOS</p>
                             <ul className="list-inline social-buttons">
                                 <li className="list-inline-item">
                                 <a href="/">
-                                    <i className="fab fa-twitter"></i>
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
                                 </a>
                                 </li>
                                 <li className="list-inline-item">
                                 <a href="/">
-                                    <i className="fab fa-facebook-f"></i>
-                                </a>
-                                </li>
-                                <li className="list-inline-item">
-                                <a href="/">
-                                    <i className="fab fa-linkedin-in"></i>
+                                    <i class="fa fa-google" aria-hidden="true"></i>
                                 </a>
                                 </li>
                             </ul>
@@ -329,23 +304,18 @@ class New extends Component {
                         </div>
                         <div className="col-sm-4">
                             <div className="team-member">
-                            <img className="mx-auto rounded-circle" src={team3} alt=""/>
-                            <h4>Diana Pertersen</h4>
-                            <p className="text-muted">Lead Developer</p>
+                            <img className="mx-auto rounded-circle" src={team6} alt=""/>
+                            <h4>Bùi Thị Kim Anh</h4>
+                            <p className="text-Job">Developer</p>
                             <ul className="list-inline social-buttons">
                                 <li className="list-inline-item">
                                 <a href="/">
-                                    <i className="fab fa-twitter"></i>
+                                     <i class="fa fa-facebook" aria-hidden="true"></i>
                                 </a>
                                 </li>
                                 <li className="list-inline-item">
                                 <a href="/">
-                                    <i className="fab fa-facebook-f"></i>
-                                </a>
-                                </li>
-                                <li className="list-inline-item">
-                                <a href="/">
-                                    <i className="fab fa-linkedin-in"></i>
+                                  <i class="fa fa-google" aria-hidden="true"></i>
                                 </a>
                                 </li>
                             </ul>
@@ -439,19 +409,19 @@ class New extends Component {
                         </div>
                         <div className="col-md-4">
                             <ul className="list-inline social-buttons">
-                            <li className="list-inline-item">
-                                <a href="/">
-                                <i className="fab fa-twitter"></i>
+                            <li className="list-inline-item" >
+                                <a href="/" id="fb">
+                                 <i class="fa fa-facebook" aria-hidden="true"></i>
                                 </a>
                             </li>
-                            <li className="list-inline-item">
+                            <li className="list-inline-item" id="gm">
                                 <a href="/">
-                                <i className="fab fa-facebook-f"></i>
+                                    <i class="fa fa-google" aria-hidden="true"></i>
                                 </a>
                             </li>
-                            <li className="list-inline-item">
+                            <li className="list-inline-item" id="tw">
                                 <a href="/">
-                                <i className="fab fa-linkedin-in"></i>
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
                                 </a>
                             </li>
                             </ul>
@@ -468,199 +438,8 @@ class New extends Component {
                         </div>
                         </div>
                     </div>
-                    </footer>
-                    <div className="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                        <div className="close-modal" data-dismiss="modal">
-                            <div className="lr">
-                            <div className="rl"></div>
-                            </div>
-                        </div>
-                        <div className="container">
-                            <div className="row">
-                            <div className="col-lg-8 mx-auto">
-                                <div className="modal-body">
-                                <h2 className="text-uppercase">Project Name</h2>
-                                <p className="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                <img className="img-fluid d-block mx-auto" src={full1} alt=""/>
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <ul className="list-inline">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Threads</li>
-                                    <li>Category: Illustration</li>
-                                </ul>
-                                <button className="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i className="fas fa-times"></i>
-                                    Close Project</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                
-                    <div className="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                        <div className="close-modal" data-dismiss="modal">
-                            <div className="lr">
-                            <div className="rl"></div>
-                            </div>
-                        </div>
-                        <div className="container">
-                            <div className="row">
-                            <div className="col-lg-8 mx-auto">
-                                <div className="modal-body">
-                                <h2 className="text-uppercase">Project Name</h2>
-                                <p className="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                <img className="img-fluid d-block mx-auto" src={full2} alt=""/>
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <ul className="list-inline">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Explore</li>
-                                    <li>Category: Graphic Design</li>
-                                </ul>
-                                <button className="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i className="fas fa-times"></i>
-                                    Close Project</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                
-                    <div className="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                        <div className="close-modal" data-dismiss="modal">
-                            <div className="lr">
-                            <div className="rl"></div>
-                            </div>
-                        </div>
-                        <div className="container">
-                            <div className="row">
-                            <div className="col-lg-8 mx-auto">
-                                <div className="modal-body">
-                                <h2 className="text-uppercase">Project Name</h2>
-                                <p className="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                <img className="img-fluid d-block mx-auto" src={full3} alt=""/>
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <ul className="list-inline">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Finish</li>
-                                    <li>Category: Identity</li>
-                                </ul>
-                                <button className="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i className="fas fa-times"></i>
-                                    Close Project</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                
-                    <div className="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                        <div className="close-modal" data-dismiss="modal">
-                            <div className="lr">
-                            <div className="rl"></div>
-                            </div>
-                        </div>
-                        <div className="container">
-                            <div className="row">
-                            <div className="col-lg-8 mx-auto">
-                                <div className="modal-body">
-                                <h2 className="text-uppercase">Project Name</h2>
-                                <p className="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                <img className="img-fluid d-block mx-auto" src={full4} alt=""/>
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <ul className="list-inline">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Lines</li>
-                                    <li>Category: Branding</li>
-                                </ul>
-                                <button className="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i className="fas fa-times"></i>
-                                    Close Project</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                
-                    <div className="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                        <div className="close-modal" data-dismiss="modal">
-                            <div className="lr">
-                            <div className="rl"></div>
-                            </div>
-                        </div>
-                        <div className="container">
-                            <div className="row">
-                            <div className="col-lg-8 mx-auto">
-                                <div className="modal-body">
-                                <h2 className="text-uppercase">Project Name</h2>
-                                <p className="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                <img className="img-fluid d-block mx-auto" src={full5} alt=""/>
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <ul className="list-inline">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Southwest</li>
-                                    <li>Category: Website Design</li>
-                                </ul>
-                                <button className="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i className="fas fa-times"></i>
-                                    Close Project</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                
-                    <div className="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                        <div className="close-modal" data-dismiss="modal">
-                            <div className="lr">
-                            <div className="rl"></div>
-                            </div>
-                        </div>
-                        <div className="container">
-                            <div className="row">
-                            <div className="col-lg-8 mx-auto">
-                                <div className="modal-body">
-                                <h2 className="text-uppercase">Project Name</h2>
-                                <p className="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                <img className="img-fluid d-block mx-auto" src={full6} alt=""/>
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                <ul className="list-inline">
-                                    <li>Date: January 2017</li>
-                                    <li>Client: Window</li>
-                                    <li>Category: Photography</li>
-                                </ul>
-                                <button className="btn btn-primary" data-dismiss="modal" type="button">
-                                    <i className="fas fa-times"></i>
-                                    Close Project</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                    </div>
+                </footer>
+             </div>
         );
     }
 }
