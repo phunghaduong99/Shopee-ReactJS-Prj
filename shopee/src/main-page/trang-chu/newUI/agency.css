@@ -47,9 +47,8 @@ h6 {
   font-weight: 700;
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
-
-.page-section {
-  padding: 100px 0;
+.bg-warning{
+  background-image: linear-gradient(90deg,#ffc400,#ff981d 50%,#ff842f) !important;
 }
 
 .page-section h2.section-heading {
@@ -253,6 +252,12 @@ header.masthead .intro-text .intro-heading {
 }
 .page-section .section-subheading {
   color: #eff2f5 !important;
+}
+.text-muted {
+  color: #235f94!important;
+}
+.text-Job{
+  color: #235f94 !important;
 }
 
  .img-services {

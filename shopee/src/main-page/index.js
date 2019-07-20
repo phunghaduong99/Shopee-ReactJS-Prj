@@ -8,8 +8,6 @@ class App extends Component {
     isChangChu: true,
     isLoGin: false,
     isAdmin: false,
-
-    responseF: null
     }
 
 
