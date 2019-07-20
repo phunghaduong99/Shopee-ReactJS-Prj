@@ -26,7 +26,7 @@ class Header extends Component {
                             <button href="/" className="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span className="username">{name}</span>
                                 <img className="user-avatar rounded-circle" src={responseF?responseF.picture.data.url: admin} alt="User Avatar" />
-                                
+                                <span className="username">Bùi Thị Kim Anh</span>
                             </button>
 
                             <div className="user-menu dropdown-menu">

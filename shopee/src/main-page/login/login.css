@@ -1,4 +1,8 @@
 .app {
     min-height: 800px;
-    background-image: linear-gradient(90deg,#ffc400,#ff981d 50%,#ff842f) !important;
+    background-image: linear-gradient(90deg,#eba344,#d88e33 50%,#ce6d27) !important;
+}
+.logoLogin {
+    height: 100px;
+    min-width: 150px;
 }
