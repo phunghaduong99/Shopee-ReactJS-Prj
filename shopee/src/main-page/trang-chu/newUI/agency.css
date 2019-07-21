@@ -2,8 +2,19 @@
  * Start Bootstrap - Agency v5.2.1 (https://startbootstrap.com/template-overviews/agency)
  * Copyright 2013-2019 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-agency/blob/master/LICENSE)
+ *agency.css
  */
+ a.nav-link.js-scroll-trigger.oneline {
+  padding-top: 25px!important;
+}
+ .text-muteded{
+  color: #1c242b ;
+  font-size: 14px;
+}
 
+.masthead {
+  height: 720px;
+}
  .logohome .img-ficon {
   height: 48px;
 }

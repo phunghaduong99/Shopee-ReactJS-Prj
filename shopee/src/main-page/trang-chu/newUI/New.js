@@ -16,12 +16,6 @@ import logo1 from './image/logos/envato.jpg';
 import logo2 from './image/logos/designmodo.jpg';
 import logo3 from './image/logos/themeforest.jpg';
 import logo4 from './image/logos/creative-market.jpg';
-import full1 from './image/portfolio/01-full.jpg';
-import full2 from './image/portfolio/02-full.jpg';
-import full3 from './image/portfolio/03-full.jpg';
-import full4 from './image/portfolio/04-full.jpg';
-import full5 from './image/portfolio/05-full.jpg';
-import full6 from './image/portfolio/06-full.jpg';
 import service1 from './image/services/services1.jpg';
 import service2 from './image/services/services2.jpg';
 import service3 from './image/services/services3.jpg';
@@ -39,7 +33,7 @@ class New extends Component {
         };
       }
 
-      componentDidMount() {
+    componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
     }
 
@@ -119,16 +113,16 @@ class New extends Component {
                             <div className="collapse navbar-collapse" id="navbarResponsive">
                                 <ul className="navbar-nav text-uppercase ml-auto">
                                 <li className="nav-item">
-                                    <a  className={this.state.services? "nav-link js-scroll-trigger active" : "nav-link js-scroll-trigger"} href="#services" >Dịch Vụ</a>
+                                    <a  className={this.state.services? "nav-link js-scroll-trigger active text-center oneline" : "nav-link js-scroll-trigger text-center oneline"} href="#services" >Dịch Vụ</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a  className={this.state.portfolio? "nav-link js-scroll-trigger active" : "nav-link js-scroll-trigger"} href="#portfolio" >Danh mục cửa hàng</a>
+                                    <a  className={this.state.portfolio? "nav-link js-scroll-trigger active text-center" : "nav-link js-scroll-trigger text-center"} href="#portfolio" >Danh mục cửa hàng</a>
                                 </li>
                                 <li className="nav-item">
                                     <a  className={this.state.team? "nav-link js-scroll-trigger active text-center" : "nav-link js-scroll-trigger text-center"} href="#team" >Đội phát triển</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className={this.state.contact? "nav-link js-scroll-trigger active" : "nav-link js-scroll-trigger"} href="#contact">Liên hệ</a>
+                                    <a className={this.state.contact? "nav-link js-scroll-trigger active  oneline" : "nav-link js-scroll-trigger oneline"} href="#contact">Liên hệ</a>
                                 </li>
                                 </ul>
                                 <div className="menu-buttons">
@@ -160,17 +154,17 @@ class New extends Component {
                         <div className="col-md-4">
                             <img className="img-services" src={service1} alt=""/>
                             <h4 className="service-heading">Quản lý bán hàng</h4>
-                            <p className="text-muted">Quản lý hàng hóa không giới hạn. Dễ dàng tìm kiếm thông tin sản phẩm. Cập nhập thông tin hàng hóa tức thời mọi lúc mọi nơi</p>
+                            <p className=" text-muteded ">Quản lý hàng hóa không giới hạn. Dễ dàng tìm kiếm thông tin sản phẩm. Cập nhập thông tin hàng hóa tức thời mọi lúc mọi nơi</p>
                         </div>
                         <div className="col-md-4">
                             <img className="img-services" src={service2} alt=""/> 
                             <h4 className="service-heading">Làm chủ thị trường</h4>
-                            <p className="text-muted">Theo dõi sát diễn biến giá cả thị trường. Tính toán mức độ và thời điểm điều chỉnh phù hợp giúp kiểm kiểm soát mặt bằng giá chung</p>
+                            <p className="text-muteded">Theo dõi sát diễn biến giá cả thị trường. Tính toán mức độ và thời điểm điều chỉnh phù hợp giúp kiểm kiểm soát mặt bằng giá chung</p>
                         </div>
                         <div className="col-md-4">
                             <img className="img-services" src={service3} alt=""/>
                             <h4 className="service-heading">Điều chỉnh giá đối thủ</h4>
-                            <p className="text-muted">Xác định và theo dõi biến động giá của đối thủ trên sàn TMĐT Shopee. Cho phép điều chỉnh giá của sản phầm cho phù hợp nâng cao sức cạnh tranh</p>
+                            <p className="text-muteded">Xác định và theo dõi biến động giá của đối thủ trên sàn TMĐT Shopee. Cho phép điều chỉnh giá của sản phầm cho phù hợp nâng cao sức cạnh tranh</p>
                         </div>
                         </div>
                     </div>
@@ -345,7 +339,7 @@ class New extends Component {
                             <div className="team-member">
                             <img className="mx-auto rounded-circle" src={team4} alt=""/>
                             <h4>Phùng Hà Dương</h4>
-                            <p className="text-Job">Lead Font-End</p>
+                            <p className="text-Job">Lead Front-End</p>
                             <ul className="list-inline social-buttons">
                                 <li className="list-inline-item">
                                 <a href="/">
