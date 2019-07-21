@@ -10,3 +10,24 @@
     text-decoration: none;
     color:  #fff;
 }
+
+.back-left {
+    height: 50px;
+    padding: 10px 10px;
+    margin: -20px -16px;
+   
+}
+.back-home {
+    color:#878787 ;
+    font-size: 16px;
+}
+.back-home:hover, .back-home button:hover {
+    color: white;
+    
+}
+.back-left:hover {
+    background-color: #FFB00E;
+}
+.back-right{
+    width: 80px;
+}

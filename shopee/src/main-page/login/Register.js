@@ -90,6 +90,7 @@ class Register extends Component {
         return (
             <div className="limiter">
                 <div className="container-login100" >
+                  <div></div>
                     <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-55">
                         <form className="login100-form validate-form" onSubmit={this.onSubmit} action = "/admin">
                             <span className="login100-form-title p-b-49">
@@ -186,6 +187,7 @@ class Register extends Component {
                             </div>
                         </form>
                     </div>
+                    <div></div>
                 </div>
             </div>
         );

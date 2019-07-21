@@ -28,7 +28,22 @@ class FormLogin extends Component {
     render() { 
         return (
              <div className="limiter">
+                
+                {/* <div className= "back-home">
+                    <Link to = "/">
+                        <button> Trang chủ</button>
+                    </Link>
+                </div> */}
                 <div className="container-login100" >
+                
+                <div className="back-left">
+                    <Link className= "back-home" to = "/">
+                    <i className="fa fa-arrow-left m-r-5"></i>
+                        <button> Trang chủ</button> 
+                        
+                    </Link>
+                </div>
+
                     <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-55">
                         <form className="login100-form validate-form" onSubmit={this.onSubmit}>
                             <span className="login100-form-title p-b-49">
@@ -105,6 +120,8 @@ class FormLogin extends Component {
                             </div>
                         </form>
                     </div>
+
+                    <div className="back-right"></div>
                 </div>
             </div>
             
