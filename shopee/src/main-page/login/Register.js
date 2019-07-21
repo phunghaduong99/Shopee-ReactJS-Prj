@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import logo from './library/images/logo.png';
+import logo from './library/images/logoadmin.jpg';
 import './login.css';
-
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
   );
@@ -92,7 +91,7 @@ class Register extends Component {
             <div className="limiter">
                 <div className="container-login100" >
                     <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-55">
-                        <form className="login100-form validate-form" onSubmit={this.onSubmit}>
+                        <form className="login100-form validate-form" onSubmit={this.onSubmit} action = "/admin">
                             <span className="login100-form-title p-b-49">
                                 <img src={logo} alt="logo" className="logoLogin"></img>
                             </span>
@@ -152,12 +151,17 @@ class Register extends Component {
                               </div> 
                               <span className="errorMessage txt4 m-t-20">{(this.state.confirmPass!== null && this.state.pass!==this.state.confirmPass) ? "Mật khẩu không khớp" : "" }</span>
                             </div>
+
+                            
                             <div className="container-login100-form-btn">
-                                <div className="wrap-login100-form-btn m-b-23">
+                                <div className="wrap-login100-form-btn m-b-23 m-t-20">
                                     <div className="login100-form-bgbtn"></div>
-                                    <button type="submit" className="login100-form-btn">
+                                    
+                                    <button type="submit"  className="login100-form-btn "   >
                                         ĐĂNG KÝ
                                     </button>
+                                    
+                                    
                                 </div>
                                 &nbsp;
                                 <button type="button" className="txt3" onClick={this.props.onCancelRegister}>HỦY</button>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import admin from  './../images/admin.jpg';
 import logo from './../images/logoadmin.jpg';
 import './header.css';
-
+import { Link } from "react-router-dom";
 class Header extends Component {
     state = {}
     render() {
@@ -26,11 +26,11 @@ class Header extends Component {
                             <button href="/" className="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span className="username">{name}</span>
                                 <img className="user-avatar rounded-circle" src={responseF?responseF.picture.data.url: admin} alt="User Avatar" />
-                                <span className="username">Bùi Thị Kim Anh</span>
                             </button>
 
                             <div className="user-menu dropdown-menu">
-                                <a className="nav-link" href="/"><i className="fa fa-power -off"></i>Logout</a>
+
+                                <Link className="nav-link" to="/"><i className="fa fa-power -off"></i>Logout</Link>
                             </div>
                         </div>
 

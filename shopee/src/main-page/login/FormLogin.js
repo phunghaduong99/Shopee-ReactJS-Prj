@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import logo from './library/images/logo.png';
+import logo from './library/images/logoadmin.jpg';
 import './login.css';
+
+import { Link } from "react-router-dom";
 class FormLogin extends Component {
     constructor(props){
         super(props);
@@ -69,9 +71,11 @@ class FormLogin extends Component {
                             <div className="container-login100-form-btn">
                                 <div className="wrap-login100-form-btn">
                                     <div className="login100-form-bgbtn"></div>
-                                    <button className="login100-form-btn" onClick={this.props.isAdmin}>
+                                    <Link to="/admin" className="dangnhap">
+                                    <button className="login100-form-btn dangnhap" to="/admin" onClick={this.props.isAdmin}>
                                         ĐĂNG NHẬP
                                     </button>
+                                    </Link>
                                 </div>
                             </div>
 
@@ -83,16 +87,15 @@ class FormLogin extends Component {
 
                             <div className="flex-c-m">
                                 <a href="/" className="login100-social-item bg1">
-                                    {/* <i className="fab fa-facebook-f"></i> */}{this.props.fbcontent}
+                                  {this.props.fbcontent}
                                 </a>
 
                                 <a href="/" className="login100-social-item bg3">
                                 {this.props.Ggcontent} 
-                                 {/* <i className="fab fa-google"></i> */}
                                 </a>
                             </div>
 
-                            <div className="flex-col-c p-t-55">
+                            <div className="flex-col-c p-t-25">
                                 <span className="txt1 p-b-17">
                                     Bạn chưa có tài khoản?
                                 </span>

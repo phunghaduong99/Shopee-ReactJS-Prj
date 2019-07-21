@@ -21,6 +21,10 @@ import service2 from './image/services/services2.jpg';
 import service3 from './image/services/services3.jpg';
 import './agency.css';
 import './fonts/font-awesome-4.7.0/css/font-awesome.css';
+
+
+import { Link } from "react-router-dom";
+
 class New extends Component {
     constructor(props) {
         super(props);
@@ -126,7 +130,7 @@ class New extends Component {
                                 </li>
                                 </ul>
                                 <div className="menu-buttons">
-                                        <a className="btn btn-outline" href="/" onClick = {this.props.isLoGin}>Đăng nhập</a>
+                                        <Link className="btn btn-outline" to="/login" onClick = {this.props.isLoGin}>Đăng nhập</Link>
                                 </div>
                              </div>
                         </div>

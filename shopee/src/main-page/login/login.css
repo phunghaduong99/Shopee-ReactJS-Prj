@@ -3,6 +3,10 @@
     background-image: linear-gradient(90deg,#ffc400,#ff981d 50%,#ff842f) !important;
 }
 .logoLogin {
-    height: 100px;
-    min-width: 150px;
+    height:54px;
+    
+}
+ .dangnhap:hover {
+    text-decoration: none;
+    color:  #fff;
 }
