@@ -7,7 +7,7 @@
         color: #212529;
         text-align: left;
         background-color: #fff;
-        min-height: 800px;
+      
      
 }
 *, ::after, ::before {
@@ -20,6 +20,3 @@
      padding: 0px !important;
  }
 
- .right-panel {
-     min-height: 800px;
- }

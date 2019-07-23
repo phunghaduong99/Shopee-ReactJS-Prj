@@ -7,3 +7,18 @@
     color: red !important;
 
 }
+
+select {
+    width: 90% !important;
+    display: inline-block;
+}
+
+.connect-shoppee {
+    padding: 8px 15px;
+    margin: 10px 15px;
+}
+.connect-submit {
+    float: right;
+    padding: 11px 7px;
+    margin: 0px 14px;
+}

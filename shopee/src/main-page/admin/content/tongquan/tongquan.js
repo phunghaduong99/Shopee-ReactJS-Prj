@@ -59,20 +59,24 @@ class TongQuan extends Component {
                     </div>
                 </div>
                 <div className="col-sm-4">
-                    <div className="card">
-                        <h4 className=" box-title">Hãy thực hiện kết nối shop <a href="/"> tại đây</a></h4>
+                    <div className="card ">
+                        <h4 className=" box-title connect-shoppee ">Hãy thực hiện kết nối shop <a href="/"> tại đây</a></h4>
                     </div>
                     <div>
                     <div className="card">
-                        <h2 className=" box-title text-left">Cửa hàng của bạn</h2>
-                        <select>
+                        <h2 className=" box-title connect-shoppee">Cửa hàng của bạn</h2>
+                        <select className= "form-control form control-sm connect-shoppee">
                             <option value=""></option>
                             <option value="volvo">Volvo</option>
                             <option value="saab">Saab</option>
                             <option value="opel">Opel</option>
                             <option value="audi">Audi</option>
                         </select>
-                        <button className="btn btn-primary"></button>
+                        <li>
+                            <div className= "connect-submit">
+                        <button className="btn btn-primary ">Xác nhận</button>
+                        </div>
+                        </li>
                     </div>
                    
                     </div>

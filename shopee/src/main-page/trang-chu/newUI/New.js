@@ -19,7 +19,7 @@ import logo4 from './image/logos/creative-market.jpg';
 import service1 from './image/services/services1.jpg';
 import service2 from './image/services/services2.jpg';
 import service3 from './image/services/services3.jpg';
-import './agency.css';
+import './css/agency.css';
 import './fonts/font-awesome-4.7.0/css/font-awesome.css';
 
 

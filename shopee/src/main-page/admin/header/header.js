@@ -9,13 +9,20 @@ class Header extends Component {
         let responseF = this.props.responseF;
         let name = null;
         if(responseF)   name = responseF.name;
+
+        let width = this.props.width;
+        
+
         return (
             < header id="header" className="header" >
                 <div className="top-left">
                     <div className="navbar-header">
                         <a className="navbar-brand logo" href="/"><img className="logo" src={logo} alt="Logo" /></a>
                         <a className="navbar-brand hidden" href="/"><img src="./../images/logo2.png" alt="Logo" /></a>
-                        <a id="menuToggle" className="menutoggle" href="/"   onClick= {this.props.open} ><i className="fa fa-bars"></i></a>
+                        <a id="menuToggle" className="menutoggle" 
+                        href={width <760? '#left-panel' :'/' } 
+                        data-toggle= {this.props.width <760? 'collapse' :'' }
+                        onClick= {this.props.open} ><i className="fa fa-bars"></i></a>
                     </div>
                 </div>
                 <div className="top-right">

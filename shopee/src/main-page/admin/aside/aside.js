@@ -3,10 +3,33 @@ import React, { Component } from 'react';
 class Aside extends Component {
     state = {}
     render() {
+        
+        let leftpanel;
+        let width = this.props.width;
+        let display = {};
+        if(width < 1010){
+            if(width<760){
+                    display = {display : 'inline-block'};
+                    leftpanel = "collapse";
+            }
+            else {
+                if(this.props.open){
+                    leftpanel = "left-panel open-menu";
+                   
+                } 
+                else{
+                    leftpanel = "left-panel";
+                } 
+            }
+        }
+        else {
+            leftpanel= "left-panel";
+        }
+
         return (
             // <!-- Left Panel -->
-            <aside id="left-panel" className="left-panel">
-                <nav className="navbar navbar-expand-sm navbar-default">
+            <aside id="left-panel" className={leftpanel}  >
+                <nav className="navbar navbar-expand-sm navbar-default" style = {display} >
                     <div id="main-menu" className="main-menu collapse navbar-collapse">
                         <ul className="nav navbar-nav">
                             <li className="active">

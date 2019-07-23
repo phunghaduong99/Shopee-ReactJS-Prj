@@ -11,9 +11,26 @@ import './index.css';
 import './assets/css/style.css';
 import './assets/css/cs-skin-elastic.css';
 class Admin extends Component {
-    state = {
-        open: false,
-    }
+    constructor(props) {
+        super(props);
+        this.state = { width: 0, height: 0 , open: false,};
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+      }
+    
+      componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
+        
+        
+      }
+      componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+      }
+      
+      updateWindowDimensions() {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+      }
+      
     open = (e) => {
         e.preventDefault();
         this.setState({
@@ -21,12 +38,15 @@ class Admin extends Component {
         });
     }
     render() {
+        console.log(this.state.width);
+        console.log(this.state.height);
         return (
-            <div className= {this.state.open? "body open": "body"}>
-            <Aside />
+
+            <div className= {this.state.width <1010? "small-device": (this.state.open? "body open": "body")}>
+            <Aside width = {this.state.width} open = {this.state.open}/>
              {/* <!-- Right Panel -->  */}
             <div id="right-panel" className="right-panel">
-                <Header open = {this.open} responseF = {this.props.responseF} />
+                <Header open = {this.open} responseF = {this.props.responseF}   width = {this.state.width}/>
                 {/* <!-- Content --> */}
                 <div className="content">
                     <Content/>
@@ -34,19 +54,7 @@ class Admin extends Component {
                 {/* <!-- /.content --> */}
                 <div className="clearfix"></div>
                 {/* <!-- Footer --> */}
-                <footer className="site-footer">
-                    <div className="footer-inner bg-white">
-                        <div className="row">
-                            <div className="col-sm-6">
-                                Copyright &copy; 2018 Ela Admin
-                    </div>
-                            <div className="col-sm-6 text-right">
-                                Designed by <a href="https://colorlib.com">Colorlib</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-                {/* <!-- /.site-footer --> */}
+                
             </div>
             </div>
   
