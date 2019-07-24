@@ -73,62 +73,68 @@ class user extends Component {
     render() {
         return (
             <div onSubmit={this.onSubmit} >
-                    <div className=" overview col-sm-12">
+                    <div className=" card overview col-sm-12">
                         <h2>Thông tin tài khoản</h2>
                     </div>
-                <div className="col-md-12 .col-lg-12 .col-xl-12 infoUser">
-                    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <div className=" input-group ">
-                            <label className="col-sm-4 col-form-label">Tên người dùng </label>
-                            <input 
-                                className="form-control"
-                                name="username" 
-                                placeholder="Nhập tên" 
-                                type="text"
-                                onChange={this.onChange}
-                              />
-                        </div>
-                        <span className="col-sm-6 errorMessage txt4 text-right">{this.state.formErrors.username}</span>
-                        <div className="input-group">
-                            <label className="col-sm-4 col-form-label">Số điện thoại </label>
-                            <input 
-                                className="form-control" 
-                                name="phone" 
-                                placeholder="Nhập số điện thoại" 
-                                type="text"
-                                onChange={this.onChange}
-                            />
-                        </div>
-                        <span className="col-sm-6 errorMessage txt4 text-right">{this.state.formErrors.phone}</span>
-                        <div className="input-group">
-                            <label className="col-sm-4 col-form-label">Email </label>
-                            <input 
-                                type="email" 
-                                name="email" 
-                                className="form-control" 
-                                required="required" 
-                                placeholder="Nhập địa chỉ email" 
-                                onChange={this.onChange}
-                            />
-                        </div>
-                        <div className="input-group">
-                            <label className="col-sm-4 col-form-label">Mật khẩu </label>
-                            <input 
-                                type="password" 
-                                name="password" 
-                                className="form-control" 
-                                required="required" 
-                                placeholder="Mật Khẩu" 
-                                onChange={this.onChange}
-                            />
-                            <label className="col-sm-4 col-form-label-pass" > Đổi mật khẩu?</label>
-                        </div>
-                        <div className="buttonUpdate">
-                             <button type="submit" className="btn btn-primary text-right">Lưu thay đổi </button>
-                        </div>
-                     </div>
+                    <form className="form-horizontal">
+                      <div className="col-md-6 offset-md-3 mr-auto ml-auto ">
+                          <div className=" row form-group ">
+                            <div className="col-md-4 aline">
+                              <label className="col-form-label">Tên người dùng </label>
+                            </div>
+                            <div className="col-md-8">
+                                <input 
+                                    className="form-control"
+                                    name="username" 
+                                    placeholder="Nhập tên" 
+                                    type="text"
+                                    onChange={this.onChange}
+                                  />
+                                  <span className="errorMessage txt4">{this.state.formErrors.username}</span>
+                            </div>
+                            
+                          </div>
+                          <div className=" row form-group ">
+                            <div className="col-md-4 aline">
+                              <label className="col-form-label">Số điện thoại </label>
+                            </div>
+                            <div className="col-md-8">
+                              <input 
+                                    className="form-control" 
+                                    name="phone" 
+                                    placeholder="Nhập số điện thoại" 
+                                    type="text"
+                                    onChange={this.onChange}
+                                />
+                              <span className="errorMessage txt4">{this.state.formErrors.phone}</span>
+                            </div>
+                          </div>
+                          <div className=" row form-group ">
+                            <div className="col-md-4 aline">
+                              <label className="col-form-label">Email</label>
+                            </div>
+                            <div className="col-md-8">
+                              <label className="col-form-label-content">Buithikimanh@gmail.com </label>
+                            </div>
+                          </div>
+                          <div className=" row form-group ">
+                            <div className="col-md-4 aline">
+                              <label className="col-form-label">Mật khẩu </label>
+                            </div>
+                            <div className="col-md-4">
+                              <label className="col-form-label-content">###### </label>
+                            </div>
+                            <div className="col-md-4">
+                              <button type="button" class="btn btn-link ">Đổi mật khẩu</button>
+                            </div>
+                          </div>
+                          <div className="col-md-3 offset-md-9 col-sm-6 ml-auto">
+                              <button type="submit" className="btn btn-primary ">Lưu thay đổi </button>
+                          </div>
+                      </div>
+                     </form>
                 </div>
-            </div>
+                
             
         );
     }
