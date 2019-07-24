@@ -1,25 +1,16 @@
-.overview{
-    background-color: rgba(128, 133, 131, 0.801);
-    padding: 10px !important;
-}
-.infoUser{
-    margin-left: 22.5%;
-    margin-top: 10%;
-}
-.control-label{
-    margin-bottom: 0px !important;
-}
-.col-form-label-pass{
-    margin-bottom: 0px !important;
-    color: #0894e8;
-    text-align: right;
+.card{
+    background-color: rgba(128, 133, 131, 0.801) !important;
+    padding-top: 15px !important;
 }
 .input-group{
     margin-top:  5px !important;
 }
-.text-right{
- float: right;
-}
 .buttonUpdate{
     margin-top: 15px;
+}
+.btn-link {
+    float: right;
+}
+.aline{
+   text-align: right !important;
 }
