@@ -2418,8 +2418,8 @@ footer.site-footer {
         -ms-flex: none;
             flex: none; } }
 @media (max-width: 768px) {
-  .navbar {
-    height: 100vh; }
+    /* .navbar {
+      height: 100vh; } */
     .navbar .navbar-nav li.menu-item-has-children > a:before {
       display: block !important; }
     .navbar .main-menu {

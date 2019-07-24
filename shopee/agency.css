@@ -4,73 +4,6 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-agency/blob/master/LICENSE)
  *agency.css
  */
- @media (max-width: 768px) {
-  header.masthead .intro-text .intro-heading {
-    font-size: 1.5rem !important;
-  }
-  header.masthead .intro-text .intro-lead-in {
-    font-size: 1rem !important;
-  }
-  .page-section h3.section-subheading{
-    font-size: 1rem !important;
-  }
-  .text-muteded {
-    font-size: 0.8rem !important;
-  }
-  header.masthead .intro-text {
-    padding-top: 150px;
-    padding-bottom: 100px;
-  }
-}
-@media (min-width: 768px) {
-  header.masthead .intro-text {
-    padding-top: 200px;
-    padding-bottom: 200px;
-  }
-  header.masthead .intro-text .intro-lead-in {
-    font-size: 40px;
-    font-style: italic;
-    line-height: 40px;
-    margin-bottom: 25px;
-    font-family: 'Droid Serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  }
-  header.masthead .intro-text .intro-heading {
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 75px;
-    margin-bottom: 30px;
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  }
-  
-}
-
- @media (max-width: 992px) {
-  
-  .logohome .img-ficon {
-    height: 32px;
-  }
-  .team-member img {
-    width: 225px;
-    border: 7px solid rgba(0, 0, 0, 0.1);
-  }
-
- }
-
- @media (min-width: 768px) and (max-width: 992px) {
-  h4 {
-    font-size: 1.1rem !important;
-  }
-  .team-member img {
-    height: 225px;
-  }
-  .img-services {
-    height: 200px !important;
-  }
-  .header.masthead .intro-text .intro-heading {
-    font-size: 40px;
-  }
- }
-
  a.nav-link.js-scroll-trigger.oneline {
   padding-top: 25px!important;
 }
@@ -79,8 +12,12 @@
   font-size: 14px;
 }
 
-
-
+.masthead {
+  height: 720px;
+}
+ .logohome .img-ficon {
+  height: 48px;
+}
 
 .btn.btn-outline {
   text-transform: uppercase;
@@ -144,7 +81,7 @@ h6 {
 
 @media (min-width: 768px) {
   section {
-    padding: 100px 0;
+    padding: 150px 0;
   }
 }
 
@@ -260,24 +197,6 @@ img::-moz-selection {
     font-size: 1.25em;
     padding: 12px 0;
   }
-
-  .nav-link-center {
-    text-align: center;
-  }
-  .logohome .img-ficon {
-    height: 48px;
-  }
-  .team-member img {
-    width: 225px;
-    height: 225px;
-    border: 7px solid rgba(0, 0, 0, 0.1);
-  }
-  .masthead {
-    height: 720px;
-  }
-  .header.masthead .intro-text .intro-heading {
-    font-size: 50px ;
-  }
 }
 
 header.masthead {
@@ -297,7 +216,10 @@ header.container{
 }
 
 
-
+header.masthead .intro-text {
+  padding-top: 150px;
+  padding-bottom: 100px;
+}
 
 header.masthead .intro-text .intro-lead-in {
   font-size: 22px;
@@ -308,20 +230,37 @@ header.masthead .intro-text .intro-lead-in {
 }
 
 header.masthead .intro-text .intro-heading {
+  font-size: 50px;
   font-weight: 700;
   line-height: 50px;
   margin-bottom: 25px;
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-
+@media (min-width: 768px) {
+  header.masthead .intro-text {
+    padding-top: 200px;
+    padding-bottom: 200px;
+  }
+  header.masthead .intro-text .intro-lead-in {
+    font-size: 40px;
+    font-style: italic;
+    line-height: 40px;
+    margin-bottom: 25px;
+    font-family: 'Droid Serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  }
+  header.masthead .intro-text .intro-heading {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 75px;
+    margin-bottom: 30px;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  }
+}
 
 .service-heading {
   margin: 15px 0;
   text-transform: none;
-}
-.page-section {
-  padding: 100px 0;
 }
 .page-section .section-subheading {
   color: #eff2f5 !important;
@@ -604,15 +543,90 @@ header.masthead .intro-text .intro-heading {
   margin-bottom: 0;
 }
 
+@media (min-width: 768px) {
+  .timeline:before {
+    left: 50%;
+  }
+  .timeline > li {
+    min-height: 100px;
+    margin-bottom: 100px;
+  }
+  .timeline > li .timeline-panel {
+    float: left;
+    width: 41%;
+    padding: 0 20px 20px 30px;
+    text-align: right;
+  }
+  .timeline > li .timeline-image {
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    margin-left: -50px;
+  }
+  .timeline > li .timeline-image h4 {
+    font-size: 13px;
+    line-height: 18px;
+    margin-top: 16px;
+  }
+  .timeline > li.timeline-inverted > .timeline-panel {
+    float: right;
+    padding: 0 30px 20px 20px;
+    text-align: left;
+  }
+}
 
+@media (min-width: 992px) {
+  .timeline > li {
+    min-height: 150px;
+  }
+  .timeline > li .timeline-panel {
+    padding: 0 20px 20px;
+  }
+  .timeline > li .timeline-image {
+    width: 150px;
+    height: 150px;
+    margin-left: -75px;
+  }
+  .timeline > li .timeline-image h4 {
+    font-size: 18px;
+    line-height: 26px;
+    margin-top: 30px;
+  }
+  .timeline > li.timeline-inverted > .timeline-panel {
+    padding: 0 20px 20px;
+  }
+}
 
+@media (min-width: 1200px) {
+  .timeline > li {
+    min-height: 170px;
+  }
+  .timeline > li .timeline-panel {
+    padding: 0 20px 20px 100px;
+  }
+  .timeline > li .timeline-image {
+    width: 170px;
+    height: 170px;
+    margin-left: -85px;
+  }
+  .timeline > li .timeline-image h4 {
+    margin-top: 40px;
+  }
+  .timeline > li.timeline-inverted > .timeline-panel {
+    padding: 0 100px 20px 20px;
+  }
+}
 
 .team-member {
   margin-bottom: 50px;
   text-align: center;
 }
 
-
+.team-member img {
+  width: 225px;
+  height: 225px;
+  border: 7px solid rgba(0, 0, 0, 0.1);
+}
 
 .team-member h4 {
   margin-top: 25px;
