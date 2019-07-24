@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 class Aside extends Component {
     state = {}
@@ -10,11 +11,13 @@ class Aside extends Component {
                     <div id="main-menu" className="main-menu collapse navbar-collapse">
                         <ul className="nav navbar-nav">
                             <li className="active">
-                                <a href="index.html"><i className="menu-icon fa fa-laptop"></i>Tổng quan </a>
+                                 {/* <a href="index.html"><i className="menu-icon fa fa-laptop"></i>Tổng quan </a> */}
+                                <Link className="nav-link" to="/admin/tongquan"><i className="menu-icon fa fa-laptop m-r-15"></i>Tổng Quan</Link>
                             </li>
-                            <li className="menu-title">UI elements</li>
+                            <li className="menu-title">Chức Năng</li>
                             {/* <!-- /.menu-title --> */}
                             <li className="menu-item-has-children dropdown">
+<<<<<<< Updated upstream
                                 <a href="/" className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-cogs"></i>Quản lí tài khoản</a>
                                 <ul className="sub-menu children dropdown-menu">                            <li><i className="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Buttons</a></li>
                                     <li><i className="fa fa-id-badge"></i><a href="ui-badges.html">Badges</a></li>
@@ -28,6 +31,13 @@ class Aside extends Component {
                                     <li><i className="fa fa-th"></i><a href="ui-grids.html">Grids</a></li>
                                     <li><i className="fa fa-file-word-o"></i><a href="ui-typgraphy.html">Typography</a></li>
                                 </ul>
+=======
+                                <Link className="nav-link" to="/admin/username"><i className="menu-icon fa fa-cogs m-r-15" onClick={this.props.onUser}></i>Quản lý tài khoản</Link>
+                                {/* <a href="/" className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-cogs"></i>Quản lý tài khoản</a>
+                                <ul className="sub-menu children dropdown-menu">                           
+                                     
+                                </ul> */}
+>>>>>>> Stashed changes
                             </li>
                             <li className="menu-item-has-children dropdown">
                                 <a href="/" className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-table"></i>Quản lí sản phẩm</a>

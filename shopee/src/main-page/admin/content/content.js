@@ -1,11 +1,30 @@
 import React, { Component } from 'react';
 import TongQuan from './tongquan/tongquan';
+import User from './quanlytaikhoan/user';
 
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 class Content extends Component {
-    state = {  }
+    state = { 
+        onUser: false
+     }
+    onUser=(e)=>{
+        e.preventDefault();
+        this.setState({
+            onUser:true
+        });
+    }
     render() { 
         return (
-            <TongQuan/>
+        //     <Router >
+        //         <switch>
+        //         <Route path="/admin/" component={TongQuan} exact/>
+        //         <Route path="/admin/username"
+        //              render={props =>
+        //             <User {...props} onUser={this.onUser} />} 
+        //         />
+        //         </switch>
+        //     </Router>
+        <User/>
           );
     }
 }

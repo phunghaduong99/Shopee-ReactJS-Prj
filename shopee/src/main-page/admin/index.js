@@ -7,7 +7,6 @@ import './index.css';
 
 // import './assets/js/main';
 
-
 import './assets/css/style.css';
 import './assets/css/cs-skin-elastic.css';
 class Admin extends Component {
