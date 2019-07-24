@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 class Aside extends Component {
     state = {}
@@ -33,24 +34,17 @@ class Aside extends Component {
                     <div id="main-menu" className="main-menu collapse navbar-collapse">
                         <ul className="nav navbar-nav">
                             <li className="active">
-                                <a href="index.html"><i className="menu-icon fa fa-laptop"></i>Tổng quan </a>
+                                 {/* <a href="index.html"><i className="menu-icon fa fa-laptop"></i>Tổng quan </a> */}
+                                <Link className="nav-link" to="/admin/tongquan"><i className="menu-icon fa fa-laptop m-r-15"></i>Tổng Quan</Link>
                             </li>
-                            <li className="menu-title">UI elements</li>
+                            <li className="menu-title">Chức Năng</li>
                             {/* <!-- /.menu-title --> */}
                             <li className="menu-item-has-children dropdown">
-                                <a href="/" className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-cogs"></i>Quản lý tài khoản</a>
-                                <ul className="sub-menu children dropdown-menu">                            <li><i className="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Buttons</a></li>
-                                    <li><i className="fa fa-id-badge"></i><a href="ui-badges.html">Badges</a></li>
-                                    <li><i className="fa fa-bars"></i><a href="ui-tabs.html">Tabs</a></li>
-
-                                    <li><i className="fa fa-id-card-o"></i><a href="ui-cards.html">Cards</a></li>
-                                    <li><i className="fa fa-exclamation-triangle"></i><a href="ui-alerts.html">Alerts</a></li>
-                                    <li><i className="fa fa-spinner"></i><a href="ui-progressbar.html">Progress Bars</a></li>
-                                    <li><i className="fa fa-fire"></i><a href="ui-modals.html">Modals</a></li>
-                                    <li><i className="fa fa-book"></i><a href="ui-switches.html">Switches</a></li>
-                                    <li><i className="fa fa-th"></i><a href="ui-grids.html">Grids</a></li>
-                                    <li><i className="fa fa-file-word-o"></i><a href="ui-typgraphy.html">Typography</a></li>
-                                </ul>
+                                <Link className="nav-link" to="/admin/username"><i className="menu-icon fa fa-cogs m-r-15" onClick={this.props.onUser}></i>Quản lý tài khoản</Link>
+                                {/* <a href="/" className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-cogs"></i>Quản lý tài khoản</a>
+                                <ul className="sub-menu children dropdown-menu">                           
+                                     
+                                </ul> */}
                             </li>
                             <li className="menu-item-has-children dropdown">
                                 <a href="/" className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-table"></i>Quản lý sản phẩm</a>
