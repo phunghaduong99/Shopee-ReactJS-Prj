@@ -61,7 +61,7 @@ class User extends Component {
       fbcontent = (
         <FacebookLogin
           appId="365366094167384"
-          autoLoad={true}
+          autoLoad={false}
           auto_logout_link={true}
           fields="name,email,picture"
           onClick={this.props.componentClicked}
@@ -71,7 +71,7 @@ class User extends Component {
           )}
         />
       )
-    // }
+    
 
     let Ggcontent = null;
     if (this.state.isLoggedGoogle) {

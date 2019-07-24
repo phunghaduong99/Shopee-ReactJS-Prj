@@ -362,7 +362,7 @@ iframe {
 }
 
 .login100-form-btn {
-  font-family: Poppins-Medium;
+  /* font-family: Poppins-Medium; */
   font-size: 20px;
   color: #fff;
   line-height: 1.2;
@@ -484,5 +484,26 @@ iframe {
   .wrap-login100 {
     padding-left: 15px;
     padding-right: 15px;
+    width: 100%;
+    
   }
+  .p-r-55 {
+    padding-right: 30px !important;
+  }
+  .p-l-55 {
+      padding-left: 30px !important;
+  }
+  .p-b-55 {
+      padding-bottom: 30px !important;
+  }
+  .p-t-65 {
+      padding-top: 40px!important;
+  }
+  .back-left {
+    height: 60px !important;
+  }
+  .logoLogin {
+    height: 44px !important;
+  }
+  
 } 

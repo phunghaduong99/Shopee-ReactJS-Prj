@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './library/images/logoadmin.jpg';
+import logo from './library/images/logoadmin.png';
 import './login.css';
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
