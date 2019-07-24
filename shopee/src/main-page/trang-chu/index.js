@@ -6,7 +6,7 @@ class TrangChu extends Component {
     render() { 
         return (
             <div id="app">
-                <New isLoGin = {this.props.isLoGin}/>
+                <New isLoGin = {this.props.isLoGin} width = {this.props.width}/>
                 
             </div>
         );

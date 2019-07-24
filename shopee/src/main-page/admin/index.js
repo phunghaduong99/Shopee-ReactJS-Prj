@@ -13,23 +13,10 @@ import './assets/css/cs-skin-elastic.css';
 class Admin extends Component {
     constructor(props) {
         super(props);
-        this.state = { width: 0, height: 0 , open: false,};
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+        this.state = {  open: false,};
       }
     
-      componentDidMount() {
-        this.updateWindowDimensions();
-        window.addEventListener('resize', this.updateWindowDimensions);
-        
-        
-      }
-      componentWillUnmount() {
-        window.removeEventListener('resize', this.updateWindowDimensions);
-      }
-      
-      updateWindowDimensions() {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
-      }
+     
       
     open = (e) => {
         e.preventDefault();
@@ -38,15 +25,15 @@ class Admin extends Component {
         });
     }
     render() {
-        console.log(this.state.width);
-        console.log(this.state.height);
+        console.log(this.props.width);
+      
         return (
 
-            <div className= {this.state.width <1010? "small-device": (this.state.open? "body open": "body")}>
-            <Aside width = {this.state.width} open = {this.state.open}/>
+            <div className= {this.props.width <1010? "small-device": (this.state.open? "body open": "body")}>
+            <Aside width = {this.props.width} open = {this.state.open}/>
              {/* <!-- Right Panel -->  */}
             <div id="right-panel" className="right-panel">
-                <Header open = {this.open} responseF = {this.props.responseF}   width = {this.state.width}/>
+                <Header open = {this.open} responseF = {this.props.responseF}   width = {this.props.width}/>
                 {/* <!-- Content --> */}
                 <div className="content">
                     <Content/>

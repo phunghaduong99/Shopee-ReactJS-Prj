@@ -6,13 +6,26 @@ import Admin from './admin/index';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class App extends Component {
-  state = {
-    responseF: null
+  constructor(props) {
+    super(props);
+    this.state = { 
+      width: 0, 
+      responseF: null
+    };
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
-
-
-
-
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+    
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+  
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth });
+  }
 
   responseFacebook = (response) => {
     console.log(response);
@@ -35,21 +48,15 @@ class App extends Component {
 
 
   render() {
-    // let status = null;
-    // if (this.state.isChangChu) status = <TrangChu isLoGin={this.isLoGin} />
-    // else if (this.state.isLoGin) status =
-    //   <Login isAdmin={this.isAdmin}
-    //     componentClicked={this.componentClicked}
-    //     responseFacebook={this.responseFacebook}
-    //   />;
-    // else if (this.state.isAdmin) status = <Admin responseF={this.state.responseF} />;
 
 
     return (
 
       <Router>
         <div className="App">
-          <Route path="/" component={TrangChu} exact />
+          <Route path="/" 
+            render={props =>
+              <TrangChu {...props} width= {this.state.width} />} exact />
           <Route path="/login"
             render={props =>
               <Login {...props} componentClicked={this.componentClicked}
@@ -57,7 +64,10 @@ class App extends Component {
           />
           <Route path="/admin"
             render={props =>
-              <Admin {...props} responseF={this.state.responseF} />}
+              <Admin {...props} 
+                responseF={this.state.responseF}
+                width= {this.state.width}
+                />}
           />
         </div>
       </Router>

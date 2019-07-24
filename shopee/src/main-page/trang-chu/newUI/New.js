@@ -33,10 +33,11 @@ class New extends Component {
             services: false,
             portfolio: false,
             team: false,
-            contact: false
+            contact: false,
+            width: null,
+            
         };
     }
-
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
     }
@@ -44,64 +45,76 @@ class New extends Component {
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
     }
-
+     
     handleScroll = (event) => {
         let scrollTop1 = event.target.body.scrollTop;
         let scrollTop2 = event.target.documentElement.scrollTop;
         let scrollTop = Math.max(scrollTop1, scrollTop2);
-        console.log(scrollTop);
-        if (scrollTop > 100) {
-            this.setState({
-                scrolling: true,
-
-            });
+        let  width = this.props.width;
+       
+        
+        if(width >=992){
+            if (scrollTop > 100) {
+                this.setState({
+                    scrolling: true,
+                });
+            }
+            else {
+                this.setState({
+                    scrolling: false,
+    
+                });
+            }
+            if (scrollTop < 645) {
+                this.setState({
+                    services: false,
+                    portfolio: false,
+                    team: false,
+                    contact: false
+                });
+            }
+            else if (scrollTop < 1442) {
+                this.setState({
+                    services: true,
+                    portfolio: false,
+                    team: false,
+                    contact: false
+                });
+            }
+            else if (scrollTop < 2544) {
+                this.setState({
+                    services: false,
+                    portfolio: true,
+                    team: false,
+                    contact: false
+                });
+            }
+            else if (scrollTop < 3960) {
+                this.setState({
+                    services: false,
+                    portfolio: false,
+                    team: true,
+                    contact: false
+                });
+            }
+            else if (scrollTop >= 3960) {
+                this.setState({
+                    services: false,
+                    portfolio: false,
+                    team: false,
+                    contact: true
+                });
+            }
         }
         else {
             this.setState({
-                scrolling: false,
-
-            });
-        }
-        if (scrollTop < 600) {
-            this.setState({
                 services: false,
                 portfolio: false,
                 team: false,
                 contact: false
             });
         }
-        else if (scrollTop < 1500) {
-            this.setState({
-                services: true,
-                portfolio: false,
-                team: false,
-                contact: false
-            });
-        }
-        else if (scrollTop < 2710) {
-            this.setState({
-                services: false,
-                portfolio: true,
-                team: false,
-                contact: false
-            });
-        }
-        else if (scrollTop < 4220) {
-            this.setState({
-                services: false,
-                portfolio: false,
-                team: true,
-                contact: false
-            });
-        }
-        else if (scrollTop >= 4220) {
-            this.setState({
-                services: false,
-                portfolio: false,
-                team: false,
-                contact: true
-            });
-        }
+        
 
     }
     render() {
@@ -114,9 +127,9 @@ class New extends Component {
                                 <img src={spa} alt="spa" className="img-ficon" />
                             </a>
                         </div>
-                        <button class="navbar-toggler navbar-toggler-right  " type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <button className="navbar-toggler navbar-toggler-right  " type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                             Menu
-                            <i class="fa fa-bars m-l-4"></i>
+                            <i className="fa fa-bars m-l-4"></i>
                         </button>
                         <div className="collapse navbar-collapse" id="navbarResponsive">
                             <ul className="navbar-nav text-uppercase ml-auto">
@@ -293,12 +306,12 @@ class New extends Component {
                                     <ul className="list-inline social-buttons">
                                         <li className="list-inline-item">
                                             <a href="/">
-                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                <i className="fa fa-facebook" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li className="list-inline-item">
                                             <a href="/">
-                                                <i class="fa fa-google" aria-hidden="true"></i>
+                                                <i className="fa fa-google" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                     </ul>
@@ -312,12 +325,12 @@ class New extends Component {
                                     <ul className="list-inline social-buttons">
                                         <li className="list-inline-item">
                                             <a href="/">
-                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                <i className="fa fa-facebook" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li className="list-inline-item">
                                             <a href="/">
-                                                <i class="fa fa-google" aria-hidden="true"></i>
+                                                <i className="fa fa-google" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                     </ul>
@@ -331,12 +344,12 @@ class New extends Component {
                                     <ul className="list-inline social-buttons">
                                         <li className="list-inline-item">
                                             <a href="/">
-                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                <i className="fa fa-facebook" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li className="list-inline-item">
                                             <a href="/">
-                                                <i class="fa fa-google" aria-hidden="true"></i>
+                                                <i className="fa fa-google" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                     </ul>
@@ -352,12 +365,12 @@ class New extends Component {
                                     <ul className="list-inline social-buttons">
                                         <li className="list-inline-item">
                                             <a href="/">
-                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                <i className="fa fa-facebook" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li className="list-inline-item">
                                             <a href="/">
-                                                <i class="fa fa-google" aria-hidden="true"></i>
+                                                <i className="fa fa-google" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                     </ul>
@@ -371,12 +384,12 @@ class New extends Component {
                                     <ul className="list-inline social-buttons">
                                         <li className="list-inline-item">
                                             <a href="/">
-                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                <i className="fa fa-facebook" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li className="list-inline-item">
                                             <a href="/">
-                                                <i class="fa fa-google" aria-hidden="true"></i>
+                                                <i className="fa fa-google" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                     </ul>
@@ -390,12 +403,12 @@ class New extends Component {
                                     <ul className="list-inline social-buttons">
                                         <li className="list-inline-item">
                                             <a href="/">
-                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                <i className="fa fa-facebook" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                         <li className="list-inline-item">
                                             <a href="/">
-                                                <i class="fa fa-google" aria-hidden="true"></i>
+                                                <i className="fa fa-google" aria-hidden="true"></i>
                                             </a>
                                         </li>
                                     </ul>
@@ -447,7 +460,7 @@ class New extends Component {
                         </div>
                         <div className="row">
                             <div className="col-lg-12">
-                                <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                                <form id="contactForm" name="sentMessage" noValidate="novalidate">
                                     <div className="row">
                                         <div className="col-md-6">
                                             <div className="form-group">
@@ -491,17 +504,17 @@ class New extends Component {
                                 <ul className="list-inline social-buttons">
                                     <li className="list-inline-item" >
                                         <a href="/" id="fb">
-                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                            <i className="fa fa-facebook" aria-hidden="true"></i>
                                         </a>
                                     </li>
                                     <li className="list-inline-item" id="gm">
                                         <a href="/">
-                                            <i class="fa fa-google" aria-hidden="true"></i>
+                                            <i className="fa fa-google" aria-hidden="true"></i>
                                         </a>
                                     </li>
                                     <li className="list-inline-item" id="tw">
                                         <a href="/">
-                                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                                            <i className="fa fa-twitter" aria-hidden="true"></i>
                                         </a>
                                     </li>
                                 </ul>
