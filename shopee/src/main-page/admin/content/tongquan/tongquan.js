@@ -15,34 +15,34 @@ class TongQuan extends Component {
                 </div>
                 {/* <!-- To Do and Live Chat --> */}
                 <div className="col-sm-8">
-                    <div id="demo" class="carousel slide" data-ride="carousel">
+                    <div id="demo" className="carousel slide" data-ride="carousel">
 
                         {/* <!-- Indicators --> */}
-                        <ul class="carousel-indicators">
-                            <li data-target="#demo" data-slide-to="0" class="active"></li>
+                        <ul className="carousel-indicators">
+                            <li data-target="#demo" data-slide-to="0" className="active"></li>
                             <li data-target="#demo" data-slide-to="1"></li>
                             <li data-target="#demo" data-slide-to="2"></li>
                         </ul>
 
                         {/* <!-- The slideshow --> */}
-                        <div class="carousel-inner" >
-                            <div class="carousel-item active">
+                        <div className="carousel-inner" >
+                            <div className="carousel-item active">
                                 <img src={carousel1} alt="Los Angeles" width="1100" height="500" />
-                                <div class="carousel-caption">
+                                <div className="carousel-caption">
                                     <h4>Quản lý sản phẩm</h4>
                                     <p>Xem danh sách, tìm kiếm nhanh và chỉnh sửa dữ liệu ngay trong cửa hàng của bạn</p>
                                 </div>
                             </div>
-                            <div class="carousel-item">
+                            <div className="carousel-item">
                                 <img src={carousel2} alt="Chicago" width="1100" height="500" />
-                                <div class="carousel-caption">
+                                <div className="carousel-caption">
                                     <h4>Theo dõi giá</h4>
                                     <p>Theo dõi giá đối thủ cạnh tranh với các sản phẩm trong cửa hàng của bạn</p>
                                 </div>
                             </div>
-                            <div class="carousel-item">
+                            <div className="carousel-item">
                                 <img src={carousel3} alt="New York" width="1100" height="500" />
-                                <div class="carousel-caption">
+                                <div className="carousel-caption">
                                     <h4>Los Angeles</h4>
                                     <p>We had such a great time in LA!</p>
                                 </div>
@@ -50,11 +50,11 @@ class TongQuan extends Component {
                         </div>
 
                         {/* <!-- Left and right controls --> */}
-                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
+                        <a className="carousel-control-prev" href="#demo" data-slide="prev">
+                            <span className="carousel-control-prev-icon"></span>
                         </a>
-                        <a class="carousel-control-next" href="#demo" data-slide="next">
-                            <span class="carousel-control-next-icon"></span>
+                        <a className="carousel-control-next" href="#demo" data-slide="next">
+                            <span className="carousel-control-next-icon"></span>
                         </a>
                     </div>
                 </div>

@@ -2504,4 +2504,12 @@ footer.site-footer {
     left: inherit !important;
     right: 20px !important; }
 
+
+
+.menu-title {
+  font-family: Metrophobic !important;
+}
+.no-dropdown::before {
+  display: none;
+}
 /*# sourceMappingURL=style.css.map */

@@ -14,8 +14,6 @@ class Admin extends Component {
         super(props);
         this.state = {  open: false,};
       }
-    
-     
       
     open = (e) => {
         e.preventDefault();
@@ -25,25 +23,25 @@ class Admin extends Component {
     }
     render() {
         console.log(this.props.width);
-      
+        
         return (
-
-            <div className= {this.props.width <1010? "small-device": (this.state.open? "body open": "body")}>
-            <Aside width = {this.props.width} open = {this.state.open}/>
-             {/* <!-- Right Panel -->  */}
-            <div id="right-panel" className="right-panel">
-                <Header open = {this.open} responseF = {this.props.responseF}   width = {this.props.width}/>
-                {/* <!-- Content --> */}
-                <div className="content">
-                    <Content/>
+           
+                <div className= {this.props.width <1010? "small-device": (this.state.open? "body open": "body")}>
+                    <Aside 
+                        width = {this.props.width} 
+                        open = {this.state.open}
+                        match={this.props.match}
+                        />
+                    {/* <!-- Right Panel -->  */}
+                    <div id="right-panel" className="right-panel">
+                        <Header open = {this.open} responseF = {this.props.responseF}   width = {this.props.width}/>
+                        {/* <!-- Content --> */}
+                        <div className="content">
+                            <Content match={this.props.match}/>
+                        </div>
+                    </div>
                 </div>
-                {/* <!-- /.content --> */}
-                <div className="clearfix"></div>
-                {/* <!-- Footer --> */}
-                
-            </div>
-            </div>
-  
+           
          );
     }
 }

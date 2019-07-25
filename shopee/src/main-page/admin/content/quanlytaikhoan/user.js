@@ -40,7 +40,6 @@ class user extends Component {
        });
         let formErrors = {...this.state.formErrors };
         
-    
         switch (name) {
             case "username":
             formErrors.username =
@@ -51,6 +50,7 @@ class user extends Component {
                 ? ""
                 : "Số điện thoại không hợp lệ";
             break;
+            default:
         }
         this.setState({ formErrors, [name]: value }, () => console.log(this.state));
         
@@ -125,7 +125,7 @@ class user extends Component {
                               <label className="col-form-label-content">###### </label>
                             </div>
                             <div className="col-md-4">
-                              <button type="button" class="btn btn-link ">Đổi mật khẩu</button>
+                              <button type="button" className="btn btn-link ">Đổi mật khẩu</button>
                             </div>
                           </div>
                           <div className="col-md-3 offset-md-9 col-sm-6 ml-auto">
