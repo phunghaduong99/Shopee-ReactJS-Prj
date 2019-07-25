@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import admin from  './../images/admin.jpg';
-import logo from './../images/logoadmin.jpg';
+import logo from './../images/logoadmin.png';
 import './header.css';
 import { Link } from "react-router-dom";
 class Header extends Component {
@@ -20,8 +20,8 @@ class Header extends Component {
                         <a className="navbar-brand logo" href="/"><img className="logo" src={logo} alt="Logo" /></a>
                         <a className="navbar-brand hidden" href="/"><img src="./../images/logo2.png" alt="Logo" /></a>
                         <a id="menuToggle" className="menutoggle" 
-                        href={width <760? '#left-panel' :'/' } 
-                        data-toggle= {this.props.width <760? 'collapse' :'' }
+                        href={width <768? '#left-panel' :'/' } 
+                        data-toggle= {this.props.width <768? 'collapse' :'' }
                         onClick= {this.props.open} ><i className="fa fa-bars"></i></a>
                     </div>
                 </div>

@@ -8,10 +8,10 @@ class Aside extends Component {
         let leftpanel;
         let width = this.props.width;
         let display = {};
-        if(width < 1010){
-            if(width<760){
-                    display = {display : 'inline-block'};
-                    leftpanel = "collapse";
+        if(width < 992){
+            if(width<768){
+                    display = {display : 'block'};
+                    leftpanel = "collapse left-panel";
             }
             else {
                 if(this.props.open){
@@ -39,15 +39,15 @@ class Aside extends Component {
                             </li>
                             <li className="menu-title">Chức Năng</li>
                             {/* <!-- /.menu-title --> */}
-                            <li className="menu-item-has-children dropdown">
+                            <li className="menu-item-has-children dropdown no-dropdown">
                                 {/* <Link className="nav-link" to="/admin/username"><i className="menu-icon fa fa-cogs " onClick={this.props.onUser}></i>Quản lý tài khoản</Link> */}
-                                <Link to={`${this.props.match.url}/quanlytaikhoan`} className="dropdown-toggle no-dropdown" > <i className="menu-icon fa fa-cogs"></i>Quản lý tài khoản</Link>
+                                <Link to={`${this.props.match.url}/quanlytaikhoan`} className="dropdown-toggle " > <i className="menu-icon fa fa-cogs"></i>Quản lý tài khoản</Link>
                                 {/* <ul className="sub-menu children dropdown-menu">                           
                                      
                                 </ul> */}
                             </li>
-                            <li className="menu-item-has-children dropdown">
-                                <a href="/" className="dropdown-toggle no-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-table"></i>Quản lý sản phẩm</a>
+                            <li className="menu-item-has-children dropdown ">
+                                <a href="/" className="dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-table"></i>Quản lý sản phẩm</a>
                                 <ul className="sub-menu children dropdown-menu">
                                     <li><i className="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
                                     <li><i className="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>

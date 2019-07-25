@@ -2491,7 +2491,11 @@ footer.site-footer {
     width: 220px;
     padding-bottom: 5px; }
   .right-panel .menutoggle {
-    width: 20px; } }
+    width: 20px; } 
+}
+
+
+
 #cellPaiChart {
   height: 160px; }
   #cellPaiChart .pieLabel {
@@ -2509,7 +2513,29 @@ footer.site-footer {
 .menu-title {
   font-family: Metrophobic !important;
 }
-.no-dropdown::before {
-  display: none;
+.navbar .navbar-nav li.no-dropdown > a:before {
+  display: none !important;
 }
+
+@media (max-width: 786px) {
+  .right-panel .menutoggle{
+    margin-bottom:10px;
+  }
+  .logo {
+    margin: -5px 0px;
+    height: 30px !important;
+  }
+  
+  #left-panel {
+    margin-top: -3px;
+
+  }
+  .right-panel .navbar-brand {
+    width: 200px !important;
+  }
+}
+.navbar {
+  padding: 0px 0px !important;
+}
+
 /*# sourceMappingURL=style.css.map */
