@@ -2533,9 +2533,15 @@ footer.site-footer {
   .right-panel .navbar-brand {
     width: 200px !important;
   }
+  .aline {
+    text-align: left !important;
+  }
 }
 .navbar {
   padding: 0px 0px !important;
+}
+.form-horizontal {
+  color:#212529;
 }
 
 /*# sourceMappingURL=style.css.map */

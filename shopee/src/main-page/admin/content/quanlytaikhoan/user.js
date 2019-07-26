@@ -78,7 +78,7 @@ class user extends Component {
                         <h2>Thông tin tài khoản</h2>
                     </div>
                     <form className="form-horizontal">
-                      <div className="col-md-6 offset-md-3 mr-auto ml-auto ">
+                      <div className="col-md-8 offset-md-3 mr-auto ml-auto ">
                           <div className=" row form-group ">
                             <div className="col-md-4 aline">
                               <label className="col-form-label">Tên người dùng </label>
