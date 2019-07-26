@@ -21,7 +21,7 @@ class Header extends Component {
                         <a className="navbar-brand hidden" href="/"><img src="./../images/logo2.png" alt="Logo" /></a>
                         <a id="menuToggle" className="menutoggle" 
                         href={width <768? '#left-panel' :'/' } 
-                        data-toggle= {this.props.width <768? 'collapse' :'' }
+                        data-toggle= {width <768? 'collapse' :'' }
                         onClick= {this.props.open} ><i className="fa fa-bars"></i></a>
                     </div>
                 </div>

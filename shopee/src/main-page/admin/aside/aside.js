@@ -10,7 +10,7 @@ class Aside extends Component {
         let display = {};
         if(width < 992){
             if(width<768){
-                    display = {display : 'block'};
+                    
                     leftpanel = "collapse left-panel";
             }
             else {
