@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TongQuan from './tongquan/tongquan';
 import User from './quanlytaikhoan/user';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import {  Route } from 'react-router-dom';
 import ChangePass from './quanlytaikhoan/changePass';
 
 class Content extends Component {
