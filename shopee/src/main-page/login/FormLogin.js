@@ -3,6 +3,7 @@ import logo from './library/images/logoadmin.png';
 import './login.css';
 
 import { Link } from "react-router-dom";
+import axios from 'axios';
 class FormLogin extends Component {
     constructor(props){
         super(props);
@@ -11,6 +12,7 @@ class FormLogin extends Component {
             pass:''
         });
     }
+    
     onChange=(event)=>{
         var target = event.target;
         var name = target.name;
@@ -26,6 +28,16 @@ class FormLogin extends Component {
     } 
     
     render() { 
+        axios({
+            method: 'get',
+            url: 'http://192.168.36.28:8081/home',
+            data: null,
+
+          }).then (res=>{
+              console.log(res);
+          }).catch (err=>{
+              console.log(err);
+          });
         return (
              <div className="limiter">
                 
@@ -78,9 +90,10 @@ class FormLogin extends Component {
                             </div>
                             
                             <div className="text-right p-t-8 p-b-31">
-                                <a href="/">
+                                {/* <a href="/">
                                     Quên mật khẩu?
-                                </a>
+                                </a> */}
+                                <button type="button" className="txt5" onClick={this.props.onMissPass}>Quên mật khẩu?</button>
                             </div>
                             
                             <div className="container-login100-form-btn">

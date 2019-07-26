@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FormLogin from './FormLogin';
 import Register from './Register';
+import MissPass from './MissPass';
 import './library/vendor/bootstrap/css/bootstrap.min.css';
 import './library/fonts/iconic/css/material-design-iconic-font.min.css';
 import './library/css/main.css';
@@ -15,6 +16,7 @@ import { GoogleLogin } from 'react-google-login';
 class User extends Component {
   state = {
     onRegister: false,
+    onMissPass: false,
     userIDF: '',
     nameF: '',
     emailF: '',
@@ -27,7 +29,15 @@ class User extends Component {
     event.preventDefault();
     this.setState({ onRegister: true })
   }
-
+  
+  onMissPass = (event) => {
+    event.preventDefault();
+    this.setState({ onMissPass: true })
+  }
+  offMissPass = (event) => {
+    event.preventDefault();
+    this.setState({ onMissPass: false })
+  }
   onCancelRegister = (event) => {
     event.preventDefault();
     this.setState({ onRegister: false })
@@ -95,7 +105,9 @@ class User extends Component {
 
     let elmRe = null;
     if (this.state.onRegister) elmRe = <Register onCancelRegister={this.onCancelRegister} fbcontent={fbcontent} Ggcontent={Ggcontent} />;
-    else elmRe = <FormLogin onRegister={this.onRegister} isAdmin={this.props.isAdmin} fbcontent={fbcontent} Ggcontent={Ggcontent} />;
+    else  if(this.state.onMissPass) {elmRe = <MissPass offMissPass={this.offMissPass}/>;}
+        else {elmRe = <FormLogin onRegister={this.onRegister}  onMissPass={this.onMissPass} isAdmin={this.props.isAdmin} fbcontent={fbcontent} Ggcontent={Ggcontent} />;}
+      
     return (
 
       <div className="app">
