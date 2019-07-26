@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './user.css';
+import { Link } from "react-router-dom";
 const phoneRegex = RegExp(
    /\(*\d{3}\)*( |-)*\d{3}( |-)*\d{4}/
   );
@@ -89,6 +90,7 @@ class user extends Component {
                                     placeholder="Nhập tên" 
                                     type="text"
                                     onChange={this.onChange}
+                                    required
                                   />
                                   <span className="errorMessage txt4">{this.state.formErrors.username}</span>
                             </div>
@@ -105,6 +107,7 @@ class user extends Component {
                                     placeholder="Nhập số điện thoại" 
                                     type="text"
                                     onChange={this.onChange}
+                                    required
                                 />
                               <span className="errorMessage txt4">{this.state.formErrors.phone}</span>
                             </div>
@@ -125,7 +128,12 @@ class user extends Component {
                               <label className="col-form-label-content">###### </label>
                             </div>
                             <div className="col-md-4">
+<<<<<<< Updated upstream
                               <button type="button" class="btn btn-link ">Đổi mật khẩu</button>
+=======
+                              {/* <button type="button" className="btn btn-link" >Đổi mật khẩu</button> */}
+                              <Link to={`${this.props.match.url}/changePass`}className="btn btn-link">Đổi mật khẩu </Link>
+>>>>>>> Stashed changes
                             </div>
                           </div>
                           <div className="col-md-3 offset-md-9 col-sm-6 ml-auto">

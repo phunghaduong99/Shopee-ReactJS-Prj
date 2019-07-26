@@ -69,7 +69,7 @@ class Register extends Component {
         this.setState({ formErrors, [name]: value }, () => console.log(this.state));
         
     
-      };
+      }
       
          
     onSubmit=(event)=>{
@@ -162,9 +162,6 @@ class Register extends Component {
                                 &nbsp;
                                 <button type="button" className="txt3" onClick={this.props.onCancelRegister}>HỦY</button>
                             </div>
-
-
-
                             <div className="txt1 text-center p-t-34 p-b-20">
                                 <span>
                                     Hoặc đăng ký bằng
