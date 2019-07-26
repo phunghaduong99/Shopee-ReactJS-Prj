@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import TongQuan from './tongquan/tongquan';
 import User from './quanlytaikhoan/user';
-
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
 import ChangePass from './quanlytaikhoan/changePass';
-import {  Route } from 'react-router-dom';
 
 class Content extends Component {
     state = { 
