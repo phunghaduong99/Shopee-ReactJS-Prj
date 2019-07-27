@@ -47,14 +47,12 @@ class FormLogin extends Component {
                     </Link>
                 </div> */}
                 <div className="container-login100" >
-                
-                <div className="back-left">
-                    <Link className= "back-home" to = "/">
+                <Link className= "back-home" to = "/">
+                <button className="back-left">
                     <i className="fa fa-arrow-left m-r-5"></i>
-                        <button> Trang chủ</button> 
-                        
-                    </Link>
-                </div>
+                         Trang chủ
+                </button>
+                </Link>
 
                     <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-55">
                         <form className="login100-form validate-form" onSubmit={this.onSubmit}>

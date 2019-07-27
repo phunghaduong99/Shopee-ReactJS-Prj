@@ -16,8 +16,6 @@ class Content extends Component {
     }
     render() { 
         return (
-
-
                 <div>
                     <Route exact path={this.props.match.url}
                         render={props =>
