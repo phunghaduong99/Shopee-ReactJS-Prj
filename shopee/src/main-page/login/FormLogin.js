@@ -24,20 +24,44 @@ class FormLogin extends Component {
     
     onSubmit=(event)=>{
         event.preventDefault();
-        console.log(this.state);
+      
+
+        axios({
+            method: 'post',
+            url: 'http://192.168.36.28:8081/login',
+            data:{
+              username:  `${ this.state.username}`,
+              password: `${ this.state.pass}`
+            } 
+          })
+          .then(  (response) => {
+             console.log(response);
+            //  console.log('status'+response.status);
+            //  if(response.status === 200){
+            //   this.setState({isLogin: true});
+            //   console.log(this.state.isLogin+ 'true hnha');
+            //   window.location='/admin';
+            // }
+
+          })
+          .catch( (error) =>  {
+            console.log(error);
+            // this.setState({isLogin:false});
+            // alert("Tài khoản đã tồn tại.")
+          });
     } 
     
     render() { 
-        axios({
-            method: 'get',
-            url: 'http://192.168.36.28:8081/home',
-            data: null,
+        // axios({
+        //     method: 'get',
+        //     url: 'http://192.168.36.28:8081/home',
+        //     data: null,
 
-          }).then (res=>{
-              console.log(res);
-          }).catch (err=>{
-              console.log(err);
-          });
+        //   }).then (res=>{
+        //       console.log(res);
+        //   }).catch (err=>{
+        //       console.log(err);
+        //   });
         return (
              <div className="limiter">
                 
@@ -97,11 +121,11 @@ class FormLogin extends Component {
                             <div className="container-login100-form-btn">
                                 <div className="wrap-login100-form-btn">
                                     <div className="login100-form-bgbtn"></div>
-                                    <Link to="/admin" className="dangnhap">
-                                    <button className="login100-form-btn dangnhap" to="/admin" onClick={this.props.isAdmin}>
+                                    {/* <Link to="/admin" className="dangnhap"> */}
+                                    <button className="login100-form-btn dangnhap"  type = "submit" onClick={this.props.isAdmin}>
                                         ĐĂNG NHẬP
                                     </button>
-                                    </Link>
+                                    {/* </Link> */}
                                 </div>
                             </div>
 

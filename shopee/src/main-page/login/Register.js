@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './library/images/logoadmin.png';
 import './login.css';
+import axios from 'axios';
+import { Link } from "react-router-dom";
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
   );
@@ -26,6 +28,7 @@ class Register extends Component {
             username:null,
             pass: null,
             confirmPass: null,
+            isLogin: false,
             formErrors: {
                 email: "",
                 username: "",
@@ -67,7 +70,6 @@ class Register extends Component {
         }
         this.setState({ formErrors, [name]: value }, () => console.log(this.state));
         
-    
       }
       
          
@@ -81,9 +83,41 @@ class Register extends Component {
             Password: ${this.state.pass}
             confirmPassword: ${this.state.confirmPass}
           `);
+     
+         
+        
+          axios({
+            method: 'post',
+            url: 'http://192.168.36.28:8081/register',
+            data:{
+              username:  `${ this.state.username}`,
+              email: `${this.state.email}`,
+              password: `${ this.state.pass}`
+            } 
+          })
+          .then(  (response) => {
+             console.log(response);
+             console.log('status'+response.status);
+             if(response.status === 200){
+              this.setState({isLogin: true});
+              console.log(this.state.isLogin+ 'true hnha');
+              window.location='/admin';
+            }
+
+          })
+          .catch( (error) =>  {
+            console.log(error);
+            this.setState({isLogin:false});
+            alert("Tài khoản đã tồn tại.")
+          });
+        
+         
+          
+
         } else {
           console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
         }
+        
     }
     
     render() {
@@ -157,11 +191,13 @@ class Register extends Component {
                             <div className="container-login100-form-btn">
                                 <div className="wrap-login100-form-btn m-b-23 m-t-20">
                                     <div className="login100-form-bgbtn"></div>
-                                    
+                                  
                                     <button type="submit"  className="login100-form-btn "   >
+                                    {/* <Link to = {this.state.isLogin? '/admin': '#'}> */}
                                         ĐĂNG KÝ
+                                        {/* </Link> */}
                                     </button>
-                                    
+                                   
                                     
                                 </div>
                                 &nbsp;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './library/images/logoadmin.png';
 import './login.css';
 import { Link } from "react-router-dom";
-// import axios from 'axios';
+import axios from 'axios';
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
@@ -41,7 +41,30 @@ class MissPass extends Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state);
+       
+        axios({
+            method: 'put',
+            url: 'http://192.168.36.28:8081/forget',
+            data:{
+                email: `${ this.state.email}`
+              } 
+
+          })
+          .then(  (response) => {
+            console.log(response);
+           //  console.log('status'+response.status);
+           //  if(response.status === 200){
+           //   this.setState({isLogin: true});
+           //   console.log(this.state.isLogin+ 'true hnha');
+           //   window.location='/admin';
+           // }
+
+         })
+         .catch( (error) =>  {
+           console.log(error);
+           // this.setState({isLogin:false});
+           // alert("Tài khoản đã tồn tại.")
+         });
     }
 
     render() {
@@ -90,7 +113,7 @@ class MissPass extends Component {
                             <div className="container-login100-form-btn">
                                 <div className="wrap-login100-form-btn">
                                     <div className="login100-form-bgbtn"></div>
-                                    <button className="login100-form-btn dangnhap" type="button" >
+                                    <button className="login100-form-btn dangnhap" type = "submit" >
                                         Gửi
                                     </button>
                                 </div>

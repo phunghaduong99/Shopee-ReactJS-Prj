@@ -11,10 +11,15 @@ class TongQuan extends Component {
         return (
             <div className="row">
                 <div className="col-sm-12">
-                    <h2>Xin chào Phùng Hà Dương</h2>
+                    
+                    <div className="welcome">
+                    <h2   className=" text-center connect-shoppee ">Xin chào <span className= "welcome-name-user">  Phùng Hà Dương </span> </h2>
+                    <h2   className=" text-center connect-shoppee ">Chào mừng bạn đến với Shopee Price Analytics</h2>
+                    <h4 className=" text-center  connect-shoppee ">Hãy thực hiện kết nối với Shopee <a className="link-to-shopeee" href="/"> tại đây</a></h4>
+                    </div>
                 </div>
                 {/* <!-- To Do and Live Chat --> */}
-                <div className="col-sm-8">
+                <div className="col-sm-12">
                     <div id="demo" className="carousel slide" data-ride="carousel">
 
                         {/* <!-- Indicators --> */}
@@ -58,31 +63,38 @@ class TongQuan extends Component {
                         </a>
                     </div>
                 </div>
-                <div className="col-sm-4">
+                <div className="col-sm-6">
+
+                </div>
+                <div className="col-sm-6">
+                    <div className="how-to-use-parent ">
+                        <h4 className=" how-to-use ">Tìm hiểu cách sử dụng Shopee Price Analytics <a className="link-to-shopeee" href="/"> tại đây</a></h4>
+                    </div>
+                    
+                </div>
+                {/* <div className="col-sm-4">
                     <div className="card ">
                         <h4 className=" box-title connect-shoppee ">Hãy thực hiện kết nối shop <a href="/"> tại đây</a></h4>
                     </div>
                     <div>
-                    <div className="card">
-                        <h2 className=" box-title connect-shoppee">Cửa hàng của bạn</h2>
-                        <select className= "form-control form control-sm connect-shoppee">
-                            <option value=""></option>
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
-                        </select>
-                        <li>
-                            <div className= "connect-submit">
-                        <button className="btn btn-primary ">Xác nhận</button>
+                        <div className="card">
+                            <h2 className=" box-title connect-shoppee">Cửa hàng của bạn</h2>
+                            <select className="form-control form control-sm connect-shoppee">
+                                <option value=""></option>
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                                <option value="opel">Opel</option>
+                                <option value="audi">Audi</option>
+                            </select>
+                            <li>
+                                <div className="connect-submit">
+                                    <button className="btn btn-primary ">Xác nhận</button>
+                                </div>
+                            </li>
                         </div>
-                        </li>
+
                     </div>
-                   
-                    </div>
-                    {/* <!-- /.card --> */}
-                </div>
-                {/* <!-- /To Do and Live Chat --> */}
+                </div> */}
             </div>
 
         );

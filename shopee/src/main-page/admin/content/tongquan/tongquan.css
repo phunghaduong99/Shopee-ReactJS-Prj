@@ -22,3 +22,28 @@ select {
     padding: 11px 7px;
     margin: 0px 14px;
 }
+.welcome {
+    background-color: rgba(239, 242, 240, 0.801) !important;
+    border: 1px solid rgba(0,0,0,.125);
+    margin-bottom: 1.875em;
+    padding: 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+    padding-top: 15px !important;
+}
+.link-to-shopeee {
+    font-size: inherit;
+    font-family: inherit;
+}
+.welcome-name-user {
+    color: red;
+}
+.how-to-use {
+    font-size: 18px;
+    padding: 8px 15px;
+    margin: 10px 15px;
+}
+.how-to-use-parent {
+    background-color: rgba(239, 242, 240, 0.801);
+    border: 1px solid rgba(0,0,0,.125);
+    margin-top: 1.875em;
+}

@@ -33,7 +33,10 @@
     width: 225px;
     border: 7px solid rgba(0, 0, 0, 0.1);
   }
-
+  .menu-buttons {
+    /* padding: 0em 1em; */
+    padding-bottom: 0.7em;
+  }
  }
 
  @media (min-width: 768px) and (max-width: 992px) {
@@ -51,9 +54,7 @@
   }
  }
 
- a.nav-link.js-scroll-trigger.oneline {
-  padding-top: 25px!important;
-}
+ 
  .text-muteded{
   color: #1c242b ;
   font-size: 14px;
@@ -126,6 +127,7 @@ h6 {
   section {
     padding: 100px 0;
   }
+  
 }
 
 ::-moz-selection {
@@ -256,6 +258,9 @@ img::-moz-selection {
   }
   .header.masthead .intro-text .intro-heading {
     font-size: 50px ;
+  }
+  a.nav-link.js-scroll-trigger.oneline {
+    padding-top: 25px!important;
   }
 }
 
