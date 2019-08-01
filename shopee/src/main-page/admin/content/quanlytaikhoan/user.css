@@ -20,3 +20,12 @@
     line-height: 1.5;
     color: #ee410c;
 }
+.manage{
+    padding: 5px 5px 5px 5px;
+}
+.row{
+    padding-bottom: 10px;
+}
+.mr-10{
+    margin-right: 10px;
+}

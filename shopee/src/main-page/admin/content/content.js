@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import TongQuan from './tongquan/tongquan';
 import User from './quanlytaikhoan/user';
+import ShopManage from './quanlytaikhoan/Shopmanage';
 import {  Route } from 'react-router-dom';
 import ChangePass from './quanlytaikhoan/changePass';
+import ContactShopee from './quanlytaikhoan/ContactShopee';
 
 class Content extends Component {
     state = { 
@@ -27,6 +29,12 @@ class Content extends Component {
                     <Route path={`${this.props.match.url}/quanlytaikhoan/changePass`}
                         render={props =>
                         <ChangePass {...props} />}   />
+                    <Route exact path={`${this.props.match.url}/quanlycuahang`}
+                        render={props =>
+                        <ShopManage {...props} />}   />
+                    <Route path={`${this.props.match.url}/quanlycuahang/ContactShopee`}
+                        render={props =>
+                        <ContactShopee {...props} />}   />
                 </div>
 
           );

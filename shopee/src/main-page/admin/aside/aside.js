@@ -34,17 +34,16 @@ class Aside extends Component {
                     <div id="main-menu" className="main-menu collapse navbar-collapse">
                         <ul className="nav navbar-nav">
                             <li className="active">
-                                 {/* <a href="index.html"><i className="menu-icon fa fa-laptop"></i>Tổng quan </a> */}
                                 <Link className="dropdown-toggle" to={`${this.props.match.url}`}><i className="menu-icon fa fa-laptop "></i>Tổng Quan</Link>
                             </li>
                             <li className="menu-title">Chức Năng</li>
                             {/* <!-- /.menu-title --> */}
-                            <li className="menu-item-has-children dropdown no-dropdown">
-                                {/* <Link className="nav-link" to="/admin/username"><i className="menu-icon fa fa-cogs " onClick={this.props.onUser}></i>Quản lý tài khoản</Link> */}
-                                <Link to={`${this.props.match.url}/quanlytaikhoan`} className="dropdown-toggle " > <i className="menu-icon fa fa-cogs"></i>Quản lý tài khoản</Link>
-                                {/* <ul className="sub-menu children dropdown-menu">                           
-                                     
-                                </ul> */}
+                            <li className="menu-item-has-children dropdown ">
+                                <a href="/" className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-cogs"></i>Quản lý tài khoản</a>
+                                <ul className="sub-menu children dropdown-menu">
+                                    <li> <i className="menu-icon fa fa-user"></i><Link to={`${this.props.match.url}/quanlytaikhoan`}>Thông tin tài khoản</Link></li>
+                                    <li> <i className="menu-icon fa  fa-home"></i><Link to={`${this.props.match.url}/quanlycuahang`}>Quản lý cửa hàng</Link></li>
+                                </ul>
                             </li>
                             <li className="menu-item-has-children dropdown ">
                                 <a href="/" className="dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-table"></i>Quản lý sản phẩm</a>
