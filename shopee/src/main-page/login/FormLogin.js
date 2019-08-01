@@ -4,15 +4,22 @@ import './login.css';
 
 import { Link } from "react-router-dom";
 import axios from 'axios';
+
+import {connect} from 'react-redux';
+import * as actions from './../../redux/actions/index';
+
 class FormLogin extends Component {
     constructor(props){
         super(props);
         this.state =({
             username:'',
-            pass:''
+            pass:'',
+            token: 'Day la token'
         });
     }
-    
+    componentDidMount = () => {
+        this.props.saveToken(this.state.token);
+    }
     onChange=(event)=>{
         var target = event.target;
         var name = target.name;
@@ -23,8 +30,8 @@ class FormLogin extends Component {
     }
     
     onSubmit=(event)=>{
-        event.preventDefault();
-      
+        // event.preventDefault();
+        
 
         axios({
             method: 'post',
@@ -49,19 +56,13 @@ class FormLogin extends Component {
             // this.setState({isLogin:false});
             // alert("Tài khoản đã tồn tại.")
           });
+
+        //   this.props.saveToken(this.state.token);
+        //   window.location='/admin';
     } 
     
     render() { 
-        // axios({
-        //     method: 'get',
-        //     url: 'http://192.168.36.28:8081/home',
-        //     data: null,
-
-        //   }).then (res=>{
-        //       console.log(res);
-        //   }).catch (err=>{
-        //       console.log(err);
-        //   });
+      
         return (
              <div className="limiter">
                 
@@ -79,7 +80,7 @@ class FormLogin extends Component {
                 </Link>
 
                     <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-55">
-                        <form className="login100-form validate-form" onSubmit={this.onSubmit}>
+                        <form className="login100-form validate-form" action="/admin"  onSubmit={this.onSubmit}>
                             <span className="login100-form-title p-b-49">
                             <img src={logo} alt="logo" className="logoLogin"></img>
                             </span> 
@@ -164,4 +165,19 @@ class FormLogin extends Component {
     }
 }
  
-export default FormLogin;
+
+const mapStatetoProps = (state) => {
+    console.log(state);
+    return {
+    }
+}
+const mapDispatchtoProps = (dispatch, props) => {
+    return {
+        saveToken : (token) => {
+            dispatch(actions.saveToken(token));
+        }
+    }
+}
+
+
+export default connect(mapStatetoProps, mapDispatchtoProps) (FormLogin);

@@ -9,6 +9,8 @@ import './index.css';
 
 import './assets/css/style.css';
 import './assets/css/cs-skin-elastic.css';
+
+import {connect} from 'react-redux';
 class Admin extends Component {
     constructor(props) {
         super(props);
@@ -20,9 +22,10 @@ class Admin extends Component {
         this.setState({
             open: !this.state.open,
         });
+        
     }
     render() {
-        console.log(this.props.width);
+        console.log(this.props.token);
         
         return (
            
@@ -46,4 +49,10 @@ class Admin extends Component {
     }
 }
 
-export default Admin;
+const mapStatetoProps = (state) => {
+    return {
+        token: state
+    }
+}
+
+export default connect(mapStatetoProps, null) (Admin);

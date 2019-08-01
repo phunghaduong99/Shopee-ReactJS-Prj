@@ -74,7 +74,7 @@ class Register extends Component {
       
          
     onSubmit=(event)=>{
-        event.preventDefault();
+        // event.preventDefault();
         if (formValid(this.state)) {
           console.log(`
             --Data--
@@ -111,8 +111,6 @@ class Register extends Component {
             alert("Tài khoản đã tồn tại.")
           });
         
-         
-          
 
         } else {
           console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
@@ -191,7 +189,6 @@ class Register extends Component {
                             <div className="container-login100-form-btn">
                                 <div className="wrap-login100-form-btn m-b-23 m-t-20">
                                     <div className="login100-form-bgbtn"></div>
-                                  
                                     <button type="submit"  className="login100-form-btn "   >
                                     {/* <Link to = {this.state.isLogin? '/admin': '#'}> */}
                                         ĐĂNG KÝ

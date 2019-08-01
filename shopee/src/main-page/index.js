@@ -10,13 +10,19 @@ class App extends Component {
     super(props);
     this.state = { 
       width: 0, 
-      responseF: null
+      responseF: null,
+      shop_link: "https://www.facebook.com/?shop_id=1234356"
     };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
+
+    let index = this.state.shop_link.search("shop_id=");
+    let shop_id = this.state.shop_link.slice(index+8, index + 15);
+    console.log("shop_id la: "+ shop_id);
+
     
   }
   componentWillUnmount() {
