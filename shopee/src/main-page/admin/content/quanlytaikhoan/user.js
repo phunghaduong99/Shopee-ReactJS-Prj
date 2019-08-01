@@ -81,7 +81,7 @@ class user extends Component {
                       <div className="col-md-8 offset-md-3 mr-auto ml-auto ">
                           <div className=" row form-group ">
                             <div className="col-md-4 aline">
-                              <label className="col-form-label">Tên người dùng </label>
+                              <label className="col-form-label"><h6>Tên người dùng</h6> </label>
                             </div>
                             <div className="col-md-8">
                                 <input 
@@ -98,7 +98,7 @@ class user extends Component {
                           </div>
                           <div className=" row form-group ">
                             <div className="col-md-4 aline">
-                              <label className="col-form-label">Số điện thoại </label>
+                              <label className="col-form-label"><h6>Số điện thoại </h6></label>
                             </div>
                             <div className="col-md-8">
                               <input 
@@ -114,7 +114,7 @@ class user extends Component {
                           </div>
                           <div className=" row form-group ">
                             <div className="col-md-4 aline">
-                              <label className="col-form-label">Email</label>
+                              <label className="col-form-label"><h6>Email</h6></label>
                             </div>
                             <div className="col-md-8">
                               <label className="col-form-label-content">Buithikimanh@gmail.com </label>
@@ -122,13 +122,12 @@ class user extends Component {
                           </div>
                           <div className=" row form-group ">
                             <div className="col-md-4 aline">
-                              <label className="col-form-label">Mật khẩu </label>
+                              <label className="col-form-label"><h6>Mật khẩu </h6> </label>
                             </div>
                             <div className="col-md-4">
                               <label className="col-form-label-content">###### </label>
                             </div>
                             <div className="col-md-4">
-                              <button type="button" class="btn btn-link ">Đổi mật khẩu</button>
                               {/* <button type="button" className="btn btn-link" >Đổi mật khẩu</button> */}
                               <Link to={`${this.props.match.url}/changePass`}className="btn btn-link">Đổi mật khẩu </Link>
                             </div>
