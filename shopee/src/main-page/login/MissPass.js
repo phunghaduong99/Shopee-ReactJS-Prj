@@ -3,9 +3,15 @@ import logo from './library/images/logoadmin.png';
 import './login.css';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import swal from 'sweetalert';
+
+
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
+
+
+
 class MissPass extends Component {
     constructor(props) {
         super(props);
@@ -17,6 +23,40 @@ class MissPass extends Component {
         });
     }
 
+    onMissPass = () => {
+        var timer = 3, // timer in seconds
+            isTimerStarted = false;
+
+        (function customSwal() {
+            if (timer > 0) {
+                swal({
+                    title: "Xin chờ một lát !",
+                    text: "Loading..." + timer,
+                    timer: !isTimerStarted ? timer * 1000 : undefined,
+                    showConfirmButton: false,
+                    buttons: false,
+                    closeOnClickOutside: false
+                });
+
+            }
+            if (timer === 0) {
+                swal("Đã gửi email thành công!", "Vui lòng kiểm tra email!", "success",
+                    {
+                        closeOnClickOutside: false, 
+                    }
+                );
+            }
+            isTimerStarted = true;
+            if (timer) {
+                timer--;
+                setTimeout(customSwal, 1000);
+                console.log("timer: " + timer);
+                console.log("isTimerStarted: " + isTimerStarted);
+            }
+
+        })();
+    }
+   
     onChange = (event) => {
         var target = event.target;
         var name = target.name;
@@ -41,30 +81,30 @@ class MissPass extends Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-       
+
         axios({
             method: 'put',
             url: 'http://192.168.36.28:8081/forget',
-            data:{
-                email: `${ this.state.email}`
-              } 
+            data: {
+                email: `${this.state.email}`
+            }
 
-          })
-          .then(  (response) => {
-            console.log(response);
-           //  console.log('status'+response.status);
-           //  if(response.status === 200){
-           //   this.setState({isLogin: true});
-           //   console.log(this.state.isLogin+ 'true hnha');
-           //   window.location='/admin';
-           // }
+        })
+            .then((response) => {
+                console.log(response);
+                //  console.log('status'+response.status);
+                //  if(response.status === 200){
+                //   this.setState({isLogin: true});
+                //   console.log(this.state.isLogin+ 'true hnha');
+                //   window.location='/admin';
+                // }
 
-         })
-         .catch( (error) =>  {
-           console.log(error);
-           // this.setState({isLogin:false});
-           // alert("Tài khoản đã tồn tại.")
-         });
+            })
+            .catch((error) => {
+                console.log(error);
+                // this.setState({isLogin:false});
+                // alert("Tài khoản đã tồn tại.")
+            });
     }
 
     render() {
@@ -87,7 +127,7 @@ class MissPass extends Component {
                             Đăng nhập
                         </button>
                     </Link>
-                    
+
                     <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-55">
                         <form className="login100-form validate-form" onSubmit={this.onSubmit}>
                             <span className="login100-form-title p-b-49">
@@ -113,7 +153,7 @@ class MissPass extends Component {
                             <div className="container-login100-form-btn">
                                 <div className="wrap-login100-form-btn">
                                     <div className="login100-form-bgbtn"></div>
-                                    <button className="login100-form-btn dangnhap" type = "submit" >
+                                    <button className="login100-form-btn dangnhap" type="submit" onClick={this.onMissPass}>
                                         Gửi
                                     </button>
                                 </div>

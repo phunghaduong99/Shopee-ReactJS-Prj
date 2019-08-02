@@ -16,6 +16,7 @@
     "react-simple-dropdown": "^3.2.3",
     "react-validation": "^3.0.7",
     "redux": "^4.0.4",
+    "sweetalert": "^2.1.2",
     "validation": "0.0.1",
     "validator": "^11.1.0"
   },
