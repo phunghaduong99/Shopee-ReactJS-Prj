@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import carousel1 from './../../images/carousel_images/chicago.jpg';
-import carousel2 from './../../images/carousel_images/la.jpg';
-import carousel3 from './../../images/carousel_images/ny.jpg';
+import carousel2 from './../../images/carousel_images/chicago.jpg';
+import carousel3 from './../../images/carousel_images/chicago.jpg';
 import './tongquan.css';
 
 

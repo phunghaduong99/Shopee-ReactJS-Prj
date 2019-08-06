@@ -169,7 +169,9 @@ class New extends Component {
                         <div className="row">
                             <div className="col-lg-12 text-center">
                                 <h2 className="section-heading text-uppercase">Dịch Vụ</h2>
-                                <h3 className="section-subheading text-muted">SPA – Shopee Price Asisstance được xây dựng với mục tiêu cuối cùng là giúp các chủ cửa hàng bán hàng trên sàn TMĐT Shopee <br /> có cái nhìn tổng thể về các sản phẩm tương tự sản phẩm trong shop đang cùng được rao bán trên sàn.</h3>
+                                <h3 className="section-subheading text-muted">
+                                    <div>SPA – Shopee Price Asisstance được xây dựng với mục tiêu cuối cùng là giúp các chủ cửa hàng bán hàng trên sàn TMĐT Shopee </div>
+                                  có cái nhìn tổng thể về các sản phẩm tương tự sản phẩm trong shop đang cùng được rao bán trên sàn.</h3>
                             </div>
                         </div>
                         <div className="row text-center">

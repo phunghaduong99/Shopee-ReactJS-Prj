@@ -81,7 +81,7 @@ class MissPass extends Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-
+        this.onMissPass();
         axios({
             method: 'put',
             url: 'http://192.168.36.28:8081/forget',
@@ -144,6 +144,7 @@ class MissPass extends Component {
                                         placeholder="Nhập email..."
                                         onChange={this.onChange}
                                         value={this.state.mail}
+                                        required
                                     />
                                     <span className="focus-input100" data-symbol="&#xf206;"></span>
                                 </div>
@@ -153,7 +154,7 @@ class MissPass extends Component {
                             <div className="container-login100-form-btn">
                                 <div className="wrap-login100-form-btn">
                                     <div className="login100-form-bgbtn"></div>
-                                    <button className="login100-form-btn dangnhap" type="submit" onClick={this.onMissPass}>
+                                    <button className="login100-form-btn dangnhap" type="submit" >
                                         Gửi
                                     </button>
                                 </div>
