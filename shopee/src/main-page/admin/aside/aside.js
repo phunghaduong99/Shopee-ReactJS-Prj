@@ -46,11 +46,12 @@ class Aside extends Component {
                                 </ul>
                             </li>
                             <li className="menu-item-has-children dropdown ">
-                                <a href="/" className="dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-table"></i>Quản lý sản phẩm</a>
-                                <ul className="sub-menu children dropdown-menu">
-                                    <li><i className="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
-                                    <li><i className="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>
-                                </ul>
+                            <Link className="dropdown-toggle" to={`${this.props.match.url}/quanlysanpham`}><i className="menu-icon fa fa-table "></i>Quản lý sản phẩm</Link>
+                                {/* <a href="/" className="dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-table"></i>Quản lý sản phẩm</a>
+                                 <ul className="sub-menu children dropdown-menu">
+                                   <li><i className="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
+                                   <li><i className="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>
+                                </ul>  */}
                             </li>
                             <li className="menu-item-has-children dropdown">
                                 <a href="/" className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-bar-chart"></i>Theo dõi giá</a>
