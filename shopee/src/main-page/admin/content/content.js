@@ -5,6 +5,7 @@ import ShopManage from './quanlytaikhoan/Shopmanage';
 import {  Route } from 'react-router-dom';
 import ChangePass from './quanlytaikhoan/changePass';
 import ContactShopee from './quanlytaikhoan/ContactShopee';
+import Product from './quanlysanpham/Product';
 
 class Content extends Component {
     state = { 
@@ -35,6 +36,9 @@ class Content extends Component {
                     <Route path={`${this.props.match.url}/quanlycuahang/ContactShopee`}
                         render={props =>
                         <ContactShopee {...props} />}   />
+                    <Route exact path={`${this.props.match.url}/quanlysanpham`}
+                    render={props =>
+                    <Product {...props} />}   />
                 </div>
 
           );
