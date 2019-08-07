@@ -10,7 +10,17 @@ const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
 
+const formValid = ({ formErrors, ...rest }) => {
+    let valid = true;
+    Object.values(formErrors).forEach(val => {
+        val.length > 0 && (valid = false);
+    });
+    Object.values(rest).forEach(val => {
+        val === null && (valid = false);
+    });
 
+    return valid;
+};
 
 class MissPass extends Component {
     constructor(props) {
@@ -28,35 +38,28 @@ class MissPass extends Component {
             isTimerStarted = false;
 
         (function customSwal() {
-            if (timer > 0) {
-                swal({
-                    title: "Xin chờ một lát !",
-                    text: "Loading..." + timer,
-                    timer: !isTimerStarted ? timer * 1000 : undefined,
-                    showConfirmButton: false,
-                    buttons: false,
-                    closeOnClickOutside: false
-                });
 
-            }
-            if (timer === 0) {
-                swal("Đã gửi email thành công!", "Vui lòng kiểm tra email!", "success",
-                    {
-                        closeOnClickOutside: false, 
-                    }
-                );
-            }
+            swal({
+                title: "Xin chờ một lát !",
+                text: "Loading..." + timer,
+                timer: !isTimerStarted ? timer * 1000 : undefined,
+                buttons: false,
+                closeOnClickOutside: false
+            });
+
+
+
             isTimerStarted = true;
             if (timer) {
                 timer--;
+                if(timer === 0) timer = "";
                 setTimeout(customSwal, 1000);
-                console.log("timer: " + timer);
-                console.log("isTimerStarted: " + isTimerStarted);
+
             }
 
         })();
     }
-   
+
     onChange = (event) => {
         var target = event.target;
         var name = target.name;
@@ -81,91 +84,127 @@ class MissPass extends Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-        this.onMissPass();
-        axios({
-            method: 'put',
-            url: 'http://192.168.36.28:8081/forget',
-            data: {
-                email: `${this.state.email}`
-            }
+        
 
-        })
+        if (formValid(this.state)) {
+            console.log(`
+              --Data--
+              username: ${this.state.username}
+              Password: ${this.state.pass}
+              
+            `);
+            this.onMissPass();
+            axios({
+                method: 'put',
+                url: 'http://192.168.43.111:8081/forget',
+                data: {
+                    email: `${this.state.email}`
+                }
+
+            })
             .then((response) => {
                 console.log(response);
+                console.log(response.data);
                 //  console.log('status'+response.status);
                 //  if(response.status === 200){
                 //   this.setState({isLogin: true});
                 //   console.log(this.state.isLogin+ 'true hnha');
                 //   window.location='/admin';
                 // }
+                if (response.data === "Đề nghị check mail") {
+                    swal("Đã gửi email thành công!", "Vui lòng kiểm tra email!", "success",
+                        {
+                            closeOnClickOutside: false,
+                        }
+                    );
+                }
+                else {
+
+                    setTimeout(() => {
+                        swal("Email không khả dụng!", "Vui lòng kiểm tra email!", "error",
+                            {
+                                closeOnClickOutside: false,
+                            }
+                        )
+                    }
+                        , 3000
+                    )
+
+                }
+
 
             })
             .catch((error) => {
                 console.log(error);
-                // this.setState({isLogin:false});
-                // alert("Tài khoản đã tồn tại.")
+                setTimeout(() => {
+                    swal("Gửi email thất bại!","Vui lòng thử lại sau", "error",
+                        {
+                            closeOnClickOutside: false,
+                        }
+                    )
+                }
+                    , 3000
+                )
             });
+        
+        
+        
+        
+        }
+            
     }
 
     render() {
-        // axios({
-        //     method: 'post',
-        //     url: 'http://192.168.36.28:8081/home',
-        //     data: null,
 
-        //   }).then (res=>{
-        //       console.log(res);
-        //   }).catch (err=>{
-        //       console.log(err);
-        //   });
         return (
-            <div className="limiter">
-                <div className="container-login100" >
-                    <Link className="back-home" to="/">
-                        <button className="back-left" type="button" onClick={this.props.offMissPass}>
-                            <i className="fa fa-arrow-left m-r-5"></i>
-                            Đăng nhập
+            <div className="app">
+                <div className="limiter">
+                    <div className="container-login100" >
+                        <Link className="back-home" to="/login">
+                            <button className="back-left" type="button" onClick={this.props.offMissPass}>
+                                <i className="fa fa-arrow-left m-r-5"></i>
+                                Đăng nhập
                         </button>
-                    </Link>
+                        </Link>
 
-                    <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-55">
-                        <form className="login100-form validate-form" onSubmit={this.onSubmit}>
-                            <span className="login100-form-title p-b-49">
-                                <img src={logo} alt="logo" className="logoLogin"></img>
-                            </span>
+                        <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-55">
+                            <form className="login100-form validate-form" onSubmit={this.onSubmit}>
+                                <span className="login100-form-title p-b-49">
+                                    <img src={logo} alt="logo" className="logoLogin"></img>
+                                </span>
 
-                            <div className="around-input100  m-b-23 ">
-                                <div className="wrap-input100 validate-input m-b-2" data-validate="Username is required">
-                                    <span className="label-input100">Email xác nhận</span>
-                                    <input
-                                        className="input100"
-                                        type="text"
-                                        name="email"
-                                        placeholder="Nhập email..."
-                                        onChange={this.onChange}
-                                        value={this.state.mail}
-                                        required
-                                    />
-                                    <span className="focus-input100" data-symbol="&#xf206;"></span>
+                                <div className="around-input100  m-b-23 ">
+                                    <div className="wrap-input100 validate-input m-b-2" data-validate="Username is required">
+                                        <span className="label-input100">Email xác nhận</span>
+                                        <input
+                                            className="input100"
+                                            type="text"
+                                            name="email"
+                                            placeholder="Nhập email..."
+                                            onChange={this.onChange}
+                                            value={this.state.mail}
+                                            required
+                                        />
+                                        <span className="focus-input100" data-symbol="&#xf206;"></span>
+                                    </div>
+                                    <span className="errorMessage txt4">{this.state.formErrors.email}</span>
                                 </div>
-                                <span className="errorMessage txt4">{this.state.formErrors.email}</span>
-                            </div>
 
-                            <div className="container-login100-form-btn">
-                                <div className="wrap-login100-form-btn">
-                                    <div className="login100-form-bgbtn"></div>
-                                    <button className="login100-form-btn dangnhap" type="submit" >
-                                        Gửi
+                                <div className="container-login100-form-btn">
+                                    <div className="wrap-login100-form-btn">
+                                        <div className="login100-form-bgbtn"></div>
+                                        <button className="login100-form-btn dangnhap" type="submit" >
+                                            Gửi
                                     </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
+                            </form>
+                        </div>
 
-                    <div className="back-right"></div>
+                        <div className="back-right"></div>
+                    </div>
                 </div>
             </div>
-
         );
     }
 }

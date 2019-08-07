@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 class ShopManage extends Component {
     state={
       status1:true,
-      status1:false
+      status2:false
     }
     HandleChange1=(e)=>{
       e.preventDefault();
@@ -60,7 +60,7 @@ class ShopManage extends Component {
                         </thead>
                         <tbody>
                           <tr>
-                            <td scope="row">Đồ chơi trẻ em</td>
+                            <th scope="row">Đồ chơi trẻ em</th>
                             <td>1001234</td>
                             <td>{label1}</td>
                             <td>
@@ -68,7 +68,7 @@ class ShopManage extends Component {
                             </td>
                           </tr>
                           <tr>
-                            <td scope="row">Đồ chơi trẻ lớn</td>
+                            <th scope="row">Đồ chơi trẻ lớn</th>
                             <td>12341234</td>
                             <td> {label2}</td>
                             <td>

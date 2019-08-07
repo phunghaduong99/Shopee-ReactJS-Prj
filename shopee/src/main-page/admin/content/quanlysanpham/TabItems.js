@@ -5,7 +5,7 @@ import StarRatings from 'react-star-ratings';
 class TabItems extends Component {
 
     render() {
-        var {items}=this.props;
+        // var {items}=this.props;
         return (
                 <tr>
                     <td class="text-primary" >{this.props.items.name}</td>
