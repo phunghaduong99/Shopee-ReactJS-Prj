@@ -2528,7 +2528,6 @@ footer.site-footer {
   
   #left-panel {
     margin-top: -3px;
-
   }
   .right-panel .navbar-brand {
     width: 200px !important;
@@ -2543,5 +2542,9 @@ footer.site-footer {
 .form-horizontal {
   color:#212529;
 }
+a {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !important;
+}
+  
 
 /*# sourceMappingURL=style.css.map */

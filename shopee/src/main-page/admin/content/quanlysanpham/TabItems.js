@@ -8,7 +8,7 @@ class TabItems extends Component {
         // var {items}=this.props;
         return (
                 <tr>
-                    <td class="text-primary" >{this.props.items.name}</td>
+                    <td className="text-primary" >{this.props.items.name}</td>
                     <td> {this.props.items.id}</td>
                     <td> {this.props.items.price}</td>
                     <td>
@@ -19,7 +19,7 @@ class TabItems extends Component {
                         starSpacing="2px"
                     />
                     </td>
-                    <td><button type="button" class="btn btn-primary ">Sửa giá</button></td>
+                    <td><button type="button" className="btn btn-primary ">Sửa giá</button></td>
                         
                 </tr>
         );
