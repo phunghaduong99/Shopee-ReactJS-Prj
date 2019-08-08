@@ -34,3 +34,22 @@
 .rating-a{
     height: 13px;
 }
+.cot1{
+ width: 32%;
+}
+.cot2{
+    width: 20%;
+   }
+ .cot3{
+    width: 18%;
+   }
+ .cot4{
+    width: 30%;
+   }
+
+  .popup-content{
+      width: 30% !important;
+  }
+.changePiece{
+      margin-bottom: 0 !important;
+  }

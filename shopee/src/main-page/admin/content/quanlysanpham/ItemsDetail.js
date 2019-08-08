@@ -23,13 +23,13 @@ class ItemsDetail extends Component {
                         <div className="card infor">
                             <div className="card-header"><h6>Thông tin chung</h6></div>
                             <div className="card-body">
-                                <div class="row">
-                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <div className="row">
+                                    <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                     <img className="img-toy-2" src={imageToy} alt="" />
                                     </div>
                                     
-                                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                        <div class="row form-group">
+                                    <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                        <div className="row form-group">
                                             <div className="col-md-5">
                                                 <label className="form-control-group"><h6>Tên sản phẩm</h6></label>
                                             </div>
@@ -37,7 +37,7 @@ class ItemsDetail extends Component {
                                                 <label className="form-control-group "><h7>Xe tải đồ chơi thế hệ mới</h7></label>
                                             </div>
                                         </div>
-                                        <div class="row form-group">
+                                        <div className="row form-group">
                                             <div className="col-md-5">
                                                 <label className="form-control-group"><h6>Mã sản phẩm</h6></label>
                                             </div>
@@ -45,7 +45,7 @@ class ItemsDetail extends Component {
                                              <label className="form-control-group "><h7>D123456778</h7></label>
                                             </div>
                                         </div>
-                                        <div class="row form-group">
+                                        <div className="row form-group">
                                             <div className="col-md-5">
                                                 <label className="form-control-group"><h6>Cửa hàng</h6></label>
                                             </div>
@@ -62,7 +62,7 @@ class ItemsDetail extends Component {
                         <div className="card">
                             <div className="card-header"><h6>Thông tin chi tiết sản phẩm</h6></div>
                             <div className="card-body">
-                                <div class="row ">
+                                <div className="row ">
                                     <div className="col-md-4">
                                         <label className="form-control-group"><h6>Danh mục</h6></label>
                                     </div>
@@ -70,7 +70,7 @@ class ItemsDetail extends Component {
                                         <label className="form-control-group "><h7>Đồ chơi> Đồ chơi trẻ em> Đồ chơi trong nhà</h7></label>
                                     </div>
                                 </div>
-                                <div class="row ">
+                                <div className="row ">
                                     <div className="col-md-4">
                                         <label className="form-control-group"><h6>Thương hiệu</h6></label>
                                     </div>
@@ -78,7 +78,7 @@ class ItemsDetail extends Component {
                                         <label className="form-control-group "><h7>No brand</h7></label>
                                     </div>
                                 </div>
-                                <div class="row ">
+                                <div className="row ">
                                     <div className="col-md-4">
                                         <label className="form-control-group"><h6>Đã bán</h6></label>
                                     </div>
@@ -86,7 +86,7 @@ class ItemsDetail extends Component {
                                         <label className="form-control-group "><h7>150</h7></label>
                                     </div>
                                 </div>
-                                <div class="row ">
+                                <div className="row ">
                                     <div className="col-md-4">
                                         <label className="form-control-group"><h6>Tồn kho</h6></label>
                                     </div>
@@ -94,18 +94,18 @@ class ItemsDetail extends Component {
                                         <label className="form-control-group "><h7>120</h7></label>
                                     </div>
                                 </div>
-                                <div class="row ">
+                                <div className="row ">
                                     <div className="col-md-6">
                                         <label className="form-control-group"><h6>Rating</h6></label>
                                     </div>
                                     <div className="col-md-6 text-center">
-                                        <div class="row">
-                                            <div class="col-sm-7 ">
+                                        <div className="row">
+                                            <div className="col-sm-7 ">
                                                  <h2>3,6/5</h2>
                                                  <label className="">50 đánh giá</label>
                                             </div>
-                                            <div class=" col-sm-5">
-                                            <div class="row rating-a ">
+                                            <div className=" col-sm-5">
+                                            <div className="row rating-a ">
                                                 <div className="col-sm-9">
                                                     <StarRatings
                                                         starRatedColor="#FFD203"
@@ -118,7 +118,7 @@ class ItemsDetail extends Component {
                                                     <label className="txt8">20</label>
                                                 </div>
                                             </div>
-                                            <div class="row rating-a ">
+                                            <div className="row rating-a ">
                                                 <div className="col-sm-9">
                                                     <StarRatings
                                                         starRatedColor="#FFD203"
@@ -131,7 +131,7 @@ class ItemsDetail extends Component {
                                                     <label className="txt8">20</label>
                                                 </div>
                                             </div>
-                                            <div class="row rating-a ">
+                                            <div className="row rating-a ">
                                                 <div className="col-sm-9">
                                                     <StarRatings
                                                         starRatedColor="#FFD203"
@@ -144,7 +144,7 @@ class ItemsDetail extends Component {
                                                     <label className="txt8">20</label>
                                                 </div>
                                             </div>
-                                            <div class="row rating-a ">
+                                            <div className="row rating-a ">
                                                 <div className="col-sm-9">
                                                     <StarRatings
                                                         starRatedColor="#FFD203"
@@ -157,7 +157,7 @@ class ItemsDetail extends Component {
                                                     <label className="txt8">20</label>
                                                 </div>
                                             </div>
-                                            <div class="row rating-a ">
+                                            <div className="row rating-a ">
                                                 <div className="col-sm-9">
                                                     <StarRatings
                                                         starRatedColor="#FFD203"
@@ -182,7 +182,7 @@ class ItemsDetail extends Component {
                         <div className="card infor">
                             <div className="card-header"><h6>Thông tin chung</h6></div>
                             <div className="card-body">
-                                <div class="row">
+                                <div className="row">
                                     <div className="col-md-6">
                                         <label className="form-control-group"><h6>Giá bán (VNĐ)</h6></label>
                                     </div>
@@ -190,7 +190,7 @@ class ItemsDetail extends Component {
                                         <label className="form-control-group "><h7>70,000</h7></label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div className="row">
                                     <div className="col-md-6">
                                         <label className="form-control-group"><h6>Giá cao nhất (VNĐ)</h6></label>
                                     </div>
@@ -198,7 +198,7 @@ class ItemsDetail extends Component {
                                         <label className="form-control-group "><h7>70,000</h7></label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div className="row">
                                     <div className="col-md-6">
                                         <label className="form-control-group"><h6>Giá thấp nhất (VNĐ)</h6></label>
                                     </div>
@@ -206,7 +206,7 @@ class ItemsDetail extends Component {
                                         <label className="form-control-group "><h7>70,000</h7></label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div className="row">
                                     <div className="col-md-6">
                                         <label className="form-control-group"><h6>Giảm giá (%)</h6></label>
                                     </div>
