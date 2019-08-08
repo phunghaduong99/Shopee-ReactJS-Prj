@@ -5,3 +5,32 @@
 .bt{
     margin-top: 7px; 
 }
+.text-left{
+    float: left;
+}
+.txt7 {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #000000;
+  }
+  .txt8 {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #000000;
+  }
+  .img-toy{
+      width: 75px;
+  }
+  .img-toy-2{
+    width: 4000px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.aline{
+    text-align: right !important;
+ }
+ .infor {
+     height: 290px !important;
+ }
+.rating-a{
+    height: 13px;
+}

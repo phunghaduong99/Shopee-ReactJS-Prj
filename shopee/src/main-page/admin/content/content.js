@@ -6,6 +6,7 @@ import {  Route } from 'react-router-dom';
 import ChangePass from './quanlytaikhoan/changePass';
 import ContactShopee from './quanlytaikhoan/ContactShopee';
 import Product from './quanlysanpham/Product';
+import ItemsDetail from './quanlysanpham/ItemsDetail';
 
 class Content extends Component {
     state = { 
@@ -38,7 +39,10 @@ class Content extends Component {
                         <ContactShopee {...props} />}   />
                     <Route exact path={`${this.props.match.url}/quanlysanpham`}
                     render={props =>
-                    <Product {...props} />}   />
+                    <Product {...props} match={this.props.match} />}   />
+                    <Route path={`${this.props.match.url}/quanlysanpham/itemsDetail`}
+                    render={props =>
+                    <ItemsDetail {...props} />}   />
                 </div>
 
           );
