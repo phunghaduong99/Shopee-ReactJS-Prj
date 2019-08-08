@@ -96,7 +96,7 @@ class MissPass extends Component {
             this.onMissPass();
             axios({
                 method: 'put',
-                url: 'http://192.168.43.111:8081/forget',
+                url: 'http://192.168.36.27:8081/forget',
                 data: {
                     email: `${this.state.email}`
                 }

@@ -23,7 +23,7 @@ class TabItems extends Component {
                         starSpacing="2px"
                     />
                     </td>
-                    <td><button type="button" class="btn btn-primary ">Sửa giá</button></td>
+                    <td><button type="button" className="btn btn-primary ">Sửa giá</button></td>
                         
                 </tr>
         );

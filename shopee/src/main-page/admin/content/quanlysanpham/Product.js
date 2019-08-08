@@ -29,28 +29,28 @@ class Product extends Component {
                         <h2>Sản phẩm</h2>
                     </div>
                     <div className="manage">
-                      <div class="row ">
-                        <div class="col-md-10">
+                      <div className="row ">
+                        <div className="col-md-10">
                           <h5> Cửa hàng đang chọn: nottthing123 </h5>
                         </div>
-                        <div class="col-md-2 offset-md-2 mr-0 ml-0">
+                        <div className="col-md-2 offset-md-2 mr-0 ml-0">
                           <Link to={`${this.props.match.url}/quanlysanpham`} className="btn btn-link">Đổi cửa hàng </Link>
-                          {/* <button type="button" class="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết nối</button> */}
+                          {/* <button type="button" className="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết nối</button> */}
                         </div>
                       </div>
                       <div className="border"> 
-                            <div class=" col col-md-12">
-                                    <div class="form-group"> 
-                                            <div class="input-group ">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text purple lighten-3" id="basic-text1"><i class="fa fa-search text-white"
+                            <div className=" col col-md-12">
+                                    <div className="form-group"> 
+                                            <div className="input-group ">
+                                                <div className="input-group-prepend">
+                                                    <span className="input-group-text purple lighten-3" id="basic-text1"><i className="fa fa-search text-white"
                                                         aria-hidden="true"></i></span>
                                                 </div>
-                                                <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search"/>
+                                                <input className="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search"/>
                                              </div>
                                      </div>
                                  </div>
-                        <table class="table">
+                        <table className="table">
                             <thead>
                             <tr>
                                 <th scope="col">Sản phẩm</th>

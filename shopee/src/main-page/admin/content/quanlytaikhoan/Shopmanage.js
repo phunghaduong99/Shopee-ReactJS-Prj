@@ -39,17 +39,17 @@ class ShopManage extends Component {
                         <h2>Quản lý cửa hàng</h2>
                     </div>
                     <div className="manage">
-                      <div class="row ">
-                        <div class="col-md-10">
+                      <div className="row ">
+                        <div className="col-md-10">
                           <h5> Bạn đã kết nối 2 cửa hàng </h5>
                         </div>
-                        <div class="col-md-2 offset-md-2 mr-0 ml-0">
+                        <div className="col-md-2 offset-md-2 mr-0 ml-0">
                           <Link to={`${this.props.match.url}/ContactShopee`} className="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết Nối </Link>
-                          {/* <button type="button" class="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết nối</button> */}
+                          {/* <button type="button" className="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết nối</button> */}
                         </div>
                       </div>
                       
-                      <table class="table">
+                      <table className="table">
                         <thead>
                           <tr>
                             <th scope="col">Tên cửa hàng</th>
@@ -64,7 +64,7 @@ class ShopManage extends Component {
                             <td>1001234</td>
                             <td>{label1}</td>
                             <td>
-                            <button class="btn btn-primary" onClick={this.HandleChange1}> Chuyển trạng thái</button>
+                            <button className="btn btn-primary" onClick={this.HandleChange1}> Chuyển trạng thái</button>
                             </td>
                           </tr>
                           <tr>
@@ -72,7 +72,7 @@ class ShopManage extends Component {
                             <td>12341234</td>
                             <td> {label2}</td>
                             <td>
-                              <button class="btn btn-primary"onClick={this.HandleChange2}> Chuyển trạng thái</button>
+                              <button className="btn btn-primary"onClick={this.HandleChange2}> Chuyển trạng thái</button>
                             </td>
                           </tr>
                         </tbody>

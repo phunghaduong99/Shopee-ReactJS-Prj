@@ -25,7 +25,7 @@ class Admin extends Component {
         
     }
     render() {
-        console.log(this.props.token);
+        // console.log(this.props.token);
         
         return (
            
