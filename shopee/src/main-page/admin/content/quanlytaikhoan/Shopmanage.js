@@ -44,7 +44,7 @@ class ShopManage extends Component {
                           <h5> Bạn đã kết nối 2 cửa hàng </h5>
                         </div>
                         <div className="col-md-2 offset-md-2 mr-0 ml-0">
-                          <Link to={`${this.props.match.url}/ContactShopee`} className="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết Nối </Link>
+                          <a href="https://partner.uat.shopeemobile.com/api/v1/shop/auth_partner?id=840386&token=d0f934508cadbf365ddd5518dc191848a7651fe908e4b42dcc1e8f6fb836ab78&redirect=http%3A%2F%2F192.168.36.27%3A3000%2Fadmin%2Fquanlycuahang%2FContactShopee" className="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết Nối </a>
                           {/* <button type="button" className="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết nối</button> */}
                         </div>
                       </div>
