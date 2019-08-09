@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TongQuan from './tongquan/tongquan';
 import User from './quanlytaikhoan/user';
-import ShopManage from './quanlytaikhoan/Shopmanage';
+import ShopManage from './quanlytaikhoan/Shopmanage/Shopmanage';
 import {  Route } from 'react-router-dom';
 import ChangePass from './quanlytaikhoan/changePass';
 import ContactShopee from './quanlytaikhoan/ContactShopee';

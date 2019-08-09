@@ -7,3 +7,9 @@ export const saveToken = (token) =>{
         token
     }
 }
+export const saveListShop = (listShop) =>{
+    return {
+        type: types.SAVE_LIST_SHOP,
+        listShop
+    }
+}

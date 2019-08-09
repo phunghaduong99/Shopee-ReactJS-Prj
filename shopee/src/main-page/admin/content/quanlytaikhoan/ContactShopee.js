@@ -29,20 +29,20 @@ class ContactShopee extends Component {
   }
   onSubmit = (event) => {
     event.preventDefault();
-    let token = JSON.parse(localStorage.getItem('token'));
+    // let token = JSON.parse(localStorage.getItem('token'));
     axios({
       method: 'get',
-      url: 'http://192.168.36.27:8081/shop',
+      url: 'http://192.168.0.102:8081/shop',
       // data: {
       //   id: `${this.state.shop_id}`,
       //   name: `${this.state.nameShop}`
       // },
       // headers: {'application/json': `${token}`},
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `${token}`
+      // headers: {
+      //   'Content-Type': 'application/json',
+      //   'Authorization': `${token}`
         
-      },
+      // },
     })
       .then((response) => {
         console.log(response);
