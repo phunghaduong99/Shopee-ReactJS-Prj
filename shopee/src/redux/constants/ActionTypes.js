@@ -1,3 +1,5 @@
 export const LIST_WORK = 'LIST_WORK';
 export const SAVE_LIST_SHOP = 'SAVE_LIST_SHOP';
 export const SAVE_TOKEN = 'SAVE_TOKEN';
+export const SAVE_LIST_ITEMS = 'SAVE_LIST_ITEMS';
+export const SAVE_SHOP_ID_SELECTED = 'SAVE_SHOP_ID_SELECTED';

@@ -9,6 +9,8 @@ import { createStore } from 'redux';
 import myReducer from './redux/reducers/index';
 const store = createStore(myReducer);
 
+
+
 ReactDOM.render(
     <Provider store={store}>
         <App />

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './user.css';
 import axios from 'axios';
 
+import { connect } from 'react-redux';
 
 class ContactShopee extends Component {
   constructor(props) {
@@ -31,18 +32,16 @@ class ContactShopee extends Component {
     event.preventDefault();
     // let token = JSON.parse(localStorage.getItem('token'));
     axios({
-      method: 'get',
+      method: 'post',
       url: 'http://192.168.0.102:8081/shop',
-      // data: {
-      //   id: `${this.state.shop_id}`,
-      //   name: `${this.state.nameShop}`
-      // },
-      // headers: {'application/json': `${token}`},
-      // headers: {
-      //   'Content-Type': 'application/json',
-      //   'Authorization': `${token}`
-        
-      // },
+      data: {
+        id: '99999',
+        name: 'sssfff'
+      },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization':  `${this.props.token}`
+      },
     })
       .then((response) => {
         console.log(response);
@@ -125,5 +124,10 @@ class ContactShopee extends Component {
     );
   }
 }
-
-export default ContactShopee;
+const mapStatetoProps = (state) => {
+  console.log(state);
+  return {
+    token: state.token
+  }
+}
+export default connect(mapStatetoProps, null)(ContactShopee);

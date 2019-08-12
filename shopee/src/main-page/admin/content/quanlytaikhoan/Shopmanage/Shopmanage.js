@@ -5,62 +5,53 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import * as actions from '../../../../../redux/actions/index';
 import Shop from './shop';
+
 class ShopManage extends Component {
   state = {
     shop_id_selected: "",
     listShop: [
-      {
-        "id": 205134,
-        "name": "Apiseller"
-      },
-      {
-        "id": 205135,
-        "name": "Apisellesdr"
-      },
-      {
-        "id": 205335,
-        "name": "Đồ chơi"
-      }
+
     ],
   }
 
   componentDidMount() {
-
-    axios({
-      method: 'get',
-      url: 'http://192.168.0.102:8081/shop',
-      // data: {
-      //   id: `${this.state.shop_id}`,
-      //   name: `${this.state.nameShop}`
-      // },
-      // headers: {'application/json': `${token}`},
-      // headers: {
-      //   'Content-Type': 'application/json',
-      //   'Authorization': `${token}`
-
-      // },
-    })
-      .then((response) => {
-        console.log(response);
+    if(this.props.listShop.length === 0){
+      axios({
+        method: 'get',
+        url: 'http://192.168.0.102:8081/shop',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization':  `${this.props.token}`
+        },
       })
-      .catch((error) => {
-        console.log(error);
-      });
-    let newlistShop = this.state.listShop.map(
-      (c, index) => {
-        if (index === 0) {
-          c.isActive = true;
-          this.setState({ shop_id_selected: c.id });
-        }
-        else {
-          c.isActive = false;
-        }
+        .then((response) => {
+          console.log(response);
+          this.setState({ listShop: response.data });
 
-        return c
-      }
-
-    )
-    this.props.saveListShop(newlistShop);
+          let newlistShop = this.state.listShop.map(
+            (c, index) => {
+              if (index === 0) {
+                c.isActive = true;
+                this.setState({ shop_id_selected: c.id });
+                this.props.saveShopIdSelected(c.id);
+              }
+              else {
+                c.isActive = false;
+              }
+              return c
+            }
+          )
+          this.props.saveListShop(newlistShop);
+         
+        })
+        .catch((error) => {
+          console.log(error);
+          alert("Không lấy được cửa hàng");
+        });
+    }
+    else {
+      this.setState({listShop: this.props.listShop});
+    }
   }
   changeStatus = (index) => {
     let newlistShop = this.state.listShop.map(
@@ -74,12 +65,12 @@ class ShopManage extends Component {
           if (indexx === index) {
             c.isActive = true;
             this.setState({ shop_id_selected: c.id })
+            this.props.saveShopIdSelected(c.id);
           }
           return c;
         }
       )
     })
-
   }
 
   onSubmit = (event) => {
@@ -89,7 +80,7 @@ class ShopManage extends Component {
 
   render() {
     let number_shop = this.state.listShop.length;
-    let tableshop = this.state.listShop.map((c, index) =>
+    let tableshop = this.props.listShop.map((c, index) =>
       <Shop
         name={c.name}
         index={index}
@@ -99,8 +90,9 @@ class ShopManage extends Component {
         changeStatus={this.changeStatus}
       />)
 
+      
     return (
-     
+
       <div onSubmit={this.onSubmit} >
         <div className=" card overview col-sm-12">
           <h2>Quản lý cửa hàng</h2>
@@ -136,15 +128,20 @@ class ShopManage extends Component {
 }
 
 const mapStatetoProps = (state) => {
-  console.log(state)
+  console.log(state);
   return {
-    listShop: state.listShop
+    listShop: state.listShop,
+    token: state.token,
+    shopIdSelected: state.shopIdSelected
   }
 }
 const mapDispatchtoProps = (dispatch, props) => {
   return {
     saveListShop: (listShop) => {
       dispatch(actions.saveListShop(listShop));
+    },
+    saveShopIdSelected: (shopIdSelected) => {
+      dispatch(actions.saveShopIdSelected(shopIdSelected));
     }
   }
 }
