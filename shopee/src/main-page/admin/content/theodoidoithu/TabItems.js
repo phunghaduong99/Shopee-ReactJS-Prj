@@ -28,7 +28,7 @@ class TabItems extends Component {
                 <tr>
                     <td >
                         <img className="img-toy m-r-7" src={imageToy} alt="" />
-                        <Link to={`${this.props.match.url}/quanlysanpham/itemsDetail`}>{this.props.items.name} </Link>
+                        <Link to={`${this.props.match.url}/theodoidoithu/itemsDetail`}>{this.props.items.name} </Link>
                     </td>
                     <td> {this.props.items.id}</td>
                     <td> {this.props.items.price}</td>
@@ -39,7 +39,7 @@ class TabItems extends Component {
                         starDimension="20px"
                         starSpacing="2px"
                     />
-                    <button className="button" className="btn btn-primary m-l-35" onClick={this.openModal} >Sửa giá</button>
+                    <button className="button" className="btn btn-primary m-l-35" onClick={this.openModal} >Thêm</button>
                     
                         <Popup
                             open={this.state.open}
