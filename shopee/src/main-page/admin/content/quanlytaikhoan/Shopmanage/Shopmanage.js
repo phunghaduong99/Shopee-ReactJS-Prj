@@ -18,7 +18,7 @@ class ShopManage extends Component {
     if(this.props.listShop.length === 0){
       axios({
         method: 'get',
-        url: 'http://192.168.0.102:8081/shop',
+        url: 'http://localhost:8081/shop',
         headers: {
           'Content-Type': 'application/json',
           'Authorization':  `${this.props.token}`

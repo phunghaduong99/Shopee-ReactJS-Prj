@@ -25,7 +25,7 @@ class Product extends Component {
 
         axios({
             method: 'get',
-            url: 'http://192.168.0.102:8081/items/205134 ',
+            url: 'http://localhost:8081/items/205134 ',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
