@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import StarRatings from 'react-star-ratings';
 import { Link } from "react-router-dom";
-import ListDoithu from './ListDoithu';
+import ListDoithu from '../../../mucluc/ListDoithu';
 
 class Doithu extends Component {
     constructor(props){
