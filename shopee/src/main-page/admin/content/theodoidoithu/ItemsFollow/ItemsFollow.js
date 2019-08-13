@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import './items.css';
+import './../items.css';
 import StarRatings from 'react-star-ratings';
-import imageToy from './1.jpg';
+import imageToy from './../1.jpg';
 import { Link } from "react-router-dom";
-import Noidung from './noidung';
-import Doithu from './mucluc/Doithu';
+import Noidung from './itemsFollow_content/noidung';
+
+
 
 class ItemsFollow extends Component {
-
+    
     render() {
         return (
             <div>
-                <div className="col col-sm-3"><Link to={`./`}className="txt7"><i className="fa fa-angle-left"></i> Quay lại trang danh sách</Link></div> 
+                <div className="col col-sm-3"><Link to={`${this.props.Theodoidoithu_url.url}`}className="txt7"><i className="fa fa-angle-left"></i> Quay lại trang danh sách</Link></div> 
                 <div className=" card overview col-sm-12 m-t-15">   
                     <div className="row ">
                         <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -33,14 +34,16 @@ class ItemsFollow extends Component {
                     </div>
                     <div className="row list">
                         <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                            <Link className="btn btn-outline-info" to={`./itemsFollow`}>Đối thủ</Link>
-                            <Link className="btn btn-outline-info" to={`./itemsFollow/theodoigia`}>Theo dõi giá</Link>
-                            <Link className="btn btn-outline-info" to={`./itemsFollow/chinhgiatudong`}>Chỉnh giá tự động</Link>
+                            <Link className="btn btn-outline-info" to={`${this.props.match.url}`}>Đối thủ</Link>
+                            <Link className="btn btn-outline-info" to={`${this.props.match.url}/theodoigia`}>Theo dõi giá</Link>
+                            <Link className="btn btn-outline-info" to={`${this.props.match.url}/chinhgiatudong`}>Chỉnh giá tự động</Link>
                         </div>
                     </div>
                 </div>
                 <div className="noidung">
-                      <Doithu/>
+                    
+                      {/* <Doithu/> */}
+                      <Noidung match = {this.props.match}/>
                  </div>
                </div>
         );

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import './items.css';
+import './../items.css';
 import TabItemsFollow from './TabItemsFollow';
-import imageToy from './1.jpg';
+import imageToy from './../1.jpg';
 
 class FollowCompetitor extends Component {
     constructor(props){
@@ -22,7 +22,6 @@ class FollowCompetitor extends Component {
         var {items}=this.state;
         return (
             <div  onSubmit={this.onSubmit} >
-
                     <div className=" card overview col-sm-12">
                         <h2>Sản phẩm đang theo dõi</h2>
                     </div>
@@ -31,11 +30,11 @@ class FollowCompetitor extends Component {
                         <div className="col-md-10">
                           <h5> Cửa hàng đang chọn: nottthing123 </h5>
                           <div className="text-left">
-                                <Link to={`${this.props.match.url}/theodoidoithu/AddProduct`} className="btn btn-link">Thêm sản phẩm theo dõi <span className="fa  fa-angle-double-right p-l-5"></span></Link>
+                                <Link to={`${this.props.match.url}/AddProduct`} className="btn btn-link">Thêm sản phẩm theo dõi <span className="fa  fa-angle-double-right p-l-5"></span></Link>
                           </div>
                         </div>
                         <div className="col-md-2 offset-md-2 mr-0 ml-0">
-                          <Link to={`${this.props.match.url}/quanlycuahang`} className="btn btn-link">Đổi cửa hàng </Link>
+                          <Link to={`${this.props.admin_url.url}/quanlycuahang`} className="btn btn-link">Đổi cửa hàng </Link>
                           {/* <button type="button" className="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết nối</button> */}
                         </div>
                       </div>

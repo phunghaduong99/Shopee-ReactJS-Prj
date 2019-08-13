@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import './items.css';
-import TabItemsFollow from './TabItemsFollow';
-import imageToy from './1.jpg';
+import './../items.css';
+import TabItemsFollow from '../FollowCompetitor/TabItemsFollow';
+import imageToy from './../1.jpg';
 import TabItems from './TabItems';
 
 class AddProduct extends Component {
@@ -20,6 +20,7 @@ class AddProduct extends Component {
     }
     
     render() {
+        console.log(this.props.match.url)
         var {items}=this.state;
         return (
             <div  onSubmit={this.onSubmit} >
@@ -34,7 +35,7 @@ class AddProduct extends Component {
                           
                         </div>
                         <div className="col-md-2 offset-md-2 mr-0 ml-0">
-                          <Link to={`${this.props.match.url}/theodoidoithu`} className="btn btn-link">Danh sách sản phẩm đang theo dõi<span className="fa  fa-angle-double-right p-l-5"></span> </Link>
+                          <Link to={`${this.props.Theodoidoithu_url.url}`} className="btn btn-link">Danh sách sản phẩm đang theo dõi<span className="fa  fa-angle-double-right p-l-5"></span> </Link>
                           {/* <button type="button" className="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết nối</button> */}
                         </div>
                       </div>
@@ -64,14 +65,14 @@ class AddProduct extends Component {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <TabItems items={items} match={this.props.match}/>
-                                        <TabItems items={items}match={this.props.match}/>
-                                        <TabItems items={items}match={this.props.match}/>
-                                        <TabItems items={items}match={this.props.match}/>
-                                        <TabItems items={items}match={this.props.match}/>
-                                        <TabItems items={items}match={this.props.match}/>
-                                        <TabItems items={items}match={this.props.match}/>
-                                        <TabItems items={items}match={this.props.match}/>
+                                        <TabItems items={items} Theodoidoithu_url={this.props.Theodoidoithu_url}/>
+                                        <TabItems items={items} Theodoidoithu_url={this.props.Theodoidoithu_url}/>
+                                        <TabItems items={items} Theodoidoithu_url={this.props.Theodoidoithu_url}/>
+                                        <TabItems items={items} Theodoidoithu_url={this.props.Theodoidoithu_url}/>
+                                        <TabItems items={items} Theodoidoithu_url={this.props.Theodoidoithu_url}/>
+                                        <TabItems items={items} Theodoidoithu_url={this.props.Theodoidoithu_url}/>
+                                        <TabItems items={items} Theodoidoithu_url={this.props.Theodoidoithu_url}/>
+                                        <TabItems items={items} Theodoidoithu_url={this.props.Theodoidoithu_url}/>
                                     </tbody>
                                 </table>
                       </div>

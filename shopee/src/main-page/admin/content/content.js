@@ -7,11 +7,8 @@ import ChangePass from './quanlytaikhoan/changePass';
 import ContactShopee from './quanlytaikhoan/ContactShopee';
 import Product from './quanlysanpham/Product';
 import ItemsDetail from './quanlysanpham/ItemsDetail';
-import FollowCompetitor from './theodoidoithu/FollowCompetitor';
-import ItemsFollow from './theodoidoithu/ItemsFollow';
-import AddProduct from './theodoidoithu/AddProduct';
-import ItemsDetailAdd from './theodoidoithu/ItemsDetail';
 
+import TheoDoiDoiThu from './theodoidoithu/theodoidoithu';
 class Content extends Component {
     state = { 
         onUser: false
@@ -29,36 +26,28 @@ class Content extends Component {
                         render={props =>
                         <TongQuan {...props}  />}  />
 
-                    <Route exact path={`${this.props.match.url}/quanlytaikhoan`}
+                    <Route path={`${this.props.match.url}/quanlytaikhoan`}
                         render={props =>
                         <User {...props} onUser={this.onUser} />}   />
                     <Route path={`${this.props.match.url}/quanlytaikhoan/changePass`}
                         render={props =>
                         <ChangePass {...props} />}   />
-                    <Route exact path={`${this.props.match.url}/quanlycuahang`}
+                    <Route path={`${this.props.match.url}/quanlycuahang`}
                         render={props =>
                         <ShopManage {...props} />}   />
                     <Route path={`${this.props.match.url}/quanlycuahang/ContactShopee`}
                         render={props =>
                         <ContactShopee {...props} />}   />
-                    <Route exact path={`${this.props.match.url}/quanlysanpham`}
+                    <Route path={`${this.props.match.url}/quanlysanpham`}
                     render={props =>
                     <Product {...props} match={this.props.match} />}   />
                     <Route path={`${this.props.match.url}/quanlysanpham/itemsDetail`}
                     render={props =>
                     <ItemsDetail {...props} />}   />
-                    <Route exact path={`${this.props.match.url}/theodoidoithu`}
+                    <Route path={`${this.props.match.url}/theodoidoithu`}
                     render={props =>
-                    <FollowCompetitor {...props} match={this.props.match} />}   />
-                    <Route exact path={`${this.props.match.url}/theodoidoithu/AddProduct`}
-                    render={props =>
-                    <AddProduct {...props} match={this.props.match} />}   />
-                    <Route exact path={`${this.props.match.url}/theodoidoithu/itemsFollow`}
-                    render={props =>
-                    <ItemsFollow {...props} match={this.props.match} />}   />
-                    <Route exact path={`${this.props.match.url}/theodoidoithu/itemsDetail`}
-                    render={props =>
-                    <ItemsDetailAdd {...props} match={this.props.match} />}   />
+                    <TheoDoiDoiThu {...props} admin_url = {this.props.match} />}   />
+                    
                 </div>
 
           );
