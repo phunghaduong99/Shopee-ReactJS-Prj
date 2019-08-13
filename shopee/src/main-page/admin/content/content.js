@@ -7,6 +7,10 @@ import ChangePass from './quanlytaikhoan/changePass';
 import ContactShopee from './quanlytaikhoan/ContactShopee';
 import Product from './quanlysanpham/Product';
 import ItemsDetail from './quanlysanpham/ItemsDetail';
+import FollowCompetitor from './theodoidoithu/FollowCompetitor';
+import ItemsFollow from './theodoidoithu/ItemsFollow';
+import AddProduct from './theodoidoithu/AddProduct';
+import ItemsDetailAdd from './theodoidoithu/ItemsDetail';
 
 class Content extends Component {
     state = { 
@@ -43,6 +47,18 @@ class Content extends Component {
                     <Route path={`${this.props.match.url}/quanlysanpham/itemsDetail`}
                     render={props =>
                     <ItemsDetail {...props} />}   />
+                    <Route exact path={`${this.props.match.url}/theodoidoithu`}
+                    render={props =>
+                    <FollowCompetitor {...props} match={this.props.match} />}   />
+                    <Route exact path={`${this.props.match.url}/theodoidoithu/AddProduct`}
+                    render={props =>
+                    <AddProduct {...props} match={this.props.match} />}   />
+                    <Route exact path={`${this.props.match.url}/theodoidoithu/itemsFollow`}
+                    render={props =>
+                    <ItemsFollow {...props} match={this.props.match} />}   />
+                    <Route exact path={`${this.props.match.url}/theodoidoithu/itemsDetail`}
+                    render={props =>
+                    <ItemsDetailAdd {...props} match={this.props.match} />}   />
                 </div>
 
           );

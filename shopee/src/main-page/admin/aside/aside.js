@@ -62,11 +62,12 @@ class Aside extends Component {
                                 </ul>
                             </li>
                             <li className="menu-item-has-children dropdown">
-                                <a href="/" className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-eye"></i>Theo dõi đối thủ</a>
+                            <Link className="dropdown-toggle" to={`${this.props.match.url}/theodoidoithu`}><i className="menu-icon fa fa-eye "></i>Theo dõi đối thủ</Link>
+                                {/* <a href="/" className="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i className="menu-icon fa fa-eye"></i>Theo dõi đối thủ</a>
                                 <ul className="sub-menu children dropdown-menu">
                                     <li><i className="menu-icon fa fa-th"></i><a href="forms-basic.html">Basic Form</a></li>
                                     <li><i className="menu-icon fa fa-th"></i><a href="forms-advanced.html">Advanced Form</a></li>
-                                </ul>
+                                </ul> */}
                             </li>
 
                         </ul>
