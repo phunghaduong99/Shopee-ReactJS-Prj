@@ -18,6 +18,11 @@
     line-height: 1.5;
     color: #000000;
   }
+  .txt9 {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #000000;
+  }
   .img-toy{
       width: 75px;
   }
@@ -87,4 +92,10 @@
   }
   .red{
     color: red;
+  }
+  .doithu{
+      padding-bottom: 0 !important;
+  }
+  .dulieu-right{
+    border-right: 1px solid #e6e6e6; 
   }

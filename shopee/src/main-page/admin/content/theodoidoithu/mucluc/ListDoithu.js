@@ -26,10 +26,10 @@ class ListDoithu  extends Component {
                         </div>
                         <div className="row">
                             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                <div>{this.props.conpetitor.rating}/5</div>
+                                <div><span className="text-danger">{this.props.conpetitor.rating}</span>/5</div>
                             </div>
                             <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                 <div className="text-right text-primary">{this.props.conpetitor.buy} đã bán</div>
+                                 <div className="text-right"><span className="text-danger">{this.props.conpetitor.buy}</span> đã bán</div>
                             </div>
                         </div>
                     </td>
