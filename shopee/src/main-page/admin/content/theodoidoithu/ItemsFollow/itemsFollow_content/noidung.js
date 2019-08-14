@@ -19,7 +19,7 @@ class Noidung extends Component {
                         <PieceFollow {...props} onUser={this.onUser} />} />
                 <Route path={`${this.props.match.url}/chinhgiatudong`}
                     render={props =>
-                        <ChangePieceAuto {...props} />} />
+                        <ChangePieceAuto {...props} chinhgiatudong_url={this.props.match} />} />
                 
             </div>
         );

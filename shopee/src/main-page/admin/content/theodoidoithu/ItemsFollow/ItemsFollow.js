@@ -13,7 +13,7 @@ class ItemsFollow extends Component {
         return (
             <div>
                 <div className="col col-sm-3"><Link to={`${this.props.Theodoidoithu_url.url}`}className="txt7"><i className="fa fa-angle-left"></i> Quay lại trang danh sách</Link></div> 
-                <div className=" card overview col-sm-12 m-t-15">   
+                <div className=" card overview col-sm-12 m-t-15 ">   
                     <div className="row ">
                         <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                              <img className="img-toy-1" src={imageToy} alt="" />

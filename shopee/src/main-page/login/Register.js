@@ -145,7 +145,7 @@ class Register extends Component {
                   <span className="errorMessage txt4">{this.state.formErrors.email}</span>
                 </div>
                 <div className="around-input100  m-b-23 ">
-                  <div className="wrap-input100 validate-input m-b-2" data-validate="Username is reauired">
+                  <div className="wrap-input100 validate-input m-b-2" data-validate="Username is required">
                     <span className="label-input100">Tên tài khoản</span>
                     <input
                       className="input100"
