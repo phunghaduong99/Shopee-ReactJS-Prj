@@ -25,3 +25,17 @@ export const saveShopIdSelected = (shopIdSelected) =>{
         shopIdSelected
     }
 }
+export const saveItemIdSelected = (itemIdSelected) =>{
+    return {
+        type: types.SAVE_ITEM_ID_SELECTED,
+        itemIdSelected
+    }
+}
+
+export const changePriceItem = (itemid, price) =>{
+    return {
+        type: types.CHANGE_PRICE_ITEM,
+        itemid: itemid,
+        price:price
+    }
+}

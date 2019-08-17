@@ -105,12 +105,7 @@ class MissPass extends Component {
             .then((response) => {
                 console.log(response);
                 console.log(response.data);
-                //  console.log('status'+response.status);
-                //  if(response.status === 200){
-                //   this.setState({isLogin: true});
-                //   console.log(this.state.isLogin+ 'true hnha');
-                //   window.location='/admin';
-                // }
+               
                 if (response.data === "Đề nghị check mail") {
                     swal("Đã gửi email thành công!", "Vui lòng kiểm tra email!", "success",
                         {

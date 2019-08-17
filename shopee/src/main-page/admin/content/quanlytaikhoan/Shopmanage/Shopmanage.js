@@ -17,7 +17,7 @@ class ShopManage extends Component {
     if(this.props.listShop.length === 0){
       axios({
         method: 'get',
-        url: 'http://192.168.10.8:8081/shop',
+        url: 'http://192.168.0.103:8081/shop',
         headers: {
           'Content-Type': 'application/json',
           'Authorization':  `${this.props.token}`
@@ -31,8 +31,8 @@ class ShopManage extends Component {
             (c, index) => {
               if (index === 0) {
                 c.isActive = true;
-                this.setState({ shop_id_selected: c.id });
-                this.props.saveShopIdSelected(c.id);
+                this.setState({ shop_id_selected: c.shopid });
+                this.props.saveShopIdSelected(c.shopid);
               }
               else {
                 c.isActive = false;
@@ -63,8 +63,8 @@ class ShopManage extends Component {
         (c, indexx) => {
           if (indexx === index) {
             c.isActive = true;
-            this.setState({ shop_id_selected: c.id })
-            this.props.saveShopIdSelected(c.id);
+            this.setState({ shop_id_selected: c.shopid })
+            this.props.saveShopIdSelected(c.shopid);
           }
           return c;
         }
@@ -84,7 +84,7 @@ class ShopManage extends Component {
         name={c.name}
         index={index}
         key={index}
-        id={c.id}
+        shopid={c.shopid}
         isActive={c.isActive}
         changeStatus={this.changeStatus}
       />)

@@ -36,13 +36,15 @@ class FormLogin extends Component {
             formErrors: {
                 username: "",
                 pass: "",
-            }
+            },
+            faillogin: false
         });
     }
     componentDidMount = () => {
-        
+
     }
     onChange = (event) => {
+        this.setState({faillogin: false})
         var target = event.target;
         var name = target.name;
         var value = target.value;
@@ -70,9 +72,9 @@ class FormLogin extends Component {
     }
 
     onSubmit = (event) => {
-       
+
         event.preventDefault();
-       
+
         if (formValid(this.state)) {
             console.log(`
               --Data--
@@ -91,16 +93,16 @@ class FormLogin extends Component {
             })
                 .then((response) => {
                     console.log(response);
-                   
-                    console.log("token+ "+ response.data.token);
-                    this.setState({token: response.data.token });
+
+                    console.log("token+ " + response.data.token);
+                    this.setState({ token: response.data.token });
                     window.location = '/admin';
                     this.props.saveToken(this.state.token);
 
                 })
                 .catch((error) => {
                     console.log(error);
-                    alert("Tài khoản hoặc mật khẩu không đúng.")
+                    this.setState({faillogin: true})
                 });
         }
         else {
@@ -111,7 +113,7 @@ class FormLogin extends Component {
     }
 
     render() {
-       
+        let faillogin = this.state.faillogin? "Tài khoản hoặc mật khẩu không đúng": "";
         return (
             <div className="app">
                 <div className="limiter">
@@ -129,7 +131,7 @@ class FormLogin extends Component {
                                     <img src={logo} alt="logo" className="logoLogin"></img>
                                 </span>
 
-                                <div className="around-input100  m-b-23 ">
+                                <div className={this.state.formErrors.username === ""? "around-input100  m-b-30 ": "around-input100 m-b-6" }>
                                     <div className="wrap-input100 validate-input " data-validate="Username is required">
                                         <span className="label-input100">Tên đăng nhập</span>
                                         <input
@@ -145,7 +147,7 @@ class FormLogin extends Component {
                                     </div>
                                     <span className="errorMessage txt4">{this.state.formErrors.username}</span>
                                 </div>
-                                <div className="around-input100  m-b-23 ">
+                                <div className={this.state.formErrors.pass === ""? "around-input100  m-b-30 ": "around-input100 m-b-6" }>
                                     <div className="wrap-input100 validate-input" data-validate="Password is required">
                                         <span className="label-input100">Mật khẩu</span>
                                         <input
@@ -167,7 +169,7 @@ class FormLogin extends Component {
                                         <button type="button" className="txt5" >Quên mật khẩu?</button>
                                     </Link>
                                 </div>
-
+                                
                                 <div className="container-login100-form-btn">
                                     <div className="wrap-login100-form-btn">
                                         <div className="login100-form-bgbtn"></div>
@@ -177,9 +179,10 @@ class FormLogin extends Component {
                                     </button>
                                         {/* </Link> */}
                                     </div>
+                                    <span className="errorMessage txt4 m-t-15">{faillogin}</span>
                                 </div>
 
-                                <div className="txt1 text-center p-t-54 p-b-20">
+                                <div className= {this.state.faillogin? "txt1 text-center p-t-18 p-b-20": "txt1 text-center p-t-54 p-b-20"}>
                                     <span>
                                         Hoặc đăng nhập bằng
                                 </span>

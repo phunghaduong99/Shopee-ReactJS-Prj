@@ -6,9 +6,17 @@ var initialState =  [];
 var myReducer = (state = initialState, action) =>{
     switch(action.type){
         case types.SAVE_LIST_ITEMS:
-            state.push(action.listItems)
+            state = action.listItems
             return [...state];
-
+        case types.CHANGE_PRICE_ITEM:
+                let newState = state;
+                newState.map((c) =>{
+                    if(c.itemid === action.itemid){
+                        c.price = action.price;
+                    }
+                })
+                return [...state];
+            console.log(action)
         default: return state;
     }
     

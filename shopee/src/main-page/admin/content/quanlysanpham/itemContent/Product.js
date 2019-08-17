@@ -11,21 +11,28 @@ class Product extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: {
-                image: { imageToy },
-                name: 'Xe tải đồ chơi',
-                id: 'D123456778',
-                price: '70,000đ',
-                rating: ''
-            },
-            listItems: []
+            items: [
+                {
+                    image: { imageToy },
+                    name: 'Xe tải đồ chơi',
+                    id: 'D123456778',
+                    price: '70,000đ',
+                    rating: '',
+                    item_id: "213123"
+                }
+            ],
+                
+            isOnSearch: false,
+            listItems: [],
+            search: '',
+            listSearchItems: []
         };
     }
     componentDidMount() {
 
         axios({
             method: 'get',
-            url: 'http://192.168.10.8:8081/items/205134 ',
+            url: 'http://192.168.0.103:8081/getItems/' + this.props.shopIdSelected,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -36,7 +43,7 @@ class Product extends Component {
                 let newListItems = response.data;
 
 
-                this.setState({ listItems: newListItems });
+                // this.setState({ listItems: newListItems });
                 this.props.saveListItems(newListItems);
             })
             .catch((error) => {
@@ -44,20 +51,32 @@ class Product extends Component {
                 alert("Không lấy được cửa hàng");
             });
     }
+    
+
+    onSearch = (event) => {
+        event.preventDefault();
+        let search = event.target.value;
+        this.setState({search: search });
+        if(search === '')   this.setState({isOnSearch: false });
+        else this.setState({isOnSearch: true });
+
+        if( search !== ''){
+
+        }
+    }
     render() {
-        var { items } = this.state;
         let tabItems = "";
         let newListItems  ;
         
-         newListItems = this.props.listItems[0];
+         newListItems = this.props.listItems;
         if(newListItems !== undefined ){
              tabItems = newListItems.map((c, index) =>
             <TabItems
-                item_id={c.item_id}
+                itemid={c.itemid}
                 price={c.price}
                 name={c.name}
                 key={index}
-                
+                shopid = {c.shopid}
                 match={this.props.match} />)
         }
         else {tabItems = null}
@@ -91,6 +110,7 @@ class Product extends Component {
                                     type="text"
                                     placeholder="Tìm kiếm"
                                     aria-label="Search"
+                                    onChange = {this.onSearch}
                                 />
                             </div>
                         </div>

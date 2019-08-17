@@ -17,7 +17,7 @@ class Shop extends Component {
         return (
             <tr>
                 <th scope="row">{this.props.name}</th>
-                <td>{this.props.id}</td>
+                <td>{this.props.shopid}</td>
                 {status}
                 <td>
                     <button className="btn btn-primary" onClick={this.changeStatus}> Chuyển trạng thái</button>

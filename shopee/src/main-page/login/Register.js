@@ -130,7 +130,7 @@ class Register extends Component {
                 <span className="login100-form-title p-b-49">
                   <img src={logo} alt="logo" className="logoLogin"></img>
                 </span>
-                <div className="around-input100  m-b-23 ">
+                <div className={this.state.formErrors.email === "" ? "around-input100  m-b-30 " : "around-input100 m-b-4"}>
                   <div className="wrap-input100 validate-input m-b-2" data-validate="Username is reauired">
                     <span className="label-input100">Email</span>
                     <input
@@ -144,7 +144,7 @@ class Register extends Component {
                   </div>
                   <span className="errorMessage txt4">{this.state.formErrors.email}</span>
                 </div>
-                <div className="around-input100  m-b-23 ">
+                <div className={this.state.formErrors.username === "" ? "around-input100  m-b-30 " : "around-input100 m-b-4"}>
                   <div className="wrap-input100 validate-input m-b-2" data-validate="Username is required">
                     <span className="label-input100">Tên tài khoản</span>
                     <input
@@ -158,7 +158,7 @@ class Register extends Component {
                   </div>
                   <span className="errorMessage txt4">{this.state.formErrors.username}</span>
                 </div>
-                <div className="around-input100  m-b-23 ">
+                <div className={this.state.formErrors.pass === "" ? "around-input100  m-b-30 " : "around-input100 m-b-4"}>
                   <div className="wrap-input100 validate-input m-b-2" data-validate="Password is required">
                     <span className="label-input100">Mật Khẩu</span>
                     <input
@@ -172,7 +172,7 @@ class Register extends Component {
                   </div>
                   <span className="errorMessage txt4">{this.state.formErrors.pass}</span>
                 </div>
-                <div className="around-input100  m-b-23 ">
+                <div className={(this.state.confirmPass !== null && this.state.pass !== this.state.confirmPass) ? "around-input100  m-b-4 " : "around-input100 m-b-30"}>
                   <div className="wrap-input100 validate-input m-b-2" data-validate="Password is required">
                     <span className="label-input100">Xác nhận mật khẩu</span>
                     <input
