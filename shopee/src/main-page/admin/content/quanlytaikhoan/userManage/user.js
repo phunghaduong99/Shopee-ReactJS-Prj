@@ -131,8 +131,10 @@ class user extends Component {
                               <Link to={`${this.props.match.url}/changePass`}className="btn btn-link">Đổi mật khẩu </Link>
                             </div>
                           </div>
-                          <div className="col-md-3 offset-md-9 col-sm-6 ml-auto">
-                              <button type="submit" className="btn btn-primary ">Lưu thay đổi </button>
+                          <div className=" row form-group ">
+                            <div className="col-md-3 offset-md-9 col-sm-6 ml-auto text-right">
+                                <button type="submit" className="btn btn-primary ">Lưu thay đổi </button>
+                            </div>
                           </div>
                       </div>
                      </form>

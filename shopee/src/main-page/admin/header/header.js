@@ -27,18 +27,33 @@ class Header extends Component {
                 </div>
                 <div className="top-right">
                     <div className="header-menu">
-                        
-
                         <div className="user-area dropdown float-right">
                             <button href="/" className="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span className="username">{name}</span>
                                 <img className="user-avatar rounded-circle" src={responseF?responseF.picture.data.url: admin} alt="User Avatar" />
+                                <span className="username">Phùng Hà Dương</span>
+                                <i className="fa fa-angle-down m-l-10"></i>
                             </button>
-
-                            <div className="user-menu dropdown-menu">
-
-                                <Link className="nav-link" to="/"><i className="fa fa-power -off"></i>Logout</Link>
-                            </div>
+                            <ul className="user-menu dropdown-menu">
+                                
+                                <li>
+                                    <span className="nav-link">
+                                        <i className="fa fa-phone"></i>
+                                        <span> Hotline 1800 6751</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span className="nav-link">
+                                        <i className="fa fa-life-ring"></i>
+                                        <span> Trợ giúp</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <Link className="nav-link" to="/login">
+                                        <i className="fa fa-sign-out"></i>
+                                        <span>Đăng xuất</span>
+                                     </Link>
+                                </li>
+                            </ul>
                         </div>
 
                     </div>

@@ -32,7 +32,7 @@ class ContactShopee extends Component {
     // let token = JSON.parse(localStorage.getItem('token'));
     axios({
       method: 'post',
-      url: 'http://192.168.0.102:8081/shop',
+      url: 'http://192.168.1.34:8081/shop',
       data: {
         id: '99999',
         name: 'sssfff'
