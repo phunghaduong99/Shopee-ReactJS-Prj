@@ -42,14 +42,14 @@ class Doithu extends Component {
                                     <thead>
                                     <tr >
                                             <th className="cot6">Đối thủ</th>
-                                            <th className="cot7 ">Đánh giá 
-                                                <Tooltip content="Đánh giá trung bình của cửa hàng (n/5.0)" fontSize="11px" >
-                                                    <span className="fa fa-info-circle red" ></span>
+                                            <th className="cot7 " >Đánh giá 
+                                                <Tooltip content="Đánh giá trung bình của cửa hàng (n/5.0)" fontSize="11px"   >
+                                                    <span className="fa fa-info-circle red text-left m-l-5" ></span>
                                                 </Tooltip>
                                              </th>
                                             <th className="cot8 " >Theo dõi 
-                                                <Tooltip content="Số lượng người ấn theo dõi cửa hàng" fontSize="11px">
-                                                    <span className="fa fa-info-circle red" ></span>
+                                                <Tooltip content="Số lượng người ấn theo dõi cửa hàng" fontSize="11px" >
+                                                    <span className="fa fa-info-circle red text-left m-l-5 " ></span>
                                                 </Tooltip>
                                             </th>
                                             <th className="cot9" >Sản phẩm</th>

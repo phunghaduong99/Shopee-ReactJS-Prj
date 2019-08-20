@@ -46,6 +46,7 @@
  }
 .rating-a{
     height: 13px;
+    padding-bottom: 0px !important;
 }
 .cot1{
  width: 32%;
@@ -77,7 +78,12 @@
    .cot11{
     width: 10%;
    }
-
+   .colStart{
+    width: 80%;
+   }
+   .colNum{
+    width: 20%;
+   }
   .popup-content{
       width: 30% !important;
   }
@@ -156,4 +162,33 @@
   .slider.round:before {
     border-radius: 50%;
   }
+   .list{
+    float: right;
+    margin-bottom: 13px;
+    font-weight: bold;
+  }
+   .list ul li {
+    float:left;
+    list-style: none;
+  }
+   .list ul li a {
+    color: #4d4040;
+    text-decoration: none;
+    padding: 14px;
+    background-color: #d9d9e4;
+    border: solid 1px #9a9797;
+  }
   
+   .list ul li a:hover, .list ul li a.current{
+    border: solid 1px #9a9797;
+    background: #efefef;
+    border-right: 5px 5px 0 0;
+  }
+  .css-h9nlcb-BaseToolTop {
+    width: 180px !important;
+    text-align: center;
+  }
+  .css-681xbd-Bubble {
+    padding: 5px 5px 5px 5px !important;
+  }
+

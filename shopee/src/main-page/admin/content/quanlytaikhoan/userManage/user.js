@@ -81,7 +81,7 @@ class user extends Component {
                       <div className="col-md-8 offset-md-3 mr-auto ml-auto ">
                           <div className=" row form-group ">
                             <div className="col-md-4 aline">
-                              <label className="col-form-label"><h6>Tên người dùng</h6> </label>
+                              <label className="col-form-label"><h6>Tên người dùng <span className="red">*</span></h6> </label>
                             </div>
                             <div className="col-md-8">
                                 <input 
@@ -107,14 +107,13 @@ class user extends Component {
                                     placeholder="Nhập số điện thoại" 
                                     type="text"
                                     onChange={this.onChange}
-                                    required
                                 />
                               <span className="errorMessage txt4">{this.state.formErrors.phone}</span>
                             </div>
                           </div>
                           <div className=" row form-group ">
                             <div className="col-md-4 aline">
-                              <label className="col-form-label"><h6>Email</h6></label>
+                              <label className="col-form-label"><h6>Email <span className="red">*</span></h6></label>
                             </div>
                             <div className="col-md-8">
                               <label className="col-form-label-content">Buithikimanh@gmail.com </label>

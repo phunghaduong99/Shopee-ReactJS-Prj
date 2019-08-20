@@ -106,67 +106,67 @@ class ItemsDetail extends Component {
                                             </div>
                                             <div className=" col-sm-5">
                                             <div className="row rating-a ">
-                                                <div className="col-sm-9">
+                                                <div className="colStart">
                                                     <StarRatings
                                                         starRatedColor="#FFD203"
                                                         rating={5}
-                                                        starDimension="10px"
+                                                        starDimension="13px"
                                                         starSpacing="1px"
                                                         />
                                                 </div>
-                                                <div className="col-sm-3">
+                                                <div className="colNum">
                                                     <label className="txt8">20</label>
                                                 </div>
                                             </div>
                                             <div className="row rating-a ">
-                                                <div className="col-sm-9">
+                                                <div className="colStart">
                                                     <StarRatings
                                                         starRatedColor="#FFD203"
                                                         rating={4}
-                                                        starDimension="10px"
+                                                        starDimension="13px"
                                                         starSpacing="1px"
                                                         />
                                                 </div>
-                                                <div className="col-sm-3">
+                                                <div className="colNum">
                                                     <label className="txt8">20</label>
                                                 </div>
                                             </div>
                                             <div className="row rating-a ">
-                                                <div className="col-sm-9">
+                                                <div className="colStart">
                                                     <StarRatings
                                                         starRatedColor="#FFD203"
                                                         rating={3}
-                                                        starDimension="10px"
+                                                        starDimension="13px"
                                                         starSpacing="1px"
                                                         />
                                                 </div>
-                                                <div className="col-sm-3">
+                                                <div className="colNum">
                                                     <label className="txt8">20</label>
                                                 </div>
                                             </div>
                                             <div className="row rating-a ">
-                                                <div className="col-sm-9">
+                                                <div className="colStart">
                                                     <StarRatings
                                                         starRatedColor="#FFD203"
                                                         rating={2}
-                                                        starDimension="10px"
+                                                        starDimension="13px"
                                                         starSpacing="1px"
                                                         />
                                                 </div>
-                                                <div className="col-sm-3">
+                                                <div className="colNum">
                                                     <label className="txt8">20</label>
                                                 </div>
                                             </div>
                                             <div className="row rating-a ">
-                                                <div className="col-sm-9">
+                                                <div className="colStart">
                                                     <StarRatings
                                                         starRatedColor="#FFD203"
                                                         rating={1}
-                                                        starDimension="10px"
+                                                        starDimension="13px"
                                                         starSpacing="1px"
                                                         />
                                                 </div>
-                                                <div className="col-sm-3">
+                                                <div className="colNum">
                                                     <label className="txt8">20</label>
                                                 </div>
                                             </div>

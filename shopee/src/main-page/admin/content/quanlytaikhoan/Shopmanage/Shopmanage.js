@@ -4,6 +4,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import * as actions from '../../../../../redux/actions/index';
 import Shop from './shop';
+import Tooltip from "react-simple-tooltip"
 
 class ShopManage extends Component {
   state = {
@@ -17,7 +18,7 @@ class ShopManage extends Component {
     if(this.props.listShop.length === 0){
       axios({
         method: 'get',
-        url: 'http://192.168.0.103:8081/shop',
+        url: 'http://192.168.10.8:8081/shop',
         headers: {
           'Content-Type': 'application/json',
           'Authorization':  `${this.props.token}`
@@ -112,7 +113,11 @@ class ShopManage extends Component {
               <tr>
                 <th scope="col">Tên cửa hàng</th>
                 <th scope="col">ID cửa hàng</th>
-                <th scope="col">Trạng thái</th>
+                <th scope="col">Trạng thái
+                  <Tooltip content="Đây là trạng thái của cửa hàng trên phẩn mềm SPA. Tại một thời điểm chỉ duy nhất một cửa hàng được hoạt động" fontSize="11px"  >
+                      <span className="fa fa-info-circle red text-left m-l-5" ></span>
+                  </Tooltip>
+                </th>
                 <th scope="col">Hành động</th>
               </tr>
             </thead>

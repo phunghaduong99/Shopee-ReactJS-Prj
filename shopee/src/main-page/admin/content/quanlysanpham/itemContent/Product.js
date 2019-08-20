@@ -32,7 +32,7 @@ class Product extends Component {
 
         axios({
             method: 'get',
-            url: 'http://192.168.0.103:8081/getItems/' + this.props.shopIdSelected,
+            url: 'http://192.168.10.8:8081/items/205134 ',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -108,7 +108,7 @@ class Product extends Component {
                                 <input
                                     className="form-control my-0 py-1"
                                     type="text"
-                                    placeholder="Tìm kiếm"
+                                    placeholder="Tìm kiếm theo tên sản phẩm, mã sản phẩm"
                                     aria-label="Search"
                                     onChange = {this.onSearch}
                                 />

@@ -33,10 +33,12 @@ class ItemsFollow extends Component {
                         </div>
                     </div>
                     <div className="row list">
-                        <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                            <Link className="btn btn-outline-info" to={`${this.props.match.url}`}>Đối thủ</Link>
-                            <Link className="btn btn-outline-info" to={`${this.props.match.url}/theodoigia`}>Theo dõi giá</Link>
-                            <Link className="btn btn-outline-info" to={`${this.props.match.url}/chinhgiatudong`}>Chỉnh giá tự động</Link>
+                        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <ul>
+                                <li><Link className="a" to={`${this.props.match.url}`}>Đối thủ</Link></li>
+                                <li> <Link className="a" to={`${this.props.match.url}/theodoigia`}>Theo dõi giá</Link></li>
+                                <li><Link className="a" to={`${this.props.match.url}/chinhgiatudong`}>Chỉnh giá tự động</Link></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
