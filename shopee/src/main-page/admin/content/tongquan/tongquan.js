@@ -19,6 +19,32 @@ class TongQuan extends Component {
                     <h6 className=" text-center  connect-shoppee ">Hãy thực hiện kết nối với Shopee <a className="link-to-shopeee" href="https://partner.uat.shopeemobile.com/api/v1/shop/auth_partner?id=840386&token=d0f934508cadbf365ddd5518dc191848a7651fe908e4b42dcc1e8f6fb836ab78&redirect=http%3A%2F%2F192.168.36.27%3A3000%2Fadmin%2Fquanlycuahang%2FContactShopee"> tại đây</a></h6>
                     </div>
                 </div>
+                <div className="col-sm-12">
+                    <div className="card ">
+                        <div className="card-header">Tất cả đã sẵn sàng! Bắt đầu sử dụng tính năng hấp dẫn của SPA</div>
+                        <div className="card-body">
+                            <div className="row">
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <img src={carousel2} alt="Quản lý sản phẩm" />
+                                        <h5 className="text-center m-t-10">1. Quản lý sản phẩm</h5>
+                                        <p className="text-center">Xem danh sách, tìm kiếm nhanh và chỉnh sửa dữ liệu ngay trong cửa hàng của bạn</p>
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <img src={carousel2} alt="Quản lý sản phẩm" />
+                                        <h5 className="text-center m-t-10">2.Theo dõi giá</h5>
+                                        <p className="text-center">Theo dõi giá các sản phẩm trong cửa hàng của bạn trên thị trường  </p>
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <img src={carousel2} alt="Quản lý sản phẩm" />
+                                        <h5 className="text-center m-t-10">3.Theo dõi đối thủ</h5>
+                                        <p className="text-center">Theo dõi gia của đối thủ trực tiếp và chỉnh sửa giá tự động!</p>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
                 {/* <!-- To Do and Live Chat --> */}
                 <div className="col-sm-12">
                     <div id="demo" className="carousel slide" data-ride="carousel">

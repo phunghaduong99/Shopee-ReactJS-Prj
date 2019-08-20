@@ -32,7 +32,7 @@ class Product extends Component {
 
         axios({
             method: 'get',
-            url: 'http://192.168.10.8:8081/items/205134 ',
+            url: 'http://192.168.1.34:8081/getItems/114140652',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
