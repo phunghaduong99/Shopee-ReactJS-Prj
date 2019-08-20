@@ -33,7 +33,7 @@ class Doithu extends Component {
                 
                 <div className="row ">
                     
-                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                    <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                         <div className="card ">
                             <div className="card-header"><h4>Lựa chọn đối thủ</h4></div>
                             <div className="card-body">
@@ -71,7 +71,7 @@ class Doithu extends Component {
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                         <div className="card ">
                                 <div className="card-header"><h4>Đối thủ đã chọn</h4></div>
                                 <div className="card-body">

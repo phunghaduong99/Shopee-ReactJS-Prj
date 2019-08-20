@@ -17,18 +17,18 @@ class ListDoithu  extends Component {
                     <td className="text-center"> {this.props.conpetitor.follow}</td>
                     <td >
                         <div className="row">
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                 <img className="img-toy3 m-r-7" src={imageToy}  />
                             </div>
-                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                 {this.props.conpetitor.namePro}
                             </div>
                         </div>
                         <div className="row">
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                 <div><span className="text-danger">{this.props.conpetitor.rating}</span>/5</div>
                             </div>
-                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                  <div className="text-right"><span className="text-danger">{this.props.conpetitor.buy}</span> đã bán</div>
                             </div>
                         </div>

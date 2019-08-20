@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import carousel1 from './1.png';
-import carousel2 from './../../images/carousel_images/chicago.jpg';
-import carousel3 from './../../images/carousel_images/chicago.jpg';
+import carousel1 from './1.jpg';
+import carousel2 from './2.png';
+import carousel3 from './3.png';
 import './tongquan.css';
 
 
@@ -21,23 +21,35 @@ class TongQuan extends Component {
                 </div>
                 <div className="col-sm-12">
                     <div className="card ">
-                        <div className="card-header">Tất cả đã sẵn sàng! Bắt đầu sử dụng tính năng hấp dẫn của SPA</div>
+                        <div className="card-header"><h4>Tất cả đã sẵn sàng! Bắt đầu sử dụng tính năng hấp dẫn của SPA</h4></div>
                         <div className="card-body">
                             <div className="row">
-                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                        <img src={carousel2} alt="Quản lý sản phẩm" />
-                                        <h5 className="text-center m-t-10">1. Quản lý sản phẩm</h5>
-                                        <p className="text-center">Xem danh sách, tìm kiếm nhanh và chỉnh sửa dữ liệu ngay trong cửa hàng của bạn</p>
+                                <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 funcsion-service">
+                                    <div className="img-overview">
+                                         <img src={carousel1} alt="quản lý sản phẩm" />
+                                    </div>
+                                    <Link to={`${this.props.match.url}/quanlysanpham`}>
+                                        <h5 className="text-black text-center m-t-10">1. Quản lý sản phẩm</h5>
+                                    </Link>
+                                    <p className="text-center">Xem danh sách, tìm kiếm nhanh và chỉnh sửa dữ liệu ngay trong cửa hàng của bạn</p>
                                 </div>
-                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                        <img src={carousel2} alt="Quản lý sản phẩm" />
-                                        <h5 className="text-center m-t-10">2.Theo dõi giá</h5>
-                                        <p className="text-center">Theo dõi giá các sản phẩm trong cửa hàng của bạn trên thị trường  </p>
+                                <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 funcsion-service">
+                                    <div className="img-overview">
+                                         <img src={carousel2} alt="theo dõi giá" />
+                                    </div>
+                                    <Link to={`${this.props.match.url}/theodoigia`}>
+                                        <h5 className="text-black text-center m-t-10">2. Theo dõi giá</h5>
+                                    </Link>
+                                    <p className="text-center">Theo dõi giá các sản phẩm trong cửa hàng của bạn trên thị trường  </p>
                                 </div>
-                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                        <img src={carousel2} alt="Quản lý sản phẩm" />
-                                        <h5 className="text-center m-t-10">3.Theo dõi đối thủ</h5>
-                                        <p className="text-center">Theo dõi gia của đối thủ trực tiếp và chỉnh sửa giá tự động!</p>
+                                <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 funcsion-service">
+                                    <div className="img-overview">
+                                         <img src={carousel3} alt="theo dõi đối thủ" />
+                                    </div>
+                                    <Link to={`${this.props.match.url}/theodoidoithu`}>
+                                        <h5 className="text-black text-center m-t-10">3. Theo dõi đối thủ</h5>
+                                    </Link>
+                                    <p className="text-center">Theo dõi gia của đối thủ trực tiếp và chỉnh sửa giá tự động!</p>
                                 </div>
                                 
                             </div>
@@ -45,18 +57,13 @@ class TongQuan extends Component {
                         </div>
                     </div>
                 </div>
-                {/* <!-- To Do and Live Chat --> */}
-                <div className="col-sm-12">
+                {/* <div className="col-sm-12">
                     <div id="demo" className="carousel slide" data-ride="carousel">
-
-                        {/* <!-- Indicators --> */}
                         <ul className="carousel-indicators">
                             <li data-target="#demo" data-slide-to="0" className="active"></li>
                             <li data-target="#demo" data-slide-to="1"></li>
                             <li data-target="#demo" data-slide-to="2"></li>
                         </ul>
-
-                        {/* <!-- The slideshow --> */}
                         <div className="carousel-inner" >
                             <div className="carousel-item active">
                                 <img src={carousel1} alt="Quản lý sản phẩm" className="imgtongquan" />
@@ -80,8 +87,6 @@ class TongQuan extends Component {
                                 </div>
                             </div>
                         </div>
-
-                        {/* <!-- Left and right controls --> */}
                         <a className="carousel-control-prev" href="#demo" data-slide="prev">
                             <span className="carousel-control-prev-icon"></span>
                         </a>
@@ -89,9 +94,8 @@ class TongQuan extends Component {
                             <span className="carousel-control-next-icon"></span>
                         </a>
                     </div>
-                </div>
+                </div> */}
                 <div className="col-sm-6">
-
                 </div>
                 <div className="col-sm-6 text-right">
                     <div className="how-to-use-parent ">
