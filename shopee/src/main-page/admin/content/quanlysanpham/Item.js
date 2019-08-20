@@ -15,7 +15,7 @@ class Item extends Component {
 
                 <Route exact path={`${this.props.match.url}/itemsDetail`}
                     render={props =>
-                        <ItemsDetail {...props} />} />
+                        <ItemsDetail {...props} quanlysanpham_url  = {this.props.match.url}/>} />
                 
             </div>
         );

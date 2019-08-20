@@ -84,7 +84,7 @@ class ItemsDetail extends Component {
         console.log(itemDetail);
         return (
             <div>
-                <div className="col col-sm-3"><Link to={`./`} className="txt7"><i className="fa fa-angle-left"></i> Quay lại trang danh sách</Link></div>
+                <div className="col col-sm-3"><Link to={`/admin/quanlysanpham`} className="txt7"><i className="fa fa-angle-left"></i> Quay lại trang danh sách</Link></div>
                 <div className="row ">
                     <div className="col col-sm-7">
                         <h1 className="m-t-15 m-b-25 p-l-15">{itemDetail[0].name}</h1>
@@ -100,7 +100,7 @@ class ItemsDetail extends Component {
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                        <img className="img-toy-2" src={imageToy} alt="" />
+                                        <img className="img-toy-2" src={itemDetail[0].images[0]} alt="" />
                                     </div>
 
                                     <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">

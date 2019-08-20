@@ -19,6 +19,12 @@ export const saveListItems = (listItems) =>{
         listItems
     }
 }
+export const saveListSearchItems = (listSearchItems) =>{
+    return {
+        type: types.SAVE_LIST_SEARCH_ITEMS,
+        listSearchItems
+    }
+}
 export const saveShopIdSelected = (shopIdSelected) =>{
     return {
         type: types.SAVE_SHOP_ID_SELECTED,

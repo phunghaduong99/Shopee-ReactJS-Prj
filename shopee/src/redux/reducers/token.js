@@ -1,13 +1,13 @@
 import * as types from '../constants/ActionTypes';
 
 var data = JSON.parse(localStorage.getItem('token'));
-var initialState =data? data:  [];
+var initialState =data? data:  "";
 
 var myReducer = (state = initialState, action) =>{
     switch(action.type){
         
         case types.SAVE_TOKEN:
-            state[0] = action.token;
+            state = action.token;
             console.log(state);
             localStorage.setItem('token' , JSON.stringify(state) );
             return [...state];

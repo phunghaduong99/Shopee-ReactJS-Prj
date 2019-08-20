@@ -25,14 +25,16 @@ class TabItems extends Component {
     render() {
         
         return (
-                <tr>
-                    <td >
-                        <img className="img-toy m-r-7" src={imageToy} alt="" />
-                        <Link to={`${this.props.match.url}/itemsDetail`}>{this.props.name} </Link>
-                    </td>
-                    <td> {this.props.item_id}</td>
-                    <td> {this.props.price}</td>
-                    <td>
+            <tr>
+                <td >
+                    <img className="img-toy m-r-7" src={this.props.images} alt="" />
+                    
+                        <Link onClick = {this.onSlectedItem} to={`${this.props.match.url}/itemsDetail`}>{this.props.name} </Link>
+                   
+                </td>
+                <td> {this.props.itemid}</td>
+                <td> {this.props.price}</td>
+                <td>
                     <StarRatings
                         starRatedColor="#FFD203"
                         rating={4}
