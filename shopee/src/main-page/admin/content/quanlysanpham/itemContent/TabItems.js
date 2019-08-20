@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './items.css';
 import StarRatings from 'react-star-ratings';
 import { Link } from "react-router-dom";
-import imageToy from './1.jpg';
+
 import Popup from "reactjs-popup";
 
 
