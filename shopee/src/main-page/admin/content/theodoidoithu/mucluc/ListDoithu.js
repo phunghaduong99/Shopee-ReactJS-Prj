@@ -3,13 +3,20 @@ import StarRatings from 'react-star-ratings';
 import { Link } from "react-router-dom";
 import imageToy from './1.jpg';
 class ListDoithu  extends Component {
-    
+    constructor(props){
+        super(props);
+        this.state = ({
+            choose:false
+        });
+    }
+    onChoose=(e)=>{
+        e.preventDefault();
+        this.setState( {
+            choose:true
+        });
+    }
     render() {
-        let eleCho=null;
-        if (this.props.conpetitor.choose){
-            eleCho="đã chọn"
-        };
-        
+        let {choose}=this.state;
         return (
                 <tr>
                     <td> {this.props.conpetitor.name}</td>
@@ -35,10 +42,9 @@ class ListDoithu  extends Component {
                     </td>
                     <td> {this.props.conpetitor.price}</td>
                     <td>
-                        <button className="button" className="btn btn-primary m-l-5" onClick={this.props.onChoose} >Chọn</button>
-                        {eleCho}
+                        {this.state.choose? <label className="text-primary m-l-5" >Đã chọn</label>:<button className="button" className="btn btn-primary m-l-5" onClick={this.onChoose} >Chọn</button>}
+                        
                     </td>
-                   
                 </tr>
                 
                 

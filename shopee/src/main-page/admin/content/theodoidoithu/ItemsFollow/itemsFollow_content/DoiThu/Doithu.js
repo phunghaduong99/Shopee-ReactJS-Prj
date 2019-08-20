@@ -14,16 +14,9 @@ class Doithu extends Component {
                 rating:'4.9',
                 follow:'2',
                 price:'340000 đ',
-                choose: false,
                 buy:'13'
             },
         };
-    }
-    onChoose=(e)=>{
-        e.preventDefault();
-        this.setState( {
-            choose:true
-        });
     }
     render() {
         var {conpetitor}=this.state;
