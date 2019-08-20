@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import StarRatings from 'react-star-ratings';
 import { Link } from "react-router-dom";
 import ListDoithu from '../../../mucluc/ListDoithu';
+import Tooltip from "react-simple-tooltip"
 
 class Doithu extends Component {
     constructor(props){
@@ -41,8 +42,16 @@ class Doithu extends Component {
                                     <thead>
                                     <tr >
                                             <th className="cot6">Đối thủ</th>
-                                            <th className="cot7 ">Đánh giá <span className="fa fa-info-circle red" ></span></th>
-                                            <th className="cot8 " >Theo dõi <span className="fa fa-info-circle red"></span></th>
+                                            <th className="cot7 " >Đánh giá 
+                                                <Tooltip content="Đánh giá trung bình của cửa hàng (n/5.0)" fontSize="11px"   >
+                                                    <span className="fa fa-info-circle red text-left m-l-5" ></span>
+                                                </Tooltip>
+                                             </th>
+                                            <th className="cot8 " >Theo dõi 
+                                                <Tooltip content="Số lượng người ấn theo dõi cửa hàng" fontSize="11px" >
+                                                    <span className="fa fa-info-circle red text-left m-l-5 " ></span>
+                                                </Tooltip>
+                                            </th>
                                             <th className="cot9" >Sản phẩm</th>
                                             <th className="cot10">Giá bán</th>
                                             <th className="cot11" ></th>

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './../user.css';
 
 import axios from 'axios';
 import { connect } from 'react-redux';
 import * as actions from '../../../../../redux/actions/index';
 import Shop from './shop';
+import Tooltip from "react-simple-tooltip"
 
 class ShopManage extends Component {
   state = {
@@ -18,7 +18,7 @@ class ShopManage extends Component {
     if(this.props.listShop.length === 0){
       axios({
         method: 'get',
-        url: 'http://192.168.0.102:8081/shop',
+        url: 'http://192.168.10.8:8081/shop',
         headers: {
           'Content-Type': 'application/json',
           'Authorization':  `${this.props.token}`
@@ -103,7 +103,7 @@ class ShopManage extends Component {
               <h5> Bạn đã kết nối {number_shop} cửa hàng </h5>
             </div>
             <div className="col-md-2 offset-md-2 mr-0 ml-0">
-              <a href="https://partner.uat.shopeemobile.com/api/v1/shop/auth_partner?id=840386&token=d0f934508cadbf365ddd5518dc191848a7651fe908e4b42dcc1e8f6fb836ab78&redirect=http%3A%2F%2F192.168.36.27%3A3000%2Fadmin%2Fquanlycuahang%2FContactShopee" className="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết Nối </a>
+              <a href="https://partner.uat.shopeemobile.com/api/v1/shop/auth_partner?id=840386&token=325764591290d0844604564dc15fe8a05b0bed2baed4f61d0308a5ab5a685bd6&redirect=http%3A%2F%2F192.168.36.34%3A3000%2Fadmin%2Fquanlycuahang%2FContactShopee" className="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết Nối </a>
               {/* <button type="button" className="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết nối</button> */}
             </div>
           </div>
@@ -113,7 +113,11 @@ class ShopManage extends Component {
               <tr>
                 <th scope="col">Tên cửa hàng</th>
                 <th scope="col">ID cửa hàng</th>
-                <th scope="col">Trạng thái</th>
+                <th scope="col">Trạng thái
+                  <Tooltip content="Đây là trạng thái của cửa hàng trên phẩn mềm SPA. Tại một thời điểm chỉ duy nhất một cửa hàng được hoạt động" fontSize="11px"  >
+                      <span className="fa fa-info-circle red text-left m-l-5" ></span>
+                  </Tooltip>
+                </th>
                 <th scope="col">Hành động</th>
               </tr>
             </thead>

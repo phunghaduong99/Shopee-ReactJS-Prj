@@ -89,7 +89,7 @@ class Register extends Component {
 
       axios({
         method: 'post',
-        url: 'http://192.168.36.27:8081/register',
+        url: 'http://192.168.10.8:8081/register',
         data: {
           username: `${this.state.username}`,
           email: `${this.state.email}`,

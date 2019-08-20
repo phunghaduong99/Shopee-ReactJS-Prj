@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './user.css';
 
 // const phoneRegex = RegExp(
 //    /\(*\d{3}\)*( |-)*\d{3}( |-)*\d{4}/

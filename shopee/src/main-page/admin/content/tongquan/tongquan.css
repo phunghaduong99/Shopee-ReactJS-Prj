@@ -10,7 +10,6 @@ select {
 }
 
 .connect-shoppee {
-    padding: 8px 15px;
     margin: 10px 15px;
 }
 .connect-submit {
@@ -21,10 +20,9 @@ select {
 .welcome {
     background-color: rgba(239, 242, 240, 0.801) !important;
     border: 1px solid rgba(0,0,0,.125);
-    margin-bottom: 1.875em;
-    padding: 0;
+    margin-bottom: 1.5em;
+    padding: 0 ;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
-    padding-top: 15px !important;
 }
 .link-to-shopeee {
     font-size: inherit;
@@ -35,11 +33,15 @@ select {
 }
 .how-to-use {
     font-size: 18px;
-    padding: 8px 15px;
     margin: 10px 15px;
 }
 .how-to-use-parent {
     background-color: rgba(239, 242, 240, 0.801);
     border: 1px solid rgba(0,0,0,.125);
-    margin-top: 1.875em;
+    margin-top: 1.3em;
+}
+.imgtongquan{
+    width: 900px;
+    height: 500px;
+    opacity: 0.5;
 }

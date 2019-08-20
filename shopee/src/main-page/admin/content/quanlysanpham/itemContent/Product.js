@@ -6,7 +6,7 @@ import imageToy from './1.jpg';
 
 import axios from 'axios';
 import { connect } from 'react-redux';
-import * as actions from '../../../../redux/actions/index';
+import * as actions from '../../../../../redux/actions/index';
 class Product extends Component {
     constructor(props) {
         super(props);
@@ -25,7 +25,7 @@ class Product extends Component {
 
         axios({
             method: 'get',
-            url: 'http://192.168.0.102:8081/items/205134 ',
+            url: 'http://192.168.10.8:8081/items/205134 ',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -89,7 +89,7 @@ class Product extends Component {
                                 <input
                                     className="form-control my-0 py-1"
                                     type="text"
-                                    placeholder="Search"
+                                    placeholder="Tìm kiếm theo tên sản phẩm, mã sản phẩm"
                                     aria-label="Search"
                                 />
                             </div>
