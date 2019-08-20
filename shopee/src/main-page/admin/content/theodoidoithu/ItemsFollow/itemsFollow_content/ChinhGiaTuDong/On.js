@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
+import Tooltip from "react-simple-tooltip"
 
 class On extends Component {
     constructor(props) {
         super(props);
         this.state =({
-            minprice:null,
-            maxprice:null,
-            ratingChange: null
+            minprice:'',
+            maxprice:'',
+            ratingChange: ''
         });
     }
-    onChange = e => {
-        e.preventDefault();
-        var target = e.target;
+    onChange=(event)=>{
+        event.preventDefault();
+        var target = event.target;
         var name = target.name;
         var value = target.value;
         this.setState({
@@ -24,7 +25,7 @@ class On extends Component {
     }
     render() { 
         return ( 
-            <div onSubmit={this.onSubmit}>
+            <form className="form-horizontal" onSubmit={this.onSubmit}>
                 <div className="row">
                     <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
                         <div className=" row ">
@@ -43,7 +44,14 @@ class On extends Component {
                         </div>
                         <div className=" row ">
                             <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                <label className="col-form-label"><h6>Khoảng giá</h6> </label>
+                                <label className="col-form-label">
+                                    <h6 >Khoảng giá
+                                        <Tooltip content="Giới hạn mức giá cao nhất và thấp nhất cho sản phẩm" fontSize="11px"  >
+                                            <span className="fa fa-info-circle red text-left m-l-5" ></span>
+                                        </Tooltip>
+                                     </h6> 
+                                    
+                                </label>
                             </div>
                             <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
                                 <div className=" row doithu">
@@ -101,10 +109,10 @@ class On extends Component {
                         </div>
                     </div>
                  </div>
-                 <div className="col-md-2 offset-md-9 col-sm-9 ml-auto text-right">
+                 <div className="col-md-2 offset-md-9 col-sm-9 ml-auto text-right" >
                     <button type="submit" className="btn btn-primary "> Xác nhận </button>
                 </div>
-            </div>
+         </form>
         );
     }
 }

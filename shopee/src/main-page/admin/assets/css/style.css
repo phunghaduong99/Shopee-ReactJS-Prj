@@ -623,7 +623,7 @@ aside.left-panel {
         background: none !important;
         color: #607d8b;
         display: inline-block;
-        font-size: 14px;
+        font-size: 15px;
         line-height: 26px;
         padding: 10px 0;
         position: relative;
@@ -1115,7 +1115,7 @@ header .form-inline {
     .user-area .user-menu .nav-link {
       color: #607d8b;
       display: block;
-      font-size: 13px;
+      font-size: 15px;
       line-height: 22px;
       padding: 5px 0; }
       .user-area .user-menu .nav-link > i {

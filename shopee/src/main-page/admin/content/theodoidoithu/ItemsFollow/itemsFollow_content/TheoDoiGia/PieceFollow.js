@@ -98,7 +98,9 @@ class PieceFollow extends Component {
                                         </div>
                                         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                             <div className="row ">
-                                                <h4> {this.state.product.name}</h4>
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                    <h4> {this.state.product.name}</h4>
+                                                </div>
                                             </div>
                                             
                                             <div className="row">

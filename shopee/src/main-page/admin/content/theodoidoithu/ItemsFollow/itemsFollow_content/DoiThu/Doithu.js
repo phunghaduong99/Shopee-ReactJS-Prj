@@ -14,16 +14,9 @@ class Doithu extends Component {
                 rating:'4.9',
                 follow:'2',
                 price:'340000 đ',
-                choose: false,
                 buy:'13'
             },
         };
-    }
-    onChoose=(e)=>{
-        e.preventDefault();
-        this.setState( {
-            choose:true
-        });
     }
     render() {
         var {conpetitor}=this.state;
@@ -33,7 +26,7 @@ class Doithu extends Component {
                 
                 <div className="row ">
                     
-                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                    <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                         <div className="card ">
                             <div className="card-header"><h4>Lựa chọn đối thủ</h4></div>
                             <div className="card-body">
@@ -42,14 +35,14 @@ class Doithu extends Component {
                                     <thead>
                                     <tr >
                                             <th className="cot6">Đối thủ</th>
-                                            <th className="cot7 ">Đánh giá 
-                                                <Tooltip content="Đánh giá trung bình của cửa hàng (n/5.0)" fontSize="11px" >
-                                                    <span className="fa fa-info-circle red" ></span>
+                                            <th className="cot7 " >Đánh giá 
+                                                <Tooltip content="Đánh giá trung bình của cửa hàng (n/5.0)" fontSize="11px"   >
+                                                    <span className="fa fa-info-circle red text-left m-l-5" ></span>
                                                 </Tooltip>
                                              </th>
                                             <th className="cot8 " >Theo dõi 
-                                                <Tooltip content="Số lượng người ấn theo dõi cửa hàng" fontSize="11px">
-                                                    <span className="fa fa-info-circle red" ></span>
+                                                <Tooltip content="Số lượng người ấn theo dõi cửa hàng" fontSize="11px" >
+                                                    <span className="fa fa-info-circle red text-left m-l-5 " ></span>
                                                 </Tooltip>
                                             </th>
                                             <th className="cot9" >Sản phẩm</th>
@@ -71,7 +64,7 @@ class Doithu extends Component {
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                         <div className="card ">
                                 <div className="card-header"><h4>Đối thủ đã chọn</h4></div>
                                 <div className="card-body">

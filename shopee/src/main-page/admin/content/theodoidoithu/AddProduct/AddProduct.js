@@ -49,7 +49,7 @@ class AddProduct extends Component {
                                                 <input 
                                                     className="form-control my-0 py-1" 
                                                     type="text" 
-                                                    placeholder="Search" 
+                                                    placeholder="Tìm kiếm theo tên sản phẩm, mã sản phẩm" 
                                                     aria-label="Search"
                                                 />
                                              </div>
