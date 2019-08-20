@@ -3,6 +3,7 @@ export const SAVE_LIST_SHOP = 'SAVE_LIST_SHOP';
 export const SAVE_TOKEN = 'SAVE_TOKEN';
 
 export const SAVE_LIST_ITEMS = 'SAVE_LIST_ITEMS';
+export const SAVE_LIST_SEARCH_ITEMS = 'SAVE_LIST_SEARCH_ITEMS';
 export const CHANGE_PRICE_ITEM = 'CHANGE_PRICE_ITEM';
 
 

@@ -7,6 +7,7 @@ import imageToy from './1.jpg';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import * as actions from '../../../../../redux/actions/index';
+import { thisExpression } from '@babel/types';
 class Product extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +22,7 @@ class Product extends Component {
                     item_id: "213123"
                 }
             ],
-                
+
             isOnSearch: false,
             listItems: [],
             search: '',
@@ -32,7 +33,7 @@ class Product extends Component {
 
         axios({
             method: 'get',
-            url: 'http://192.168.0.103:8081/getItems/' + this.props.shopIdSelected,
+            url: 'http://localhost:8081/getItems/' + this.props.shopIdSelected,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -51,36 +52,59 @@ class Product extends Component {
                 alert("Không lấy được cửa hàng");
             });
     }
-    
+
 
     onSearch = (event) => {
         event.preventDefault();
         let search = event.target.value;
-        this.setState({search: search });
-        if(search === '')   this.setState({isOnSearch: false });
-        else this.setState({isOnSearch: true });
-
-        if( search !== ''){
-
-        }
+        this.setState({ search: search });
+        if (search === '') this.setState({ isOnSearch: false });
+        else this.setState({ isOnSearch: true });
     }
     render() {
         let tabItems = "";
-        let newListItems  ;
-        
-         newListItems = this.props.listItems;
-        if(newListItems !== undefined ){
-             tabItems = newListItems.map((c, index) =>
-            <TabItems
-                itemid={c.itemid}
-                price={c.price}
-                name={c.name}
-                key={index}
-                shopid = {c.shopid}
-                match={this.props.match} />)
+        let newListItems;
+        if (!this.state.isOnSearch) {
+            newListItems = this.props.listItems;
+            if (newListItems !== undefined) {
+                tabItems = newListItems.map((c, index) =>
+                    <TabItems
+                        itemid={c.itemid}
+                        price={c.price}
+                        name={c.name}
+                        key={index}
+                        shopid={c.shopid}
+                        images = {c.images[0]}
+                        match={this.props.match} />)
+            }
+            else { tabItems = null }
         }
-        else {tabItems = null}
-        
+        else {
+            let search = this.state.search;
+            console.log(search);
+            let newListSearchItems;
+            newListSearchItems = this.props.listItems.filter((c) => {
+                return c.name.search(search) >= 0 || c.itemid.toString().search(search) >= 0 ||c.price.toString().search(search) >= 0;
+            }
+            );
+            if (newListSearchItems !== undefined) {
+                tabItems = newListSearchItems.map((c, index) =>
+                    <TabItems
+                        itemid={c.itemid}
+                        price={c.price}
+                        name={c.name}
+                        key={index}
+                        shopid={c.shopid}
+                        images = {c.images[0]}
+                        match={this.props.match} />)
+            }
+            else { tabItems = null }
+
+
+
+
+        }
+
         return (
             <div onSubmit={this.onSubmit} >
 
@@ -110,7 +134,7 @@ class Product extends Component {
                                     type="text"
                                     placeholder="Tìm kiếm"
                                     aria-label="Search"
-                                    onChange = {this.onSearch}
+                                    onChange={this.onSearch}
                                 />
                             </div>
                         </div>
@@ -128,9 +152,9 @@ class Product extends Component {
                                 {tabItems}
                                 {/* <TabItems items={items} match={this.props.match} /> */}
                             </tbody>
-                                
-                            
-                                
+
+
+
 
                         </table>
                     </div>

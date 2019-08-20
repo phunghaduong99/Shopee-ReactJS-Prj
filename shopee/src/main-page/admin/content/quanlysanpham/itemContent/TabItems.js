@@ -62,10 +62,10 @@ class TabItems extends Component {
         return (
             <tr>
                 <td >
-                    <img className="img-toy m-r-7" src={imageToy} alt="" />
-                    <button onClick = {this.onSlectedItem}>
-                        <Link to={`${this.props.match.url}/itemsDetail`}>{this.props.name} </Link>
-                    </button>
+                    <img className="img-toy m-r-7" src={this.props.images} alt="" />
+                    
+                        <Link onClick = {this.onSlectedItem} to={`${this.props.match.url}/itemsDetail`}>{this.props.name} </Link>
+                   
                 </td>
                 <td> {this.props.itemid}</td>
                 <td> {this.props.price}</td>
