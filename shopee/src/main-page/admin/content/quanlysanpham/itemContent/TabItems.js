@@ -4,26 +4,61 @@ import StarRatings from 'react-star-ratings';
 import { Link } from "react-router-dom";
 
 import Popup from "reactjs-popup";
+import axios from 'axios';
+import { connect } from 'react-redux';
 
-
-
+import * as actions from '../../../../../redux/actions/index';
 class TabItems extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            open: false 
+            open: false,
+            newPrice: -1,
+            shop_id: ''
         };
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
     openModal() {
         this.setState({ open: true });
-      }
+    }
     closeModal() {
         this.setState({ open: false });
-      }
+    }
+    onChange = (event) => {
+        event.preventDefault();
+        let newPrice = event.target.value;
+        this.setState({ newPrice: newPrice });
+    }
+    onSubmit = (event) => {
+        event.preventDefault();
+
+        let url = "http://localhost:8081/updatePrice/" + this.props.shopid + "/" + this.props.itemid + "/" + this.state.newPrice;
+        console.log(url);
+        axios({
+            method: 'put',
+            url: url,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${this.props.token}`
+            },
+        })
+            .then((response) => {
+                console.log(response);
+                this.props.changePriceItem(this.props.itemid, this.state.newPrice);
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("Chỉnh sửa giá thất bại.");
+            });
+        this.closeModal();
+    }
+
+    onSlectedItem = () =>{
+        this.props.saveItemIdSelected(this.props.itemid);
+    }
     render() {
-        
+
         return (
             <tr>
                 <td >
@@ -42,21 +77,22 @@ class TabItems extends Component {
                         starSpacing="2px"
                     />
                     <button className="button" className="btn btn-primary m-l-35" onClick={this.openModal} >Sửa giá</button>
-                    
-                        <Popup
-                            open={this.state.open}
-                            closeOnDocumentClick
-                            onClose={this.closeModal}
-                        >
-                            <div className="card changePiece">
-                                <div className="card-header"><h6>Chỉnh sửa giá sản phẩm "Xe tải đồ chơi"</h6></div>
+
+                    <Popup
+                        open={this.state.open}
+                        closeOnDocumentClick
+                        onClose={this.closeModal}
+                    >
+                        <div className="card changePiece">
+                            <form onSubmit={this.onSubmit}>
+                                <div className="card-header"><h6>{this.props.name}</h6></div>
                                 <div className="card-body">
                                     <div className="row ">
                                         <div className="col-md-8">
                                             <label className="form-control-group"><h6>Giá bán hiện tại (VNĐ)</h6></label>
                                         </div>
                                         <div className="col-md-4 aline">
-                                            <label className="form-control-group "><h7>70,000</h7></label>
+                                            <label className="form-control-group "><h6>{this.props.price}</h6></label>
                                         </div>
                                     </div>
                                     <div className="row ">
@@ -64,16 +100,16 @@ class TabItems extends Component {
                                             <label className="form-control-group"><h6>Giá mới</h6></label>
                                         </div>
                                         <div className="col-md-6">
-                                            <input 
+                                            <input
                                                 className="form-control"
-                                                name="newPiece" 
-                                                placeholder="Nhập giá mới" 
+                                                name="newPiece"
+                                                placeholder="Nhập giá mới"
                                                 type="text "
                                                 onChange={this.onChange}
                                                 required
                                             />
                                         </div>
-                                        
+
                                     </div>
                                     <div className="col-md-6 offset-md-9 col-sm-6 ml-auto m-t-20 aline">
                                         <button onClick={this.closeModal}>
@@ -83,17 +119,37 @@ class TabItems extends Component {
                                             XÁC NHẬN
                                         </button>
                                     </div>
+
                                 </div>
-                                </div>
-                        </Popup>
-                   
-                    </td>
-                   
-                </tr>
-                
-                
+                            </form>
+                        </div>
+                    </Popup>
+
+                </td>
+
+            </tr>
+
+
         );
     }
 }
+const mapStatetoProps = (state) => {
+    return {
+        token: state.token,
 
-export default TabItems ;
+    }
+}
+
+const mapDispatchtoProps = (dispatch, props) => {
+    return {
+        changePriceItem: (itemId, price) => {
+            dispatch(actions.changePriceItem(itemId, price));
+        },
+        saveItemIdSelected: (shopItemIdSelected) => {
+            dispatch(actions.saveItemIdSelected(shopItemIdSelected));
+        }
+
+        
+    }
+}
+export default connect(mapStatetoProps, mapDispatchtoProps)(TabItems);

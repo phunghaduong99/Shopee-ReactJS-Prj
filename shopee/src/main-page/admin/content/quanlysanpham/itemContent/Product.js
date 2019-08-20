@@ -33,7 +33,7 @@ class Product extends Component {
 
         axios({
             method: 'get',
-            url: 'http://192.168.1.144/getItems/' + this.props.shopIdSelected,
+            url: 'http://localhost:8081/getItems/' + this.props.shopIdSelected,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -118,7 +118,7 @@ class Product extends Component {
 
                         </div>
                         <div className="col-md-2 offset-md-2 mr-0 ml-0">
-                            <Link to={`./quanlycuahang`} className="btn btn-link">Đổi cửa hàng </Link>
+                            <Link to={`${this.props.match.url}/quanlycuahang`} className="btn btn-link">Đổi cửa hàng </Link>
                             {/* <button type="button" className="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết nối</button> */}
                         </div>
                     </div>
@@ -132,7 +132,7 @@ class Product extends Component {
                                 <input
                                     className="form-control my-0 py-1"
                                     type="text"
-                                    placeholder="Tìm kiếm theo tên sản phẩm, mã sản phẩm"
+                                    placeholder="Tìm kiếm"
                                     aria-label="Search"
                                     onChange={this.onSearch}
                                 />
