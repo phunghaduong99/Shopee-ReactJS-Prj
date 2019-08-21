@@ -77,11 +77,24 @@ export const saveListRivalsShop = (listRivalsShop) =>{
         listRivalsShop
     }
 }
+export const saveListRivalsShopFollowing = (listRivalsShopFollowing) =>{
+    return {
+        type: types.SAVE_LIST_RIVALS_SHOP_FOLLOWING,
+        listRivalsShopFollowing
+    }
+}
+export const deleteListRivalsShopFollowing = (itemId) =>{
+    return {
+        type: types.DELETE_LIST_RIVALS_SHOP_FOLLOWING,
+        itemId
+    }
+}
 
 export const chooseRivalsItem = (index) =>{
     return {
         type: types.CHOOSE_RIVALS_ITEM,
-        index
+        index: index
+ 
     }
 }
 export const deleteRivalsItem = (index) =>{

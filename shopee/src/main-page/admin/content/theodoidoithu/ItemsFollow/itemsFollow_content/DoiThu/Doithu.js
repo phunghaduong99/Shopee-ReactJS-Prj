@@ -80,11 +80,13 @@ class Doithu extends Component {
         let numberchosen = table.length - table2.length;
         if (numberchosen < 5) {
             this.props.chooseRivalsItem(indexItem);
+            this.props.saveListRivalsShopFollowing(table[indexItem])
         }
+        
     }
-    DeleteFollowing = (indexItem) => {
-
+    DeleteFollowing = (indexItem, itemid) => {
         this.props.deleteRivalsItem(indexItem);
+        this.props.deleteListRivalsShopFollowing(itemid)
     }
 
     render() {
@@ -106,10 +108,6 @@ class Doithu extends Component {
                     return c.isFollowing === false;
                 })
 
-                let table_choosen = table.filter((c) => {
-                    return c.isFollowing === true;
-                })
-
 
                 tableshop_un_chosen = table_un_choosen.map((c, index) =>
                     <ListDoithu
@@ -126,12 +124,13 @@ class Doithu extends Component {
                         isOnFollowing={this.isOnFollowing}
 
                     />)
-                tableshop_chosen = table_choosen.map((c, index) =>
+                tableshop_chosen = this.props.listRivalsShopFollowing.map((c, index) =>
                     <RivalChosen
                         key={index}
                         nameRival={c.nameRival}
                         DeleteFollowing={this.DeleteFollowing}
                         indexItem={c.indexItem}
+                        itemid = {c.itemid}
                     />
                 )
             }
@@ -208,7 +207,7 @@ const mapStatetoProps = (state) => {
         token: state.token,
         listRivalsItem: state.listRivalsItem,
         listRivalsShop: state.listRivalsShop,
-
+        listRivalsShopFollowing: state.listRivalsShopFollowing
     }
 }
 const mapDispatchtoProps = (dispatch, props) => {
@@ -219,11 +218,17 @@ const mapDispatchtoProps = (dispatch, props) => {
         saveListRivalsShop: (listRivalsShop) => {
             dispatch(actions.saveListRivalsShop(listRivalsShop));
         },
-        chooseRivalsItem: (index) => {
-            dispatch(actions.chooseRivalsItem(index));
+        chooseRivalsItem: (index, numberchosen) => {
+            dispatch(actions.chooseRivalsItem(index, numberchosen));
         },
         deleteRivalsItem: (index) => {
             dispatch(actions.deleteRivalsItem(index));
+        },
+        saveListRivalsShopFollowing: (listRivalsShopFollowing) => {
+            dispatch(actions.saveListRivalsShopFollowing(listRivalsShopFollowing));
+        },
+        deleteListRivalsShopFollowing: (itemid) => {
+            dispatch(actions.deleteListRivalsShopFollowing(itemid));
         }
     }
 }

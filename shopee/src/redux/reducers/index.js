@@ -14,6 +14,7 @@ import userInfo from './userInfo';
 import listRivalsShop from './theodoidoithu/listRivalsShop';
 import listRivalsItem from './theodoidoithu/listRivalsItem';
 
+import listRivalsShopFollowing from './theodoidoithu/listRivalsShopFollowing'
 const myReducer = combineReducers({
     token: token,
     listShop: listShop,
@@ -25,7 +26,9 @@ const myReducer = combineReducers({
     userInfo: userInfo,
 
     listRivalsShop: listRivalsShop,
-    listRivalsItem: listRivalsItem
+    listRivalsItem: listRivalsItem,
+
+    listRivalsShopFollowing: listRivalsShopFollowing
 });
 
 export default myReducer;
