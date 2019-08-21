@@ -30,9 +30,16 @@ class Product extends Component {
         };
     }
     componentDidMount() {
+       
+        if(this.props.listItems.length ===0){
+            this.callAPI();
+        }
+        
+    }
 
+    callAPI = () => {
         axios({
-            method: 'get',
+            method: 'put',
             url: 'http://localhost:8081/getItems/' + this.props.shopIdSelected,
             headers: {
                 'Content-Type': 'application/json',
@@ -42,9 +49,6 @@ class Product extends Component {
             .then((response) => {
                 console.log(response);
                 let newListItems = response.data;
-
-
-                // this.setState({ listItems: newListItems });
                 this.props.saveListItems(newListItems);
             })
             .catch((error) => {
@@ -52,7 +56,6 @@ class Product extends Component {
                 alert("Không lấy được cửa hàng");
             });
     }
-
 
     onSearch = (event) => {
         event.preventDefault();
@@ -99,12 +102,8 @@ class Product extends Component {
                         match={this.props.match} />)
             }
             else { tabItems = null }
-
-
-
-
         }
-
+        console.log(this.props.listItems.length)
         return (
             <div onSubmit={this.onSubmit} >
 
@@ -114,7 +113,7 @@ class Product extends Component {
                 <div className="manage">
                     <div className="row ">
                         <div className="col-md-10">
-                            <h5> Cửa hàng đang chọn: nottthing123 </h5>
+                            <h5> Cửa hàng đang chọn: {this.props.shopNameSelected} </h5>
 
                         </div>
                         <div className="col-md-2 offset-md-2 mr-0 ml-0">
@@ -168,6 +167,7 @@ const mapStatetoProps = (state) => {
     return {
         token: state.token,
         shopIdSelected: state.shopIdSelected,
+        shopNameSelected: state.shopNameSelected,
         listItems: state.listItems
     }
 }

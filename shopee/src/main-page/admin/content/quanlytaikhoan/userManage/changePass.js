@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
 
+import swal from 'sweetalert';
 // const phoneRegex = RegExp(
 //    /\(*\d{3}\)*( |-)*\d{3}( |-)*\d{4}/
 //   );
@@ -45,7 +48,7 @@ class changePass extends Component {
         switch (name) {
             case "pass":
             formErrors.pass =
-              value.length < 6 ? "Mật khẩu cũ không đúng" : "";
+              value.length < 6 ? "Mật khẩu tối thiểu 6 kí tự" : "";
             break;
             case "newPass":
             formErrors.newPass =
@@ -63,14 +66,32 @@ class changePass extends Component {
     onSubmit=(event)=>{
         event.preventDefault();
         if (formValid(this.state)) {
-          console.log(`
-            --Data--
-            pass: ${this.state.pass}
-            newPass: ${this.state.newPass}
-          `);
+          this.callApi();
         } else {
           console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
         }
+    }
+    callApi = () => {
+      axios({
+        method: 'put',
+        url: 'http://localhost:8081/updateInfor',
+        data: {
+          'password': `${this.state.newPass}`
+        },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `${this.props.token}`
+        },
+      })
+        .then((response) => {
+          console.log(response);
+          swal("Đổi mật khẩu thành công!", "", "success",
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+          alert("Đổi mật khẩu thất bại.");
+        });
     }
     render() {
         return (
@@ -132,10 +153,10 @@ class changePass extends Component {
                           <div className="col-md-3 offset-md-9 col-sm-6 ml-auto">
                               <button type="submit" className="btn btn-primary "data-toggle="modal" data-target="#myModal">Lưu thay đổi </button>
                           </div>
-                          <div class="modal" id="myModal">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                               <div class="modal-body">
+                          <div className="modal" id="myModal">
+                            <div className="modal-dialog">
+                              <div className="modal-content">
+                               <div className="modal-body">
                                   <h4>Đổi mật khẩu thành công</h4>
                                 </div>
                               </div>
@@ -149,5 +170,10 @@ class changePass extends Component {
         );
     }
 }
-
-export default changePass ;
+const mapStatetoProps = (state) => {
+  console.log(state);
+  return {
+    token: state.token,
+  }
+}
+export default connect(mapStatetoProps, null)(changePass);

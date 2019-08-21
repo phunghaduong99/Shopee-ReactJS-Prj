@@ -7,16 +7,28 @@ export const saveToken = (token) =>{
         token
     }
 }
+export const saveUserInfo = (userInfo) =>{
+    return {
+        type: types.SAVE_USER_INFO,
+        userInfo
+    }
+}
 export const saveListShop = (listShop) =>{
     return {
         type: types.SAVE_LIST_SHOP,
         listShop
     }
 }
+
 export const saveListItems = (listItems) =>{
     return {
         type: types.SAVE_LIST_ITEMS,
         listItems
+    }
+}
+export const removeListItems = () =>{
+    return {
+        type: types.REMOVE_LIST_ITEMS,
     }
 }
 export const saveListSearchItems = (listSearchItems) =>{
@@ -31,6 +43,12 @@ export const saveShopIdSelected = (shopIdSelected) =>{
         shopIdSelected
     }
 }
+export const saveShopNameSelected = (shopNameSelected) =>{
+    return {
+        type: types.SAVE_SHOP_NAME_SELECTED,
+        shopNameSelected
+    }
+}
 export const saveItemIdSelected = (itemIdSelected) =>{
     return {
         type: types.SAVE_ITEM_ID_SELECTED,
@@ -43,5 +61,32 @@ export const changePriceItem = (itemid, price) =>{
         type: types.CHANGE_PRICE_ITEM,
         itemid: itemid,
         price:price
+    }
+}
+
+export const saveListRivalsItem = (listRivalsItem) =>{
+    return {
+        type: types.SAVE_LIST_RIVALS_ITEM,
+        listRivalsItem
+    }
+}
+
+export const saveListRivalsShop = (listRivalsShop) =>{
+    return {
+        type: types.SAVE_LIST_RIVALS_SHOP,
+        listRivalsShop
+    }
+}
+
+export const chooseRivalsItem = (index) =>{
+    return {
+        type: types.CHOOSE_RIVALS_ITEM,
+        index
+    }
+}
+export const deleteRivalsItem = (index) =>{
+    return {
+        type: types.DELETE_RIVALS_ITEM,
+        index
     }
 }

@@ -4,6 +4,7 @@ import StarRatings from 'react-star-ratings';
 import imageToy from './1.jpg';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
+import { isFulfilled } from 'q';
 class ItemsDetail extends Component {
 
     render() {
@@ -42,10 +43,9 @@ class ItemsDetail extends Component {
         itemDetail = this.props.listItems.filter((c) =>
             c.itemid === this.props.itemIdSelected
         )
-        let firstCate = itemDetail[0].categories[0].id;
-        let secondCate = itemDetail[0].categories[1].id;
-        let thirdCate = itemDetail[0].categories[2].id;
-        // console.log(firstCate, secondCate, thirdCate );
+        let firstCate = itemDetail[0].categories[0].catid;
+        let secondCate = itemDetail[0].categories[1].catid;
+        let thirdCate = itemDetail[0].categories[2].catid;
         let fistName, secondName, thirdName;
         if (firstCate < secondCate && firstCate < thirdCate) {
             fistName = itemDetail[0].categories[0].display_name;
@@ -80,8 +80,12 @@ class ItemsDetail extends Component {
                 thirdName = itemDetail[0].categories[0].display_name;
             }
         }
-
-        console.log(itemDetail);
+        
+        let discount ;
+        if(itemDetail[0].discount === null) discount = 0;
+        else {
+            discount = itemDetail[0].discount 
+        }
         return (
             <div>
                 <div className="col col-sm-3"><Link to={`/admin/quanlysanpham`} className="txt7"><i className="fa fa-angle-left"></i> Quay lại trang danh sách</Link></div>
@@ -125,7 +129,7 @@ class ItemsDetail extends Component {
                                                 <label className="form-control-group"><h6>Cửa hàng</h6></label>
                                             </div>
                                             <div className="col-md-7 aline">
-                                                <label className="form-control-group "><h6>nottthing123</h6></label>
+                                                <label className="form-control-group "><h6>{this.props.shopNameSelected}</h6></label>
                                             </div>
                                         </div>
                                     </div>
@@ -166,7 +170,7 @@ class ItemsDetail extends Component {
                                         <label className="form-control-group"><h6>Tồn kho</h6></label>
                                     </div>
                                     <div className="col-md-8 aline">
-                                        <label className="form-control-group "><h6>{itemDetail[0].stock}</h6></label>
+                                        <label className="form-control-group "><h6>{itemDetail[0].historical_sold}</h6></label>
                                     </div>
                                 </div>
                                 <div className="row ">
@@ -286,7 +290,7 @@ class ItemsDetail extends Component {
                                         <label className="form-control-group"><h6>Giảm giá (%)</h6></label>
                                     </div>
                                     <div className="col-md-6 aline">
-                                        <label className="form-control-group "><h6>{itemDetail[0].discount}</h6></label>
+                                        <label className="form-control-group "><h6>{discount}</h6></label>
                                     </div>
                                 </div>
                             </div>
@@ -301,7 +305,8 @@ class ItemsDetail extends Component {
 const mapStatetoProps = (state) => {
     return {
         itemIdSelected: state.itemIdSelected,
-        listItems: state.listItems,
+        shopNameSelected: state.shopNameSelected,
+        listItems: state.listItems
     }
 }
 export default connect(mapStatetoProps, null)(ItemsDetail);

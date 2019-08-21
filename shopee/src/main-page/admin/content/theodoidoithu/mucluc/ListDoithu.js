@@ -5,45 +5,42 @@ import imageToy from './1.jpg';
 class ListDoithu  extends Component {
     constructor(props){
         super(props);
-        this.state = ({
-            choose:false
-        });
+       
     }
-    onChoose=(e)=>{
-        e.preventDefault();
-        this.setState( {
-            choose:true
-        });
+    isOnFollowing = (event) => {
+        event.preventDefault();
+        let indexItem = this.props.indexItem;
+        this.props.isOnFollowing(indexItem);
     }
     render() {
-        let {choose}=this.state;
+   
+        let rating_star = Math.round(this.props.rating_star * 100) / 100;
         return (
                 <tr>
-                    <td> {this.props.conpetitor.name}</td>
-                    <td className="text-center"> {this.props.conpetitor.rating}</td>
-                    <td className="text-center"> {this.props.conpetitor.follow}</td>
+                    <td> {this.props.nameRival}</td>
+                    <td className="text-center"> {this.props.rating_star_rival_shop}</td>
+                    <td className="text-center"> {this.props.follower_count}</td>
                     <td >
                         <div className="row">
                             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                <img className="img-toy3 m-r-7" src={imageToy}  />
+                                <img className="img-toy3 m-r-7" src={this.props.images}  />
                             </div>
                             <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                {this.props.conpetitor.namePro}
+                                {this.props.name}
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                <div><span className="text-danger">{this.props.conpetitor.rating}</span>/5</div>
+                                <div><span className="text-danger">{rating_star}</span>/5</div>
                             </div>
                             <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                 <div className="text-right"><span className="text-danger">{this.props.conpetitor.buy}</span> đã bán</div>
+                                 <div className="text-right"><span className="text-danger">{this.props.sold}</span> đã bán</div>
                             </div>
                         </div>
                     </td>
-                    <td> {this.props.conpetitor.price}</td>
+                    <td> {this.props.price}</td>
                     <td>
-                        {this.state.choose? <label className="text-primary m-l-5" >Đã chọn</label>:<button className="button" className="btn btn-primary m-l-5" onClick={this.onChoose} >Chọn</button>}
-                        
+                        <button className="button" className="btn btn-primary m-l-5" onClick={this.isOnFollowing} >Chọn</button>
                     </td>
                 </tr>
                 

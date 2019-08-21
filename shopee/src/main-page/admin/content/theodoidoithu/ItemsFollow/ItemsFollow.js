@@ -4,11 +4,10 @@ import StarRatings from 'react-star-ratings';
 import imageToy from './../1.jpg';
 import { Link } from "react-router-dom";
 import Noidung from './itemsFollow_content/noidung';
-
+import { connect } from 'react-redux';
 
 
 class ItemsFollow extends Component {
-    
     render() {
         return (
             <div>
@@ -28,7 +27,7 @@ class ItemsFollow extends Component {
                                 <label className="form-control-group "><h6>D123456778</h6></label>
                             </div>
                             <div className="row ">
-                             <label className="form-control-group "><h6> Cửa hàng: "Nottthing123"</h6></label>
+                             <label className="form-control-group "><h6> Cửa hàng: "{this.props.shopNameSelected}"</h6></label>
                             </div>
                         </div>
                     </div>
@@ -51,5 +50,10 @@ class ItemsFollow extends Component {
         );
     }
 }
-
-export default ItemsFollow ;
+const mapStatetoProps = (state) => {
+    return {
+      token: state.token,
+      shopNameSelected: state.shopNameSelected
+    }
+  }
+export default connect(mapStatetoProps, null)(ItemsFollow);

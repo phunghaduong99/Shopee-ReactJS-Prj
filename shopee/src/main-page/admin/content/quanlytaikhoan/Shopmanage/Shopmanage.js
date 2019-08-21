@@ -16,61 +16,68 @@ class ShopManage extends Component {
 
   componentDidMount() {
     if(this.props.listShop.length === 0){
-      axios({
-        method: 'get',
-        url: 'http://192.168.1.144:8081/shop',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization':  `${this.props.token}`
-        },
-      })
-        .then((response) => {
-          console.log(response);
-          this.setState({ listShop: response.data });
-
-          let newlistShop = this.state.listShop.map(
-            (c, index) => {
-              if (index === 0) {
-                c.isActive = true;
-                this.setState({ shop_id_selected: c.shopid });
-                this.props.saveShopIdSelected(c.shopid);
-              }
-              else {
-                c.isActive = false;
-              }
-              return c
-            }
-          )
-          this.props.saveListShop(newlistShop);
-         
-        })
-        .catch((error) => {
-          console.log(error);
-          alert("Không lấy được cửa hàng");
-        });
+      this.callApi();
     }
-    else {
-      this.setState({listShop: this.props.listShop});
-    }
+    
   }
+  callApi = () => {
+    axios({
+      method: 'get',
+      url: 'http://localhost:8081/shop',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization':  `${this.props.token}`
+      },
+    })
+      .then((response) => {
+        console.log(response);
+        let neww = response.data;
+
+        let newlistShop = neww.map(
+          (c, index) => {
+            if (index === 0) {
+              c.isActive = true;
+     
+              this.props.saveShopIdSelected(c.shopid);
+              this.props.saveShopNameSelected(c.name);
+            }
+            else {
+              c.isActive = false;
+            }
+            return c
+          }
+        )
+        this.props.saveListShop(newlistShop);
+       
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Không lấy được cửa hàng");
+      });
+  }
+
   changeStatus = (index) => {
-    let newlistShop = this.state.listShop.map(
+    let newlistShop = this.props.listShop.map(
       (c) => {
         c.isActive = false;
         return c;
       })
-    this.setState({
-      listShop: newlistShop.map(
+  
+      let  newlist = newlistShop.map(
         (c, indexx) => {
           if (indexx === index) {
             c.isActive = true;
-            this.setState({ shop_id_selected: c.shopid })
             this.props.saveShopIdSelected(c.shopid);
+            this.props.saveShopNameSelected(c.name);
+            if(this.props.shopIdSelected !== c.shopid){
+              this.props.removeListItems()
+            }
           }
           return c;
         }
       )
-    })
+      this.props.saveListShop(newlist);
+   
   }
 
   onSubmit = (event) => {
@@ -79,7 +86,7 @@ class ShopManage extends Component {
 
 
   render() {
-    let number_shop = this.state.listShop.length;
+    let number_shop = this.props.listShop.length;
     let tableshop = this.props.listShop.map((c, index) =>
       <Shop
         name={c.name}
@@ -132,11 +139,11 @@ class ShopManage extends Component {
 }
 
 const mapStatetoProps = (state) => {
-  console.log(state);
   return {
     listShop: state.listShop,
     token: state.token,
-    shopIdSelected: state.shopIdSelected
+    shopIdSelected: state.shopIdSelected,
+
   }
 }
 const mapDispatchtoProps = (dispatch, props) => {
@@ -146,6 +153,12 @@ const mapDispatchtoProps = (dispatch, props) => {
     },
     saveShopIdSelected: (shopIdSelected) => {
       dispatch(actions.saveShopIdSelected(shopIdSelected));
+    },
+    saveShopNameSelected: (shopNameSelected) => {
+      dispatch(actions.saveShopNameSelected(shopNameSelected));
+    },
+    removeListItems: () => {
+      dispatch(actions.removeListItems());
     }
   }
 }
