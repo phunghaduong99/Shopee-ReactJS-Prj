@@ -17,10 +17,10 @@ class ListDoithu  extends Component {
         let rating_star = Math.round(this.props.rating_star * 100) / 100;
         return (
                 <tr>
-                    <td> {this.props.nameRival}</td>
-                    <td className="text-center"> {this.props.rating_star_rival_shop}</td>
-                    <td className="text-center"> {this.props.follower_count}</td>
-                    <td >
+                    <td className="doithu"> {this.props.nameRival}</td>
+                    <td className="doithu text-center"> {this.props.rating_star_rival_shop}</td>
+                    <td className="doithu text-center"> {this.props.follower_count}</td>
+                    <td className="doithu">
                         <div className="row">
                             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                 <img className="img-toy3 m-r-7" src={this.props.images}  />
@@ -38,9 +38,10 @@ class ListDoithu  extends Component {
                             </div>
                         </div>
                     </td>
-                    <td> {this.props.price}</td>
-                    <td>
-                        <button className="button" className="btn btn-primary m-l-5" onClick={this.isOnFollowing} >Chọn</button>
+                    <td className="doithu text-center"> {this.props.price}</td>
+                    <td className="doithu">
+                        {(this.props.isFollowing)?<label className="text-primary">Đã chọn</label>:<button className="button" className="btn btn-primary m-l-5" onClick={this.isOnFollowing} >Chọn</button>}
+                        
                     </td>
                 </tr>
                 

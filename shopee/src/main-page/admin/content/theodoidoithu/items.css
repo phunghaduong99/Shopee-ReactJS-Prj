@@ -61,22 +61,41 @@
     width: 20%;
    }
    .cot6{
-    width: 16%;
+    width: 12%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-align: center;
    }
    .cot7{
     width: 16%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-align: center;
+
    }
    .cot8{
     width: 16%;
+    padding-left: 0 !important;
+    text-align: center;
+    padding-right: 0 !important;
    }
    .cot9{
-    width: 34%;
+    width: 41%;
+    padding-left: 0 !important;
+    text-align: center;
+    padding-right: 0 !important;
    }
    .cot10{
     width: 13%;
+    padding-left: 0 !important;
+    text-align: center;
+    padding-right: 0 !important;
    }
    .cot11{
-    width: 10%;
+    width: 7%;
+    padding-left: 0 !important;
+    text-align: center;
+    padding-right: 0 !important;
    }
    .colStart{
     width: 80%;
@@ -188,4 +207,7 @@
   .css-681xbd-Bubble {
     padding: 5px 5px 5px 5px !important;
   }
-
+.doithu{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
