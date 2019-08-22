@@ -22,8 +22,14 @@ class TabItems extends Component {
         return (
                 <tr>
                     <td >
-                        <img className="img-toy m-r-7" src={imageToy} alt="" />
-                        <Link to={`${this.props.Theodoidoithu_url.url}/itemsDetail`}>{this.props.items.name} </Link>
+                        <div className="row">
+                            <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <img className="img-toy m-r-7" src={imageToy} alt="" />
+                            </div>
+                            <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <Link to={`${this.props.Theodoidoithu_url.url}/itemsDetail`}>{this.props.items.name} </Link>
+                            </div>
+                        </div>
                     </td>
                     <td> {this.props.items.id}</td>
                     <td> {this.props.items.price}</td>

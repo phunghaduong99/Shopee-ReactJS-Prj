@@ -42,6 +42,7 @@ class Admin extends Component {
                         <div className="content">
                             <Content match={this.props.match}/>
                         </div>
+                        
                     </div>
                 </div>
            

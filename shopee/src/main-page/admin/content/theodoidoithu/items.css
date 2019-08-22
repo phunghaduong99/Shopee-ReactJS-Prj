@@ -58,7 +58,7 @@
     width: 18%;
    }
  .cot4{
-    width: 30%;
+    width: 20%;
    }
    .cot6{
     width: 16%;
@@ -84,9 +84,6 @@
    .colNum{
     width: 20%;
    }
-  .popup-content{
-      width: 30% !important;
-  }
 .changePiece{
       margin-bottom: 0 !important;
   }

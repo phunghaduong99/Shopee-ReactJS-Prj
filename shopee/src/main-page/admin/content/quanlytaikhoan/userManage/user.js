@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './user.css';
 import { Link } from "react-router-dom";
+import Popup from "reactjs-popup";
 const phoneRegex = RegExp(
    /\(*\d{3}\)*( |-)*\d{3}( |-)*\d{4}/
   );
@@ -23,13 +24,18 @@ class user extends Component {
             username:null,
             sdt:null,
             formErrors: {
-                username: "",
-                phone:""
-              }
+                username: null,
+                phone:null,
+                error:null
+              },
+              open: false
             
         });
         
     }
+     closeModal=()=>{
+      this.setState({ open: false });
+     }
     
     onChange = e => {
         e.preventDefault();
@@ -44,12 +50,17 @@ class user extends Component {
         switch (name) {
             case "username":
             formErrors.username =
-              value.length < 5 ? "Tên đăng kí tối thiểu 5 kí tự" : "";
+              value.length < 5 ? "Tên đăng kí tối thiểu 5 kí tự" : null;
             break;
             case "phone":
                 formErrors.phone = phoneRegex.test(value)
-                ? ""
+                ? null
                 : "Số điện thoại không hợp lệ";
+            break;
+             case "error":
+                formErrors.error =((this.state.username=== null)&&(this.state.phone===null))
+                ? "Chưa chỉnh sửa thông tin gì?"
+                :null;
             break;
             default:
         }
@@ -57,23 +68,25 @@ class user extends Component {
         
     
       };
-      
+      offSubmit=(event)=>{
+        event.preventDefault();
+      }
          
     onSubmit=(event)=>{
         event.preventDefault();
-        if (formValid(this.state)) {
-          console.log(`
+        this.setState({ open: true });
+        console.log(`
             --Data--
             username: ${this.state.username}
             phone: ${this.state.phone}
-          `);
-        } else {
-          console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
-        }
+          `); 
     }
     render() {
+      let a=this.state.formErrors.username;
+      let b=this.state.formErrors.phone;
+      let c=this.state.formErrors.error;
         return (
-            <div onSubmit={this.onSubmit} >
+            <div onSubmit={(a===null&&b===null&&c===null)?this.onSubmit:this.offSubmit} >
                     <div className=" card overview col-sm-12">
                         <h2>Thông tin tài khoản</h2>
                     </div>
@@ -90,9 +103,8 @@ class user extends Component {
                                     placeholder="Nhập tên" 
                                     type="text"
                                     onChange={this.onChange}
-                                    required
                                   />
-                                  <span className="errorMessage txt4">{this.state.formErrors.username}</span>
+                                  <span className="errorMessage txt4">{a}</span>
                             </div>
                             
                           </div>
@@ -108,7 +120,7 @@ class user extends Component {
                                     type="text"
                                     onChange={this.onChange}
                                 />
-                              <span className="errorMessage txt4">{this.state.formErrors.phone}</span>
+                              <span className="errorMessage txt4">{b}</span>
                             </div>
                           </div>
                           <div className=" row form-group ">
@@ -130,11 +142,26 @@ class user extends Component {
                               {/* <button type="button" className="btn btn-link" >Đổi mật khẩu</button> */}
                               <Link to={`${this.props.match.url}/changePass`}className="btn btn-link">Đổi mật khẩu </Link>
                             </div>
+                            
                           </div>
                           <div className=" row form-group ">
-                            <div className="col-md-3 offset-md-9 col-sm-6 ml-auto text-right">
+                            <div className="col-md-4 aline">
+                            </div>
+                            <div className="col-md-5 ">
+                              <span className="errorMessage txt4">{c}</span>
+                            </div>
+                            <div className="col-md-3  text-right">
                                 <button type="submit" className="btn btn-primary ">Lưu thay đổi </button>
                             </div>
+                            <Popup
+                                open={this.state.open}
+                                closeOnDocumentClick
+                                onClose={this.closeModal}
+                            >
+                              <div className="update">
+                                <h5>Đã lưu thay đổi</h5>
+                              </div>
+                            </Popup>
                           </div>
                       </div>
                      </form>
