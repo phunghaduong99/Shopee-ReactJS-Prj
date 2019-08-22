@@ -103,7 +103,7 @@ class Product extends Component {
             }
             else { tabItems = null }
         }
-        console.log(this.props.listItems.length)
+      
         return (
             <div onSubmit={this.onSubmit} >
 
