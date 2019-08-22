@@ -39,8 +39,9 @@ class ListDoithu  extends Component {
                         </div>
                     </td>
                     <td> {this.props.price}</td>
-                    <td>
-                        <button className="button" className="btn btn-primary m-l-5" onClick={this.isOnFollowing} >Chọn</button>
+                    <td> 
+                        {(this.props.isFollowing)?<label className="text-primary">Đã chọn</label>:
+                        <button className="button" className="btn btn-primary m-l-5" onClick={this.isOnFollowing} >Chọn</button>}
                     </td>
                 </tr>
                 

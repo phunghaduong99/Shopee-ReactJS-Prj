@@ -104,12 +104,12 @@ class Doithu extends Component {
                 }
             });
             if (this.props.listRivalsShop.length > 0) {
-                let table_un_choosen = table.filter((c) => {
-                    return c.isFollowing === false;
-                })
+                // let table_un_choosen = table.filter((c) => {
+                //     return c.isFollowing === false;
+                // })
 
 
-                tableshop_un_chosen = table_un_choosen.map((c, index) =>
+                tableshop_un_chosen = table.map((c, index) =>
                     <ListDoithu
                         name={c.name}
                         nameRival={c.nameRival}
@@ -121,6 +121,7 @@ class Doithu extends Component {
                         sold={c.sold}
                         price={c.price}
                         images={c.images[0]}
+                        isFollowing = {c.isFollowing}
                         isOnFollowing={this.isOnFollowing}
 
                     />)
