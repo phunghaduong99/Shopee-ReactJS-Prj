@@ -33,7 +33,7 @@ class TabItems extends Component {
     onSubmit = (event) => {
         event.preventDefault();
 
-        let url = "http://localhost:8081/updatePrice/" + this.props.shopid + "/" + this.props.itemid + "/" + this.state.newPrice;
+        let url = "http://192.168.1.144:8081/updatePrice/" + this.props.shopid + "/" + this.props.itemid + "/" + this.state.newPrice;
         console.log(url);
         axios({
             method: 'put',
@@ -62,10 +62,14 @@ class TabItems extends Component {
         return (
             <tr>
                 <td >
-                    <img className="img-toy m-r-7" src={this.props.images} alt="" />
-                    
-                        <Link onClick = {this.onSlectedItem} to={`${this.props.match.url}/itemsDetail`}>{this.props.name} </Link>
-                   
+                    <div className="row">
+                        <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <img className="img-toy m-r-7" src={this.props.images} alt="" />
+                        </div>
+                        <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <Link onClick = {this.onSlectedItem} to={`${this.props.match.url}/itemsDetail`}>{this.props.name} </Link>
+                        </div>
+                    </div>
                 </td>
                 <td> {this.props.itemid}</td>
                 <td> {this.props.price}</td>

@@ -28,7 +28,7 @@ class Admin extends Component {
     componentDidMount() {
         axios({
             method: 'get',
-            url: 'http://localhost:8081/infor',
+            url: 'http://192.168.1.144:8081/infor',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`

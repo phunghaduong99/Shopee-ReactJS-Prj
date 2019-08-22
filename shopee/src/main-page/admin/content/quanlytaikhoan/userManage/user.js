@@ -7,6 +7,7 @@ import * as actions from '../../../../../redux/actions/index';
 
 
 import swal from 'sweetalert';
+import Popup from "reactjs-popup";
 const phoneRegex = RegExp(
   /\(*\d{3}\)*( |-)*\d{3}( |-)*\d{4}/
 );
@@ -90,7 +91,7 @@ class user extends Component {
   callApi = () => {
     axios({
       method: 'put',
-      url: 'http://localhost:8081/updateInfor',
+      url: 'http://192.168.1.144:8081/updateInfor',
       data: {
         'phone': `${this.state.phone}`
       },

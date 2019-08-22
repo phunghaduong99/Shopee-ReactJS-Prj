@@ -1,23 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
+import Popup from "reactjs-popup";
 
 import swal from 'sweetalert';
-// const phoneRegex = RegExp(
-//    /\(*\d{3}\)*( |-)*\d{3}( |-)*\d{4}/
-//   );
-  
-const formValid = ({ formErrors, ...rest }) => {
-    let valid = true;
-    Object.values(formErrors).forEach(val => {
-      val.length > 0 && (valid = false);
-    });
-    Object.values(rest).forEach(val => {
-      val === null && (valid = false);
-    });
-  
-    return valid;
-  };
 class changePass extends Component {
     constructor(props) {
         super(props);
@@ -26,10 +13,13 @@ class changePass extends Component {
             newPass:null,
             confirmNew:null,
             formErrors: {
-                pass:'',
-                newPass:'',
-                confirmNew:''
-              }
+                pass:null,
+                newPass:null,
+                confirmNew:null,
+                errorMessage:null
+                
+              },
+              open:false
             
         });
         
@@ -48,11 +38,11 @@ class changePass extends Component {
         switch (name) {
             case "pass":
             formErrors.pass =
-              value.length < 6 ? "Mật khẩu tối thiểu 6 kí tự" : "";
+              value.length < 6 ? "Mật khẩu cũ không đúng" : null;
             break;
             case "newPass":
             formErrors.newPass =
-              value.length < 6 ? "Mật khẩu tối thiểu 6 kí tự" : "";
+              value.length < 6 ? "Mật khẩu tối thiểu 6 kí tự" : null;
             break;
             
             default:
@@ -61,20 +51,26 @@ class changePass extends Component {
         
     
       };
-      
-         
+     closeModal=()=>{
+      this.setState({ open: false });
+     }
+    offSubmit=(event)=>{
+      event.preventDefault();
+      this.setState({ errorMessage:"Cần nhập chính xác các thông tin" });
+    }
     onSubmit=(event)=>{
         event.preventDefault();
-        if (formValid(this.state)) {
-          this.callApi();
-        } else {
-          console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
-        }
+        this.callApi();
+        this.setState({ open: true });
+        console.log(`
+            --Data--
+            newPass: ${this.state.newPass}
+          `); 
     }
     callApi = () => {
       axios({
         method: 'put',
-        url: 'http://localhost:8081/updateInfor',
+        url: 'http://192.168.1.144:8081/updateInfor',
         data: {
           'password': `${this.state.newPass}`
         },
@@ -90,12 +86,23 @@ class changePass extends Component {
         })
         .catch((error) => {
           console.log(error);
-          alert("Đổi mật khẩu thất bại.");
+          swal("Đổi mật khẩu thất bại!", "", "error");
         });
     }
     render() {
+      let a=this.state.formErrors.pass;
+      let b=null;
+      let c=null;
+      if ((this.state.newPass=== null)||(this.state.newPass!==this.state.pass) )
+      {b= this.state.formErrors.newPass;}
+      else{
+        b="Mật khẩu mới trùng mật khẩu cũ"
+      };
+      if(this.state.confirmNew!== null && this.state.newPass!==this.state.confirmNew) 
+      {c="Mật khẩu không khớp"} else{c=null} ; 
+
         return (
-            <div onSubmit={this.onSubmit} >
+            <div onSubmit={(a===null&&b===null&& c===null)?this.onSubmit:this.offSubmit} >
                     <div className=" card overview col-sm-12">
                         <h2>Đổi mật khẩu</h2>
                     </div>
@@ -114,7 +121,7 @@ class changePass extends Component {
                                     onChange={this.onChange}
                                     required
                                   />
-                                  <span className="errorMessage txt4">{this.state.formErrors.pass}</span>
+                                  <span className="errorMessage txt4">{a}</span>
                             </div>
                             
                           </div>
@@ -131,7 +138,7 @@ class changePass extends Component {
                                     onChange={this.onChange}
                                     required
                                 />
-                              <span className="errorMessage txt4">{this.state.formErrors.newPass}</span>
+                              <span className="errorMessage txt4">{b}</span>
                             </div>
                           </div>
                           <div className=" row form-group ">
@@ -147,21 +154,23 @@ class changePass extends Component {
                                     onChange={this.onChange}
                                     required
                                 />
-                              <span className="errorMessage txt4 m-t-20">{(this.state.confirmNew!== null && this.state.newPass!==this.state.confirmNew) ? "Mật khẩu không khớp" : "" }</span>
+                              <span className="errorMessage txt4 m-t-20">{c}</span>
                             </div>
+                            
                           </div>
-                          <div className="col-md-3 offset-md-9 col-sm-6 ml-auto">
-                              <button type="submit" className="btn btn-primary "data-toggle="modal" data-target="#myModal">Lưu thay đổi </button>
+                          <div className="col-md-6 offset-md-9 col-sm-6 ml-auto text-right">
+                            <Link to={`/admin/quanlytaikhoan`}><button className="btn btn-danger m-r-10 ">Hủy Bỏ </button></Link>
+                            <button type="submit" className="btn btn-primary ">Lưu Lại </button>
                           </div>
-                          <div className="modal" id="myModal">
-                            <div className="modal-dialog">
-                              <div className="modal-content">
-                               <div className="modal-body">
-                                  <h4>Đổi mật khẩu thành công</h4>
-                                </div>
+                          <Popup
+                                open={this.state.open}
+                                closeOnDocumentClick
+                                onClose={this.closeModal}
+                            >
+                              <div className="update">
+                                <h5>Đổi mật khẩu thành công</h5>
                               </div>
-                            </div>
-                          </div>
+                            </Popup>
                       </div>
                      </form>
                 </div>
