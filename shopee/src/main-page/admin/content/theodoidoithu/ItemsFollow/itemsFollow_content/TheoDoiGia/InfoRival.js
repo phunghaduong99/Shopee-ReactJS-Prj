@@ -19,6 +19,9 @@ class InfoRival extends Component {
         let number_rating = ShopRival[0].rating_good + ShopRival[0].rating_normal  + ShopRival[0].rating_bad;
         let rating_count_item = Math.round(itemRival[0].rating_star * 100) / 100;
         let rating_count_Shop = Math.round(ShopRival[0].rating_star * 100) / 100;
+
+        let images = imageshop;
+        if(ShopRival[0].images !== null)  images = ShopRival[0].images[0];    
         console.log(number_rating)
         console.log(itemRival)
         console.log(ShopRival)
@@ -30,7 +33,7 @@ class InfoRival extends Component {
                             <h4>Thông tin đối thủ</h4>
                             <div className="row doithu">
                                 <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                    <img className="mx-auto rounded-circle" src={ShopRival[0].images[0]} alt="" />
+                                    <img className="mx-auto rounded-circle" src={images} alt="" />
                                 </div>
                                 <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                                     <div className="row ">

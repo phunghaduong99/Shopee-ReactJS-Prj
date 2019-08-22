@@ -30,6 +30,14 @@ class PieceFollow extends Component {
                 return <option key={index} value={index}>{c.nameRival}</option>
             })
         }
+        let status;
+        console.log(this.state.rival);
+        if(this.state.rival === undefined) {
+            status = null
+        }
+        else {
+            status = <InfoRival rival = {this.state.rival}  table = {this.state.table}/>
+        }
 
         return (
             <div>
@@ -46,7 +54,7 @@ class PieceFollow extends Component {
                             </div>
                         </div>
                     </div>
-                    <InfoRival rival = {this.state.rival}  table = {this.state.table}/>
+                    {status}
                     
                 </div>
 

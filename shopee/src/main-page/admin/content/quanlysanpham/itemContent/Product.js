@@ -39,8 +39,8 @@ class Product extends Component {
 
     callAPI = () => {
         axios({
-            method: 'get',
-            url: 'http://192.168.1.144:8081/getItems/' + this.props.shopIdSelected,
+            method: 'put',
+            url: 'http://localhost:8081/getItems/' + this.props.shopIdSelected,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -149,7 +149,7 @@ class Product extends Component {
                             </thead>
                             <tbody>
                                 {tabItems}
-                                {/* <TabItems items={items} match={this.props.match} /> */}
+                               
                             </tbody>
 
 
@@ -163,7 +163,7 @@ class Product extends Component {
     }
 }
 const mapStatetoProps = (state) => {
-    console.log(state);
+
     return {
         token: state.token,
         shopIdSelected: state.shopIdSelected,

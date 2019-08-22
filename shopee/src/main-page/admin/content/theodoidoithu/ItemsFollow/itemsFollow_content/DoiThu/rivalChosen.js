@@ -8,8 +8,10 @@ class RivalChosen extends Component {
     DeleteFollowing = (e) => {
         e.preventDefault();
         let indexItem = this.props.indexItem;
-        let itemid = this.props.itemid
-        this.props.DeleteFollowing(indexItem, itemid);
+        let itemid = this.props.itemid;
+        let rivalShopid = this.props.rivalShopid;
+      
+        this.props.DeleteFollowing(indexItem, itemid, rivalShopid );
     }
     render() {
         return (

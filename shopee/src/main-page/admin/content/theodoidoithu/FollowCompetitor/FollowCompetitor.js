@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import './../items.css';
 import TabItemsFollow from './TabItemsFollow';
 import imageToy from './../1.jpg';
+import axios from 'axios';
+import { connect } from 'react-redux';
+
+
 
 class FollowCompetitor extends Component {
     constructor(props){
@@ -17,7 +21,29 @@ class FollowCompetitor extends Component {
             }
         };
     }
-    
+    componentDidMount(){
+        // this.callAPI();
+    }
+    callAPI = () => {
+        axios({
+            method: 'put',
+            url: 'http://localhost:8081/rivals' + this.props.shopIdSelected ,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${this.props.token}`
+            },
+        })
+            .then((response) => {
+                console.log(response);
+                let newListItems = response.data;
+                this.props.saveListItems(newListItems);
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("Không lấy được cửa hàng");
+            });
+    }
+
     render() {
         var {items}=this.state;
         return (
@@ -28,7 +54,7 @@ class FollowCompetitor extends Component {
                     <div className="manage">
                       <div className="row ">
                         <div className="col-md-10">
-                          <h5> Cửa hàng đang chọn: nottthing123 </h5>
+                          <h5> Cửa hàng đang chọn: {this.props.shopNameSelected} </h5>
                           <div className="text-left">
                                 <Link to={`${this.props.match.url}/AddProduct`} className="btn btn-link">Thêm sản phẩm theo dõi <span className="fa  fa-angle-double-right p-l-5"></span></Link>
                           </div>
@@ -68,4 +94,14 @@ class FollowCompetitor extends Component {
     }
 }
 
-export default FollowCompetitor ;
+const mapStatetoProps = (state) => {
+    console.log(state);
+    return {
+        token: state.token,
+        shopIdSelected: state.shopIdSelected,
+        shopNameSelected: state.shopNameSelected,
+        listItems: state.listItems
+    }
+}
+
+export default connect(mapStatetoProps, null)(FollowCompetitor);

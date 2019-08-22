@@ -91,7 +91,7 @@ class user extends Component {
   callApi = () => {
     axios({
       method: 'put',
-      url: 'http://192.168.1.144:8081/updateInfor',
+      url: 'http://localhost:8081/updateInfor',
       data: {
         'phone': `${this.state.phone}`
       },

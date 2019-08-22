@@ -19,20 +19,24 @@ class TabItems extends Component {
       }
     render() {
         let {add}=this.state;
+        
+        let Theodoidoithu_url = "";
+        if(this.props.Theodoidoithu_url !== undefined)  Theodoidoithu_url = this.props.Theodoidoithu_url.url;
+        
         return (
                 <tr>
                     <td >
                         <div className="row">
                             <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                <img className="img-toy m-r-7" src={imageToy} alt="" />
+                                <img className="img-toy m-r-7" src={this.props.images} alt="" />
                             </div>
                             <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                            <Link to={`${this.props.Theodoidoithu_url.url}/itemsDetail`}>{this.props.items.name} </Link>
+                            <Link to={`${Theodoidoithu_url}/itemsDetail`}>{this.props.name} </Link>
                             </div>
                         </div>
                     </td>
-                    <td> {this.props.items.id}</td>
-                    <td> {this.props.items.price}</td>
+                    <td> {this.props.itemid}</td>
+                    <td> {this.props.price}</td>
                     <td>
                     <StarRatings
                         starRatedColor="#FFD203"

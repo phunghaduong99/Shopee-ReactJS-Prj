@@ -10,15 +10,18 @@ class ListDoithu  extends Component {
     isOnFollowing = (event) => {
         event.preventDefault();
         let indexItem = this.props.indexItem;
-        this.props.isOnFollowing(indexItem);
+        let rivalItemid = this.props.rivalItemid;
+        let rivalShopid = this.props.rivalShopid
+        this.props.isOnFollowing(indexItem, rivalShopid, rivalItemid);
     }
     render() {
    
-        let rating_star = Math.round(this.props.rating_star * 100) / 100;
+        let rating_star_item = Math.round(this.props.rating_star * 100) / 100;
+        let rating_star_rival_shop = Math.round(this.props.rating_star_rival_shop * 100) / 100;
         return (
                 <tr>
                     <td className="doithu"> {this.props.nameRival}</td>
-                    <td className="doithu text-center"> {this.props.rating_star_rival_shop}</td>
+                    <td className="doithu text-center"> {rating_star_rival_shop}</td>
                     <td className="doithu text-center"> {this.props.follower_count}</td>
                     <td className="doithu">
                         <div className="row">
@@ -31,7 +34,7 @@ class ListDoithu  extends Component {
                         </div>
                         <div className="row">
                             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                <div><span className="text-danger">{rating_star}</span>/5</div>
+                                <div><span className="text-danger">{rating_star_item}</span>/5</div>
                             </div>
                             <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                  <div className="text-right"><span className="text-danger">{this.props.sold}</span> đã bán</div>

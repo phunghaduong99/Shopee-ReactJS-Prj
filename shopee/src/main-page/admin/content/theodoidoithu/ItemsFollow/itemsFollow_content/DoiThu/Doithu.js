@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../../../../../redux/actions/index';
 class Doithu extends Component {
     state = {
-        numberchosen: 0
+        listChosen: []
     }
     constructor(props) {
         super(props);
@@ -27,7 +27,7 @@ class Doithu extends Component {
         if (this.props.listRivalsItem.length === 0) {
             axios({
                 method: 'get',
-                url: 'http://192.168.1.144:8081/getRivals/114140652/2676610631',
+                url: 'http://localhost:8081/getRivals/114140652/2676610631',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `${this.props.token}`
@@ -54,7 +54,7 @@ class Doithu extends Component {
         if (this.props.listRivalsShop.length === 0) {
             axios({
                 method: 'get',
-                url: 'http://192.168.1.144:8081/shopRival/114140652/2676610631',
+                url: 'http://localhost:8081/shopRival/114140652/2676610631',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `${this.props.token}`
@@ -72,25 +72,90 @@ class Doithu extends Component {
                     alert("Không lấy được shop đối thủ");
                 });
         }
-    }
-    isOnFollowing = (indexItem) => {
 
+        if (this.props.listRivalsShopFollowing.length === 0 ) {
+            axios({
+                method: 'get',
+                url: 'http://localhost:8081/rivals/114140652/2676610631',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `${this.props.token}`
+                },
+            })
+                .then((response) => {
+                    console.log(response);
+                    let listChosen = response.data;
+                    this.setState({listChosen: listChosen})
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert("Không lấy được danh sách shop đối thủ");
+                });
+        }
+    }
+    isOnFollowing = (indexItem, rivalShopid , rivalItemid) => {
+        console.log(rivalShopid)
+        console.log(rivalItemid)
         let table = this.props.listRivalsItem;
         let table2 = table.filter((c) => c.isFollowing === false);
         let numberchosen = table.length - table2.length;
         if (numberchosen < 5) {
-            this.props.chooseRivalsItem(indexItem);
-            this.props.saveListRivalsShopFollowing(table[indexItem])
+            axios({
+                method: 'post',
+                url: 'http://localhost:8081/rival',
+                data: {
+                    "itemid": '2676610631',
+                    "shopid": '114140652',
+                    "rivalShopid": `${rivalShopid}`,
+                    "rivalItemid":  `${rivalItemid}`,
+                },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `${this.props.token}`
+                },
+            })
+                .then((response) => {
+                    console.log(response);
+                    this.props.chooseRivalsItem(indexItem);
+                    this.props.saveListRivalsShopFollowing(table[indexItem])
+
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+               
         }
-        
+
     }
-    DeleteFollowing = (indexItem, itemid) => {
-        this.props.deleteRivalsItem(indexItem);
-        this.props.deleteListRivalsShopFollowing(itemid)
+    DeleteFollowing = (indexItem, itemid, rivalShopid ) => {
+        axios({
+            method: 'delete',
+            url: 'http://localhost:8081/rival',
+            data: {
+                "itemid": '2676610631',
+                "shopid": '114140652',
+                "rivalShopid": `${rivalShopid}`,
+                "rivalItemid":  `${itemid}`,
+            },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${this.props.token}`
+            },
+        })
+            .then((response) => {
+                console.log(response);
+                this.props.deleteRivalsItem(indexItem);
+                this.props.deleteListRivalsShopFollowing(itemid)
+
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        
     }
 
     render() {
-
+       
         let tableshop_un_chosen = null;
         let tableshop_chosen = null;
         let table = "";
@@ -103,11 +168,31 @@ class Doithu extends Component {
                     return c
                 }
             });
-            if (this.props.listRivalsShop.length > 0) {
-                // let table_un_choosen = table.filter((c) => {
-                //     return c.isFollowing === false;
-                // })
+       
+            
+            if( this.props.listRivalsShopFollowing.length === 0 && this.state.listChosen.length >0) {
+              
+                let listChosen = this.state.listChosen;
+                
+                let table2 = this.props.listRivalsItem;
 
+                    this.props.listRivalsItem.map((c, index) => {
+                        let itemid = c.itemid;
+                        let isItem = null;
+                        let indexItem = c.indexItem;
+                        isItem = listChosen.filter((c, index) => {
+
+                            return c.rival.rivalItemid === itemid
+                        });
+                        if (isItem.length > 0) {
+                            this.props.chooseRivalsItem(indexItem);
+                            this.props.saveListRivalsShopFollowing(table2[indexItem])
+                        }
+                    })
+            }
+
+
+            if (this.props.listRivalsShop.length > 0) {
 
                 tableshop_un_chosen = table.map((c, index) =>
                     <ListDoithu
@@ -121,8 +206,10 @@ class Doithu extends Component {
                         sold={c.sold}
                         price={c.price}
                         images={c.images[0]}
-                        isFollowing = {c.isFollowing}
+                        isFollowing={c.isFollowing}
                         isOnFollowing={this.isOnFollowing}
+                        rivalShopid = {c.shopid}
+                        rivalItemid = {c.itemid}
 
                     />)
                 tableshop_chosen = this.props.listRivalsShopFollowing.map((c, index) =>
@@ -131,7 +218,9 @@ class Doithu extends Component {
                         nameRival={c.nameRival}
                         DeleteFollowing={this.DeleteFollowing}
                         indexItem={c.indexItem}
-                        itemid = {c.itemid}
+                        itemid={c.itemid}
+                        rivalShopid = {c.shopid}
+                   
                     />
                 )
             }
@@ -141,6 +230,8 @@ class Doithu extends Component {
             tableshop_un_chosen = null;
             tableshop_chosen = null;
         }
+
+
 
         return (
             <div>
@@ -208,6 +299,7 @@ const mapStatetoProps = (state) => {
         token: state.token,
         listRivalsItem: state.listRivalsItem,
         listRivalsShop: state.listRivalsShop,
+        shopIdSelected: state.shopIdSelected,
         listRivalsShopFollowing: state.listRivalsShopFollowing
     }
 }
