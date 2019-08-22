@@ -27,7 +27,7 @@ class Doithu extends Component {
         if (this.props.listRivalsItem.length === 0) {
             axios({
                 method: 'get',
-                url: 'http://localhost:8081/getRivals/114140652/2676610631',
+                url: 'http://192.168.1.144:8081/getRivals/114140652/2676610631',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `${this.props.token}`
@@ -54,7 +54,7 @@ class Doithu extends Component {
         if (this.props.listRivalsShop.length === 0) {
             axios({
                 method: 'get',
-                url: 'http://localhost:8081/shopRival/114140652/2676610631',
+                url: 'http://192.168.1.144:8081/shopRival/114140652/2676610631',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `${this.props.token}`

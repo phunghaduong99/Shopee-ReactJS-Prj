@@ -3,6 +3,7 @@ import admin from  './../images/admin.jpg';
 import logo from './../images/logoadmin.png';
 import './header.css';
 import { Link } from "react-router-dom";
+import avatar from './1.jpg';
 class Header extends Component {
     state = {}
     render() {
@@ -29,7 +30,7 @@ class Header extends Component {
                     <div className="header-menu">
                         <div className="user-area dropdown float-right">
                             <button href="/" className="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img className="user-avatar rounded-circle" src={responseF?responseF.picture.data.url: admin} alt="User Avatar" />
+                                <img className="user-avatar rounded-circle" src={avatar} alt="User Avatar" />
                                 <span className="username">Phùng Hà Dương</span>
                                 <i className="fa fa-angle-down m-l-10"></i>
                             </button>
