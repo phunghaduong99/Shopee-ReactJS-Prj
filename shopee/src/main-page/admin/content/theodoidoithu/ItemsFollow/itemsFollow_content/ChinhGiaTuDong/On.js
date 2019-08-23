@@ -1,30 +1,128 @@
 import React, { Component } from 'react';
 import Tooltip from "react-simple-tooltip"
+import { connect } from 'react-redux';
+import axios from 'axios';
+import swal from 'sweetalert';
 
 class On extends Component {
     constructor(props) {
         super(props);
-        this.state =({
-            minprice:'',
-            maxprice:'',
-            ratingChange: ''
+        this.state = ({
+            minprice: '1',
+            maxprice: '2',
+            ratingChange: '3',
+            rival: this.props.listRivalsShopFollowing[0],
+            dataRival: []
         });
     }
-    onChange=(event)=>{
+    onChange = (event) => {
         event.preventDefault();
         var target = event.target;
         var name = target.name;
         var value = target.value;
         this.setState({
-          [name]: value
+            [name]: value
         });
-      
+
     }
-    onSubmit=(event)=>{
+    componentDidMount() {
+        axios({
+            method: 'get',
+            url: 'http://localhost:8081/rivals/' + this.props.shopIdSelected + '/' + this.props.followingItemSelected,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${this.props.token}`
+            },
+        })
+            .then((response) => {
+                console.log(response);
+                if (response.data.length > 0) {
+                    let dataRival = response.data;
+                    this.setState({
+                        dataRival: dataRival
+                    })
+                    let rival = this.state.rival;
+                    let minprice = '';
+                    let maxprice = '';
+                    let ratingChange = '';
+                    dataRival.filter((c) => {
+                        if (rival.itemid === c.rival.rivalItemid) {
+                            maxprice = c.rival.max;
+                            minprice = c.rival.min;
+                        }
+                    })
+                    this.setState({
+                        minprice: minprice,
+                        maxprice: maxprice,
+                    })
+                }
+
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+    onChangeRival = (e) => {
+        let index = e.target.value;
+        this.setState({ rival: this.props.listRivalsShopFollowing[index] })
+
+        let rival = this.props.listRivalsShopFollowing[index];
+        let minprice = '';
+        let maxprice = '';
+        let ratingChange = '';
+        this.state.dataRival.filter((c) => {
+            if (rival.itemid === c.rival.rivalItemid) {
+                maxprice = c.rival.max;
+                minprice = c.rival.min;
+            }
+        })
+        this.setState({
+            minprice: minprice,
+            maxprice: maxprice,
+        })
+
+    }
+    onSubmit = (event) => {
         event.preventDefault();
+        axios({
+            method: 'post',
+            url: 'http://localhost:8081/rival',
+            data: {
+                "itemid": `${this.props.followingItemSelected}`,
+                "shopid": `${this.props.shopIdSelected}`,
+                "rivalShopid": `${this.state.rival.shopid}`,
+                "rivalItemid": `${this.state.rival.itemid}`,
+                "auto": 'true',
+                "price": `${this.state.ratingChange}`,
+                "max": `${this.state.maxprice}`,
+                "min": `${this.state.minprice}`
+
+            },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${this.props.token}`
+            },
+        })
+            .then((response) => {
+                console.log(response);
+                swal("Đã theo dõi tự động", "", "success")
+
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
-    render() { 
-        return ( 
+    render() {
+        let listRivalsShopFollowing;
+        let optionRivals;
+        if (this.props.listRivalsShopFollowing.length > 0) {
+
+            listRivalsShopFollowing = this.props.listRivalsShopFollowing;
+            optionRivals = listRivalsShopFollowing.map((c, index) => {
+                return <option key={index} value={index}>{c.nameRival}</option>
+            })
+        }
+        return (
             <form className="form-horizontal" onSubmit={this.onSubmit}>
                 <div className="row">
                     <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
@@ -33,12 +131,8 @@ class On extends Component {
                                 <label className="col-form-label"><h6>Đối thủ điều chỉnh</h6> </label>
                             </div>
                             <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                                <select className="form-control m-r-0">
-                                    <option value="1">biboshoptv</option>
-                                    <option value="2">Khongcogi</option>
-                                    <option value="3">Shopchomeo</option>
-                                    <option value="4">Option 4</option>
-                                    <option value="5">Option 5</option>
+                                <select className="form-control m-r-0" onChange={this.onChangeRival}>
+                                    {optionRivals}
                                 </select>
                             </div>
                         </div>
@@ -49,8 +143,8 @@ class On extends Component {
                                         <Tooltip content="Giới hạn mức giá cao nhất và thấp nhất cho sản phẩm" fontSize="11px"  >
                                             <span className="fa fa-info-circle red text-left m-l-5" ></span>
                                         </Tooltip>
-                                     </h6> 
-                                    
+                                    </h6>
+
                                 </label>
                             </div>
                             <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
@@ -61,12 +155,13 @@ class On extends Component {
                                                 <label className="col-form-label"> Từ</label>
                                             </div>
                                             <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                            <input 
+                                                <input
                                                     className="form-control"
-                                                    name="minprice" 
-                                                    placeholder=".....VNĐ" 
+                                                    name="minprice"
+                                                    placeholder=".....VNĐ"
                                                     type="text"
                                                     onChange={this.onChange}
+                                                    value={this.state.minprice}
                                                     required
                                                 />
                                             </div>
@@ -78,11 +173,12 @@ class On extends Component {
                                                 <label className="col-form-label">Đến</label>
                                             </div>
                                             <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                            <input 
+                                                <input
                                                     className="form-control"
-                                                    name="maxprice" 
-                                                    placeholder=".....VNĐ" 
+                                                    name="maxprice"
+                                                    placeholder=".....VNĐ"
                                                     type="text"
+                                                    value={this.state.maxprice}
                                                     onChange={this.onChange}
                                                     required
                                                 />
@@ -97,10 +193,10 @@ class On extends Component {
                                 <label className="col-form-label"><h6>Mức điều chỉnh thấp hơn</h6> </label>
                             </div>
                             <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                                <input 
+                                <input
                                     className="form-control"
-                                    name="ratingChange" 
-                                    placeholder="Nhập %" 
+                                    name="ratingChange"
+                                    placeholder="Nhập %"
                                     type="text"
                                     onChange={this.onChange}
                                     required
@@ -108,13 +204,24 @@ class On extends Component {
                             </div>
                         </div>
                     </div>
-                 </div>
-                 <div className="col-md-2 offset-md-9 col-sm-9 ml-auto text-right" >
+                </div>
+                <div className="col-md-2 offset-md-9 col-sm-9 ml-auto text-right" >
                     <button type="submit" className="btn btn-primary "> Xác nhận </button>
                 </div>
-         </form>
+            </form>
         );
     }
 }
- 
-export default On;
+const mapStatetoProps = (state) => {
+    return {
+        token: state.token,
+        listRivalsItem: state.listRivalsItem,
+        listRivalsShop: state.listRivalsShop,
+        listRivalsShopFollowing: state.listRivalsShopFollowing,
+        followingItemSelected: state.followingItemSelected,
+        shopIdSelected: state.shopIdSelected,
+
+    }
+}
+export default connect(mapStatetoProps, null)(On);
+

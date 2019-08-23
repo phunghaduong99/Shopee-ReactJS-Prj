@@ -51,7 +51,6 @@ class FollowCompetitor extends Component {
 
     render() {
 
-
         let tableshop = this.props.listChosenItems.map((c, index) =>
             <TabItemsFollow
                 name={c.name}

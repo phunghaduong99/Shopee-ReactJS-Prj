@@ -15,7 +15,6 @@ class PieceFollow extends Component {
         };
     }
     onChange = (e) => {
-        console.log(e.target.value);
         let index = e.target.value;
         this.setState({ rival: this.props.listRivalsShopFollowing[index]})
 
@@ -24,7 +23,6 @@ class PieceFollow extends Component {
         let listRivalsShopFollowing;
         let optionRivals;
         if (this.props.listRivalsShopFollowing.length > 0) {
-
             listRivalsShopFollowing = this.props.listRivalsShopFollowing;
             optionRivals = listRivalsShopFollowing.map((c, index) => {
                 return <option key={index} value={index}>{c.nameRival}</option>
