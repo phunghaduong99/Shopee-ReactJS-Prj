@@ -27,7 +27,7 @@ class Doithu extends Component {
         if (this.props.listRivalsItem.length === 0) {
             axios({
                 method: 'get',
-                url: 'http://localhost:8081/getRivals/114140652/2676610631',
+                url: 'http://localhost:8081/getRivals/' + this.props.shopIdSelected + '/' + this.props.followingItemSelected,
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `${this.props.token}`
@@ -54,7 +54,7 @@ class Doithu extends Component {
         if (this.props.listRivalsShop.length === 0) {
             axios({
                 method: 'get',
-                url: 'http://localhost:8081/shopRival/114140652/2676610631',
+                url: 'http://localhost:8081/shopRival/' + this.props.shopIdSelected + '/' + this.props.followingItemSelected,
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `${this.props.token}`
@@ -73,10 +73,10 @@ class Doithu extends Component {
                 });
         }
 
-        if (this.props.listRivalsShopFollowing.length === 0 ) {
+        if (this.props.listRivalsShopFollowing.length === 0) {
             axios({
                 method: 'get',
-                url: 'http://localhost:8081/rivals/114140652/2676610631',
+                url: 'http://localhost:8081/rivals/' + this.props.shopIdSelected + '/' + this.props.followingItemSelected,
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `${this.props.token}`
@@ -85,7 +85,7 @@ class Doithu extends Component {
                 .then((response) => {
                     console.log(response);
                     let listChosen = response.data;
-                    this.setState({listChosen: listChosen})
+                    this.setState({ listChosen: listChosen })
                 })
                 .catch((error) => {
                     console.log(error);
@@ -93,7 +93,11 @@ class Doithu extends Component {
                 });
         }
     }
-    isOnFollowing = (indexItem, rivalShopid , rivalItemid) => {
+    isOnFollowing = (indexItem, rivalShopid, rivalItemid) => {
+        if (this.state.listChosen.length > 0)
+            this.setState({
+                listChosen: []
+            });
         console.log(rivalShopid)
         console.log(rivalItemid)
         let table = this.props.listRivalsItem;
@@ -104,10 +108,10 @@ class Doithu extends Component {
                 method: 'post',
                 url: 'http://localhost:8081/rival',
                 data: {
-                    "itemid": '2676610631',
-                    "shopid": '114140652',
+                    "itemid": `${this.props.followingItemSelected}`,
+                    "shopid": `${this.props.shopIdSelected}`,
                     "rivalShopid": `${rivalShopid}`,
-                    "rivalItemid":  `${rivalItemid}`,
+                    "rivalItemid": `${rivalItemid}`,
                 },
                 headers: {
                     'Content-Type': 'application/json',
@@ -118,24 +122,29 @@ class Doithu extends Component {
                     console.log(response);
                     this.props.chooseRivalsItem(indexItem);
                     this.props.saveListRivalsShopFollowing(table[indexItem])
+                    this.props.addNumberRivalsChosenItem(this.props.followingItemSelected)
 
                 })
                 .catch((error) => {
                     console.log(error);
                 });
-               
+
         }
 
     }
-    DeleteFollowing = (indexItem, itemid, rivalShopid ) => {
+    DeleteFollowing = (indexItem, itemid, rivalShopid) => {
+        if (this.state.listChosen.length > 0)
+            this.setState({
+                listChosen: []
+            });
         axios({
             method: 'delete',
             url: 'http://localhost:8081/rival',
             data: {
-                "itemid": '2676610631',
-                "shopid": '114140652',
+                "itemid": `${this.props.followingItemSelected}`,
+                "shopid": `${this.props.shopIdSelected}`,
                 "rivalShopid": `${rivalShopid}`,
-                "rivalItemid":  `${itemid}`,
+                "rivalItemid": `${itemid}`,
             },
             headers: {
                 'Content-Type': 'application/json',
@@ -145,17 +154,18 @@ class Doithu extends Component {
             .then((response) => {
                 console.log(response);
                 this.props.deleteRivalsItem(indexItem);
-                this.props.deleteListRivalsShopFollowing(itemid)
+                this.props.deleteListRivalsShopFollowing(itemid);
+                this.props.subtractNumberRivalsChosenItem(this.props.followingItemSelected)
 
             })
             .catch((error) => {
                 console.log(error);
             });
-        
+
     }
 
     render() {
-       
+
         let tableshop_un_chosen = null;
         let tableshop_chosen = null;
         let table = "";
@@ -168,27 +178,27 @@ class Doithu extends Component {
                     return c
                 }
             });
-       
-            
-            if( this.props.listRivalsShopFollowing.length === 0 && this.state.listChosen.length >0) {
-              
+
+
+            if (this.props.listRivalsShopFollowing.length === 0 && this.state.listChosen.length > 0) {
+
                 let listChosen = this.state.listChosen;
-                
+
                 let table2 = this.props.listRivalsItem;
 
-                    this.props.listRivalsItem.map((c, index) => {
-                        let itemid = c.itemid;
-                        let isItem = null;
-                        let indexItem = c.indexItem;
-                        isItem = listChosen.filter((c, index) => {
+                this.props.listRivalsItem.map((c, index) => {
+                    let itemid = c.itemid;
+                    let isItem = null;
+                    let indexItem = c.indexItem;
+                    isItem = listChosen.filter((c, index) => {
 
-                            return c.rival.rivalItemid === itemid
-                        });
-                        if (isItem.length > 0) {
-                            this.props.chooseRivalsItem(indexItem);
-                            this.props.saveListRivalsShopFollowing(table2[indexItem])
-                        }
-                    })
+                        return c.rival.rivalItemid === itemid
+                    });
+                    if (isItem.length > 0) {
+                        this.props.chooseRivalsItem(indexItem);
+                        this.props.saveListRivalsShopFollowing(table2[indexItem])
+                    }
+                })
             }
 
 
@@ -208,8 +218,8 @@ class Doithu extends Component {
                         images={c.images[0]}
                         isFollowing={c.isFollowing}
                         isOnFollowing={this.isOnFollowing}
-                        rivalShopid = {c.shopid}
-                        rivalItemid = {c.itemid}
+                        rivalShopid={c.shopid}
+                        rivalItemid={c.itemid}
 
                     />)
                 tableshop_chosen = this.props.listRivalsShopFollowing.map((c, index) =>
@@ -219,8 +229,8 @@ class Doithu extends Component {
                         DeleteFollowing={this.DeleteFollowing}
                         indexItem={c.indexItem}
                         itemid={c.itemid}
-                        rivalShopid = {c.shopid}
-                   
+                        rivalShopid={c.shopid}
+
                     />
                 )
             }
@@ -300,7 +310,8 @@ const mapStatetoProps = (state) => {
         listRivalsItem: state.listRivalsItem,
         listRivalsShop: state.listRivalsShop,
         shopIdSelected: state.shopIdSelected,
-        listRivalsShopFollowing: state.listRivalsShopFollowing
+        listRivalsShopFollowing: state.listRivalsShopFollowing,
+        followingItemSelected: state.followingItemSelected,
     }
 }
 const mapDispatchtoProps = (dispatch, props) => {
@@ -322,7 +333,14 @@ const mapDispatchtoProps = (dispatch, props) => {
         },
         deleteListRivalsShopFollowing: (itemid) => {
             dispatch(actions.deleteListRivalsShopFollowing(itemid));
+        },
+        addNumberRivalsChosenItem: (itemid) => {
+            dispatch(actions.addNumberRivalsChosenItem(itemid));
+        },
+        subtractNumberRivalsChosenItem: (itemid) => {
+            dispatch(actions.subtractNumberRivalsChosenItem(itemid));
         }
+
     }
 }
 export default connect(mapStatetoProps, mapDispatchtoProps)(Doithu);

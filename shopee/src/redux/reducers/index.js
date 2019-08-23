@@ -11,8 +11,12 @@ import listItems from './listItems';
 import listSearchItems from './listSearchItems';
 import userInfo from './userInfo';
 
+import listChosenItems from './chosenItems/listChosenItems';
+
 import listRivalsShop from './theodoidoithu/listRivalsShop';
 import listRivalsItem from './theodoidoithu/listRivalsItem';
+
+import followingItemSelected from './chosenItems/followingItemSelected';
 
 import listRivalsShopFollowing from './theodoidoithu/listRivalsShopFollowing'
 const myReducer = combineReducers({
@@ -25,9 +29,11 @@ const myReducer = combineReducers({
     listSearchItems: listSearchItems,
     userInfo: userInfo,
 
+    listChosenItems: listChosenItems,
+
     listRivalsShop: listRivalsShop,
     listRivalsItem: listRivalsItem,
-
+    followingItemSelected: followingItemSelected,
     listRivalsShopFollowing: listRivalsShopFollowing
 });
 

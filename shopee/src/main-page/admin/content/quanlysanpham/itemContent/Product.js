@@ -49,7 +49,12 @@ class Product extends Component {
             .then((response) => {
                 console.log(response);
                 let newListItems = response.data;
-                this.props.saveListItems(newListItems);
+                let neww = newListItems.map((c,index) => {
+                    c.isChosen = false;
+                    return c
+                })
+                console.log(neww);
+                this.props.saveListItems(neww);
             })
             .catch((error) => {
                 console.log(error);

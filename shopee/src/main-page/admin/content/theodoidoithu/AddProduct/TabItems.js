@@ -17,6 +17,12 @@ class TabItems extends Component {
         e.preventDefault();
         this.setState({ add: true });
       }
+
+    addItem = (e) => {
+        e.preventDefault();
+        let itemid = this.props.itemid;
+        this.props.addItem(itemid);
+    }
     render() {
         let {add}=this.state;
         
@@ -44,7 +50,7 @@ class TabItems extends Component {
                         starDimension="20px"
                         starSpacing="2px"
                     />
-                    {this.state.add ? <label className="text-primary m-l-35"> Đã thêm</label>:<button className="button" className="btn btn-primary m-l-35" onClick={this.openAdd} >Thêm</button>}
+                    {this.props.isChosen ? <label className="text-primary m-l-35"> Đã thêm</label>:<button className="button" className="btn btn-primary m-l-35" onClick={this.addItem} >Thêm</button>}
                     
                         
                    

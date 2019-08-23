@@ -9,6 +9,7 @@ var myReducer = (state = initialState, action) => {
             state.push(action.listRivalsShopFollowing)
             sessionStorage.setItem('listRivalsShopFollowing', JSON.stringify(state));
             return [...state]
+
         case types.DELETE_LIST_RIVALS_SHOP_FOLLOWING:
             console.log(action)
             let itemid = action.itemId;
@@ -16,6 +17,11 @@ var myReducer = (state = initialState, action) => {
             state = newListFollowing;
             sessionStorage.setItem('listRivalsShopFollowing', JSON.stringify(state));
             return [...state]
+
+        case types.REMOVE_LIST_RIVALS_SHOP_FOLLOWING:
+            state = []
+            sessionStorage.removeItem('listRivalsShopFollowing')
+            return [...state];
         default: return [...state];
     }
 

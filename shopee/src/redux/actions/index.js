@@ -26,9 +26,19 @@ export const saveListItems = (listItems) =>{
         listItems
     }
 }
-export const removeListItems = () =>{
+
+
+
+export const addItem = (itemIdAdded) =>{
     return {
-        type: types.REMOVE_LIST_ITEMS,
+        type: types.ADD_ITEM,
+        itemIdAdded
+    }
+}
+export const deleteItem = (itemIdDeleted) =>{
+    return {
+        type: types.DELETE_ITEM,
+        itemIdDeleted
     }
 }
 export const saveListSearchItems = (listSearchItems) =>{
@@ -64,12 +74,26 @@ export const changePriceItem = (itemid, price) =>{
     }
 }
 
+export const saveListChosenItems = (listChosenItems) =>{
+    return {
+        type: types.SAVE_LIST_CHOSEN_ITEMS,
+        listChosenItems
+    }
+}
+export const addListChosenItem = (chosenItem) =>{
+    return {
+        type: types.ADD_LIST_CHOSEN_ITEM,
+        chosenItem
+    }
+}
+
 export const saveListRivalsItem = (listRivalsItem) =>{
     return {
         type: types.SAVE_LIST_RIVALS_ITEM,
         listRivalsItem
     }
 }
+
 
 export const saveListRivalsShop = (listRivalsShop) =>{
     return {
@@ -97,9 +121,55 @@ export const chooseRivalsItem = (index) =>{
  
     }
 }
+
+
+
 export const deleteRivalsItem = (index) =>{
     return {
         type: types.DELETE_RIVALS_ITEM,
         index
     }
 }
+
+export const addNumberRivalsChosenItem = (itemid) =>{
+    return {
+        type: types.ADD_NUMBER_RIVALS_CHOSEN_ITEM,
+        itemid
+    }
+}
+export const subtractNumberRivalsChosenItem = (itemid) =>{
+    return {
+        type: types.SUBTRACT_NUMBER_RIVALS_CHOSEN_ITEM,
+        itemid
+    }
+}
+
+export const followingItemSelected = (followingItemSelected) =>{
+    return {
+        type: types.Following_Item_Selected,
+        followingItemSelected
+    }
+}
+
+
+export const removeListItems = () =>{
+    return {
+        type: types.REMOVE_LIST_ITEMS,
+    }
+}
+export const removeListRivalsItem = () =>{
+    return {
+        type: types.REMOVE_LIST_RIVALS_ITEM,
+    }
+}
+export const removeListRivalsShop = () =>{
+    return {
+        type: types.REMOVE_LIST_RIVALS_SHOP,
+    }
+}
+export const removeListRivalsShopFollowing  = () =>{
+    return {
+        type: types.REMOVE_LIST_RIVALS_SHOP_FOLLOWING,
+    }
+}
+

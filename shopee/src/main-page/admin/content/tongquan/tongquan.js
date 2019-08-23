@@ -5,18 +5,78 @@ import carousel2 from './2.png';
 import carousel3 from './3.png';
 import './tongquan.css';
 
-
+import axios from 'axios';
+import * as actions from '../../../../redux/actions/index';
+import { connect } from 'react-redux';
 class TongQuan extends Component {
     state = {}
+    componentDidMount() {
+        axios({
+            method: 'get',
+            url: 'http://localhost:8081/infor',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${this.props.token}`
+            },
+        })
+            .then((response) => {
+                console.log(response);
+                this.props.saveUserInfo(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("Không lấy được thông tin tài khoản");
+            });
+        if (this.props.listShop.length === 0) {
+            this.callApi();
+        }
+
+    }
+
+    callApi = () => {
+        axios({
+            method: 'get',
+            url: 'http://localhost:8081/shop',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${this.props.token}`
+            },
+        })
+            .then((response) => {
+                console.log(response);
+                let neww = response.data;
+
+                let newlistShop = neww.map(
+                    (c, index) => {
+                        if (index === 0) {
+                            c.isActive = true;
+
+                            this.props.saveShopIdSelected(c.shopid);
+                            this.props.saveShopNameSelected(c.name);
+                        }
+                        else {
+                            c.isActive = false;
+                        }
+                        return c
+                    }
+                )
+                this.props.saveListShop(newlistShop);
+
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("Không lấy được cửa hàng");
+            });
+    }
     render() {
         return (
             <div className="row">
                 <div className="col-sm-12">
-                    
+
                     <div className="welcome">
-                    <h4   className=" text-center connect-shoppee ">Xin chào <span className= "welcome-name-user">  Phùng Hà Dương </span> </h4>
-                    <h4   className=" text-center  ">Chào mừng bạn đến với Shopee Price Analytics</h4>
-                    <h6 className=" text-center  connect-shoppee ">Hãy thực hiện kết nối với Shopee <a className="link-to-shopeee" href="https://partner.uat.shopeemobile.com/api/v1/shop/auth_partner?id=840386&token=d0f934508cadbf365ddd5518dc191848a7651fe908e4b42dcc1e8f6fb836ab78&redirect=http%3A%2F%2F192.168.36.27%3A3000%2Fadmin%2Fquanlycuahang%2FContactShopee"> tại đây</a></h6>
+                        <h4 className=" text-center connect-shoppee ">Xin chào <span className="welcome-name-user">  Phùng Hà Dương </span> </h4>
+                        <h4 className=" text-center  ">Chào mừng bạn đến với Shopee Price Analytics</h4>
+                        <h6 className=" text-center  connect-shoppee ">Hãy thực hiện kết nối với Shopee <a className="link-to-shopeee" href="https://partner.uat.shopeemobile.com/api/v1/shop/auth_partner?id=840386&token=d0f934508cadbf365ddd5518dc191848a7651fe908e4b42dcc1e8f6fb836ab78&redirect=http%3A%2F%2F192.168.36.27%3A3000%2Fadmin%2Fquanlycuahang%2FContactShopee"> tại đây</a></h6>
                     </div>
                 </div>
                 <div className="col-sm-12">
@@ -26,7 +86,7 @@ class TongQuan extends Component {
                             <div className="row">
                                 <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 funcsion-service">
                                     <div className="img-overview">
-                                         <img src={carousel1} alt="quản lý sản phẩm" />
+                                        <img src={carousel1} alt="quản lý sản phẩm" />
                                     </div>
                                     <Link to={`${this.props.match.url}/quanlysanpham`}>
                                         <h5 className="text-black text-center m-t-10">1. Quản lý sản phẩm</h5>
@@ -35,7 +95,7 @@ class TongQuan extends Component {
                                 </div>
                                 <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 funcsion-service">
                                     <div className="img-overview">
-                                         <img src={carousel2} alt="theo dõi giá" />
+                                        <img src={carousel2} alt="theo dõi giá" />
                                     </div>
                                     <Link to={`${this.props.match.url}/theodoigia`}>
                                         <h5 className="text-black text-center m-t-10">2. Theo dõi giá</h5>
@@ -44,16 +104,16 @@ class TongQuan extends Component {
                                 </div>
                                 <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 funcsion-service">
                                     <div className="img-overview">
-                                         <img src={carousel3} alt="theo dõi đối thủ" />
+                                        <img src={carousel3} alt="theo dõi đối thủ" />
                                     </div>
                                     <Link to={`${this.props.match.url}/theodoidoithu`}>
                                         <h5 className="text-black text-center m-t-10">3. Theo dõi đối thủ</h5>
                                     </Link>
                                     <p className="text-center">Theo dõi gia của đối thủ trực tiếp và chỉnh sửa giá tự động!</p>
                                 </div>
-                                
+
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -101,7 +161,7 @@ class TongQuan extends Component {
                     <div className="how-to-use-parent ">
                         <h4 className=" how-to-use ">Tìm hiểu cách sử dụng Shopee Price Analytics <a className="link-to-shopeee" href="/"> tại đây</a></h4>
                     </div>
-                    
+
                 </div>
                 {/* <div className="col-sm-4">
                     <div className="card ">
@@ -131,5 +191,28 @@ class TongQuan extends Component {
         );
     }
 }
-
-export default TongQuan;
+const mapStatetoProps = (state) => {
+    console.log(state);
+    return {
+        userInfo: state.userInfo,
+        token: state.token,
+        listShop: state.listShop,
+    }
+}
+const mapDispatchtoProps = (dispatch, props) => {
+    return {
+        saveUserInfo: (info) => {
+            dispatch(actions.saveUserInfo(info));
+        },
+        saveListShop: (listShop) => {
+            dispatch(actions.saveListShop(listShop));
+        },
+        saveShopIdSelected: (shopIdSelected) => {
+            dispatch(actions.saveShopIdSelected(shopIdSelected));
+        },
+        saveShopNameSelected: (shopNameSelected) => {
+            dispatch(actions.saveShopNameSelected(shopNameSelected));
+        },
+    }
+}
+export default connect(mapStatetoProps, mapDispatchtoProps)(TongQuan);
