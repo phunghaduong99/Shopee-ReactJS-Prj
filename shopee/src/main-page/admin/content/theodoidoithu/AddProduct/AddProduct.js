@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import './../items.css';
-import TabItemsFollow from '../FollowCompetitor/TabItemsFollow';
 import imageToy from './../1.jpg';
 import TabItems from './TabItems';
 
@@ -65,14 +64,14 @@ class AddProduct extends Component {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <TabItems items={items} Theodoidoithu_url={this.props.Theodoidoithu_url}/>
-                                        <TabItems items={items} Theodoidoithu_url={this.props.Theodoidoithu_url}/>
-                                        <TabItems items={items} Theodoidoithu_url={this.props.Theodoidoithu_url}/>
-                                        <TabItems items={items} Theodoidoithu_url={this.props.Theodoidoithu_url}/>
-                                        <TabItems items={items} Theodoidoithu_url={this.props.Theodoidoithu_url}/>
-                                        <TabItems items={items} Theodoidoithu_url={this.props.Theodoidoithu_url}/>
-                                        <TabItems items={items} Theodoidoithu_url={this.props.Theodoidoithu_url}/>
-                                        <TabItems items={items} Theodoidoithu_url={this.props.Theodoidoithu_url}/>
+                                        <TabItems items={items} />
+                                        <TabItems items={items} />
+                                        <TabItems items={items} />
+                                        <TabItems items={items} />
+                                        <TabItems items={items} />
+                                        <TabItems items={items} />
+                                        <TabItems items={items} />
+                                        <TabItems items={items} />
                                     </tbody>
                                 </table>
                       </div>

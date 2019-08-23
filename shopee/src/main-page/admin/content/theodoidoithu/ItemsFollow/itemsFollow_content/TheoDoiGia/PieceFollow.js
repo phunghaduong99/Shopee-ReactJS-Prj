@@ -30,10 +30,17 @@ class PieceFollow extends Component {
                 return <option key={index} value={index}>{c.nameRival}</option>
             })
         }
-
+        let status;
+        if(this.state.rival === undefined){
+            status = null
+        }
+        else {
+            status = <InfoRival rival = {this.state.rival}  table = {this.state.table}/>
+        }
         return (
             <div>
                 <div className="card ">
+                    {(this.state.rival === undefined)?<label className="text-center m-t-10 m-b-10"><h6>Chưa có đối thủ nào được chọn để theo dõi !</h6> </label>:
                     <div className="card-header">
                         <div className="row doithu">
                             <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2 ">
@@ -46,10 +53,9 @@ class PieceFollow extends Component {
                             </div>
                         </div>
                     </div>
-                    <InfoRival rival = {this.state.rival}  table = {this.state.table}/>
-                    
+                    }
+                    {status}
                 </div>
-
             </div>
         );
     }

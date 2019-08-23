@@ -27,7 +27,7 @@ class TabItems extends Component {
                                 <img className="img-toy m-r-7" src={imageToy} alt="" />
                             </div>
                             <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                            <Link to={`${this.props.Theodoidoithu_url.url}/itemsDetail`}>{this.props.items.name} </Link>
+                                <label className="text-primary">{this.props.items.name}</label>
                             </div>
                         </div>
                     </td>

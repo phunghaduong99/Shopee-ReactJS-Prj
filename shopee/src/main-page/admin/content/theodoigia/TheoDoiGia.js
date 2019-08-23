@@ -1,12 +1,11 @@
 import { Route } from 'react-router-dom';
 import React, { Component } from 'react';
-import FollowCompetitor from './FollowCompetitor/FollowCompetitor';
-import ItemsFollow from './ItemsFollow/ItemsFollow';
-import AddProduct from './AddProduct/AddProduct';
 import { connect } from 'react-redux';
 import NullShop from './../NullShop';
+import FollowPrice from './muclucTheoDoiGia/danhsachsanpham/FollowPrice';
+import ItemsInfo from './muclucTheoDoiGia/theodoigia/ItemsInfo';
 
-class Theodoidoithu extends Component {
+class TheoDoiGia extends Component {
     state = {}
     render() {
         let elelength= this.props.listShop.length;
@@ -17,16 +16,13 @@ class Theodoidoithu extends Component {
         
         else {status=<Route exact path={this.props.match.url}
                          render={props =>
-                        <FollowCompetitor {...props} admin_url = {this.props.admin_url} />} />}
+                        <FollowPrice {...props} admin_url = {this.props.admin_url} />} />}
         return (
             <div>
                 {status}
-                <Route path={`${this.props.match.url}/AddProduct`}
+                <Route path={`${this.props.match.url}/thongtinsanpham`}
                     render={props =>
-                        <AddProduct {...props} Theodoidoithu_url = {this.props.match} />} />
-                <Route path={`${this.props.match.url}/itemsFollow`}
-                    render={props =>
-                        <ItemsFollow {...props}  Theodoidoithu_url = {this.props.match}/>} />
+                        <ItemsInfo {...props} Theodoigia_url = {this.props.match} />} />
                 
             </div>
         );
@@ -39,4 +35,4 @@ const mapStatetoProps = (state) => {
     }
 }
 
-export default connect(mapStatetoProps, null)(Theodoidoithu);
+export default connect(mapStatetoProps, null)(TheoDoiGia);
