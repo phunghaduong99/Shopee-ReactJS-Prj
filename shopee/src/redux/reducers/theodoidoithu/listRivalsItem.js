@@ -35,6 +35,11 @@ var myReducer = (state = initialState, action) => {
             state = newlist3;
             sessionStorage.setItem('listRivalsItem', JSON.stringify(state));
             return [...state];
+
+        case types.REMOVE_LIST_RIVALS_ITEM:
+            state = []
+            sessionStorage.removeItem('listRivalsItem')
+            return [...state];
         default: return state;
     }
 

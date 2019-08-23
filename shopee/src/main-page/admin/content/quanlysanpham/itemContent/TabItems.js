@@ -33,7 +33,7 @@ class TabItems extends Component {
     onSubmit = (event) => {
         event.preventDefault();
 
-        let url = "http://192.168.1.144:8081/updatePrice/" + this.props.shopid + "/" + this.props.itemid + "/" + this.state.newPrice;
+        let url = "http://localhost:8081/updatePrice/" + this.props.shopid + "/" + this.props.itemid + "/" + this.state.newPrice;
         console.log(url);
         axios({
             method: 'put',

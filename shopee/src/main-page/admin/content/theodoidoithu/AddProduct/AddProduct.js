@@ -5,6 +5,7 @@ import './../items.css';
 import imageToy from './../1.jpg';
 import TabItems from './TabItems';
 import { connect } from 'react-redux';
+import * as actions from '../../../../../redux/actions/index';
 class AddProduct extends Component {
     constructor(props) {
         super(props);
@@ -29,6 +30,13 @@ class AddProduct extends Component {
         if (search === '') this.setState({ isOnSearch: false });
         else this.setState({ isOnSearch: true });
     }
+    addItem = (itemid) => {
+        console.log(itemid)
+        this.props.addItem(itemid);
+        let ItemChosen = this.props.listItems.filter(c => c.itemid === itemid);
+        this.props.addListChosenItem(ItemChosen[0]);
+    }
+
     render() {
 
         var { items } = this.state;
@@ -45,14 +53,15 @@ class AddProduct extends Component {
                         key={index}
                         shopid={c.shopid}
                         images={c.images[0]}
-                        items={this.state.items}
+                        isChosen={c.isChosen}
+                        addItem={this.addItem}
                         match={this.props.match} />)
             }
             else { tabItems = null }
         }
         else {
             let search = this.state.search;
-            
+
             let newListSearchItems;
             newListSearchItems = this.props.listItems.filter((c) => {
                 return c.name.search(search) >= 0 || c.itemid.toString().search(search) >= 0 || c.price.toString().search(search) >= 0;
@@ -67,9 +76,9 @@ class AddProduct extends Component {
                         key={index}
                         shopid={c.shopid}
                         images={c.images[0]}
-                        match={this.props.match}
-                        Theodoidoithu_url={this.props.Theodoidoithu_url}
-                        items={items} />)
+                        isChosen={c.isChosen}
+                        addItem={this.addItem}
+                        match={this.props.match} />)
             }
             else { tabItems = null }
         }
@@ -137,4 +146,15 @@ const mapStatetoProps = (state) => {
         listItems: state.listItems
     }
 }
-export default connect(mapStatetoProps, null)(AddProduct);
+const mapDispatchtoProps = (dispatch, props) => {
+    return {
+        addItem: (itemIdAdded) => {
+            dispatch(actions.addItem(itemIdAdded));
+        },
+        addListChosenItem: (chosenItem) => {
+            dispatch(actions.addListChosenItem(chosenItem));
+        },
+
+    }
+}
+export default connect(mapStatetoProps, mapDispatchtoProps)(AddProduct);

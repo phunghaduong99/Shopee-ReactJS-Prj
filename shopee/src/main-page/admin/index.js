@@ -25,24 +25,7 @@ class Admin extends Component {
         });
 
     }
-    componentDidMount() {
-        axios({
-            method: 'get',
-            url: 'http://localhost:8081/infor',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `${this.props.token}`
-            },
-        })
-            .then((response) => {
-                console.log(response);
-                this.props.saveUserInfo(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-                alert("Không lấy được thông tin tài khoản");
-            });
-    }
+    
     
         
     render() {
@@ -71,7 +54,6 @@ class Admin extends Component {
 
 
 const mapStatetoProps = (state) => {
-    console.log(state);
     return {
         token: state.token,
     }

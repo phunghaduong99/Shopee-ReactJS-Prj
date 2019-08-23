@@ -3,28 +3,79 @@ import imageshop from './../../../2.jpg';
 import imagesp from './../../../1.jpg';
 import ChartPrice from './ChartPrice';
 import { connect } from 'react-redux';
-
+import axios from 'axios';
 class InfoRival extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            listHistoryMyItem: [],
+            listHistoryRivalItem: []
+        }
 
     }
-   
+    componentDidMount() {
+        this.callApi();
+    }
+
+    callApi = () => {
+        axios({
+            method: 'get',
+            url: 'http://localhost:8081/autoUpdate/' + this.props.followingItemSelected,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${this.props.token}`
+            },
+        })
+            .then((response) => {
+                console.log(response);
+                if (response.data.length > 0)
+                    this.setState({
+                        listHistoryMyItem: response.data
+                    })
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+        axios({
+            method: 'get',
+            url: 'http://localhost:8081/autoUpdate/' + this.props.rival.itemid,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${this.props.token}`
+            },
+        })
+            .then((response) => {
+                console.log(response);
+                if (response.data.length > 0)
+                    this.setState({
+                        listHistoryMyItem: response.data
+                    })
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
     render() {
-        console.log('a')
-        
-        let itemRival = this.props.listRivalsItem.filter((c) => c.itemid === this.props.rival.itemid ) ;
-        let ShopRival = this.props.listRivalsShop.filter((c) => c.itemid === this.props.rival.itemid ) ;
-        
-        let number_rating = ShopRival[0].rating_good + ShopRival[0].rating_normal  + ShopRival[0].rating_bad;
+
+        let itemRival = this.props.listRivalsItem.filter((c) => c.itemid === this.props.rival.itemid);
+        let ShopRival = this.props.listRivalsShop.filter((c) => c.itemid === this.props.rival.itemid);
+
+        let number_rating = ShopRival[0].rating_good + ShopRival[0].rating_normal + ShopRival[0].rating_bad;
         let rating_count_item = Math.round(itemRival[0].rating_star * 100) / 100;
         let rating_count_Shop = Math.round(ShopRival[0].rating_star * 100) / 100;
 
-        let images = imageshop;
-        if(ShopRival[0].images !== null)  images = ShopRival[0].images[0];    
-        console.log(number_rating)
-        console.log(itemRival)
-        console.log(ShopRival)
+        let images = null;
+        if (ShopRival[0].images !== null) images = ShopRival[0].images[0];
+        else images = imageshop;
+
+        if(this.state.listHistoryMyItem.length >0){
+            console.log(this.state.listHistoryMyItem[0].date)
+            
+        }
+
+
         return (
             <div className="doi_thu">
                 <div className="card-body">
@@ -45,7 +96,7 @@ class InfoRival extends Component {
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className=" col-xs-12 col-sm-12 col-md-12 col-lg-12 txt9">Đánh giá cửa hàng : <span className="text-danger">{rating_count_Shop  }
+                                        <div className=" col-xs-12 col-sm-12 col-md-12 col-lg-12 txt9">Đánh giá cửa hàng : <span className="text-danger">{rating_count_Shop}
                                         </span>/5 (<span className="text-danger">{number_rating}</span> đánh giá)</div>
                                     </div>
                                     <div className="row ">
@@ -137,7 +188,7 @@ class InfoRival extends Component {
 
                                 <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
                                     <h6>Biểu đồ</h6>
-                                    <ChartPrice />
+                                    <ChartPrice listHistoryMyItem = {this.state.listHistoryMyItem} listHistoryRivalItem = {this.state.listHistoryRivalItem} />
                                 </div>
                             </div>
                         </div>
@@ -149,8 +200,10 @@ class InfoRival extends Component {
 }
 const mapStatetoProps = (state) => {
     return {
+        token: state.token,
         listRivalsItem: state.listRivalsItem,
         listRivalsShop: state.listRivalsShop,
+        followingItemSelected: state.followingItemSelected
     }
 }
 export default connect(mapStatetoProps, null)(InfoRival);
