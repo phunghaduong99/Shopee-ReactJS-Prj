@@ -5,6 +5,7 @@ import TheoDoiDoiThu from './theodoidoithu/theodoidoithu';
 import Usermanage from './quanlytaikhoan/userManage/Usermanage';
 import ShopContent from './quanlytaikhoan/Shopmanage/ShopContent';
 import Items from './quanlysanpham/Item';
+import TheoDoiGia from './theodoigia/TheoDoiGia';
 class Content extends Component {
     state = { 
         onUser: false
@@ -33,7 +34,9 @@ class Content extends Component {
                     <Route path={`${this.props.match.url}/theodoidoithu`}
                         render={props =>
                         <TheoDoiDoiThu {...props} admin_url = {this.props.match} />}   />
-                    
+                    <Route path={`${this.props.match.url}/theodoigia`}
+                        render={props =>
+                        <TheoDoiGia {...props} admin_url = {this.props.match} />}   />
                 </div>
 
           );

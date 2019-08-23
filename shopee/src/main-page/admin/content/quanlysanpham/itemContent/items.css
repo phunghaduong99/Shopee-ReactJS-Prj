@@ -53,3 +53,13 @@
 .changePiece{
       margin-bottom: 0 !important;
   }
+  .nullShop{
+      text-align: center;
+      margin-top: 150px;
+      box-shadow: 2px 1px 4px #000000 !important;
+      height: 75px;
+}
+.classNull{
+    background-color: #d8d7d7;
+    min-height: 600px;
+}

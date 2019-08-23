@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import './../items.css';
-
 import imageToy from './../1.jpg';
 import TabItems from './TabItems';
 import { connect } from 'react-redux';
