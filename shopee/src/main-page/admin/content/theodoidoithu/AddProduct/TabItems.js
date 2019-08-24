@@ -13,10 +13,6 @@ class TabItems extends Component {
             add: false 
         };
     }
-    openAdd=(e)=> {
-        e.preventDefault();
-        this.setState({ add: true });
-      }
 
     addItem = (e) => {
         e.preventDefault();
@@ -24,11 +20,6 @@ class TabItems extends Component {
         this.props.addItem(itemid);
     }
     render() {
-        let {add}=this.state;
-        
-        let Theodoidoithu_url = "";
-        if(this.props.Theodoidoithu_url !== undefined)  Theodoidoithu_url = this.props.Theodoidoithu_url.url;
-        
         return (
                 <tr>
                     <td >

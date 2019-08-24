@@ -33,6 +33,18 @@ var myReducer = (state = initialState, action) => {
             state = listNew;
             sessionStorage.setItem('listItems', JSON.stringify(state));
             return [...state];
+        
+            case types.DELETE_ITEM:
+                    let listNew2 = state;
+                    listNew2.map((c) => {
+                        if (c.itemid === action.itemIdDeleted) {
+                            c.isChosen = false;
+                        }
+                        return c
+                    })
+                    state = listNew2;
+                    sessionStorage.setItem('listItems', JSON.stringify(state));
+                    return [...state];
 
         case types.REMOVE_LIST_ITEMS:
             state = []

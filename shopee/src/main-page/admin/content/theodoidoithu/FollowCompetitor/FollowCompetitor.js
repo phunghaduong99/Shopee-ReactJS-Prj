@@ -12,7 +12,7 @@ class FollowCompetitor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-           
+
         };
     }
     componentDidMount() {
@@ -31,12 +31,12 @@ class FollowCompetitor extends Component {
             .then((response) => {
                 console.log(response);
                 let listChosenItems = response.data;
-                let newlistItems = this.props.listItems.map((c,index) => {
+                let newlistItems = this.props.listItems.map((c, index) => {
                     let itemid = c.itemid;
-                    let status =  listChosenItems.filter((c,index) => 
+                    let status = listChosenItems.filter((c, index) =>
                         c.itemid === itemid
                     )
-                    if(status.length >0)    c.isChosen = true;
+                    if (status.length > 0) c.isChosen = true;
                     console.log(itemid);
                     return c;
                 })
@@ -47,6 +47,31 @@ class FollowCompetitor extends Component {
             .catch((error) => {
                 console.log(error);
             });
+    }
+
+    DeleteChosenItem = (chosen, itemId) => {
+        if (chosen === 0) {
+            this.props.deleteListChosenItem(itemId);
+            this.props.deleteItem(itemId);
+        }
+        if (chosen > 0) {
+            axios({
+                method: 'delete',
+                url: 'http://localhost:8081/rival/' + itemId,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `${this.props.token}`
+                },
+            })
+                .then((response) => {
+                    console.log(response);
+                    this.props.deleteListChosenItem(itemId);
+                    this.props.deleteItem(itemId);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
     }
 
     render() {
@@ -61,6 +86,7 @@ class FollowCompetitor extends Component {
                 auto={c.auto}
                 key={index}
                 match={this.props.match}
+                DeleteChosenItem={this.DeleteChosenItem}
             />)
         return (
             <div onSubmit={this.onSubmit} >
@@ -119,11 +145,20 @@ const mapDispatchtoProps = (dispatch, props) => {
         saveListChosenItems: (listChosenItems) => {
             dispatch(actions.saveListChosenItems(listChosenItems));
         },
+        deleteListChosenItem: (itemId) => {
+            dispatch(actions.deleteListChosenItem(itemId));
+        },
+        deleteItem: (itemid) => {
+            dispatch(actions.deleteItem(itemid));
+        },
+
         saveListItems: (listItems) => {
             dispatch(actions.saveListItems(listItems));
         },
-       
-       
+
+
+
+
     }
-} 
+}
 export default connect(mapStatetoProps, mapDispatchtoProps)(FollowCompetitor);

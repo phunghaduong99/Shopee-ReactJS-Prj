@@ -8,7 +8,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 class Header extends Component {
     state = {}
-    onClick=()=>{
+    onClick = () => {
         sessionStorage.clear();
     }
     render() {
@@ -55,7 +55,7 @@ class Header extends Component {
                                     </span>
                                 </li>
                                 <li>
-                                    <Link className="nav-link" to="/login" onClick={this.onClick}>
+                                    <Link className="nav-link" to="/login" onClick = {this.onClick}>
                                         <i className="fa fa-sign-out"></i>
                                         <span>Đăng xuất</span>
                                      </Link>

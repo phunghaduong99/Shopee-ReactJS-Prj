@@ -15,6 +15,15 @@ var myReducer = (state = initialState, action) => {
             sessionStorage.setItem('listChosenItems', JSON.stringify(state));
             return [...state];
 
+        case types.DELETE_LIST_CHOSEN_ITEM:
+            let NewList = state;
+            let itemId = action.itemId;
+            NewList = NewList.filter((c) => c.itemid !== itemId);
+            state = NewList;
+            // state.push(action.itemId)
+            sessionStorage.setItem('listChosenItems', JSON.stringify(state));
+            return [...state];
+
         case types.ADD_NUMBER_RIVALS_CHOSEN_ITEM:
             let itemid = action.itemid;
             let newList = state;
@@ -37,6 +46,10 @@ var myReducer = (state = initialState, action) => {
             sessionStorage.setItem('listChosenItems', JSON.stringify(state));
             return [...state];
 
+        case types.REMOVE_LIST_CHOSEN_ITEMS:
+            state = []
+            sessionStorage.removeItem('listChosenItems')
+            return [...state];
         default: return state;
     }
 

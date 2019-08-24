@@ -87,6 +87,13 @@ export const addListChosenItem = (chosenItem) =>{
     }
 }
 
+export const deleteListChosenItem = (itemId) =>{
+    return {
+        type: types.DELETE_LIST_CHOSEN_ITEM,
+        itemId
+    }
+}
+
 export const saveListRivalsItem = (listRivalsItem) =>{
     return {
         type: types.SAVE_LIST_RIVALS_ITEM,
@@ -170,6 +177,11 @@ export const removeListRivalsShop = () =>{
 export const removeListRivalsShopFollowing  = () =>{
     return {
         type: types.REMOVE_LIST_RIVALS_SHOP_FOLLOWING,
+    }
+}
+export const removeListChosenItems = () =>{
+    return {
+        type: types.REMOVE_LIST_CHOSEN_ITEMS,
     }
 }
 
