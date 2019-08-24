@@ -70,7 +70,12 @@ class ShopManage extends Component {
             this.props.saveShopIdSelected(c.shopid);
             this.props.saveShopNameSelected(c.name);
             if(this.props.shopIdSelected !== c.shopid){
-              this.props.removeListItems()
+              this.props.removeListItems();
+              this.props.removeListRivalsItem();
+              this.props.removeListRivalsShop();
+              this.props.removeListRivalsShopFollowing();
+              this.props.removeListChosenItems();
+
             }
           }
           return c;
@@ -157,9 +162,25 @@ const mapDispatchtoProps = (dispatch, props) => {
     saveShopNameSelected: (shopNameSelected) => {
       dispatch(actions.saveShopNameSelected(shopNameSelected));
     },
+
     removeListItems: () => {
       dispatch(actions.removeListItems());
-    }
+    },
+    removeListRivalsItem: () => {
+      dispatch(actions.removeListRivalsItem());
+    },
+    removeListRivalsShop: () => {
+      dispatch(actions.removeListRivalsShop());
+    },
+    removeListRivalsShopFollowing: () => {
+      dispatch(actions.removeListRivalsShopFollowing());
+    },
+    removeListChosenItems: () => {
+      dispatch(actions.removeListChosenItems());
+    },
+
+
+
   }
 }
 export default connect(mapStatetoProps, mapDispatchtoProps)(ShopManage);

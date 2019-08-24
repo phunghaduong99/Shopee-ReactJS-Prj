@@ -9,8 +9,6 @@ import * as actions from '../../../../../redux/actions/index';
 class TabItemsFollow extends Component {
     chosenItem = () => {
         let followingItemSelected = this.props.itemid;
-        console.log(followingItemSelected)
-        console.log(this.props.followingItem)
         if(followingItemSelected !== this.props.followingItem){
             console.log('a')
             this.props.removeListRivalsItem();
@@ -18,6 +16,12 @@ class TabItemsFollow extends Component {
             this.props.removeListRivalsShopFollowing();
         }
         this.props.followingItemSelected(followingItemSelected);
+    }
+
+    DeleteChosenItem = () => {
+        let chosen = this.props.chosen;
+        let itemid = this.props.itemid;
+        this.props.DeleteChosenItem(chosen, itemid);
     }
     render() {
         return (
@@ -38,7 +42,7 @@ class TabItemsFollow extends Component {
                     <td className="text-center">
                      {this.props.auto? "Bật": "Tắt"}
                     </td>
-                    <td><button className="button" className="btn btn-danger ">Xóa</button></td>
+                    <td><button className="button" className="btn btn-danger " onClick= {this.DeleteChosenItem}>Xóa</button></td>
                 </tr>
                 
                 

@@ -6,12 +6,16 @@ import { Link } from "react-router-dom";
 import avatar from './1.jpg';
 class Header extends Component {
     state = {}
+    onClick = () => {
+        sessionStorage.clear();
+    }
     render() {
         let responseF = this.props.responseF;
         let name = null;
         if(responseF)   name = responseF.name;
 
         let width = this.props.width;
+        
         
 
         return (
@@ -49,7 +53,7 @@ class Header extends Component {
                                     </span>
                                 </li>
                                 <li>
-                                    <Link className="nav-link" to="/login">
+                                    <Link className="nav-link" to="/login" onClick = {this.onClick}>
                                         <i className="fa fa-sign-out"></i>
                                         <span>Đăng xuất</span>
                                      </Link>
