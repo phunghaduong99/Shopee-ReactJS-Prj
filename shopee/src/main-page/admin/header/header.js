@@ -4,15 +4,21 @@ import logo from './../images/logoadmin.png';
 import './header.css';
 import { Link } from "react-router-dom";
 import avatar from './1.jpg';
+import axios from 'axios';
+import { connect } from 'react-redux';
 class Header extends Component {
     state = {}
+    onClick=()=>{
+        sessionStorage.clear();
+    }
     render() {
         let responseF = this.props.responseF;
         let name = null;
         if(responseF)   name = responseF.name;
 
         let width = this.props.width;
-        
+        let userInfo = this.props.userInfo;
+        console.log(userInfo);
 
         return (
             < header id="header" className="header" >
@@ -31,7 +37,7 @@ class Header extends Component {
                         <div className="user-area dropdown float-right">
                             <button href="/" className="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img className="user-avatar rounded-circle" src={avatar} alt="User Avatar" />
-                                <span className="username">Phùng Hà Dương</span>
+                                <span className="username">{userInfo.username}</span>
                                 <i className="fa fa-angle-down m-l-10"></i>
                             </button>
                             <ul className="user-menu dropdown-menu">
@@ -49,7 +55,7 @@ class Header extends Component {
                                     </span>
                                 </li>
                                 <li>
-                                    <Link className="nav-link" to="/login">
+                                    <Link className="nav-link" to="/login" onClick={this.onClick}>
                                         <i className="fa fa-sign-out"></i>
                                         <span>Đăng xuất</span>
                                      </Link>
@@ -64,5 +70,11 @@ class Header extends Component {
         );
     }
 }
+const mapStatetoProps = (state) => {
+    return {
+      token: state.token,
+      userInfo: state.userInfo
+    }
+  }
 
-export default Header;
+  export default connect(mapStatetoProps, null)(Header);

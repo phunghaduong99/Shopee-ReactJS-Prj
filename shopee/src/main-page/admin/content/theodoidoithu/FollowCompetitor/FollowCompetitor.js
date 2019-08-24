@@ -22,7 +22,7 @@ class FollowCompetitor extends Component {
     callAPI = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8081/chosenItems/' + this.props.shopIdSelected,
+            url: 'http://192.168.1.144:8081/chosenItems/' + this.props.shopIdSelected,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`

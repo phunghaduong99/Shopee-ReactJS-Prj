@@ -34,7 +34,7 @@ class TabItems extends Component {
     onSubmit = (event) => {
         event.preventDefault();
 
-        let url = "http://localhost:8081/updatePrice/" + this.props.shopid + "/" + this.props.itemid + "/" + this.state.newPrice;
+        let url = "http://192.168.1.144:8081/updatePrice/" + this.props.shopid + "/" + this.props.itemid + "/" + this.state.newPrice;
         console.log(url);
         axios({
             method: 'put',
@@ -77,7 +77,7 @@ class TabItems extends Component {
                 <td>
                     <StarRatings
                         starRatedColor="#FFD203"
-                        rating={4}
+                        rating={this.props.rating_star}
                         starDimension="20px"
                         starSpacing="2px"
                     />

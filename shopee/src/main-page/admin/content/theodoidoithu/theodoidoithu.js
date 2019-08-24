@@ -5,19 +5,27 @@ import ItemsFollow from './ItemsFollow/ItemsFollow';
 import AddProduct from './AddProduct/AddProduct';
 import { connect } from 'react-redux';
 import NullShop from './../NullShop';
+import NullListItems from './../NullListItems';
 
 class Theodoidoithu extends Component {
     state = {}
     render() {
         let elelength= this.props.listShop.length;
+        let eleListItems=this.props.listItems.length;
         let status;
         if(elelength === 0) {status = <Route exact path={this.props.match.url}
                                         render={props =>
                                         <NullShop {...props}/>} />}
         
-        else {status=<Route exact path={this.props.match.url}
+        else { if(eleListItems===0){
+            status = <Route exact path={this.props.match.url}
+                                        render={props =>
+                                        <NullListItems {...props}/>} />
+             }
+             else{status=<Route exact path={this.props.match.url}
                          render={props =>
                         <FollowCompetitor {...props} admin_url = {this.props.admin_url} />} />}
+                         }
         return (
             <div>
                 {status}
@@ -35,7 +43,8 @@ class Theodoidoithu extends Component {
 const mapStatetoProps = (state) => {
     console.log(state);
     return {
-        listShop: state.listShop
+        listShop: state.listShop,
+        listItems : state.listItems
     }
 }
 

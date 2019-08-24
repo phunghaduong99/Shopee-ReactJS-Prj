@@ -37,7 +37,7 @@ class TabItems extends Component {
                                 <img className="img-toy m-r-7" src={this.props.images} alt="" />
                             </div>
                             <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                <label className="text-primary">{this.props.items.name}</label>
+                                <label className="text-primary">{this.props.name}</label>
                             </div>
                         </div>
                     </td>
@@ -52,7 +52,7 @@ class TabItems extends Component {
                     />
                     </td>
                     <td>
-                    {this.state.add ? <label className="text-primary "> Đã thêm</label>:<button className="button" className="btn btn-primary" onClick={this.openAdd} >Thêm</button>}
+                    {this.props.isChosen ? <label className="text-primary m-l-35"> Đã thêm</label>:<button className="button" className="btn btn-primary m-l-35" onClick={this.addItem} >Thêm</button>}
                     
                         
                    

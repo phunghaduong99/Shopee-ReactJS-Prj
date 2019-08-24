@@ -14,7 +14,7 @@
     color: #000000;
   }
   .txt8 {
-    font-size: 15px;
+    font-size: 10px;
     line-height: 1.5;
     color: #000000;
   }
@@ -46,7 +46,7 @@
  }
 .rating-a{
     height: 13px;
-    padding-bottom: 0px !important;
+    padding-bottom: 3px !important;
 }
 .cot1{
  width: 32%;
