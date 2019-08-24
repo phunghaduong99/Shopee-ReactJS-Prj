@@ -8,11 +8,12 @@ class FollowPrice extends Component {
         super(props);
         this.state = {
             items:{
-                image : {imageToy},
+                image: { imageToy },
                 name: 'Xe tải đồ chơi',
                 id: 'D123456778',
-                amount:'2',
-                auto: true
+                price: '70,000đ',
+                rating: '',
+                item_id: "213123"
             }
         };
     }
@@ -35,22 +36,43 @@ class FollowPrice extends Component {
                         </div>
                       </div>
                       
-                      <div className="border"> 
-                                <table className="table">
-                                    <thead>
-                                    <tr >
-                                            <th className="cot1">Sản phẩm</th>
-                                            <th className="cot2">Mã sản phẩm</th>
-                                            <th className="cot3 text-center">Số lượng đối thủ đang theo dõi</th>
-                                            <th className="cot4 text-center">Chỉnh giá tự động</th>
-                                            <th className="cot5"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                        <TabItems items={items} match={this.props.match}/>
-                                    </tbody>
-                                </table>
-                      </div>
+                      <div className="border">
+                        <div className="form-group">
+                            <div className="input-group ">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text purple lighten-3" id="basic-text1"><i className="fa fa-search text-white"
+                                        aria-hidden="true"></i></span>
+                                </div>
+                                <input
+                                    className="form-control my-0 py-1"
+                                    type="text"
+                                    placeholder="Tìm kiếm theo tên sản phẩm và mã sản phẩm"
+                                    aria-label="Search"
+                                    onChange={this.onSearch}
+                                />
+                            </div>
+                        </div>
+
+                        <table className="table">
+                            <thead>
+                                <tr >
+                                    <th className="cot1">Sản phẩm</th>
+                                    <th className="cot2">Mã sản phẩm</th>
+                                    <th className="cot3">Giá bán</th>
+                                    <th className="cot4">Rating</th>
+                                    <th className="cot5"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <TabItems items={this.state.items} match={this.props.match}/>
+                               
+                            </tbody>
+
+
+
+
+                        </table>
+                    </div>
                     </div>
                 </div>
         );

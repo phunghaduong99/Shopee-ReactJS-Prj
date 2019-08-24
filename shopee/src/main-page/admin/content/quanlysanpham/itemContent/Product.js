@@ -40,7 +40,7 @@ class Product extends Component {
     callAPI = () => {
         axios({
             method: 'put',
-            url: 'http://localhost:8081/getItems/' + this.props.shopIdSelected,
+            url: 'http://192.168.1.144:8081/getItems/' + this.props.shopIdSelected,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -83,6 +83,7 @@ class Product extends Component {
                         key={index}
                         shopid={c.shopid}
                         images = {c.images[0]}
+                        rating_star ={c.rating_star}
                         match={this.props.match} />)
             }
             else { tabItems = null }
@@ -104,6 +105,7 @@ class Product extends Component {
                         key={index}
                         shopid={c.shopid}
                         images = {c.images[0]}
+                        rating_star ={c.rating_star}
                         match={this.props.match} />)
             }
             else { tabItems = null }

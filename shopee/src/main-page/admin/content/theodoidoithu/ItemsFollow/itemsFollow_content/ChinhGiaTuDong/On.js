@@ -28,7 +28,7 @@ class On extends Component {
     componentDidMount() {
         axios({
             method: 'get',
-            url: 'http://localhost:8081/rivals/' + this.props.shopIdSelected + '/' + this.props.followingItemSelected,
+            url: 'http://192.168.1.144:8081/rivals/' + this.props.shopIdSelected + '/' + this.props.followingItemSelected,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -86,7 +86,7 @@ class On extends Component {
         event.preventDefault();
         axios({
             method: 'post',
-            url: 'http://localhost:8081/rival',
+            url: 'http://192.168.1.144:8081/rival',
             data: {
                 "itemid": `${this.props.followingItemSelected}`,
                 "shopid": `${this.props.shopIdSelected}`,
@@ -123,6 +123,7 @@ class On extends Component {
             })
         }
         return (
+            <div>
             <form className="form-horizontal" onSubmit={this.onSubmit}>
                 <div className="row">
                     <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
@@ -209,6 +210,69 @@ class On extends Component {
                     <button type="submit" className="btn btn-primary "> Xác nhận </button>
                 </div>
             </form>
+            <div className="card m-t-30 ">
+                <div className="card-body">
+                    <div>
+                        <h3>Lịch sử chỉnh sửa giá tự động</h3>
+                    </div>
+                    <table className="table">
+                        <thead>
+                            <tr >
+                                <th scope="col " >Thời gian</th>
+                                <th > Giá cũ</th>
+                                <th > Giá mới</th>
+                                <th > Đối thủ </th>
+                                <th > Chênh lệch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> 07/08/2019 </td>
+                                <td>69,000</td>
+                                <td>73,000</td>
+                                <td>biboshoptv</td>
+                                <td>4,000</td>
+                            </tr>
+                            <tr>
+                                <td> 07/08/2019 </td>
+                                <td>69,000</td>
+                                <td>73,000</td>
+                                <td>biboshoptv</td>
+                                <td>4,000</td>
+                            </tr>
+                            <tr>
+                                <td> 07/08/2019 </td>
+                                <td>69,000</td>
+                                <td>73,000</td>
+                                <td>biboshoptv</td>
+                                <td>4,000</td>
+                            </tr>
+                            <tr>
+                                <td> 07/08/2019 </td>
+                                <td>69,000</td>
+                                <td>73,000</td>
+                                <td>biboshoptv</td>
+                                <td>4,000</td>
+                            </tr>
+                            <tr>
+                                <td> 07/08/2019 </td>
+                                <td>69,000</td>
+                                <td>73,000</td>
+                                <td>biboshoptv</td>
+                                <td>4,000</td>
+                            </tr>
+                            <tr>
+                                <td> 07/08/2019 </td>
+                                <td>69,000</td>
+                                <td>73,000</td>
+                                <td>biboshoptv</td>
+                                <td>4,000</td>
+                            </tr>
+                        </tbody>
+                </table>
+                </div>
+                </div>
+            </div>
         );
     }
 }
