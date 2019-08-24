@@ -2,27 +2,14 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import './items.css';
 import TabItems from './TabItems';
-import imageToy from './1.jpg';
 
 import axios from 'axios';
 import { connect } from 'react-redux';
 import * as actions from '../../../../../redux/actions/index';
-import { thisExpression } from '@babel/types';
 class Product extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: [
-                {
-                    image: { imageToy },
-                    name: 'Xe tải đồ chơi',
-                    id: 'D123456778',
-                    price: '70,000đ',
-                    rating: '',
-                    item_id: "213123"
-                }
-            ],
-
             isOnSearch: false,
             listItems: [],
             search: '',
@@ -40,7 +27,7 @@ class Product extends Component {
     callAPI = () => {
         axios({
             method: 'put',
-            url: 'http://192.168.1.144:8081/getItems/' + this.props.shopIdSelected,
+            url: 'http://localhost:8081/getItems/' + this.props.shopIdSelected,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`

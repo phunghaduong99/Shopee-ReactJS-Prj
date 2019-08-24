@@ -1,35 +1,40 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import Items from './../../1.jpg';
 import StarRatings from 'react-star-ratings';
+import * as actions from '../../../../../../redux/actions/index';
+import { connect } from 'react-redux';
 class TabItems extends Component {
- 
+    
+    saveItemId_ThongKe = () =>{
+        let itemid = this.props.itemid;
+        this.props.saveItemId_ThongKe(itemid);
+    }
     render() {
         return (
             <tr>
                 <td >
                     <div className="row">
                         <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                            <img className="img-toy m-r-7" src={Items} alt="" />
+                            <img className="img-toy m-r-7" src={this.props.images} alt="" />
                         </div>
                         <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                            {this.props.items.name}
+                            {this.props.name}
                         </div>
                     </div>
                 </td>
-                <td> {this.props.items.id}</td>
-                <td> {this.props.items.price}</td>
+                <td> {this.props.itemid}</td>
+                <td> {this.props.price}</td>
                 <td>
                     <StarRatings
                         starRatedColor="#FFD203"
-                        rating={4}
+                        rating={this.props.rating_star}
                         starDimension="20px"
                         starSpacing="2px"
                     />
                 </td>
                 <td className="text-left">
                     
-                <Link  to={`${this.props.match.url}/thongtinsanpham`}className="btn btn-primary " >Xem thống kê </Link>
+                <Link  to={`${this.props.match.url}/thongtinsanpham`} className="btn btn-primary" onClick= {this.saveItemId_ThongKe} >Xem thống kê </Link>
                 </td>
                 </tr>
                 
@@ -38,4 +43,12 @@ class TabItems extends Component {
     }
 }
 
-export default TabItems ;
+const mapDispatchtoProps = (dispatch, props) => {
+    return {
+        saveItemId_ThongKe: (listItems) => {
+            dispatch(actions.saveItemId_ThongKe(listItems));
+        },
+
+    }
+}
+export default connect(null, mapDispatchtoProps)(TabItems);

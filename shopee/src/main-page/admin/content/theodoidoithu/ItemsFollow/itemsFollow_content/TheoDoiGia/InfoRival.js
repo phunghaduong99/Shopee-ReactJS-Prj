@@ -20,7 +20,7 @@ class InfoRival extends Component {
     callApi = () => {
         axios({
             method: 'get',
-            url: 'http://192.168.1.144:8081/autoUpdate/' + this.props.followingItemSelected,
+            url: 'http://localhost:8081/itemPrice/' + this.props.followingItemSelected,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -39,7 +39,7 @@ class InfoRival extends Component {
 
         axios({
             method: 'get',
-            url: 'http://192.168.1.144:8081/autoUpdate/' + this.props.rival.itemid,
+            url: 'http://localhost:8081/itemPrice/' + this.props.rival.itemid,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -47,10 +47,22 @@ class InfoRival extends Component {
         })
             .then((response) => {
                 console.log(response);
-                if (response.data.length > 0)
-                    this.setState({
-                        listHistoryMyItem: response.data
-                    })
+                if (response.data.length > 0) {
+                    let newListRivalItem = response.data;
+                    if (newListRivalItem.length > 0) {
+                        newListRivalItem = newListRivalItem.map((c) => {
+                            let indexDate = c.time.search("_");
+                            let Date = c.time.slice(0, indexDate);
+                            c.Date = Date;
+
+                            return c;
+                        })
+                        this.setState({
+                            listHistoryRivalItem: newListRivalItem
+                        })
+                    }
+                }
+
             })
             .catch((error) => {
                 console.log(error);
@@ -70,9 +82,29 @@ class InfoRival extends Component {
         if (ShopRival[0].images !== null) images = ShopRival[0].images[0];
         else images = imageshop;
 
-        if(this.state.listHistoryMyItem.length >0){
-            console.log(this.state.listHistoryMyItem[0].date)
+        let rivalTable;
+        if (this.state.listHistoryRivalItem.length > 0) {
+            let length  =this.state.listHistoryRivalItem.length;
             
+            if (length <= 7) {
+                rivalTable = this.state.listHistoryRivalItem.map((c, index) =>
+                    <tr key={index}>
+                        <td className="text-center">{c.Date}</td>
+                        <td className="text-center">{c.price}</td>
+                    </tr>
+                )
+            }
+            else {
+                let newListRival = this.state.listHistoryRivalItem.filter((c,index) => index >= (length -7) )
+                rivalTable = newListRival.map((c, index) =>
+                    <tr key={index}>
+                        <td className="text-center">{c.Date}</td>
+                        <td className="text-center">{c.price}</td>
+                    </tr>
+                )
+            }
+
+
         }
 
 
@@ -154,41 +186,14 @@ class InfoRival extends Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td className="text-center">{this.props.table.date}</td>
-                                                <td className="text-center">{this.props.table.price}</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="text-center">{this.props.table.date}</td>
-                                                <td className="text-center">{this.props.table.price}</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="text-center">{this.props.table.date}</td>
-                                                <td className="text-center">{this.props.table.price}</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="text-center">{this.props.table.date}</td>
-                                                <td className="text-center">{this.props.table.price}</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="text-center">{this.props.table.date}</td>
-                                                <td className="text-center">{this.props.table.price}</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="text-center">{this.props.table.date}</td>
-                                                <td className="text-center">{this.props.table.price}</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="text-center">{this.props.table.date}</td>
-                                                <td className="text-center">{this.props.table.price}</td>
-                                            </tr>
+                                            {rivalTable}
                                         </tbody>
                                     </table>
                                 </div>
 
                                 <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
                                     <h6>Biểu đồ</h6>
-                                    <ChartPrice listHistoryMyItem = {this.state.listHistoryMyItem} listHistoryRivalItem = {this.state.listHistoryRivalItem} />
+                                    <ChartPrice listHistoryMyItem={this.state.listHistoryMyItem} listHistoryRivalItem={this.state.listHistoryRivalItem} />
                                 </div>
                             </div>
                         </div>

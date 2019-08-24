@@ -185,3 +185,10 @@ export const removeListChosenItems = () =>{
     }
 }
 
+
+export const saveItemId_ThongKe = (itemId_thongke) =>{
+    return {
+        type: types.SAVE_ITEM_ID_THONGKE,
+        itemId_thongke
+    }
+}

@@ -13,7 +13,7 @@ class TongQuan extends Component {
     componentDidMount() {
         axios({
             method: 'get',
-            url: 'http://192.168.1.144:8081/infor',
+            url: 'http://localhost:8081/infor',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -36,7 +36,7 @@ class TongQuan extends Component {
     callApi = () => {
         axios({
             method: 'get',
-            url: 'http://192.168.1.144:8081/shop',
+            url: 'http://localhost:8081/shop',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`

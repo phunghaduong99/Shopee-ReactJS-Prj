@@ -5,6 +5,7 @@ import shopIdSelected from './shopIdSelected';
 import shopNameSelected from './shopNameSelected';
 
 import itemIdSelected from './itemIdSelected';
+import itemId_thongke from './itemId_thongke';
 
 
 import listItems from './listItems';
@@ -24,7 +25,10 @@ const myReducer = combineReducers({
     listShop: listShop,
     shopIdSelected: shopIdSelected,
     shopNameSelected: shopNameSelected,
+
+    itemId_thongke: itemId_thongke,
     itemIdSelected: itemIdSelected,
+    
     listItems: listItems,
     listSearchItems: listSearchItems,
     userInfo: userInfo,

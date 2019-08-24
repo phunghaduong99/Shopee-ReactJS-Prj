@@ -22,7 +22,7 @@ class FollowCompetitor extends Component {
     callAPI = () => {
         axios({
             method: 'get',
-            url: 'http://192.168.1.144:8081/chosenItems/' + this.props.shopIdSelected,
+            url: 'http://localhost:8081/chosenItems/' + this.props.shopIdSelected,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -37,7 +37,6 @@ class FollowCompetitor extends Component {
                         c.itemid === itemid
                     )
                     if (status.length > 0) c.isChosen = true;
-                    console.log(itemid);
                     return c;
                 })
                 this.props.saveListItems(newlistItems);
