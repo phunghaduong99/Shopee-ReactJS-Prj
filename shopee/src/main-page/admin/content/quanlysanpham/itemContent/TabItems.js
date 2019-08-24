@@ -28,7 +28,8 @@ class TabItems extends Component {
     onChange = (event) => {
         event.preventDefault();
         let newPrice = event.target.value;
-        this.setState({ newPrice: newPrice });
+        if (newPrice<0 || newPrice % 100!==0 ){}
+                this.setState({ newPrice: newPrice });
     }
     onSubmit = (event) => {
         event.preventDefault();
@@ -80,7 +81,9 @@ class TabItems extends Component {
                         starDimension="20px"
                         starSpacing="2px"
                     />
-                    <button className="button" className="btn btn-primary m-l-35" onClick={this.openModal} >Sửa giá</button>
+                  </td>
+                  <td className="text-left">
+                    <button className="button" className="btn btn-primary " onClick={this.openModal} >Sửa giá</button>
 
                     <Popup
                         open={this.state.open}

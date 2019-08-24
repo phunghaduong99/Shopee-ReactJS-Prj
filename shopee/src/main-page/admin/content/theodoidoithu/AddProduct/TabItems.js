@@ -50,7 +50,9 @@ class TabItems extends Component {
                         starDimension="20px"
                         starSpacing="2px"
                     />
-                    {this.props.isChosen ? <label className="text-primary m-l-35"> Đã thêm</label>:<button className="button" className="btn btn-primary m-l-35" onClick={this.addItem} >Thêm</button>}
+                    </td>
+                    <td>
+                    {this.state.add ? <label className="text-primary "> Đã thêm</label>:<button className="button" className="btn btn-primary" onClick={this.openAdd} >Thêm</button>}
                     
                         
                    
