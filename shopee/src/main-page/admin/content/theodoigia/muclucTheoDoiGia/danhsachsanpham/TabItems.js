@@ -13,7 +13,7 @@ class TabItems extends Component {
                             <img className="img-toy m-r-7" src={Items} alt="" />
                         </div>
                         <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                            <Link  to={`${this.props.match.url}/thongtinsanpham`}>{this.props.items.name} </Link>
+                            {this.props.items.name}
                         </div>
                     </div>
                 </td>
@@ -28,7 +28,8 @@ class TabItems extends Component {
                     />
                 </td>
                 <td className="text-left">
-                    <button className="button" className="btn btn-primary " >Xem thống kê</button>
+                    
+                <Link  to={`${this.props.match.url}/thongtinsanpham`}className="btn btn-primary " >Xem thống kê </Link>
                 </td>
                 </tr>
                 
