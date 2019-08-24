@@ -121,8 +121,9 @@ class New extends Component {
         return (
             <div>
                 <nav className={this.state.scrolling ? 'navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink' : 'navbar navbar-expand-lg navbar-dark fixed-top'} id="mainNav">
-                    <div className="container" >
-                        <div className="logohome">
+                    <div className="container row m-t-10" >
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"> </div>
+                        <div className="logohome col-md-4 ">
                             <a href="/">
                                 <img src={spa} alt="spa" className="img-ficon" />
                             </a>
@@ -131,8 +132,9 @@ class New extends Component {
                             Menu
                             <i className="fa fa-bars m-l-4"></i>
                         </button>
-                        <div className="collapse navbar-collapse" id="navbarResponsive">
-                            <ul className="navbar-nav text-uppercase ml-auto">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"> </div>
+                        <div className="collapse navbar-collapse col-md-2" id="navbarResponsive">
+                            {/* <ul className="navbar-nav text-uppercase ml-auto">
                                 <li className="nav-item">
                                     <a className={this.state.services ? "nav-link js-scroll-trigger active nav-link-center oneline" : "nav-link js-scroll-trigger nav-link-center oneline"} href="#services" >Dịch Vụ</a>
                                 </li>
@@ -145,8 +147,8 @@ class New extends Component {
                                 <li className="nav-item">
                                     <a className={this.state.contact ? "nav-link js-scroll-trigger active  oneline" : "nav-link js-scroll-trigger oneline"} href="#contact">Liên hệ</a>
                                 </li>
-                            </ul>
-                            <div className="menu-buttons">
+                            </ul> */}
+                            <div className="menu-buttons ">
                                 <Link className="btn btn-outline" to="/login" onClick={this.props.isLoGin}>Đăng nhập</Link>
                             </div>
                         </div>

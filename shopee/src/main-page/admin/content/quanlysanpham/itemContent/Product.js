@@ -146,6 +146,7 @@ class Product extends Component {
                                     <th className="cot2">Mã sản phẩm</th>
                                     <th className="cot3">Giá bán</th>
                                     <th className="cot4">Rating</th>
+                                    <th className="cot5"></th>
                                 </tr>
                             </thead>
                             <tbody>
