@@ -192,3 +192,12 @@ export const saveItemId_ThongKe = (itemId_thongke) =>{
         itemId_thongke
     }
 }
+
+
+export const changeStatusAutoPrice = (status, itemidShop) =>{
+    return {
+        type: types.CHANGE_STATUS_AUTO_PRICE,
+        status,
+        itemidShop
+    }
+}

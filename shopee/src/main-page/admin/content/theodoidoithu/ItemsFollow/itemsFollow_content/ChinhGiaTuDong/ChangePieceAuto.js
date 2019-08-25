@@ -2,55 +2,50 @@ import React, { Component } from 'react';
 import Switch from "react-switch";
 import On from './On';
 import { connect } from 'react-redux';
-
+import * as actions from '../../../../../../../redux/actions/index';
 import axios from 'axios';
 class ChangePieceAuto extends Component {
     constructor() {
         super();
-        this.state = { 
-            checked: false ,
+        this.state = {
+            checked: false,
             khongbiet: ''
         };
         this.handleChange = this.handleChange.bind(this);
-      }
-      componentDidMount(){
+    }
+    componentDidMount() {
         let itemid = this.props.followingItemSelected;
         let followingItemSelected = this.props.listChosenItems.filter((c) => c.itemid === itemid);
-        let auto =  followingItemSelected[0].auto
-        this.setState({checked: auto})
-      }
-      handleChange(checked) {
+        let auto = followingItemSelected[0].auto;
+        this.setState({ checked: auto })
+    }
+    handleChange(checked) {
         this.setState({ checked });
-        // axios({
-        //     method: 'post',
-        //     url: 'http://localhost:8081/rival',
-        //     data: {
-        //         "itemid": `${this.props.followingItemSelected}`,
-        //         "shopid": `${this.props.shopIdSelected}`,
-        //         "rivalShopid": `${this.state.rival.shopid}`,
-        //         "rivalItemid": `${this.state.rival.itemid}`,
-        //         "auto": `${checked}`,
-        //     },
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': `${this.props.token}`
-        //     },
-        // })
-        //     .then((response) => {
-        //         console.log(response);
-                
+        if (!checked) {
+            axios({
+                method: 'put',
+                url: 'http://localhost:8081/rivalOff/' + this.props.followingItemSelected,
 
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
-      }
-    
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `${this.props.token}`
+                },
+            })
+                .then((response) => {
+                    console.log(response);
+                    if (response.data === "Off Auto") { 
+                        this.props.changeStatusAutoPrice(checked, this.props.followingItemSelected);
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+
+    }
+
     render() {
-        console.log(this.state.checked)
-        console.log('ss')
-        console.log(this.state.khongbiet)
-        return ( 
+        return (
             <div className="card ">
                 <div className="card-body">
                     <div className="row">
@@ -63,23 +58,23 @@ class ChangePieceAuto extends Component {
                                     <h5>{this.state.checked ? 'Bật' : 'Tắt'}</h5>
                                 </div>
                                 <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                <Switch
-                                    onChange={this.handleChange}
-                                    checked={this.state.checked}
-                                    className="react-switch"
-                                    id="normal-switch"
-                                />
+                                    <Switch
+                                        onChange={this.handleChange}
+                                        checked={this.state.checked}
+                                        className="react-switch"
+                                        id="normal-switch"
+                                    />
                                 </div>
                             </div>
                         </div>
                     </div>
                     {this.state.checked ? <On /> : null}
                 </div>
-             </div>
-         );
+            </div>
+        );
     }
 }
- const mapStatetoProps = (state) => {
+const mapStatetoProps = (state) => {
     return {
         listChosenItems: state.listChosenItems,
         followingItemSelected: state.followingItemSelected,
@@ -88,10 +83,18 @@ class ChangePieceAuto extends Component {
         listRivalsItem: state.listRivalsItem,
         listRivalsShop: state.listRivalsShop,
         listRivalsShopFollowing: state.listRivalsShopFollowing,
-    
+
         shopIdSelected: state.shopIdSelected,
-        
+
     }
 }
-export default connect(mapStatetoProps, null)(ChangePieceAuto);
+
+const mapDispatchtoProps = (dispatch, props) => {
+    return {
+        changeStatusAutoPrice: (status , itemid) => {
+            dispatch(actions.changeStatusAutoPrice(status , itemid));
+        },
+    }
+}
+export default connect(mapStatetoProps, mapDispatchtoProps)(ChangePieceAuto);
 

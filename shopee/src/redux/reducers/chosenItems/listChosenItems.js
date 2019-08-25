@@ -50,6 +50,18 @@ var myReducer = (state = initialState, action) => {
             state = []
             sessionStorage.removeItem('listChosenItems')
             return [...state];
+
+        case types.CHANGE_STATUS_AUTO_PRICE:
+            
+            let status = action.status;
+            let itemidShop  = action.itemidShop;
+            let UpdateState = state.map(c => {
+                if(c.itemid === itemidShop) c.auto = status;
+                return c;
+            })
+            state = UpdateState;
+            sessionStorage.setItem('listChosenItems')
+            return [...state];
         default: return state;
     }
 
