@@ -3,7 +3,7 @@ import Tooltip from "react-simple-tooltip"
 import { connect } from 'react-redux';
 import axios from 'axios';
 import swal from 'sweetalert';
-
+import * as actions from '../../../../../../../redux/actions/index';
 class On extends Component {
     constructor(props) {
         super(props);
@@ -106,6 +106,7 @@ class On extends Component {
             .then((response) => {
                 console.log(response);
                 swal("Đã theo dõi tự động", "", "success")
+                this.props.changeStatusAutoPrice("true", this.props.followingItemSelected)
 
             })
             .catch((error) => {
@@ -287,5 +288,12 @@ const mapStatetoProps = (state) => {
 
     }
 }
-export default connect(mapStatetoProps, null)(On);
+const mapDispatchtoProps = (dispatch, props) => {
+    return {
+        changeStatusAutoPrice: (status , itemid) => {
+            dispatch(actions.changeStatusAutoPrice(status , itemid));
+        },
+    }
+}
+export default connect(mapStatetoProps, mapDispatchtoProps)(On);
 
