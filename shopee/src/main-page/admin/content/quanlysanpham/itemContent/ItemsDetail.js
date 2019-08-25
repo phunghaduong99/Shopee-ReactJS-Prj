@@ -93,9 +93,9 @@ class ItemsDetail extends Component {
                     <div className="col col-sm-7">
                         <h1 className="m-t-15 m-b-25 p-l-15">{itemDetail[0].name}</h1>
                     </div>
-                    <div className="col col-sm-5">
+                    {/* <div className="col col-sm-5">
                         <h6 className="btn btn-link m-t-15 m-b-25"> Thêm sản phẩm vào danh sách theo dõi</h6>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="row ">
                     <div className="col col-sm-7">
@@ -170,7 +170,7 @@ class ItemsDetail extends Component {
                                         <label className="form-control-group"><h6>Tồn kho</h6></label>
                                     </div>
                                     <div className="col-md-8 aline">
-                                        <label className="form-control-group "><h6>{itemDetail[0].historical_sold}</h6></label>
+                                        <label className="form-control-group "><h6>{itemDetail[0].stock}</h6></label>
                                     </div>
                                 </div>
                                 <div className="row ">

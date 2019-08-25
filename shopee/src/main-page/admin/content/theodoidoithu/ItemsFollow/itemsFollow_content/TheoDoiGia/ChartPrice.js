@@ -3,59 +3,47 @@ import Chart from "react-apexcharts";
 class ChartPrice extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			options: {
-				chart: {
-					id: "basic-bar"
-				},
-				xaxis: {
-					categories: ['1/8/2019', '2/8/2019', '3/8/2019', '4/8/2019', '5/8/2019', '6/8/2019', '7/8/2019', '8/8/2019']
-				}
-			},
-			series: [
-				{
-					name: "shop-cua-ban",
-					data: [50000, 52000, 54000, 51000, 53000, 53000, 54000, 52000]
-				},
-				{
-					name: "biboshoptv",
-					data: [55000, 52000, 51000, 53000, 53000, 55000, 50000, 55000]
-				}
-			]
-		};
 	}
-	componentDidMount() {
-		let length = this.props.listHistoryMyItem.length;
-		let listHistoryMyItem = this.props.listHistoryMyItem;
 
-		let categories = [];
-
-		listHistoryMyItem.map((c) => {
-			categories.push(c.Date);
-
-		})
-		console.log('a');
-		console.log(this.props.listHistoryMyItem);
-		console.log(this.props.listHistoryRivalItem);
-	}
 	render() {
 		let categories = [];
 		let MyPrice = [];
+		let RivalPrice = []
 		if (this.props.listHistoryRivalItem.length > 0) {
 			let length = this.props.listHistoryRivalItem.length;
 			let listHistoryRivalItem;
-			if (length <= 8)
+			if (length <= 8) {
 				listHistoryRivalItem = this.props.listHistoryRivalItem;
-			else {
-				listHistoryRivalItem = this.props.listHistoryRivalItem.filter((c, index) => index >= (length - 8))
 			}
+			else {
+				listHistoryRivalItem = this.props.listHistoryRivalItem.filter((c, index) => index >= (length - 8));
 
-			listHistoryRivalItem.map((c) => {
+			}
+			listHistoryRivalItem.map((c, index) => {
+				RivalPrice.push(c.price);
 				categories.push(c.Date);
+			})
+
+		}
+		if (this.props.listHistoryMyItem.length > 0) {
+			let length = this.props.listHistoryMyItem.length;
+			let lengthRival = this.props.listHistoryRivalItem.length;
+			let listHistoryMyItem;
+			if (length > lengthRival)
+				listHistoryMyItem = this.props.listHistoryMyItem.filter((c, index) => index >= (length - lengthRival))
+			else listHistoryMyItem = this.props.listHistoryMyItem;
+			if (lengthRival <= 8)
+				listHistoryMyItem = listHistoryMyItem;
+			else {
+				listHistoryMyItem = listHistoryMyItem.filter((c, index) => index >= (length - 8))
+			}
+			listHistoryMyItem.map((c) => {
 				MyPrice.push(c.price);
 			})
 
 		}
+
+
 		let options = {
 			chart: {
 				id: "basic-bar"
@@ -64,14 +52,14 @@ class ChartPrice extends Component {
 				categories: categories
 			}
 		}
-		let series= [
+		let series = [
 			{
-				name: "shop-cua-ban",
-				data: [50000, 52000, 54000, 51000, 53000, 53000, 54000, 52000]
+				name: this.props.shopNameSelected,
+				data: MyPrice
 			},
 			{
-				name: "biboshoptv",
-				data: MyPrice
+				name: this.props.rivalName,
+				data: RivalPrice
 			}
 		]
 		return (

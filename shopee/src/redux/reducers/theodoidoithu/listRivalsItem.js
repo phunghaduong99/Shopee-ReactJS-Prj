@@ -7,6 +7,7 @@ var myReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.SAVE_LIST_RIVALS_ITEM:
             state = action.listRivalsItem
+           
             sessionStorage.setItem('listRivalsItem', JSON.stringify(state));
             return [...state];
         case types.CHOOSE_RIVALS_ITEM:
@@ -20,6 +21,7 @@ var myReducer = (state = initialState, action) => {
                 }
             );
             state = newlist;
+           
             sessionStorage.setItem('listRivalsItem', JSON.stringify(state));
             return [...state];
         case types.DELETE_RIVALS_ITEM:
@@ -33,6 +35,7 @@ var myReducer = (state = initialState, action) => {
                 }
             );
             state = newlist3;
+          
             sessionStorage.setItem('listRivalsItem', JSON.stringify(state));
             return [...state];
 

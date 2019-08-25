@@ -83,12 +83,15 @@ class user extends Component {
     // } else {
     //   console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
     // }
+    
     if (this.state.isSubmit) {
+      console.log('aa')
       this.callApi();
     }
   }
 
   callApi = () => {
+    console.log(this.state.phone)
     axios({
       method: 'put',
       url: 'http://172.104.173.222:8081/updateInfor',
@@ -118,11 +121,11 @@ class user extends Component {
       phone: ""
     })
     return (
-      <div onSubmit={this.onSubmit} >
+      <div >
         <div className=" card overview col-sm-12">
           <h2>Thông tin tài khoản</h2>
         </div>
-        <form className="form-horizontal">
+        <form className="form-horizontal" onSubmit={this.onSubmit} >
           <div className="col-md-8 offset-md-3 mr-auto ml-auto ">
             <div className=" row form-group ">
               <div className="col-md-4 aline">

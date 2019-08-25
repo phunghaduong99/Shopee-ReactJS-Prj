@@ -8,11 +8,12 @@ class On extends Component {
     constructor(props) {
         super(props);
         this.state = ({
-            minprice: '1',
-            maxprice: '2',
-            ratingChange: '3',
-            rival: this.props.listRivalsShopFollowing[0],
-            dataRival: []
+            minprice: ' ',
+            maxprice: ' ',
+            ratingChange: ' ',
+            dataRival: [],
+            tableAutoPrice: [],
+
         });
     }
     onChange = (event) => {
@@ -38,22 +39,28 @@ class On extends Component {
                 console.log(response);
                 if (response.data.length > 0) {
                     let dataRival = response.data;
+                    dataRival.map((c, index) => {
+                        let rivalItemid = c.rival.rivalItemid;
+                        let rivalName = "";
+                        this.props.listRivalsShopFollowing.map((c, index) => {
+                            if (c.itemid === rivalItemid) rivalName = c.nameRival;
+                        })
+                        c.rivalName = rivalName;
+                        return c;
+                    })
+                    //Đảo auto
+                    let AutoTrue = dataRival.filter((c, index) => c.rival.auto === true);
+                    let AutoFalse = dataRival.filter((c, index) => c.rival.auto === false);
+                    AutoFalse.unshift(AutoTrue[0]);
+                    dataRival = AutoFalse;
                     this.setState({
                         dataRival: dataRival
                     })
-                    let rival = this.state.rival;
-                    let minprice = '';
-                    let maxprice = '';
-                    let ratingChange = '';
-                    dataRival.filter((c) => {
-                        if (rival.itemid === c.rival.rivalItemid) {
-                            maxprice = c.rival.max;
-                            minprice = c.rival.min;
-                        }
-                    })
+
                     this.setState({
-                        minprice: minprice,
-                        maxprice: maxprice,
+                        minprice: dataRival[0].rival.max,
+                        maxprice: dataRival[0].rival.min,
+                        ratingChange: dataRival[0].rival.price,
                     })
                 }
 
@@ -61,24 +68,43 @@ class On extends Component {
             .catch((error) => {
                 console.log(error);
             });
+
+        axios({
+            method: 'get',
+            url: 'http://172.104.173.222:8081/autoUpdate/' + this.props.followingItemSelected,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${this.props.token}`
+            },
+        })
+            .then((response) => {
+                console.log('response');
+                console.log(response);
+                let tableAutoPrice = response.data;
+                if (tableAutoPrice.length > 0) {
+                    tableAutoPrice = tableAutoPrice.map((c) => {
+                        let indexDate = c.time.search("_");
+                        let Datee = c.time.slice(0, indexDate);
+                        let hour = c.time.slice(indexDate + 1, c.time.length)
+                        Datee = hour + 'h: ' + Datee;
+                        c.Date = Datee;
+                        return c;
+                    })
+                    this.setState({ tableAutoPrice: tableAutoPrice })
+
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
     onChangeRival = (e) => {
         let index = e.target.value;
-        this.setState({ rival: this.props.listRivalsShopFollowing[index] })
 
-        let rival = this.props.listRivalsShopFollowing[index];
-        let minprice = '';
-        let maxprice = '';
-        let ratingChange = '';
-        this.state.dataRival.filter((c) => {
-            if (rival.itemid === c.rival.rivalItemid) {
-                maxprice = c.rival.max;
-                minprice = c.rival.min;
-            }
-        })
         this.setState({
-            minprice: minprice,
-            maxprice: maxprice,
+            minprice: this.state.dataRival[index].rival.max,
+            maxprice: this.state.dataRival[index].rival.min,
+            ratingChange: this.state.dataRival[index].rival.price,
         })
 
     }
@@ -90,8 +116,8 @@ class On extends Component {
             data: {
                 "itemid": `${this.props.followingItemSelected}`,
                 "shopid": `${this.props.shopIdSelected}`,
-                "rivalShopid": `${this.state.rival.shopid}`,
-                "rivalItemid": `${this.state.rival.itemid}`,
+                "rivalShopid": `${this.state.dataRival.rival.rivalShopid}`,
+                "rivalItemid": `${this.state.dataRival.rival.rivalItemid}`,
                 "auto": 'true',
                 "price": `${this.state.ratingChange}`,
                 "max": `${this.state.maxprice}`,
@@ -111,172 +137,150 @@ class On extends Component {
             })
             .catch((error) => {
                 console.log(error);
-            });
+            })
     }
-    render() {
-        let listRivalsShopFollowing;
-        let optionRivals;
-        if (this.props.listRivalsShopFollowing.length > 0) {
 
-            listRivalsShopFollowing = this.props.listRivalsShopFollowing;
-            optionRivals = listRivalsShopFollowing.map((c, index) => {
-                return <option key={index} value={index}>{c.nameRival}</option>
+    render() {
+        let optionRivals;
+        let tableAutoPrice;
+
+        console.log('aaa')
+        console.log(this.state.dataRival)
+
+        if (this.state.dataRival.length > 0) {
+            optionRivals = this.state.dataRival.map((c, index) => {
+                return <option key={index} value={index}>{c.rivalName}</option>
+            })
+        }
+        if (this.state.tableAutoPrice.length > 0) {
+            tableAutoPrice = this.state.tableAutoPrice.map((c, index) => {
+                let chenhgia = c.oldPrice>c.price? c.oldPrice - c.price :c.price - c.oldPrice;
+                return (
+                    <tr key={index}>
+                        <td> {c.Date} </td>
+                        <td>{c.oldPrice}</td>
+                        <td>{c.price}</td>
+                        <td>{c.shopRival}</td>
+                        <td style={{color: c.price>c.oldPrice? "blue": "red"}}>{chenhgia}</td>
+                    </tr>
+                )
             })
         }
         return (
             <div>
-            <form className="form-horizontal" onSubmit={this.onSubmit}>
-                <div className="row">
-                    <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                        <div className=" row ">
-                            <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                <label className="col-form-label"><h6>Đối thủ điều chỉnh</h6> </label>
+                <form className="form-horizontal" onSubmit={this.onSubmit}>
+                    <div className="row">
+                        <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                            <div className=" row ">
+                                <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <label className="col-form-label"><h6>Đối thủ điều chỉnh</h6> </label>
+                                </div>
+                                <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                                    <select className="form-control m-r-0" onChange={this.onChangeRival}>
+                                        {optionRivals}
+                                    </select>
+                                </div>
                             </div>
-                            <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                                <select className="form-control m-r-0" onChange={this.onChangeRival}>
-                                    {optionRivals}
-                                </select>
-                            </div>
-                        </div>
-                        <div className=" row ">
-                            <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                <label className="col-form-label">
-                                    <h6 >Khoảng giá
+                            <div className=" row ">
+                                <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <label className="col-form-label">
+                                        <h6 >Khoảng giá
                                         <Tooltip content="Giới hạn mức giá cao nhất và thấp nhất cho sản phẩm" fontSize="11px"  >
-                                            <span className="fa fa-info-circle red text-left m-l-5" ></span>
-                                        </Tooltip>
-                                    </h6>
+                                                <span className="fa fa-info-circle red text-left m-l-5" ></span>
+                                            </Tooltip>
+                                        </h6>
 
-                                </label>
-                            </div>
-                            <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                                <div className=" row doithu">
-                                    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                        <div className=" row ">
-                                            <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                                <label className="col-form-label"> Từ</label>
-                                            </div>
-                                            <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                <input
-                                                    className="form-control"
-                                                    name="minprice"
-                                                    placeholder=".....VNĐ"
-                                                    type="text"
-                                                    onChange={this.onChange}
-                                                    value={this.state.minprice}
-                                                    required
-                                                />
+                                    </label>
+                                </div>
+                                <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                                    <div className=" row doithu">
+                                        <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div className=" row ">
+                                                <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                    <label className="col-form-label"> Từ</label>
+                                                </div>
+                                                <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                    <input
+                                                        className="form-control"
+                                                        name="minprice"
+                                                        placeholder=".....VNĐ"
+                                                        type="text"
+                                                        onChange={this.onChange}
+                                                        value={this.state.minprice}
+                                                        required
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                        <div className=" row ">
-                                            <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                                <label className="col-form-label">Đến</label>
-                                            </div>
-                                            <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                <input
-                                                    className="form-control"
-                                                    name="maxprice"
-                                                    placeholder=".....VNĐ"
-                                                    type="text"
-                                                    value={this.state.maxprice}
-                                                    onChange={this.onChange}
-                                                    required
-                                                />
+                                        <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div className=" row ">
+                                                <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                    <label className="col-form-label">Đến</label>
+                                                </div>
+                                                <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                    <input
+                                                        className="form-control"
+                                                        name="maxprice"
+                                                        placeholder=".....VNĐ"
+                                                        type="text"
+                                                        value={this.state.maxprice}
+                                                        onChange={this.onChange}
+                                                        required
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className=" row ">
-                            <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                <label className="col-form-label"><h6>Mức điều chỉnh thấp hơn</h6> </label>
-                            </div>
-                            <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                                <input
-                                    className="form-control"
-                                    name="ratingChange"
-                                    placeholder="Nhập %"
-                                    type="text"
-                                    onChange={this.onChange}
-                                    required
-                                />
+                            <div className=" row ">
+                                <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <label className="col-form-label"><h6>Mức điều chỉnh thấp hơn</h6> </label>
+                                </div>
+                                <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                                    <input
+                                        className="form-control"
+                                        name="ratingChange"
+                                        placeholder="Nhập ...VNĐ"
+                                        type="text"
+                                        value={this.state.ratingChange}
+                                        onChange={this.onChange}
+                                        required
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="col-md-2 offset-md-9 col-sm-9 ml-auto text-right" >
-                    <button type="submit" className="btn btn-primary "> Xác nhận </button>
-                </div>
-            </form>
-            <div className="card m-t-30 ">
-                <div className="card-body">
-                    <div>
-                        <h3>Lịch sử chỉnh sửa giá tự động</h3>
+                    <div className="col-md-2 offset-md-9 col-sm-9 ml-auto text-right" >
+                        <button type="submit" className="btn btn-primary "> Xác nhận </button>
                     </div>
-                    <table className="table">
-                        <thead>
-                            <tr >
-                                <th scope="col " >Thời gian</th>
-                                <th > Giá cũ</th>
-                                <th > Giá mới</th>
-                                <th > Đối thủ </th>
-                                <th > Chênh lệch</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td> 07/08/2019 </td>
-                                <td>69,000</td>
-                                <td>73,000</td>
-                                <td>biboshoptv</td>
-                                <td>4,000</td>
-                            </tr>
-                            <tr>
-                                <td> 07/08/2019 </td>
-                                <td>69,000</td>
-                                <td>73,000</td>
-                                <td>biboshoptv</td>
-                                <td>4,000</td>
-                            </tr>
-                            <tr>
-                                <td> 07/08/2019 </td>
-                                <td>69,000</td>
-                                <td>73,000</td>
-                                <td>biboshoptv</td>
-                                <td>4,000</td>
-                            </tr>
-                            <tr>
-                                <td> 07/08/2019 </td>
-                                <td>69,000</td>
-                                <td>73,000</td>
-                                <td>biboshoptv</td>
-                                <td>4,000</td>
-                            </tr>
-                            <tr>
-                                <td> 07/08/2019 </td>
-                                <td>69,000</td>
-                                <td>73,000</td>
-                                <td>biboshoptv</td>
-                                <td>4,000</td>
-                            </tr>
-                            <tr>
-                                <td> 07/08/2019 </td>
-                                <td>69,000</td>
-                                <td>73,000</td>
-                                <td>biboshoptv</td>
-                                <td>4,000</td>
-                            </tr>
-                        </tbody>
-                </table>
-                </div>
+                </form>
+                <div className="card m-t-30 ">
+                    <div className="card-body">
+                        <div>
+                            <h3>Lịch sử chỉnh sửa giá tự động</h3>
+                        </div>
+                        <table className="table">
+                            <thead>
+                                <tr >
+                                    <th scope="col " >Thời gian</th>
+                                    <th > Giá cũ</th>
+                                    <th > Giá mới</th>
+                                    <th > Đối thủ </th>
+                                    <th > Chênh lệch</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {tableAutoPrice}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         );
     }
 }
+
 const mapStatetoProps = (state) => {
     return {
         token: state.token,
@@ -290,8 +294,8 @@ const mapStatetoProps = (state) => {
 }
 const mapDispatchtoProps = (dispatch, props) => {
     return {
-        changeStatusAutoPrice: (status , itemid) => {
-            dispatch(actions.changeStatusAutoPrice(status , itemid));
+        changeStatusAutoPrice: (status, itemid) => {
+            dispatch(actions.changeStatusAutoPrice(status, itemid));
         },
     }
 }

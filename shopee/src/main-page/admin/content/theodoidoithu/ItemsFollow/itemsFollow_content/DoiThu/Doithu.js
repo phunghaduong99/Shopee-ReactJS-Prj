@@ -43,8 +43,9 @@ class Doithu extends Component {
                             return c
                         }
                     )
+                   
                     this.props.saveListRivalsItem(newlistShop);
-
+                   
                 })
                 .catch((error) => {
                     console.log(error);
@@ -98,8 +99,7 @@ class Doithu extends Component {
             this.setState({
                 listChosen: []
             });
-        console.log(rivalShopid)
-        console.log(rivalItemid)
+       
         let table = this.props.listRivalsItem;
         let table2 = table.filter((c) => c.isFollowing === false);
         let numberchosen = table.length - table2.length;
@@ -123,7 +123,6 @@ class Doithu extends Component {
                     this.props.chooseRivalsItem(indexItem);
                     this.props.saveListRivalsShopFollowing(table[indexItem])
                     this.props.addNumberRivalsChosenItem(this.props.followingItemSelected)
-
                 })
                 .catch((error) => {
                     console.log(error);
@@ -169,9 +168,10 @@ class Doithu extends Component {
         let tableshop_un_chosen = null;
         let tableshop_chosen = null;
         let table = "";
-        if (this.props.listRivalsItem.length > 0) {
+        if (this.props.listRivalsItem.length > 0 && this.props.listRivalsShop.length >0 ) {
+            let gido = this.props.listRivalsItem
             table = this.props.listRivalsItem.map((c, index) => {
-                if (this.props.listRivalsShop.length > 0) {
+                if (gido.length > 0) {
                     c.nameRival = this.props.listRivalsShop[index].name;
                     c.follower_count = this.props.listRivalsShop[index].follower_count;
                     c.rating_star_rival_shop = this.props.listRivalsShop[index].rating_star;
@@ -185,7 +185,6 @@ class Doithu extends Component {
                 let listChosen = this.state.listChosen;
 
                 let table2 = this.props.listRivalsItem;
-
                 this.props.listRivalsItem.map((c, index) => {
                     let itemid = c.itemid;
                     let isItem = null;
@@ -199,10 +198,12 @@ class Doithu extends Component {
                         this.props.saveListRivalsShopFollowing(table2[indexItem])
                     }
                 })
+
             }
+            
+           
 
-
-            if (this.props.listRivalsShop.length > 0) {
+            if (gido.length > 0) {
 
                 tableshop_un_chosen = table.map((c, index) =>
                     <ListDoithu
@@ -222,6 +223,7 @@ class Doithu extends Component {
                         rivalItemid={c.itemid}
 
                     />)
+               
                 tableshop_chosen = this.props.listRivalsShopFollowing.map((c, index) =>
                     <RivalChosen
                         key={index}
@@ -240,7 +242,7 @@ class Doithu extends Component {
             tableshop_un_chosen = null;
             tableshop_chosen = null;
         }
-
+       
 
 
         return (
