@@ -14,7 +14,8 @@ class TabItems extends Component {
         this.state = {
             open: false,
             newPrice: -1,
-            shop_id: ''
+            shop_id: '',
+            textError:null
         };
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
@@ -28,13 +29,19 @@ class TabItems extends Component {
     onChange = (event) => {
         event.preventDefault();
         let newPrice = event.target.value;
-        if (newPrice<0 || newPrice % 100!==0 ){}
-                this.setState({ newPrice: newPrice });
+        if (newPrice<0 || newPrice % 100!==0 ) { this.setState({textError:"Cần nhập giá tiền dương và chẵn đến trăm đồng "});}
+        else { this.setState({textError:null});
+            this.setState({ newPrice: newPrice });};
+                
+    }
+    offSubmit=(event)=>{
+        event.preventDefault();
+
     }
     onSubmit = (event) => {
         event.preventDefault();
 
-        let url = "http://192.168.1.141:8081/updatePrice/" + this.props.shopid + "/" + this.props.itemid + "/" + this.state.newPrice;
+        let url = "http://172.104.173.222:8081/updatePrice/" + this.props.shopid + "/" + this.props.itemid + "/" + this.state.newPrice;
         console.log(url);
         axios({
             method: 'put',
@@ -91,7 +98,7 @@ class TabItems extends Component {
                         onClose={this.closeModal}
                     >
                         <div className="card changePiece">
-                            <form onSubmit={this.onSubmit}>
+                            <form onSubmit={(this.state.textError===null)? this.onSubmit:this.offSubmit}>
                                 <div className="card-header"><h6>{this.props.name}</h6></div>
                                 <div className="card-body">
                                     <div className="row ">
@@ -116,7 +123,7 @@ class TabItems extends Component {
                                                 required
                                             />
                                         </div>
-
+                                        <span className="errorMessage txt4">{(this.state.newPrice!==null)?this.state.textError:null}</span>
                                     </div>
                                     <div className="col-md-6 offset-md-9 col-sm-6 ml-auto m-t-20 aline">
                                         <button onClick={this.closeModal}>

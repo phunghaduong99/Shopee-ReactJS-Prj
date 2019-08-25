@@ -22,7 +22,7 @@ class FollowCompetitor extends Component {
     callAPI = () => {
         axios({
             method: 'get',
-            url: 'http://192.168.1.141:8081/chosenItems/' + this.props.shopIdSelected,
+            url: 'http://172.104.173.222:8081/chosenItems/' + this.props.shopIdSelected,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -56,7 +56,7 @@ class FollowCompetitor extends Component {
         if (chosen > 0) {
             axios({
                 method: 'delete',
-                url: 'http://192.168.1.141:8081/rival/' + itemId,
+                url: 'http://172.104.173.222:8081/rival/' + itemId,
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `${this.props.token}`

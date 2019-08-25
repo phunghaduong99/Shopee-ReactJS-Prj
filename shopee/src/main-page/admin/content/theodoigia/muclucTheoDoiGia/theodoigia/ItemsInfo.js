@@ -16,7 +16,7 @@ class ItemsInfo extends Component {
     callAPI = () => {
         axios({
             method: 'get',
-            url: 'http://192.168.1.141:8081/statistical/' + this.props.shopIdSelected + '/'+ this.props.itemId_thongke,
+            url: 'http://172.104.173.222:8081/statistical/' + this.props.shopIdSelected + '/'+ this.props.itemId_thongke,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`

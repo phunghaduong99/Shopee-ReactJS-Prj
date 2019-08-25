@@ -27,7 +27,7 @@ class Product extends Component {
     callAPI = () => {
         axios({
             method: 'put',
-            url: 'http://192.168.1.141:8081/getItems/' + this.props.shopIdSelected,
+            url: 'http://172.104.173.222:8081/getItems/' + this.props.shopIdSelected,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
