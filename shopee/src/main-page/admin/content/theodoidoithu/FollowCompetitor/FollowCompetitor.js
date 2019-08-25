@@ -56,7 +56,7 @@ class FollowCompetitor extends Component {
         if (chosen > 0) {
             axios({
                 method: 'delete',
-                url: 'http://localhost:8081/rival/' + itemId,
+                url: 'http://192.168.1.144:8081/rival/' + itemId,
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `${this.props.token}`
