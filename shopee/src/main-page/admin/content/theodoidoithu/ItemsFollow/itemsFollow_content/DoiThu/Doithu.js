@@ -27,7 +27,7 @@ class Doithu extends Component {
         if (this.props.listRivalsItem.length === 0) {
             axios({
                 method: 'get',
-                url: 'http://192.168.1.144:8081/getRivals/' + this.props.shopIdSelected + '/' + this.props.followingItemSelected,
+                url: 'http://192.168.1.141:8081/getRivals/' + this.props.shopIdSelected + '/' + this.props.followingItemSelected,
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `${this.props.token}`
@@ -54,7 +54,7 @@ class Doithu extends Component {
         if (this.props.listRivalsShop.length === 0) {
             axios({
                 method: 'get',
-                url: 'http://192.168.1.144:8081/shopRival/' + this.props.shopIdSelected + '/' + this.props.followingItemSelected,
+                url: 'http://192.168.1.141:8081/shopRival/' + this.props.shopIdSelected + '/' + this.props.followingItemSelected,
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `${this.props.token}`
@@ -76,7 +76,7 @@ class Doithu extends Component {
         if (this.props.listRivalsShopFollowing.length === 0) {
             axios({
                 method: 'get',
-                url: 'http://192.168.1.144:8081/rivals/' + this.props.shopIdSelected + '/' + this.props.followingItemSelected,
+                url: 'http://192.168.1.141:8081/rivals/' + this.props.shopIdSelected + '/' + this.props.followingItemSelected,
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `${this.props.token}`
@@ -106,7 +106,7 @@ class Doithu extends Component {
         if (numberchosen < 5) {
             axios({
                 method: 'post',
-                url: 'http://192.168.1.144:8081/rival',
+                url: 'http://192.168.1.141:8081/rival',
                 data: {
                     "itemid": `${this.props.followingItemSelected}`,
                     "shopid": `${this.props.shopIdSelected}`,
@@ -139,7 +139,7 @@ class Doithu extends Component {
             });
         axios({
             method: 'delete',
-            url: 'http://192.168.1.144:8081/rival',
+            url: 'http://192.168.1.141:8081/rival',
             data: {
                 "itemid": `${this.props.followingItemSelected}`,
                 "shopid": `${this.props.shopIdSelected}`,

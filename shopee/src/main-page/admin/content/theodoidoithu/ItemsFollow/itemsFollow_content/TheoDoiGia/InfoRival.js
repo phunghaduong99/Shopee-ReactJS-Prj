@@ -20,7 +20,7 @@ class InfoRival extends Component {
     callApi = () => {
         axios({
             method: 'get',
-            url: 'http://192.168.1.144:8081/autoUpdate/' + this.props.followingItemSelected,
+            url: 'http://192.168.1.141:8081/autoUpdate/' + this.props.followingItemSelected,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -39,7 +39,7 @@ class InfoRival extends Component {
 
         axios({
             method: 'get',
-            url: 'http://192.168.1.144:8081/autoUpdate/' + this.props.rival.itemid,
+            url: 'http://192.168.1.141:8081/autoUpdate/' + this.props.rival.itemid,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
