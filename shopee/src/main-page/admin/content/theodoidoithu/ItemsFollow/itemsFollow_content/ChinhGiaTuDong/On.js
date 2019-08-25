@@ -28,7 +28,7 @@ class On extends Component {
     componentDidMount() {
         axios({
             method: 'get',
-            url: 'http://localhost:8081/rivals/' + this.props.shopIdSelected + '/' + this.props.followingItemSelected,
+            url: 'http://192.168.1.141:8081/rivals/' + this.props.shopIdSelected + '/' + this.props.followingItemSelected,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -86,7 +86,7 @@ class On extends Component {
         event.preventDefault();
         axios({
             method: 'post',
-            url: 'http://localhost:8081/rival',
+            url: 'http://192.168.1.141:8081/rival',
             data: {
                 "itemid": `${this.props.followingItemSelected}`,
                 "shopid": `${this.props.shopIdSelected}`,

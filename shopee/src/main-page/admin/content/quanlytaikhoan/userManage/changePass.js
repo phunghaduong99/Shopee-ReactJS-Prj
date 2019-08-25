@@ -70,7 +70,7 @@ class changePass extends Component {
     callApi = () => {
       axios({
         method: 'put',
-        url: 'http://192.168.1.144:8081/updateInfor',
+        url: 'http://192.168.1.141:8081/updateInfor',
         data: {
           'password': `${this.state.newPass}`
         },
