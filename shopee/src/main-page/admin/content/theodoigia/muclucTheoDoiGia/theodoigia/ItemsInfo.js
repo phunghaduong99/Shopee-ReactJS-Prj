@@ -16,7 +16,7 @@ class ItemsInfo extends Component {
     callAPI = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8081/statistical/' + this.props.shopIdSelected + '/'+ this.props.itemId_thongke,
+            url: 'http://192.168.1.141:8081/statistical/' + this.props.shopIdSelected + '/'+ this.props.itemId_thongke,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -131,7 +131,7 @@ class ItemsInfo extends Component {
                 </div>
                 <div className="card">
                     <div className="card-body">
-                        <h5>Biểu đồ thống kê giá</h5>
+                        <h5>Biểu đồ thống kê giá <label className="text-primary" style={{fontSize:"15px"}}>(theo nghìn đồng)</label> </h5>
                         <div className="row">
                             <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
                                 <ChartFollow arrayPriceForChart = {arrayPriceForChart} percentNumber = {percentNumber}/>

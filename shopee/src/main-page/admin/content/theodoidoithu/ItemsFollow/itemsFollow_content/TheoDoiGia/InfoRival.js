@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import imageshop from './../../../2.jpg';
+import imageshop from './../../../3.jpg';
 import imagesp from './../../../1.jpg';
 import ChartPrice from './ChartPrice';
 import { connect } from 'react-redux';
@@ -116,7 +116,7 @@ class InfoRival extends Component {
                             <h4>Thông tin đối thủ</h4>
                             <div className="row doithu">
                                 <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                    <img className="mx-auto rounded-circle" src={images} alt="" />
+                                    <img className="mx-auto rounded-circle" src={imageshop} alt="" />
                                 </div>
                                 <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                                     <div className="row ">
