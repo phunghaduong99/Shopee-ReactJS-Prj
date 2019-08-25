@@ -1109,7 +1109,7 @@ header .form-inline {
     position: absolute;
     width: 100%;
     z-index: 999;
-    min-width: 150px;
+    min-width: 167px;
     -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
             box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05); }
     .user-area .user-menu .nav-link {

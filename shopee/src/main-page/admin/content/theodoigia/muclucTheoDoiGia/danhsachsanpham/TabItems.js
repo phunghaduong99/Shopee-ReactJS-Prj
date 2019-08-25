@@ -14,6 +14,7 @@ class TabItems extends Component {
                         </div>
                         <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                             {this.props.items.name}
+                            
                         </div>
                     </div>
                 </td>
@@ -28,8 +29,7 @@ class TabItems extends Component {
                     />
                 </td>
                 <td className="text-left">
-                    
-                <Link  to={`${this.props.match.url}/thongtinsanpham`}className="btn btn-primary " >Xem thống kê </Link>
+                    <Link  to={`${this.props.match.url}/thongtinsanpham`}className="btn btn-primary " > Xem thống kê </Link>
                 </td>
                 </tr>
                 
