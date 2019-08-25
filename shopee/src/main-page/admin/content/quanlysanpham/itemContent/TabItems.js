@@ -32,13 +32,9 @@ class TabItems extends Component {
                 this.setState({ newPrice: newPrice });
     }
     onSubmit = (event) => {
-        event.preventDefault();
-
-        let url = "http://192.168.1.141:8081/updatePrice/" + this.props.shopid + "/" + this.props.itemid + "/" + this.state.newPrice;
-        console.log(url);
         axios({
             method: 'put',
-            url: url,
+            url: "http://172.104.173.222:8081/updatePrice/" + this.props.shopid + "/" + this.props.itemid + "/" + this.state.newPrice,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -46,11 +42,14 @@ class TabItems extends Component {
         })
             .then((response) => {
                 console.log(response);
-                this.props.changePriceItem(this.props.itemid, this.state.newPrice);
+                if(response.data !== null && response.data !== ""){
+                    this.props.changePriceItem(this.props.itemid, this.state.newPrice);
+                }
+                else alert("Chỉnh sửa giá thất bại.");
             })
             .catch((error) => {
                 console.log(error);
-                alert("Chỉnh sửa giá thất bại.");
+                
             });
         this.closeModal();
     }
@@ -91,7 +90,7 @@ class TabItems extends Component {
                         onClose={this.closeModal}
                     >
                         <div className="card changePiece">
-                            <form onSubmit={this.onSubmit}>
+                            <form onSubmit={this.onSubmit} >
                                 <div className="card-header"><h6>{this.props.name}</h6></div>
                                 <div className="card-body">
                                     <div className="row ">

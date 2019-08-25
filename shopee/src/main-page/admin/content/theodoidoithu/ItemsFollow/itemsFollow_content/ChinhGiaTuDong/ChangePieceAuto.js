@@ -24,7 +24,7 @@ class ChangePieceAuto extends Component {
         if (!checked) {
             axios({
                 method: 'put',
-                url: 'http://localhost:8081/rivalOff/' + this.props.followingItemSelected,
+                url: 'http://172.104.173.222:8081/rivalOff/' + this.props.followingItemSelected,
 
                 headers: {
                     'Content-Type': 'application/json',
