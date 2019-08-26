@@ -109,6 +109,7 @@ class Product extends Component {
             map.push(0);
             tabItems = map.map((c, index) => <TabItems
                 dulieu={dulieu}
+                key = {index}
             />)
 
 

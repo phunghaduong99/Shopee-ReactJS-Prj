@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../../../redux/actions/index';
 import Shop from './shop';
 import Tooltip from "react-simple-tooltip"
-
+import axios from 'axios';
 class ShopManage extends Component {
   state = {
     shop_id_selected: "",
@@ -11,7 +11,47 @@ class ShopManage extends Component {
 
     ],
   }
+  componentDidMount() {
+    if (this.props.listShop.length === 0) {
+        this.callApi();
+    }
 
+}
+
+callApi = () => {
+    axios({
+        method: 'get',
+        url: 'http://172.104.173.222:8081/shop',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${this.props.token}`
+        },
+    })
+        .then((response) => {
+            console.log(response);
+            let neww = response.data;
+
+            let newlistShop = neww.map(
+                (c, index) => {
+                    if (index === 0) {
+                        c.isActive = true;
+                        this.props.saveShopIdSelected(c.shopid);
+                        this.props.saveShopNameSelected(c.name);
+                    }
+                    else {
+                        c.isActive = false;
+                    }
+                    return c
+                }
+            )
+            this.props.saveListShop(newlistShop);
+
+        })
+        .catch((error) => {
+            console.log(error);
+            alert("Không lấy được cửa hàng");
+        });
+}
 
   changeStatus = (index) => {
     let newlistShop = this.props.listShop.map(
