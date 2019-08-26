@@ -191,6 +191,7 @@ class Doithu extends Component {
                         this.props.chooseRivalsItem(indexItem);
                         this.props.saveListRivalsShopFollowing(table2[indexItem])
                     }
+                    return c;
                 })
 
             }

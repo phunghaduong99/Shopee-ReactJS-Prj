@@ -16,7 +16,7 @@ class ListDoithu  extends Component {
         let rating_star_rival_shop = Math.round(this.props.rating_star_rival_shop * 100) / 100;
         let Ischosen;
          if(this.props.isFollowing) Ischosen = <label className="text-primary">Đã chọn</label>;
-        else Ischosen = <button className="button" className="btn btn-primary m-l-5" onClick={this.isOnFollowing} >Chọn</button>
+        else Ischosen = <button  className="btn btn-primary m-l-5 button" onClick={this.isOnFollowing} >Chọn</button>
         return (
                 <tr>
                     <td className="doithu"> {this.props.nameRival}</td>

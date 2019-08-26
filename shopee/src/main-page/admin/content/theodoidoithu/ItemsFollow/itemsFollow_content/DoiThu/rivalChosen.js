@@ -14,7 +14,7 @@ class RivalChosen extends Component {
         return (
             <tr>
                 <td>{this.props.nameRival}</td>
-                <td className="text-right"><button className="button" className="btn btn-danger " onClick = {this.DeleteFollowing}>Xóa</button></td>
+                <td className="text-right"><button className="btn btn-danger button" onClick = {this.DeleteFollowing}>Xóa</button></td>
             </tr>
         );
     }
