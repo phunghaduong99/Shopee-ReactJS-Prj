@@ -5,7 +5,6 @@ import ChartFollow from './ChartFollow';
 import CircleChart from './CircleChart';
 import { connect } from 'react-redux';
 import axios from 'axios';
-
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 class ItemsInfo extends Component {
     state = {
@@ -57,6 +56,7 @@ class ItemsInfo extends Component {
         let SoLuongGiaTuongDuong = 0;
         let PhanTramGiaTuongDuong = 0;
         let status = 0;
+        let dulieu=false;
         if (this.state.statistical !== null) {
 
             let table = this.state.statistical.ranks;
@@ -144,17 +144,25 @@ class ItemsInfo extends Component {
                             <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                             </div>
                             <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                {dulieu ? <CircleChart arrayPrice={arrayPrice} percentNumber={percentNumber} /> :
-                                    <SkeletonTheme circle={true} height={350} width={350}>
+                                {dulieu?<CircleChart arrayPrice={arrayPrice} percentNumber={percentNumber} />:
+                                    <SkeletonTheme>
                                         <div className="row">
-                                            <div className="col-md-8">
-                                                <p><Skeleton circle={true} height={350} width={350} /></p>
+                                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                                <Skeleton circle={true} height={300} width={300}/>
                                             </div>
-                                            <div className="col-md-4">
-                                                <p><Skeleton  width = {30}/></p>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-right">
+                                                <Skeleton height={20} width={75}/>
+                                                <Skeleton height={20} width={75}/>
+                                                <Skeleton height={20} width={75}/>
+                                                <Skeleton height={20} width={75}/>
+                                                <Skeleton height={20} width={75}/>
+                                                <Skeleton height={20} width={75}/>
+                                                <Skeleton height={20} width={75}/>
+                                                <Skeleton height={20} width={75}/>
+                                                <Skeleton height={20} width={75}/>
+                                                <Skeleton height={20} width={75}/>
                                             </div>
                                         </div>
-
                                     </SkeletonTheme>}
                             </div>
                         </div>

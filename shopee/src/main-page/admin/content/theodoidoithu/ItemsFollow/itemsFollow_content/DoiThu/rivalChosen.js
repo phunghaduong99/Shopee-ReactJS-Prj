@@ -12,9 +12,11 @@ class RivalChosen extends Component {
     }
     render() {
         return (
-            <tr>
-                <td>{this.props.nameRival}</td>
-                <td className="text-right"><button className="btn btn-danger button" onClick = {this.DeleteFollowing}>Xóa</button></td>
+            <tr className="row">
+                <td className="col-xs-8 col-sm-8 col-md-8 col-lg-8"> 
+                     {this.props.nameRival}
+                </td>
+                <td className="col-xs-4 col-sm-4 col-md-4 col-lg-4"><button className="button" className="btn btn-danger " onClick = {this.DeleteFollowing}>Xóa</button></td>
             </tr>
         );
     }
