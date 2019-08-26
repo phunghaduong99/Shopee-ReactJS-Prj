@@ -57,7 +57,7 @@ class Product extends Component {
         if (search === '') this.setState({ isOnSearch: false });
         else this.setState({ isOnSearch: true });
     }
-    render() {
+    render() { 
         let tabItems = "";
         let newListItems;
         if (!this.state.isOnSearch) {
@@ -95,7 +95,9 @@ class Product extends Component {
                         shopid={c.shopid}
                         images = {c.images[0]}
                         rating_star ={c.rating_star}
-                        match={this.props.match} />)
+                        match={this.props.match} 
+                        />)
+                        
             }
             else { tabItems = null }
         }
@@ -137,11 +139,7 @@ class Product extends Component {
                         <table className="table">
                             <thead>
                                 <tr >
-                                     <th >
-                                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 cot1">
-                                            Sản phẩm
-                                        </div>
-                                    </th>
+                                     <th className="cot1"> Sản phẩm</th>
                                     <th className="cot2">Mã sản phẩm</th>
                                     <th className="cot3">Giá bán</th>
                                     <th className="cot4">Rating</th>

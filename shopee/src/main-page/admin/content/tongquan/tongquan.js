@@ -103,7 +103,7 @@ class TongQuan extends Component {
                                     </Link>
                                     <p className="text-center">Theo dõi giá các sản phẩm trong cửa hàng của bạn trên thị trường  </p>
                                 </div>
-                                <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 funcsion-service">
+                                <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
                                     <div className="img-overview">
                                         <img src={carousel3} alt="theo dõi đối thủ" />
                                     </div>

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Chart from "react-apexcharts";
+import Skeleton from 'react-loading-skeleton';
 class ChartFollow extends React.Component {
   render() {
     
@@ -32,7 +33,6 @@ class ChartFollow extends React.Component {
         }
       }
     }
-
 
     let series = [{
       data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]

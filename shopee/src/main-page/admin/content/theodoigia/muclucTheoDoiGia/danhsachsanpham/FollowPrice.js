@@ -100,11 +100,7 @@ class FollowPrice extends Component {
                         <table className="table">
                             <thead>
                                 <tr>
-                                    <th >
-                                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 cot1">
-                                            Sản phẩm
-                                        </div>
-                                    </th>
+                                    <th className="cot1" > Sản phẩm </th>
                                     <th className="cot2">Mã sản phẩm</th>
                                     <th className="cot3">Giá bán</th>
                                     <th className="cot4">Rating</th>
