@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import { connect } from 'react-redux';
-
+import {Link} from 'react-router-dom';
 class ContactShopee extends Component {
   constructor(props) {
     super(props);
@@ -24,47 +24,39 @@ class ContactShopee extends Component {
       this.setState({ shop_id: shop_id });
     }
     console.log("shop_id la: " + shop_id);
-
-
-  }
-  onSubmit = (event) => {
-    event.preventDefault();
-    // let token = JSON.parse(localStorage.getItem('token'));
-    axios({
-      method: 'post',
-      url: 'http://172.104.173.222:8081/shop',
-      data: {
-        id: '99999',
-        name: 'sssfff'
-      },
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization':  `${this.props.token}`
-      },
-    })
-      .then((response) => {
-        console.log(response);
+    if (this.state.shop_id !== null) {
+      axios({
+        method: 'post',
+        url: 'http://172.104.173.222:8081/shop/' + this.state.shop_id,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `${this.props.token}`
+        },
       })
-      .catch((error) => {
-        console.log(error);
-        alert("Lỗi.")
-      });
-  }
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
 
+  }
+ 
 
 
 
   onChange = (event) => {
-    
+
     var name = event.target.value;
-   
+
     this.setState({
-      nameShop : name
+      nameShop: name
     });
-  
 
 
-}
+
+  }
   render() {
 
 
@@ -74,10 +66,15 @@ class ContactShopee extends Component {
           <h2>Kết nối cửa hàng</h2>
         </div>
         <div className="col-md-8 offset-md-2 mr-auto ml-auto ">
-          <h5> Kết nối thành công. Vui lòng nhập đầy đủ các thông tin dưới đây</h5>
+          <h5 className="text-center"> Kết nối thành công. Shop_id của cửa hàng vừa kết nối</h5>
         </div><br />
+        <div className="col-md-8 offset-md-2 mr-auto ml-auto ">
+          <h3 style={{fontWeight: "bold"}} className="text-center">123456789 </h3>
+        </div><br />
+
+
         <div className="col-md-8 offset-md-3 mr-auto ml-auto ">
-          <form className="login100-form validate-form"  onSubmit={this.onSubmit}>
+          {/* <form className="login100-form validate-form" onSubmit={this.onSubmit}> */}
             {/* <div className=" row form-group ">
               <div className="col-md-4 aline">
                 <label className="col-form-label"><h6 >Shop ID</h6> </label>
@@ -99,7 +96,7 @@ class ContactShopee extends Component {
                                     </span>
               </div>
             </div> */}
-            <div className=" row form-group ">
+            {/* <div className=" row form-group ">
               <div className="col-md-4 aline">
                 <label className="col-form-label"><h6>Tên của hàng của bạn</h6> </label>
               </div>
@@ -113,11 +110,11 @@ class ContactShopee extends Component {
                   required
                 />
               </div>
+            </div> */}
+            <div className="col-md-3 offset-md-4 col-sm-4 ml-auto" >
+              <Link to ="/admin/quanlycuahang"><button  className="btn btn-primary text-center ">   Xong   </button> </Link>
             </div>
-            <div className="col-md-3 offset-md-9 col-sm-6 ml-auto">
-              <button type="submit" className="btn btn-primary ">   Xong   </button>
-            </div>
-          </form>
+          {/* </form> */}
         </div>
       </div>
     );
