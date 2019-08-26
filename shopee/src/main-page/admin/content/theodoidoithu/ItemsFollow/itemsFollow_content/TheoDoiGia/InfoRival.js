@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import imageshop from './../../../3.jpg';
-import imagesp from './../../../1.jpg';
 import ChartPrice from './ChartPrice';
 import { connect } from 'react-redux';
 import axios from 'axios';

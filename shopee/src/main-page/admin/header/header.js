@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import admin from  './../images/admin.jpg';
 import logo from './../images/logoadmin.png';
 import './header.css';
 import { Link } from "react-router-dom";
 import avatar from './1.jpg';
-import axios from 'axios';
 import { connect } from 'react-redux';
 class Header extends Component {
     state = {}
@@ -12,13 +10,9 @@ class Header extends Component {
         sessionStorage.clear();
     }
     render() {
-        let responseF = this.props.responseF;
-        let name = null;
-        if(responseF)   name = responseF.name;
 
         let width = this.props.width;
         let userInfo = this.props.userInfo;
-        console.log(userInfo);
 
         return (
             < header id="header" className="header" >

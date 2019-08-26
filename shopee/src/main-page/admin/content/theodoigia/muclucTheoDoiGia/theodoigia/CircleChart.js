@@ -1,10 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Chart from "react-apexcharts";
 class CircleChart extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
   
   render() {
     

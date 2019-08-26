@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import TabItems from './TabItems';
-import imageToy from './../../1.jpg';
 import { connect } from 'react-redux';
+import Skeleton from 'react-loading-skeleton';
 class FollowPrice extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +22,6 @@ class FollowPrice extends Component {
         else this.setState({ isOnSearch: true });
     }
     render() {
-        var { items } = this.state;
 
         let tabItems = "";
         let newListItems;
@@ -101,7 +100,11 @@ class FollowPrice extends Component {
                         <table className="table">
                             <thead>
                                 <tr>
-                                    <th className="cot1">Sản phẩm</th>
+                                    <th >
+                                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 cot1">
+                                            Sản phẩm
+                                        </div>
+                                    </th>
                                     <th className="cot2">Mã sản phẩm</th>
                                     <th className="cot3">Giá bán</th>
                                     <th className="cot4">Rating</th>

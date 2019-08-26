@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
-import StarRatings from 'react-star-ratings';
-import { Link } from "react-router-dom";
-import imageToy from './1.jpg';
 class ListDoithu  extends Component {
-    constructor(props){
-        super(props);
-       
-    }
+    
     isOnFollowing = (event) => {
         event.preventDefault();
         let indexItem = this.props.indexItem;

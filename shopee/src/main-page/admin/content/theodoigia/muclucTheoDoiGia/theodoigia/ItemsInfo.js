@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import Items from './../../1.jpg';
 import './../../items.css';
 import ChartFollow from './ChartFollow';
 import CircleChart from './CircleChart';

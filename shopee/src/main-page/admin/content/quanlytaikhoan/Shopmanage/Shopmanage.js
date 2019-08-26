@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-import axios from 'axios';
 import { connect } from 'react-redux';
 import * as actions from '../../../../../redux/actions/index';
 import Shop from './shop';

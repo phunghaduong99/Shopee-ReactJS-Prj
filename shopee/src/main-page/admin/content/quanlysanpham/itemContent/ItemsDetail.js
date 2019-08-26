@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './items.css';
 import StarRatings from 'react-star-ratings';
-import imageToy from './1.jpg';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import { isFulfilled } from 'q';
 class ItemsDetail extends Component {
 
     render() {

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './../items.css';
-import StarRatings from 'react-star-ratings';
-import imageToy from './../1.jpg';
 import { Link } from "react-router-dom";
 import Noidung from './itemsFollow_content/noidung';
 import { connect } from 'react-redux';

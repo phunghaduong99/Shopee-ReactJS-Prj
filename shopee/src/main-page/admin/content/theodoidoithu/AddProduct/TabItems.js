@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './../items.css';
 import StarRatings from 'react-star-ratings';
-import { Link } from "react-router-dom";
-import imageToy from './../1.jpg';
 
 
 
@@ -32,17 +30,17 @@ class TabItems extends Component {
                             </div>
                         </div>
                     </td>
-                    <td> {this.props.itemid}</td>
-                    <td> {this.props.price}</td>
-                    <td>
+                    <td className="cot2"> {this.props.itemid}</td>
+                    <td className="cot3"> {this.props.price}</td>
+                    <td className="cot4">
                     <StarRatings
                         starRatedColor="#FFD203"
-                        rating={4}
+                        rating={this.props.rating_star}
                         starDimension="20px"
                         starSpacing="2px"
                     />
                     </td>
-                    <td>
+                    <td className="cot5">
                     {this.props.isChosen ? <label className="text-primary m-l-35"> Đã thêm</label>:<button className="button" className="btn btn-primary m-l-35" onClick={this.addItem} >Thêm</button>}
                     
                         

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import StarRatings from 'react-star-ratings';
-import { Link } from "react-router-dom";
 import ListDoithu from '../../../mucluc/ListDoithu';
 import RivalChosen from './rivalChosen';
 import Tooltip from "react-simple-tooltip"
@@ -12,10 +10,6 @@ import * as actions from '../../../../../../../redux/actions/index';
 class Doithu extends Component {
     state = {
         listChosen: []
-    }
-    constructor(props) {
-        super(props);
-
     }
 
     componentDidMount() {

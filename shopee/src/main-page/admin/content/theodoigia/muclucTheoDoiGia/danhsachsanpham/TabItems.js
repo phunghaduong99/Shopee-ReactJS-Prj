@@ -22,9 +22,9 @@ class TabItems extends Component {
                         </div>
                     </div>
                 </td>
-                <td> {this.props.itemid}</td>
-                <td> {this.props.price}</td>
-                <td>
+                <td className="cot2"> {this.props.itemid}</td>
+                <td className="cot3"> {this.props.price}</td>
+                <td className="cot4">
                     <StarRatings
                         starRatedColor="#FFD203"
                         rating={this.props.rating_star}
@@ -32,7 +32,7 @@ class TabItems extends Component {
                         starSpacing="2px"
                     />
                 </td>
-                <td className="text-left">
+                <td className="cot5">
                     
                 <Link  to={`${this.props.match.url}/thongtinsanpham`} className="btn btn-primary" onClick= {this.saveItemId_ThongKe} >Xem thống kê </Link>
                 </td>
