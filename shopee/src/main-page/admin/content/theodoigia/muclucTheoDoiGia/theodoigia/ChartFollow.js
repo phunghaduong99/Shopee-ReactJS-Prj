@@ -1,6 +1,5 @@
 import React from 'react';
 import Chart from "react-apexcharts";
-import Skeleton from 'react-loading-skeleton';
 class ChartFollow extends React.Component {
   render() {
     let  options= {

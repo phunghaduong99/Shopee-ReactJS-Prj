@@ -56,7 +56,6 @@ class ItemsInfo extends Component {
         let SoLuongGiaTuongDuong = 0;
         let PhanTramGiaTuongDuong = 0;
         let status = 0;
-        let dulieu=false;
         if (this.state.statistical !== null) {
 
             let table = this.state.statistical.ranks;
