@@ -92,7 +92,7 @@ class TabItems extends Component {
                     />
                 </td>
                 <td className="text-left">
-                    <button className="button" className="btn btn-primary " onClick={this.openModal} >Sửa giá</button>
+                    <button  className="btn btn-primary button " onClick={this.openModal} >Sửa giá</button>
 
                     <Popup
                         open={this.state.open}

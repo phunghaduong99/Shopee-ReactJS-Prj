@@ -19,7 +19,7 @@ class TabItems extends Component {
     render() {
         let status ;
         if(this.props.isChosen) status =  <label className="text-primary m-l-35"> Đã thêm</label>
-        else status = <button className="button" className="btn btn-primary m-l-35" onClick={this.addItem} >Thêm</button>
+        else status = <button  className="btn btn-primary m-l-35 button" onClick={this.addItem} >Thêm</button>
         
         return (
                 <tr>

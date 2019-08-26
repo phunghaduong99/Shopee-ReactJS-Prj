@@ -42,7 +42,7 @@ class TabItemsFollow extends Component {
                     <td className="text-center">
                      {this.props.auto? "Bật": "Tắt"}
                     </td>
-                    <td><button className="button" className="btn btn-danger " onClick= {this.DeleteChosenItem}>Xóa</button></td>
+                    <td><button className="btn btn-danger button " onClick= {this.DeleteChosenItem}>Xóa</button></td>
                 </tr>
                 
         );

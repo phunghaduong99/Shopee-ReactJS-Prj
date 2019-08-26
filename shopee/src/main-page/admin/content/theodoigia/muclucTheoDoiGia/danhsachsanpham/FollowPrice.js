@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import TabItems from './TabItems';
-import imageToy from './../../1.jpg';
 import { connect } from 'react-redux';
 class FollowPrice extends Component {
     constructor(props) {
@@ -22,7 +21,6 @@ class FollowPrice extends Component {
         else this.setState({ isOnSearch: true });
     }
     render() {
-        var { items } = this.state;
 
         let tabItems = "";
         let newListItems;

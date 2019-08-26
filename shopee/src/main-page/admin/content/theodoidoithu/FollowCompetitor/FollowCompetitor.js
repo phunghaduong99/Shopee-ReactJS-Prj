@@ -79,7 +79,6 @@ class FollowCompetitor extends Component {
                 name={c.name}
                 itemid={c.itemid}
                 chosen={c.chosen}
-                name={c.name}
                 images={c.images[0]}
                 auto={c.auto}
                 key={index}

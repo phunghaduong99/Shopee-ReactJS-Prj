@@ -44,6 +44,7 @@ class On extends Component {
                         let rivalName = "";
                         this.props.listRivalsShopFollowing.map((c, index) => {
                             if (c.itemid === rivalItemid) rivalName = c.nameRival;
+                            return c;
                         })
                         c.rivalName = rivalName;
                         return c;
@@ -166,8 +167,6 @@ class On extends Component {
         let optionRivals;
         let tableAutoPrice;
 
-        console.log('aaa')
-        console.log(this.state.dataRival)
 
         if (this.state.dataRival.length > 0) {
             optionRivals = this.state.dataRival.map((c, index) => {
