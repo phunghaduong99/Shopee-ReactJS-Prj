@@ -50,16 +50,24 @@
    }
    .cot1{
     width: 32%;
+    text-align: center;
    }
    .cot2{
        width: 20%;
+       text-align: center;
       }
     .cot3{
        width: 18%;
+       text-align: center;
       }
     .cot4{
        width: 20%;
+       text-align: center;
       }
+    .cot5{
+      width: 10%;
+      text-align: right;
+    }
       .cot6{
        width: 12%;
        padding-left: 0 !important;

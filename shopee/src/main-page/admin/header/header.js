@@ -16,7 +16,6 @@ class Header extends Component {
 
         let width = this.props.width;
         let userInfo = this.props.userInfo;
-        console.log(userInfo);
 
         return (
             < header id="header" className="header" >

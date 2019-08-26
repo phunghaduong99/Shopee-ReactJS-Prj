@@ -64,7 +64,6 @@
     width: 12%;
     padding-left: 0 !important;
     padding-right: 0 !important;
-    text-align: center;
    }
    .cot7{
     width: 16%;
@@ -195,7 +194,7 @@
     border: solid 1px #9a9797;
   }
   
-   .list ul li a:hover, .list ul li a.current{
+   .list ul li a:hover{
     border: solid 1px #9a9797;
     background: #efefef;
     border-right: 5px 5px 0 0;

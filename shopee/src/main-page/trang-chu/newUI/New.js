@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import spa from './../../../images/S-logo1.png';
-
 import service1 from './image/services/services1.jpg';
 import service2 from './image/services/services2.jpg';
 import service3 from './image/services/services3.jpg';
@@ -117,7 +116,7 @@ class New extends Component {
                             Menu
                             <i className="fa fa-bars m-l-4"></i>
                         </button>
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"> </div>
+                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 "> </div>
                         <div className="collapse navbar-collapse col-md-2" id="navbarResponsive">
                             {/* <ul className="navbar-nav text-uppercase ml-auto">
                                 <li className="nav-item">

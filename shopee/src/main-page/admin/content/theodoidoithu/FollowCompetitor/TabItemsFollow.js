@@ -26,7 +26,7 @@ class TabItemsFollow extends Component {
     render() {
         return (
                 <tr>
-                    <td >
+                    <td>
                         <div className="row">
                             <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                                 <img className="img-toy m-r-7" src={this.props.images} alt="" />
@@ -37,9 +37,9 @@ class TabItemsFollow extends Component {
                             </div>
                         </div>
                         </td>
-                    <td> {this.props.itemid}</td>
-                    <td className="text-center"> {this.props.chosen}</td>
-                    <td className="text-center">
+                    <td className="cot2"> {this.props.itemid}</td>
+                    <td className="cot3"> {this.props.chosen}</td>
+                    <td className="cot4">
                      {this.props.auto? "Bật": "Tắt"}
                     </td>
                     <td><button className="button" className="btn btn-danger " onClick= {this.DeleteChosenItem}>Xóa</button></td>

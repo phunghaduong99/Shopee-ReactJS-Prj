@@ -109,7 +109,11 @@ class FollowCompetitor extends Component {
                         <table className="table">
                             <thead>
                                 <tr >
-                                    <th className="cot1">Sản phẩm</th>
+                                    <th >
+                                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 cot1">
+                                            Sản phẩm
+                                        </div>
+                                    </th>
                                     <th className="cot2">Mã sản phẩm</th>
                                     <th className="cot3 text-center">Số lượng đối thủ đang theo dõi</th>
                                     <th className="cot4 text-center">Chỉnh giá tự động</th>

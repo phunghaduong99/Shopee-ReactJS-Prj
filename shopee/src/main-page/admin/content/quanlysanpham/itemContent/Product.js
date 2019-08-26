@@ -42,6 +42,7 @@ class Product extends Component {
                 })
                 console.log(neww);
                 this.props.saveListItems(neww);
+                this.setState({loading:false});
             })
             .catch((error) => {
                 console.log(error);
@@ -71,7 +72,8 @@ class Product extends Component {
                         shopid={c.shopid}
                         images = {c.images[0]}
                         rating_star ={c.rating_star}
-                        match={this.props.match} />)
+                        match={this.props.match}
+                        />)
             }
             else { tabItems = null }
         }
@@ -97,7 +99,6 @@ class Product extends Component {
             }
             else { tabItems = null }
         }
-      
         return (
             
             <div onSubmit={this.onSubmit} >
@@ -136,7 +137,11 @@ class Product extends Component {
                         <table className="table">
                             <thead>
                                 <tr >
-                                    <th className="cot1">Sản phẩm</th>
+                                     <th >
+                                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 cot1">
+                                            Sản phẩm
+                                        </div>
+                                    </th>
                                     <th className="cot2">Mã sản phẩm</th>
                                     <th className="cot3">Giá bán</th>
                                     <th className="cot4">Rating</th>

@@ -33,12 +33,12 @@ class TabItems extends Component {
                             </div>
                         </div>
                     </td>
-                    <td> {this.props.itemid}</td>
-                    <td> {this.props.price}</td>
-                    <td>
+                    <td className="cot2"> {this.props.itemid}</td>
+                    <td className="cot3"> {this.props.price}</td>
+                    <td className="cot4">
                     <StarRatings
                         starRatedColor="#FFD203"
-                        rating={4}
+                        rating={this.props.rating_star}
                         starDimension="20px"
                         starSpacing="2px"
                     />
