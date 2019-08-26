@@ -7,22 +7,21 @@ import * as actions from '../../../../../redux/actions/index';
 
 
 import swal from 'sweetalert';
-import Popup from "reactjs-popup";
 const phoneRegex = RegExp(
   /\(*\d{3}\)*( |-)*\d{3}( |-)*\d{4}/
 );
 
-const formValid = ({ formErrors, ...rest }) => {
-  let valid = true;
-  Object.values(formErrors).forEach(val => {
-    val.length > 0 && (valid = false);
-  });
-  Object.values(rest).forEach(val => {
-    val === null && (valid = false);
-  });
+// const formValid = ({ formErrors, ...rest }) => {
+//   let valid = true;
+//   Object.values(formErrors).forEach(val => {
+//     val.length > 0 && (valid = false);
+//   });
+//   Object.values(rest).forEach(val => {
+//     val === null && (valid = false);
+//   });
 
-  return valid;
-};
+//   return valid;
+// };
 class user extends Component {
   constructor(props) {
     super(props);

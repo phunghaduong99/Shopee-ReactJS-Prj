@@ -13,7 +13,7 @@ class On extends Component {
             ratingChange: ' ',
             dataRival: [],
             tableAutoPrice: [],
-
+            index: 0
         });
     }
     onChange = (event) => {
@@ -51,17 +51,28 @@ class On extends Component {
                     //Đảo auto
                     let AutoTrue = dataRival.filter((c, index) => c.rival.auto === true);
                     let AutoFalse = dataRival.filter((c, index) => c.rival.auto === false);
-                    AutoFalse.unshift(AutoTrue[0]);
-                    dataRival = AutoFalse;
+                    if (AutoFalse.length !== dataRival.length) {
+                        AutoFalse.unshift(AutoTrue[0]);
+                        dataRival = AutoFalse;
+                    }
                     this.setState({
                         dataRival: dataRival
                     })
-
-                    this.setState({
-                        minprice: dataRival[0].rival.max,
-                        maxprice: dataRival[0].rival.min,
-                        ratingChange: dataRival[0].rival.price,
-                    })
+                    if(dataRival[0].rival.min !== 0){
+                        this.setState({
+                            minprice: dataRival[0].rival.min,
+                            maxprice: dataRival[0].rival.max,
+                            ratingChange: dataRival[0].rival.price,
+                        })
+                    }
+                    else {
+                        this.setState({
+                            minprice: '',
+                            maxprice:'',
+                            ratingChange: '',
+                        })
+                    }
+                   
                 }
 
             })
@@ -101,11 +112,22 @@ class On extends Component {
     onChangeRival = (e) => {
         let index = e.target.value;
 
-        this.setState({
-            minprice: this.state.dataRival[index].rival.max,
-            maxprice: this.state.dataRival[index].rival.min,
-            ratingChange: this.state.dataRival[index].rival.price,
-        })
+        this.setState({index: index});
+
+        if(this.state.dataRival[index].rival.min !== 0){
+            this.setState({
+                minprice: this.state.dataRival[index].rival.min,
+                maxprice: this.state.dataRival[index].rival.max,
+                ratingChange: this.state.dataRival[index].rival.price,
+            })
+        }
+        else {
+            this.setState({
+                minprice: '',
+                maxprice:'',
+                ratingChange: '',
+            })
+        }
 
     }
     onSubmit = (event) => {
@@ -116,8 +138,8 @@ class On extends Component {
             data: {
                 "itemid": `${this.props.followingItemSelected}`,
                 "shopid": `${this.props.shopIdSelected}`,
-                "rivalShopid": `${this.state.dataRival.rival.rivalShopid}`,
-                "rivalItemid": `${this.state.dataRival.rival.rivalItemid}`,
+                "rivalShopid": `${this.state.dataRival[this.state.index].rival.rivalShopid}`,
+                "rivalItemid": `${this.state.dataRival[this.state.index].rival.rivalItemid}`,
                 "auto": 'true',
                 "price": `${this.state.ratingChange}`,
                 "max": `${this.state.maxprice}`,
@@ -154,14 +176,14 @@ class On extends Component {
         }
         if (this.state.tableAutoPrice.length > 0) {
             tableAutoPrice = this.state.tableAutoPrice.map((c, index) => {
-                let chenhgia = c.oldPrice>c.price? c.oldPrice - c.price :c.price - c.oldPrice;
+                let chenhgia = c.oldPrice > c.price ? c.oldPrice - c.price : c.price - c.oldPrice;
                 return (
                     <tr key={index}>
                         <td> {c.Date} </td>
                         <td>{c.oldPrice}</td>
                         <td>{c.price}</td>
                         <td>{c.shopRival}</td>
-                        <td style={{color: c.price>c.oldPrice? "blue": "red"}}>{chenhgia}</td>
+                        <td style={{ color: c.price > c.oldPrice ? "#81e675" : "red" }}>{chenhgia}</td>
                     </tr>
                 )
             })

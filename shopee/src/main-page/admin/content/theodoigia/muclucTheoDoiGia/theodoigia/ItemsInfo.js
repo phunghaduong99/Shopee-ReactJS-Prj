@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import Items from './../../1.jpg';
 import './../../items.css';
 import ChartFollow from './ChartFollow';
 import CircleChart from './CircleChart';
@@ -10,13 +9,13 @@ class ItemsInfo extends Component {
     state = {
         statistical: null
     }
-    componentDidMount(){
+    componentDidMount() {
         this.callAPI();
     }
     callAPI = () => {
         axios({
             method: 'get',
-            url: 'http://172.104.173.222:8081/statistical/' + this.props.shopIdSelected + '/'+ this.props.itemId_thongke,
+            url: 'http://172.104.173.222:8081/statistical/' + this.props.shopIdSelected + '/' + this.props.itemId_thongke,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -27,11 +26,11 @@ class ItemsInfo extends Component {
                 this.setState({
                     statistical: response.data
                 })
-               
+
             })
             .catch((error) => {
                 console.log(error);
-               
+
             });
     }
     render() {
@@ -46,69 +45,72 @@ class ItemsInfo extends Component {
         let numberRivals = 0;
         let arrayPrice = [];
 
-        let SoLuongGiaThapHon = 0 ;
-        let PhanTramGiaThapHon = 0 ;
+        let SoLuongGiaThapHon = 0;
+        let PhanTramGiaThapHon = 0;
 
-        let SoLuongGiaCaoHon = 0 ;
-        let PhanTramGiaCaoHon = 0 ;
+        let SoLuongGiaCaoHon = 0;
+        let PhanTramGiaCaoHon = 0;
 
-        let SoLuongGiaTuongDuong = 0 ;
-        let PhanTramGiaTuongDuong = 0 ;
+        let SoLuongGiaTuongDuong = 0;
+        let PhanTramGiaTuongDuong = 0;
         let status = 0;
-        if(this.state.statistical !== null) {
-            
+        if (this.state.statistical !== null) {
+
             let table = this.state.statistical.ranks;
-            medium  = Math.round(this.state.statistical.medium)/1000;
-           
-            table.map((c,index) => {
+            medium = Math.round(this.state.statistical.medium) / 1000;
+
+            table.map((c, index) => {
                 arrayNumber.push(c.count);
-                numberRivals = numberRivals+ c.count;
-                if(index <=3){
+                numberRivals = numberRivals + c.count;
+                if (index <= 3) {
                     SoLuongGiaThapHon = SoLuongGiaThapHon + c.count
                 }
-                if(4<= index && index <=5)  SoLuongGiaTuongDuong = SoLuongGiaTuongDuong+ c.count
-                if(index>=6) SoLuongGiaCaoHon = SoLuongGiaCaoHon + c.count 
+                if (4 <= index && index <= 5) SoLuongGiaTuongDuong = SoLuongGiaTuongDuong + c.count
+                if (index >= 6) SoLuongGiaCaoHon = SoLuongGiaCaoHon + c.count;
+                return c;
             })
-           
-            if(numberRivals > 0) {
-                table.map((c,index) => {
+
+            if (numberRivals > 0) {
+                table.map((c, index) => {
                     let number = c.count;
-                    number = number/numberRivals;
+                    number = number / numberRivals;
                     let percent = Math.round(number * 1000) / 10;
                     percentNumber.push(percent);
-                    
-                }) 
-            }
-            
-            arrayNumber.map((c, index) => {
-                let percent = 0.5 + index/10 ;
-                let price = Math.round(itemDetail[0].price*percent/100)/10+ '-' + Math.round(itemDetail[0].price*(percent+0.1)/100)/10;
-                let priceForChart = Math.round(itemDetail[0].price*percent/1000)+ '-' + Math.round(itemDetail[0].price*(percent+0.1)/1000);
-                arrayPriceForChart.push(priceForChart)
-                arrayPrice.push(price)
-            })
-            
-            if(percentNumber.length >0) {
-                percentNumber.map((c,index ) => {
-                    if(index <= 3) PhanTramGiaThapHon = PhanTramGiaThapHon + c;
-                    if(index>=6) PhanTramGiaCaoHon = PhanTramGiaCaoHon + c;
-                    if(4<= index && index <=5) PhanTramGiaTuongDuong = PhanTramGiaTuongDuong +c ;
+                    return c;
                 })
             }
-            PhanTramGiaThapHon = Math.round(PhanTramGiaThapHon*10)/10;
-            PhanTramGiaCaoHon = Math.round(PhanTramGiaCaoHon*10)/10;
-            PhanTramGiaTuongDuong = Math.round(PhanTramGiaTuongDuong*10)/10;
+
+            arrayNumber.map((c, index) => {
+                let percent = 0.5 + index / 10;
+                let price = Math.round(itemDetail[0].price * percent / 100) / 10 + '-' + Math.round(itemDetail[0].price * (percent + 0.1) / 100) / 10;
+                let priceForChart = Math.round(itemDetail[0].price * percent / 1000) + '-' + Math.round(itemDetail[0].price * (percent + 0.1) / 1000);
+                arrayPriceForChart.push(priceForChart)
+                arrayPrice.push(price);
+                return c;
+            })
+
+            if (percentNumber.length > 0) {
+                percentNumber.map((c, index) => {
+                    if (index <= 3) PhanTramGiaThapHon = PhanTramGiaThapHon + c;
+                    if (index >= 6) PhanTramGiaCaoHon = PhanTramGiaCaoHon + c;
+                    if (4 <= index && index <= 5) PhanTramGiaTuongDuong = PhanTramGiaTuongDuong + c;
+                    return c;
+                })
+            }
+            PhanTramGiaThapHon = Math.round(PhanTramGiaThapHon * 10) / 10;
+            PhanTramGiaCaoHon = Math.round(PhanTramGiaCaoHon * 10) / 10;
+            PhanTramGiaTuongDuong = Math.round(PhanTramGiaTuongDuong * 10) / 10;
             status = 1;
 
         }
         let GiaThapHon;
         let GiaCaoHon;
         let GiaTuongDuong;
-        if(status === 1) GiaThapHon = SoLuongGiaThapHon + ' (chiếm ' + PhanTramGiaThapHon + '%)';
+        if (status === 1) GiaThapHon = SoLuongGiaThapHon + ' (chiếm ' + PhanTramGiaThapHon + '%)';
         else GiaThapHon = '';
-        if(status === 1) GiaCaoHon = SoLuongGiaCaoHon + ' (chiếm ' + PhanTramGiaCaoHon + '%)';
+        if (status === 1) GiaCaoHon = SoLuongGiaCaoHon + ' (chiếm ' + PhanTramGiaCaoHon + '%)';
         else GiaCaoHon = '';
-        if(status === 1) GiaTuongDuong = SoLuongGiaTuongDuong + ' (chiếm ' + PhanTramGiaTuongDuong + '%)';
+        if (status === 1) GiaTuongDuong = SoLuongGiaTuongDuong + ' (chiếm ' + PhanTramGiaTuongDuong + '%)';
         else GiaTuongDuong = '';
         return (
             <div>
@@ -131,15 +133,15 @@ class ItemsInfo extends Component {
                 </div>
                 <div className="card">
                     <div className="card-body">
-                        <h5>Biểu đồ thống kê giá <label className="text-primary" style={{fontSize:"15px"}}>(theo nghìn đồng)</label> </h5>
+                        <h5>Biểu đồ thống kê giá <label className="text-primary" style={{ fontSize: "15px" }}>(theo nghìn đồng)</label> </h5>
                         <div className="row">
                             <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                <ChartFollow arrayPriceForChart = {arrayPriceForChart} percentNumber = {percentNumber}/>
+                                <ChartFollow arrayPriceForChart={arrayPriceForChart} percentNumber={percentNumber} />
                             </div>
                             <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                             </div>
                             <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                <CircleChart arrayPrice = {arrayPrice} percentNumber = {percentNumber}/>
+                                <CircleChart arrayPrice={arrayPrice} percentNumber={percentNumber} />
                             </div>
                         </div>
 
@@ -155,16 +157,16 @@ class ItemsInfo extends Component {
                                     <thead>
                                         <tr >
                                             <th className="text-center success"><h6>Giá (nghìn đồng)</h6></th>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price*0.5/1000 * 10)/10}-{Math.round(itemDetail[0].price*0.6/1000 * 10)/10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price*0.6/1000 * 10)/10}-{Math.round(itemDetail[0].price*0.7/1000 * 10)/10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price*0.7/1000 * 10)/10}-{Math.round(itemDetail[0].price*0.8/1000 * 10)/10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price*0.8/1000 * 10)/10}-{Math.round(itemDetail[0].price*0.9/1000 * 10)/10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price*0.9/1000 * 10)/10}-{Math.round(itemDetail[0].price*1.0/1000 * 10)/10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price*1.0/1000 * 10)/10}-{Math.round(itemDetail[0].price*1.1/1000 * 10)/10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price*1.1/1000 * 10)/10}-{Math.round(itemDetail[0].price*1.2/1000 * 10)/10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price*1.2/1000 * 10)/10}-{Math.round(itemDetail[0].price*1.3/1000 * 10)/10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price*1.3/1000 * 10)/10}-{Math.round(itemDetail[0].price*1.4/1000 * 10)/10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price*1.4/1000 * 10)/10}-{Math.round(itemDetail[0].price*1.5/1000 * 10)/10}</td>
+                                            <td className="text-center ">{Math.round(itemDetail[0].price * 0.5 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 0.6 / 1000 * 10) / 10}</td>
+                                            <td className="text-center ">{Math.round(itemDetail[0].price * 0.6 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 0.7 / 1000 * 10) / 10}</td>
+                                            <td className="text-center ">{Math.round(itemDetail[0].price * 0.7 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 0.8 / 1000 * 10) / 10}</td>
+                                            <td className="text-center ">{Math.round(itemDetail[0].price * 0.8 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 0.9 / 1000 * 10) / 10}</td>
+                                            <td className="text-center ">{Math.round(itemDetail[0].price * 0.9 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 1.0 / 1000 * 10) / 10}</td>
+                                            <td className="text-center ">{Math.round(itemDetail[0].price * 1.0 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 1.1 / 1000 * 10) / 10}</td>
+                                            <td className="text-center ">{Math.round(itemDetail[0].price * 1.1 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 1.2 / 1000 * 10) / 10}</td>
+                                            <td className="text-center ">{Math.round(itemDetail[0].price * 1.2 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 1.3 / 1000 * 10) / 10}</td>
+                                            <td className="text-center ">{Math.round(itemDetail[0].price * 1.3 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 1.4 / 1000 * 10) / 10}</td>
+                                            <td className="text-center ">{Math.round(itemDetail[0].price * 1.4 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 1.5 / 1000 * 10) / 10}</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -208,20 +210,21 @@ class ItemsInfo extends Component {
                                                         <h6>Tổng số đối thủ :</h6>
                                                     </div>
                                                     <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                                        <label> {numberRivals>0? numberRivals: '' }</label>
+                                                        <label> {numberRivals > 0 ? numberRivals : ''}</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                                 <div className="row">
-                                                    <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                                        <h6>Giá trung bình :</h6>
+                                                    <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                                                        <h6>Khoảng giá tương đương:</h6>
                                                     </div>
-                                                    <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                                        <label>{medium>0? medium + 'đ': ''}</label>
+                                                    <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                                        <label>{GiaTuongDuong}</label>
                                                     </div>
                                                 </div>
                                             </div>
+                                            
                                         </div>
                                         <div className="row">
                                             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -237,22 +240,10 @@ class ItemsInfo extends Component {
                                             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                                 <div className="row">
                                                     <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                                        <h6>Giá xuất hiện nhiều nhất:</h6>
+                                                        <h6>Giá trung bình :</h6>
                                                     </div>
                                                     <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                                        <label> 116,000đ</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                                <div className="row">
-                                                    <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                                                        <h6>Khoảng giá tương đương:</h6>
-                                                    </div>
-                                                    <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                                        <label>{GiaTuongDuong}</label>
+                                                        <label>{medium > 0 ? medium + 'đ' : ''}</label>
                                                     </div>
                                                 </div>
                                             </div>

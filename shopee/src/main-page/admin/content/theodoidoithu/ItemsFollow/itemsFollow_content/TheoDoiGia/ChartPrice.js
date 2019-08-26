@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import Chart from "react-apexcharts";
 class ChartPrice extends Component {
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		let categories = [];
@@ -22,6 +19,7 @@ class ChartPrice extends Component {
 			listHistoryRivalItem.map((c, index) => {
 				RivalPrice.push(c.price);
 				categories.push(c.Date);
+				return c;
 			})
 
 		}
@@ -29,19 +27,24 @@ class ChartPrice extends Component {
 			let length = this.props.listHistoryMyItem.length;
 			let lengthRival = this.props.listHistoryRivalItem.length;
 			let listHistoryMyItem;
-			if (length > lengthRival)
+			let listHistoryMyItemFinal;
+			if (length > lengthRival && lengthRival <= 8)
 				listHistoryMyItem = this.props.listHistoryMyItem.filter((c, index) => index >= (length - lengthRival))
 			else listHistoryMyItem = this.props.listHistoryMyItem;
 			if (lengthRival <= 8)
-				listHistoryMyItem = listHistoryMyItem;
+				listHistoryMyItemFinal = listHistoryMyItem;
 			else {
-				listHistoryMyItem = listHistoryMyItem.filter((c, index) => index >= (length - 8))
+				listHistoryMyItemFinal = listHistoryMyItem.filter((c, index) => index >= (length - 8))
 			}
-			listHistoryMyItem.map((c) => {
+			listHistoryMyItemFinal.map((c) => {
 				MyPrice.push(c.price);
+				return c;
 			})
 
 		}
+		console.log(MyPrice);
+		console.log(RivalPrice);
+		console.log(categories);
 
 
 		let options = {

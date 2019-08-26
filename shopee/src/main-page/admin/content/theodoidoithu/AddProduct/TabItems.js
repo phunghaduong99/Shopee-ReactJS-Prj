@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import './../items.css';
 import StarRatings from 'react-star-ratings';
-import { Link } from "react-router-dom";
-import imageToy from './../1.jpg';
-
 
 
 class TabItems extends Component {
@@ -20,6 +17,10 @@ class TabItems extends Component {
         this.props.addItem(itemid);
     }
     render() {
+        let status ;
+        if(this.props.isChosen) status =  <label className="text-primary m-l-35"> Đã thêm</label>
+        else status = <button className="button" className="btn btn-primary m-l-35" onClick={this.addItem} >Thêm</button>
+        
         return (
                 <tr>
                     <td >
@@ -43,10 +44,7 @@ class TabItems extends Component {
                     />
                     </td>
                     <td>
-                    {this.props.isChosen ? <label className="text-primary m-l-35"> Đã thêm</label>:<button className="button" className="btn btn-primary m-l-35" onClick={this.addItem} >Thêm</button>}
-                    
-                        
-                   
+                    {status}
                     </td>
                    
                 </tr>

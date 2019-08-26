@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import StarRatings from 'react-star-ratings';
-import { Link } from "react-router-dom";
 import ListDoithu from '../../../mucluc/ListDoithu';
 import RivalChosen from './rivalChosen';
 import Tooltip from "react-simple-tooltip"
-
 
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -12,10 +9,6 @@ import * as actions from '../../../../../../../redux/actions/index';
 class Doithu extends Component {
     state = {
         listChosen: []
-    }
-    constructor(props) {
-        super(props);
-
     }
 
     componentDidMount() {
@@ -175,8 +168,9 @@ class Doithu extends Component {
                     c.nameRival = this.props.listRivalsShop[index].name;
                     c.follower_count = this.props.listRivalsShop[index].follower_count;
                     c.rating_star_rival_shop = this.props.listRivalsShop[index].rating_star;
-                    return c
+                    
                 }
+                return c
             });
 
 

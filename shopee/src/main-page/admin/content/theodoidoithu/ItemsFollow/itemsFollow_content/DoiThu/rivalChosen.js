@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 
 class RivalChosen extends Component {
-    constructor(props) {
-        super(props);
-
-    }
+   
     DeleteFollowing = (e) => {
         e.preventDefault();
         let indexItem = this.props.indexItem;

@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import Aside from './aside/aside';
 import Header from './header/header';
 import Content from './content/content';
-import axios from 'axios';
 import * as actions from '../../redux/actions/index';
 import './index.css';
 
-// import './assets/js/main';
 
 import './assets/css/style.css';
 import './assets/css/cs-skin-elastic.css';

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import imageshop from './../../../3.jpg';
-import imagesp from './../../../1.jpg';
 import ChartPrice from './ChartPrice';
 import { connect } from 'react-redux';
 
@@ -15,10 +14,7 @@ class InfoRival extends Component {
     }
     
 
-    
-
     render() {
-        
 
         let itemRival = this.props.listRivalsItem.filter((c) => c.itemid === this.props.rival.itemid);
         let ShopRival = this.props.listRivalsShop.filter((c) => c.itemid === this.props.rival.itemid);

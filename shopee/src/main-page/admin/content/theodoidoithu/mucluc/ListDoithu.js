@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import StarRatings from 'react-star-ratings';
-import { Link } from "react-router-dom";
-import imageToy from './1.jpg';
+
+
 class ListDoithu  extends Component {
-    constructor(props){
-        super(props);
-       
-    }
+   
     isOnFollowing = (event) => {
         event.preventDefault();
         let indexItem = this.props.indexItem;
@@ -18,6 +14,9 @@ class ListDoithu  extends Component {
    
         let rating_star_item = Math.round(this.props.rating_star * 100) / 100;
         let rating_star_rival_shop = Math.round(this.props.rating_star_rival_shop * 100) / 100;
+        let Ischosen;
+         if(this.props.isFollowing) Ischosen = <label className="text-primary">Đã chọn</label>;
+        else Ischosen = <button className="button" className="btn btn-primary m-l-5" onClick={this.isOnFollowing} >Chọn</button>
         return (
                 <tr>
                     <td className="doithu"> {this.props.nameRival}</td>
@@ -26,7 +25,7 @@ class ListDoithu  extends Component {
                     <td className="doithu">
                         <div className="row">
                             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                <img className="img-toy3 m-r-7" src={this.props.images}  />
+                                <img className="img-toy3 m-r-7" src={this.props.images} alt="anh"  />
                             </div>
                             <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                 {this.props.name}
@@ -43,8 +42,7 @@ class ListDoithu  extends Component {
                     </td>
                     <td className="doithu text-center"> {this.props.price}</td>
                     <td className="doithu">
-                        {(this.props.isFollowing)?<label className="text-primary">Đã chọn</label>:<button className="button" className="btn btn-primary m-l-5" onClick={this.isOnFollowing} >Chọn</button>}
-                        
+                        {Ischosen}
                     </td>
                 </tr>
                 

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Popup from "reactjs-popup";
 import axios from 'axios';
 import { connect } from 'react-redux';
-
+import swal from 'sweetalert'
 import * as actions from '../../../../../redux/actions/index';
 class TabItems extends Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class TabItems extends Component {
             open: false,
             newPrice: -1,
             shop_id: '',
-            textError:null
+            textError: null
         };
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
@@ -29,12 +29,14 @@ class TabItems extends Component {
     onChange = (event) => {
         event.preventDefault();
         let newPrice = event.target.value;
-        if (newPrice<0 || newPrice % 100!==0 ) { this.setState({textError:"Cần nhập giá tiền dương và chẵn đến trăm đồng "});}
-        else { this.setState({textError:null});
-            this.setState({ newPrice: newPrice });};
-                
+        if (newPrice < 0 || newPrice % 100 !== 0) { this.setState({ textError: "Cần nhập giá tiền dương và chẵn đến trăm đồng " }); }
+        else {
+            this.setState({ textError: null });
+            this.setState({ newPrice: newPrice });
+        };
+
     }
-    offSubmit=(event)=>{
+    offSubmit = (event) => {
         event.preventDefault();
 
     }
@@ -49,19 +51,20 @@ class TabItems extends Component {
         })
             .then((response) => {
                 console.log(response);
-                if(response.data !== null && response.data !== ""){
+                if (response.data !== null && response.data !== "") {
                     this.props.changePriceItem(this.props.itemid, this.state.newPrice);
                 }
-                else alert("Chỉnh sửa giá thất bại.");
+                else swal("Chỉnh sửa giá thất bại. Xin vui lòng thử lại.", "", "error")
+                    
             })
             .catch((error) => {
                 console.log(error);
-                
+
             });
         this.closeModal();
     }
 
-    onSlectedItem = () =>{
+    onSlectedItem = () => {
         this.props.saveItemIdSelected(this.props.itemid);
     }
     render() {
@@ -74,7 +77,7 @@ class TabItems extends Component {
                             <img className="img-toy m-r-7" src={this.props.images} alt="" />
                         </div>
                         <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                            <Link onClick = {this.onSlectedItem} to={`${this.props.match.url}/itemsDetail`}>{this.props.name} </Link>
+                            <Link onClick={this.onSlectedItem} to={`${this.props.match.url}/itemsDetail`}>{this.props.name} </Link>
                         </div>
                     </div>
                 </td>
@@ -87,8 +90,8 @@ class TabItems extends Component {
                         starDimension="20px"
                         starSpacing="2px"
                     />
-                  </td>
-                  <td className="text-left">
+                </td>
+                <td className="text-left">
                     <button className="button" className="btn btn-primary " onClick={this.openModal} >Sửa giá</button>
 
                     <Popup
@@ -97,7 +100,7 @@ class TabItems extends Component {
                         onClose={this.closeModal}
                     >
                         <div className="card changePiece">
-                            <form onSubmit={(this.state.textError===null)? this.onSubmit:this.offSubmit}>
+                            <form onSubmit={(this.state.textError === null) ? this.onSubmit : this.offSubmit}>
                                 <div className="card-header"><h6>{this.props.name}</h6></div>
                                 <div className="card-body">
                                     <div className="row ">
@@ -122,7 +125,7 @@ class TabItems extends Component {
                                                 required
                                             />
                                         </div>
-                                        <span className="errorMessage txt4">{(this.state.newPrice!==null)?this.state.textError:null}</span>
+                                        <span className="errorMessage txt4">{(this.state.newPrice !== null) ? this.state.textError : null}</span>
                                     </div>
                                     <div className="col-md-6 offset-md-9 col-sm-6 ml-auto m-t-20 aline">
                                         <button onClick={this.closeModal}>
@@ -162,7 +165,7 @@ const mapDispatchtoProps = (dispatch, props) => {
             dispatch(actions.saveItemIdSelected(shopItemIdSelected));
         }
 
-        
+
     }
 }
 export default connect(mapStatetoProps, mapDispatchtoProps)(TabItems);

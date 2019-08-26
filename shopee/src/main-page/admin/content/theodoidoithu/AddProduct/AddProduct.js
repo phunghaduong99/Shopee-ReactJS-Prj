@@ -37,8 +37,6 @@ class AddProduct extends Component {
     }
 
     render() {
-
-        var { items } = this.state;
         let tabItems = "";
         let newListItems;
         if (!this.state.isOnSearch) {
@@ -140,7 +138,6 @@ const mapStatetoProps = (state) => {
     console.log(state);
     return {
         token: state.token,
-        shopNameSelected: state.shopNameSelected,
         shopNameSelected: state.shopNameSelected,
         listItems: state.listItems
     }

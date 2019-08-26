@@ -1,21 +1,6 @@
 import React, { Component } from 'react';
 import spa from './../../../images/S-logo1.png';
-import image1 from './image/portfolio/01-thumbnail.jpg';
-import image2 from './image/portfolio/02-thumbnail.jpg';
-import image3 from './image/portfolio/03-thumbnail.jpg';
-import image4 from './image/portfolio/04-thumbnail.jpg';
-import image5 from './image/portfolio/05-thumbnail.jpg';
-import image6 from './image/portfolio/06-thumbnail.jpg';
-import team1 from './image/team/1.jpg';
-import team2 from './image/team/2.png';
-import team3 from './image/team/3.jpg';
-import team4 from './image/team/4.jpg';
-import team5 from './image/team/5.jpg';
-import team6 from './image/team/6.jpeg';
-import logo1 from './image/logos/envato.jpg';
-import logo2 from './image/logos/designmodo.jpg';
-import logo3 from './image/logos/themeforest.jpg';
-import logo4 from './image/logos/creative-market.jpg';
+
 import service1 from './image/services/services1.jpg';
 import service2 from './image/services/services2.jpg';
 import service3 from './image/services/services3.jpg';

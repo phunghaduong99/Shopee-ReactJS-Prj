@@ -45,15 +45,12 @@ class TabItemsFollow extends Component {
                     <td><button className="button" className="btn btn-danger " onClick= {this.DeleteChosenItem}>Xóa</button></td>
                 </tr>
                 
-                
         );
     }
 }
 const mapStatetoProps = (state) => {
-    
     return {
         followingItem: state.followingItemSelected
-       
     }
 }
 const mapDispatchtoProps = (dispatch, props) => {
