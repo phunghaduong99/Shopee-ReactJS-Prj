@@ -24,12 +24,8 @@ class PieceFollow extends Component {
     }
 
 
-
-
-
-
     componentDidMount() {
-
+        if(this.props.listRivalsShopFollowing.length >0)
         this.callApi(this.props.listRivalsShopFollowing[0].itemid);
     }
     callApi = ( itemid) => {
@@ -116,6 +112,10 @@ class PieceFollow extends Component {
         }
         else {
             status = <InfoRival rival={this.state.rival} table={this.state.table} listHistoryMyItem={this.state.listHistoryMyItem} listHistoryRivalItem={this.state.listHistoryRivalItem} />
+        }
+        if(this.props.listRivalsShopFollowing.length ===0 ){
+            status = null;
+            optionRivals = null
         }
         return (
             <div>

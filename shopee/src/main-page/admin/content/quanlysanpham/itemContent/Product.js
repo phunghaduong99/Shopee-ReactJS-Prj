@@ -138,7 +138,7 @@ class Product extends Component {
                             <thead>
                                 <tr >
                                      <th >
-                                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 cot1">
+                                        <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7 cot1">
                                             Sản phẩm
                                         </div>
                                     </th>

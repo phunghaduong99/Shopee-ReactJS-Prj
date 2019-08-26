@@ -8,7 +8,8 @@ import { connect } from 'react-redux';
 import * as actions from '../../../../../../../redux/actions/index';
 class Doithu extends Component {
     state = {
-        listChosen: []
+        listChosen: [],
+        noneRival: false
     }
 
     componentDidMount() {
@@ -29,6 +30,9 @@ class Doithu extends Component {
                 .then((response) => {
                     console.log(response);
                     let neww = response.data;
+                    if(response.data.length ===0)   this.setState({
+                        noneRival: true
+                    })
                     let newlistShop = neww.map(
                         (c, index) => {
                             c.indexItem = index;
@@ -36,9 +40,9 @@ class Doithu extends Component {
                             return c
                         }
                     )
-                   
+
                     this.props.saveListRivalsItem(newlistShop);
-                   
+
                 })
                 .catch((error) => {
                     console.log(error);
@@ -92,7 +96,7 @@ class Doithu extends Component {
             this.setState({
                 listChosen: []
             });
-       
+
         let table = this.props.listRivalsItem;
         let table2 = table.filter((c) => c.isFollowing === false);
         let numberchosen = table.length - table2.length;
@@ -153,22 +157,29 @@ class Doithu extends Component {
             .catch((error) => {
                 console.log(error);
             });
-
+           
     }
 
     render() {
+        let dulieu = false;
+        let mang =  [1, 2, 3];
 
-        let tableshop_un_chosen = null;
+        let tableshop_un_chosen = mang.map((c, index) => 
+            <ListDoithu
+                dulieu={dulieu}
+                key = {index}
+            />
+        )
         let tableshop_chosen = null;
         let table = "";
-        if (this.props.listRivalsItem.length > 0 && this.props.listRivalsShop.length >0 ) {
+        if (this.props.listRivalsItem.length > 0 && this.props.listRivalsShop.length > 0) {
             let gido = this.props.listRivalsItem
             table = this.props.listRivalsItem.map((c, index) => {
                 if (gido.length > 0) {
                     c.nameRival = this.props.listRivalsShop[index].name;
                     c.follower_count = this.props.listRivalsShop[index].follower_count;
                     c.rating_star_rival_shop = this.props.listRivalsShop[index].rating_star;
-                    
+
                 }
                 return c
             });
@@ -193,10 +204,9 @@ class Doithu extends Component {
                     }
                     return c;
                 })
-
             }
-            
-           
+
+
 
             if (gido.length > 0) {
 
@@ -216,9 +226,10 @@ class Doithu extends Component {
                         isOnFollowing={this.isOnFollowing}
                         rivalShopid={c.shopid}
                         rivalItemid={c.itemid}
+                        dulieu={"true"}
 
                     />)
-               
+
                 tableshop_chosen = this.props.listRivalsShopFollowing.map((c, index) =>
                     <RivalChosen
                         key={index}
@@ -234,10 +245,10 @@ class Doithu extends Component {
 
         }
         else {
-            tableshop_un_chosen = null;
+
             tableshop_chosen = null;
         }
-       
+        if(this.state.noneRival === true)   tableshop_un_chosen = null;
 
 
         return (

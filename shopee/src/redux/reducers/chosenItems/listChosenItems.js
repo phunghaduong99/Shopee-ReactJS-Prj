@@ -60,7 +60,7 @@ var myReducer = (state = initialState, action) => {
                 return c;
             })
             state = UpdateState;
-            sessionStorage.setItem('listChosenItems')
+            sessionStorage.setItem('listChosenItems', JSON.stringify(state));
             return [...state];
         default: return state;
     }

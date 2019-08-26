@@ -5,6 +5,8 @@ import ChartFollow from './ChartFollow';
 import CircleChart from './CircleChart';
 import { connect } from 'react-redux';
 import axios from 'axios';
+
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 class ItemsInfo extends Component {
     state = {
         statistical: null
@@ -34,6 +36,7 @@ class ItemsInfo extends Component {
             });
     }
     render() {
+        let dulieu = false;
         let itemDetail = this.props.listItems.filter((c) =>
             c.itemid === this.props.itemId_thongke
         )
@@ -101,7 +104,7 @@ class ItemsInfo extends Component {
             PhanTramGiaCaoHon = Math.round(PhanTramGiaCaoHon * 10) / 10;
             PhanTramGiaTuongDuong = Math.round(PhanTramGiaTuongDuong * 10) / 10;
             status = 1;
-
+            dulieu = true;
         }
         let GiaThapHon;
         let GiaCaoHon;
@@ -141,7 +144,18 @@ class ItemsInfo extends Component {
                             <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                             </div>
                             <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                <CircleChart arrayPrice={arrayPrice} percentNumber={percentNumber} />
+                                {dulieu ? <CircleChart arrayPrice={arrayPrice} percentNumber={percentNumber} /> :
+                                    <SkeletonTheme circle={true} height={350} width={350}>
+                                        <div className="row">
+                                            <div className="col-md-8">
+                                                <p><Skeleton circle={true} height={350} width={350} /></p>
+                                            </div>
+                                            <div className="col-md-4">
+                                                <p><Skeleton  width = {30}/></p>
+                                            </div>
+                                        </div>
+
+                                    </SkeletonTheme>}
                             </div>
                         </div>
 
@@ -172,29 +186,29 @@ class ItemsInfo extends Component {
                                     <tbody>
                                         <tr>
                                             <th className="text-center success"><h6>Số Lượng</h6></th>
-                                            <td className="text-center">{arrayNumber[0]}</td>
-                                            <td className="text-center">{arrayNumber[1]}</td>
-                                            <td className="text-center">{arrayNumber[2]}</td>
-                                            <td className="text-center">{arrayNumber[3]}</td>
-                                            <td className="text-center">{arrayNumber[4]}</td>
-                                            <td className="text-center">{arrayNumber[5]}</td>
-                                            <td className="text-center">{arrayNumber[6]}</td>
-                                            <td className="text-center">{arrayNumber[7]}</td>
-                                            <td className="text-center">{arrayNumber[8]}</td>
-                                            <td className="text-center">{arrayNumber[9]}</td>
+                                            <td className="text-center">{dulieu ? arrayNumber[0] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? arrayNumber[1] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? arrayNumber[2] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? arrayNumber[3] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? arrayNumber[4] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? arrayNumber[5] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? arrayNumber[6] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? arrayNumber[7] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? arrayNumber[8] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? arrayNumber[9] : <Skeleton />}</td>
                                         </tr>
                                         <tr>
                                             <th className="text-center success"><h6>Tỉ lệ phần trăm (%)</h6></th>
-                                            <td className="text-center">{percentNumber[0]}</td>
-                                            <td className="text-center">{percentNumber[1]}</td>
-                                            <td className="text-center">{percentNumber[2]}</td>
-                                            <td className="text-center">{percentNumber[3]}</td>
-                                            <td className="text-center">{percentNumber[4]}</td>
-                                            <td className="text-center">{percentNumber[5]}</td>
-                                            <td className="text-center">{percentNumber[6]}</td>
-                                            <td className="text-center">{percentNumber[7]}</td>
-                                            <td className="text-center">{percentNumber[8]}</td>
-                                            <td className="text-center">{percentNumber[9]}</td>
+                                            <td className="text-center">{dulieu ? percentNumber[0] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? percentNumber[1] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? percentNumber[2] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? percentNumber[3] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? percentNumber[4] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? percentNumber[5] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? percentNumber[6] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? percentNumber[7] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? percentNumber[8] : <Skeleton />}</td>
+                                            <td className="text-center">{dulieu ? percentNumber[9] : <Skeleton />}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -210,7 +224,7 @@ class ItemsInfo extends Component {
                                                         <h6>Tổng số đối thủ :</h6>
                                                     </div>
                                                     <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                                        <label> {numberRivals > 0 ? numberRivals : ''}</label>
+                                                        {dulieu ? <label> {numberRivals > 0 ? numberRivals : ''}</label> : <Skeleton />}
                                                     </div>
                                                 </div>
                                             </div>
@@ -220,11 +234,11 @@ class ItemsInfo extends Component {
                                                         <h6>Khoảng giá tương đương:</h6>
                                                     </div>
                                                     <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                                        <label>{GiaTuongDuong}</label>
+                                                        {dulieu ? <label> {GiaTuongDuong}</label> : <Skeleton />}
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                         <div className="row">
                                             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -233,7 +247,7 @@ class ItemsInfo extends Component {
                                                         <h6>Khoảng giá thấp hơn:</h6>
                                                     </div>
                                                     <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                                        <label>{GiaThapHon}</label>
+                                                        {dulieu ? <label>{GiaThapHon}</label> : <Skeleton />}
                                                     </div>
                                                 </div>
                                             </div>
@@ -243,7 +257,7 @@ class ItemsInfo extends Component {
                                                         <h6>Giá trung bình :</h6>
                                                     </div>
                                                     <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                                        <label>{medium > 0 ? medium + 'đ' : ''}</label>
+                                                        {dulieu ? <label>{medium > 0 ? medium + 'đ' : ''}</label> : <Skeleton />}
                                                     </div>
                                                 </div>
                                             </div>
@@ -255,7 +269,7 @@ class ItemsInfo extends Component {
                                                         <h6>Khoảng giá cao hơn :</h6>
                                                     </div>
                                                     <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                                        <label> {GiaCaoHon}</label>
+                                                        {dulieu ? <label> {GiaCaoHon}</label> : <Skeleton />}
                                                     </div>
                                                 </div>
                                             </div>
