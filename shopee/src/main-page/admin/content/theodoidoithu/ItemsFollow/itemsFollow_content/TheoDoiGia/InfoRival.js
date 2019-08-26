@@ -40,7 +40,7 @@ class InfoRival extends Component {
                 )
             }
             else {
-                let newListRival = this.props.listHistoryRivalItem.filter((c, index) => index >= (length - 7))
+                let newListRival = this.props.listHistoryRivalItem.filter((c, index) => index < 7)
                 rivalTable = newListRival.map((c, index) =>
                     <tr key={index}>
                         <td className="text-center">{c.Date}</td>

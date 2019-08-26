@@ -17,11 +17,11 @@ class Product extends Component {
         };
     }
     componentDidMount() {
-       
-        if(this.props.listItems.length ===0){
+
+        if (this.props.listItems.length === 0) {
             this.callAPI();
         }
-        
+
     }
     //change
     callAPI = () => {
@@ -36,13 +36,13 @@ class Product extends Component {
             .then((response) => {
                 console.log(response);
                 let newListItems = response.data;
-                let neww = newListItems.map((c,index) => {
+                let neww = newListItems.map((c, index) => {
                     c.isChosen = false;
                     return c
                 })
                 console.log(neww);
                 this.props.saveListItems(neww);
-                this.setState({loading:false});
+                this.setState({ loading: false });
             })
             .catch((error) => {
                 console.log(error);
@@ -58,6 +58,7 @@ class Product extends Component {
         else this.setState({ isOnSearch: true });
     }
     render() {
+        let dulieu = false;
         let tabItems = "";
         let newListItems;
         if (!this.state.isOnSearch) {
@@ -70,10 +71,11 @@ class Product extends Component {
                         name={c.name}
                         key={index}
                         shopid={c.shopid}
-                        images = {c.images[0]}
-                        rating_star ={c.rating_star}
+                        images={c.images[0]}
+                        rating_star={c.rating_star}
                         match={this.props.match}
-                        />)
+                        dulieu={"true"}
+                    />)
             }
             else { tabItems = null }
         }
@@ -82,7 +84,7 @@ class Product extends Component {
             console.log(search);
             let newListSearchItems;
             newListSearchItems = this.props.listItems.filter((c) => {
-                return c.name.search(search) >= 0 || c.itemid.toString().search(search) >= 0 ||c.price.toString().search(search) >= 0;
+                return c.name.search(search) >= 0 || c.itemid.toString().search(search) >= 0 || c.price.toString().search(search) >= 0;
             }
             );
             if (newListSearchItems !== undefined) {
@@ -93,14 +95,26 @@ class Product extends Component {
                         name={c.name}
                         key={index}
                         shopid={c.shopid}
-                        images = {c.images[0]}
-                        rating_star ={c.rating_star}
+                        images={c.images[0]}
+                        rating_star={c.rating_star}
+                        dulieu={"true"}
                         match={this.props.match} />)
             }
             else { tabItems = null }
         }
+        if (this.props.listItems.length === 0) {
+            let map = []
+            map.push(0);
+            map.push(0);
+            map.push(0);
+            tabItems = map.map((c, index) => <TabItems
+                dulieu={dulieu}
+            />)
+
+
+        }
         return (
-            
+
             <div onSubmit={this.onSubmit} >
 
                 <div className=" card overview col-sm-12">
@@ -137,7 +151,7 @@ class Product extends Component {
                         <table className="table">
                             <thead>
                                 <tr >
-                                     <th >
+                                    <th >
                                         <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7 cot1">
                                             Sản phẩm
                                         </div>
@@ -150,12 +164,7 @@ class Product extends Component {
                             </thead>
                             <tbody>
                                 {tabItems}
-                               
                             </tbody>
-
-
-
-
                         </table>
                     </div>
                 </div>

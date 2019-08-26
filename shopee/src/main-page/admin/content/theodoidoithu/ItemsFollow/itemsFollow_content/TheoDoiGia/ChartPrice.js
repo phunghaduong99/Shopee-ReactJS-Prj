@@ -13,12 +13,12 @@ class ChartPrice extends Component {
 				listHistoryRivalItem = this.props.listHistoryRivalItem;
 			}
 			else {
-				listHistoryRivalItem = this.props.listHistoryRivalItem.filter((c, index) => index >= (length - 8));
+				listHistoryRivalItem = this.props.listHistoryRivalItem.filter((c, index) => index <= 7);
 
 			}
 			listHistoryRivalItem.map((c, index) => {
-				RivalPrice.push(c.price);
-				categories.push(c.Date);
+				RivalPrice.unshift(c.price);
+				categories.unshift(c.Date);
 				return c;
 			})
 
@@ -29,15 +29,15 @@ class ChartPrice extends Component {
 			let listHistoryMyItem;
 			let listHistoryMyItemFinal;
 			if (length > lengthRival && lengthRival <= 8)
-				listHistoryMyItem = this.props.listHistoryMyItem.filter((c, index) => index >= (length - lengthRival))
+				listHistoryMyItem = this.props.listHistoryMyItem.filter((c, index) => index <  lengthRival)
 			else listHistoryMyItem = this.props.listHistoryMyItem;
 			if (lengthRival <= 8)
 				listHistoryMyItemFinal = listHistoryMyItem;
 			else {
-				listHistoryMyItemFinal = listHistoryMyItem.filter((c, index) => index >= (length - 8))
+				listHistoryMyItemFinal = listHistoryMyItem.filter((c, index) => index <=7 )
 			}
 			listHistoryMyItemFinal.map((c) => {
-				MyPrice.push(c.price);
+				MyPrice.unshift(c.price);
 				return c;
 			})
 

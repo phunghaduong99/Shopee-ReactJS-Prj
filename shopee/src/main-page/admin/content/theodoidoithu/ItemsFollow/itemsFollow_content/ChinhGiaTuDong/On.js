@@ -59,7 +59,7 @@ class On extends Component {
                     this.setState({
                         dataRival: dataRival
                     })
-                    if(dataRival[0].rival.min !== 0){
+                    if (dataRival[0].rival.min !== 0) {
                         this.setState({
                             minprice: dataRival[0].rival.min,
                             maxprice: dataRival[0].rival.max,
@@ -69,11 +69,11 @@ class On extends Component {
                     else {
                         this.setState({
                             minprice: '',
-                            maxprice:'',
+                            maxprice: '',
                             ratingChange: '',
                         })
                     }
-                   
+
                 }
 
             })
@@ -113,9 +113,9 @@ class On extends Component {
     onChangeRival = (e) => {
         let index = e.target.value;
 
-        this.setState({index: index});
+        this.setState({ index: index });
 
-        if(this.state.dataRival[index].rival.min !== 0){
+        if (this.state.dataRival[index].rival.min !== 0) {
             this.setState({
                 minprice: this.state.dataRival[index].rival.min,
                 maxprice: this.state.dataRival[index].rival.max,
@@ -125,7 +125,7 @@ class On extends Component {
         else {
             this.setState({
                 minprice: '',
-                maxprice:'',
+                maxprice: '',
                 ratingChange: '',
             })
         }
@@ -174,7 +174,11 @@ class On extends Component {
             })
         }
         if (this.state.tableAutoPrice.length > 0) {
-            tableAutoPrice = this.state.tableAutoPrice.map((c, index) => {
+            let newTableAuto;
+            if (this.state.tableAutoPrice.length >= 8)
+                newTableAuto = this.state.tableAutoPrice.filter((c, index) => index <= 7);
+            else newTableAuto = this.state.tableAutoPrice;
+            tableAutoPrice = newTableAuto.map((c, index) => {
                 let chenhgia = c.oldPrice > c.price ? c.oldPrice - c.price : c.price - c.oldPrice;
                 return (
                     <tr key={index}>
@@ -182,7 +186,10 @@ class On extends Component {
                         <td>{c.oldPrice}</td>
                         <td>{c.price}</td>
                         <td>{c.shopRival}</td>
-                        <td style={{ color: c.price > c.oldPrice ? "#81e675" : "red" }}>{chenhgia}</td>
+                        <td style={{ color: c.price > c.oldPrice ? "#81e675" : "red" }}>
+                            <i className={c.price > c.oldPrice ? "fa fa-arrow-up": "fa fa-arrow-down"}></i>
+                            {chenhgia}
+                        </td>
                     </tr>
                 )
             })
