@@ -13,7 +13,8 @@ class On extends Component {
             ratingChange: ' ',
             dataRival: [],
             tableAutoPrice: [],
-            index: 0
+            index: 0,
+            error:null,
         });
     }
     onChange = (event) => {
@@ -21,10 +22,16 @@ class On extends Component {
         var target = event.target;
         var name = target.name;
         var value = target.value;
+
+        let price = event.target.value;
+        if (price < 0 || price % 100 !== 0) 
+            { this.setState({ error: "Cần nhập giá tiền dương và chẵn đến trăm đồng " }); }
+        else {
+            this.setState({ error: null });
+        };
         this.setState({
             [name]: value
         });
-
     }
     componentDidMount() {
         axios({
@@ -131,6 +138,9 @@ class On extends Component {
         }
 
     }
+    offSubmit=(event)=>{
+        event.preventDefault();
+    }
     onSubmit = (event) => {
         event.preventDefault();
         axios({
@@ -144,7 +154,8 @@ class On extends Component {
                 "auto": 'true',
                 "price": `${this.state.ratingChange}`,
                 "max": `${this.state.maxprice}`,
-                "min": `${this.state.minprice}`
+                "min": `${this.state.minprice}`,
+                "error":null
 
             },
             headers: {
@@ -160,6 +171,7 @@ class On extends Component {
             })
             .catch((error) => {
                 console.log(error);
+                swal("Theo dõi tự động thất bại", "", "warning")
             })
     }
     number_format = ( number, decimals, dec_point, thousands_sep ) => {
@@ -204,7 +216,7 @@ class On extends Component {
         }
         return (
             <div>
-                <form className="form-horizontal" onSubmit={this.onSubmit}>
+                <form className="form-horizontal" onSubmit={( this.state.error===null)?this.onSubmit:this.offSubmit}>
                     <div className="row">
                         <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
                             <div className=" row ">
@@ -266,6 +278,7 @@ class On extends Component {
                                                 </div>
                                             </div>
                                         </div>
+                                        <span className="errorMessage txt4">{this.state.error}</span>
                                     </div>
                                 </div>
                             </div>
