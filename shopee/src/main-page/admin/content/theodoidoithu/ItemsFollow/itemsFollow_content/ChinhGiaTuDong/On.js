@@ -162,7 +162,15 @@ class On extends Component {
                 console.log(error);
             })
     }
-
+    number_format = ( number, decimals, dec_point, thousands_sep ) => {
+        var n = number, c = isNaN(decimals = Math.abs(decimals)) ? 2 : decimals;
+        var d = dec_point === undefined ? "," : dec_point;
+        var t = thousands_sep === undefined ? "." : thousands_sep, s = n < 0 ? "-" : "";
+        var i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "";
+        var j = i.length;
+        j = ( j) > 3 ? j % 3 : 0;
+        return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+    }
     render() {
         let optionRivals;
         let tableAutoPrice;
@@ -183,12 +191,12 @@ class On extends Component {
                 return (
                     <tr key={index}>
                         <td> {c.Date} </td>
-                        <td>{c.oldPrice}</td>
-                        <td>{c.price}</td>
+                        <td> {this.number_format(parseFloat(c.oldPrice), 0, '.', ',') }  </td>
+                        <td> {this.number_format(parseFloat(c.price), 0, '.', ',') }  </td>
                         <td>{c.shopRival}</td>
                         <td style={{ color: c.price > c.oldPrice ? "#81e675" : "red" }}>
                             <i className={c.price > c.oldPrice ? "fa fa-arrow-up": "fa fa-arrow-down"}></i>
-                            {chenhgia}
+                            {this.number_format(parseFloat(chenhgia), 0, '.', ',') } 
                         </td>
                     </tr>
                 )
