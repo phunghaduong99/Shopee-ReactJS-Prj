@@ -80,7 +80,7 @@ class TabItems extends Component {
                             {this.props.dulieu ? <img className="img-toy m-r-7" src={this.props.images} alt="" /> : <Skeleton width={40} height={40} />}
                         </div>
                         <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                            {this.props.dulieu ? <Link onClick={this.onSlectedItem} to={`${this.props.match.url}/itemsDetail`}>{this.props.name} </Link> : <Skeleton count={2} />}
+                            {this.props.dulieu ? <Link onClick={this.onSlectedItem} to={`${this.props.match.url}/itemsDetail/${this.props.itemid}`}>{this.props.name} </Link> : <Skeleton count={2} />}
 
                         </div>
                     </div>
@@ -109,11 +109,11 @@ class TabItems extends Component {
                             >
                                 <div className="card changePiece">
                                     <form onSubmit={(this.state.textError === null) ? this.onSubmit : this.offSubmit}>
-                                        <div className="card-header"><h6>{this.props.name}</h6></div>
+                                        <div className="card-header "><h6 >{this.props.name}</h6></div>
                                         <div className="card-body">
                                             <div className="row ">
                                                 <div className="col-md-8">
-                                                    <label className="form-control-group"><h6>Giá bán hiện tại (VNĐ)</h6></label>
+                                                    <label className="form-control-group text-left"><h6>Giá bán hiện tại (VNĐ)</h6></label>
                                                 </div>
                                                 <div className="col-md-4 aline">
                                                     <label className="form-control-group "><h6>{this.props.price}</h6></label>
@@ -121,7 +121,7 @@ class TabItems extends Component {
                                             </div>
                                             <div className="row ">
                                                 <div className="col-md-6">
-                                                    <label className="form-control-group"><h6>Giá mới</h6></label>
+                                                    <label className="form-control-group text-left"><h6>Giá mới</h6></label>
                                                 </div>
                                                 <div className="col-md-6">
                                                     <input

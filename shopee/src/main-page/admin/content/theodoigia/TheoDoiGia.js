@@ -28,7 +28,7 @@ class TheoDoiGia extends Component {
         return (
             <div>
                 {status}
-                <Route path={`${this.props.match.url}/thongtinsanpham`}
+                <Route path={`${this.props.match.url}/itemsInformation/:id`}
                     render={props =>
                         <ItemsInfo {...props} Theodoigia_url = {this.props.match} />} />
                 

@@ -75,7 +75,7 @@ class FollowPrice extends Component {
                             <h5> Cửa hàng đang chọn: {this.props.shopNameSelected} </h5>
                         </div>
                         <div className="col-md-2 offset-md-2 mr-0 ml-0">
-                            <Link to={`${this.props.admin_url.url}/quanlycuahang`} className="btn btn-link">Đổi cửa hàng </Link>
+                            <Link to={`${this.props.admin_url.url}/shopManagement`} className="btn btn-link">Đổi cửa hàng </Link>
                             {/* <button type="button" className="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết nối</button> */}
                         </div>
                     </div>

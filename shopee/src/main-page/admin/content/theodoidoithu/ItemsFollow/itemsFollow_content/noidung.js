@@ -10,14 +10,14 @@ class Noidung extends Component {
     render() {
         return (
             <div>
-                <Route exact path={this.props.match.url}
+                <Route exact path={`${this.props.match.url}`}
                     render={props =>
                         <Doithu {...props} />} />
 
-                <Route exact path={`${this.props.match.url}/theodoigia`}
+                <Route exact path={`${this.props.match.url}/competitorPriceFollows`}
                     render={props =>
                         <PieceFollow {...props} onUser={this.onUser} />} />
-                <Route path={`${this.props.match.url}/chinhgiatudong`}
+                <Route path={`${this.props.match.url}/changePriceAuto`}
                     render={props =>
                         <ChangePieceAuto {...props}  />} />
                 

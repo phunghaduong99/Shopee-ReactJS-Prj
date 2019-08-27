@@ -22,19 +22,19 @@ class Content extends Component {
                     <Route exact path={this.props.match.url}
                         render={props =>
                         <TongQuan {...props}  />}  />
-                    <Route path={`${this.props.match.url}/quanlytaikhoan`}
+                    <Route path={`${this.props.match.url}/accountManagement`}
                         render={props =>
                         <Usermanage {...props} onUser={this.onUser} admin_url ={this.props.match} />}   />
-                    <Route path={`${this.props.match.url}/quanlycuahang`}
+                    <Route path={`${this.props.match.url}/shopManagement`}
                         render={props =>
                         <ShopContent {...props} admin_url ={this.props.match}/>}   />
-                    <Route path={`${this.props.match.url}/quanlysanpham`}
+                    <Route path={`${this.props.match.url}/productManagement`}
                         render={props =>
                         <Items {...props} admin_url ={this.props.match}/>}   />
-                    <Route path={`${this.props.match.url}/theodoidoithu`}
+                    <Route path={`${this.props.match.url}/competitorFollows`}
                         render={props =>
                         <TheoDoiDoiThu {...props} admin_url = {this.props.match} />}   />
-                    <Route path={`${this.props.match.url}/theodoigia`}
+                    <Route path={`${this.props.match.url}/priceFollows`}
                         render={props =>
                         <TheoDoiGia {...props} admin_url = {this.props.match} />}   />
                 </div>

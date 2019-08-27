@@ -159,7 +159,7 @@ class changePass extends Component {
                             
                           </div>
                           <div className="col-md-6 offset-md-9 col-sm-6 ml-auto text-right">
-                            <Link to={`/admin/quanlytaikhoan`}><button className="btn btn-danger m-r-10 ">Hủy Bỏ </button></Link>
+                            <Link to={`/admin/accountManagement`}><button className="btn btn-danger m-r-10 ">Hủy Bỏ </button></Link>
                             <button type="submit" className="btn btn-primary ">Lưu Lại </button>
                           </div>
                           <Popup

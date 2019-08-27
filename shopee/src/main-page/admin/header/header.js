@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import logo from './../images/logoadmin.png';
 import './header.css';
 import { Link } from "react-router-dom";
-import avatar from './1.jpg';
 import { connect } from 'react-redux';
 class Header extends Component {
     state = {}
     onClick = () => {
         sessionStorage.clear();
     }
+
     render() {
         // let responseF = this.props.responseF;
         // // let name = null;
@@ -16,7 +16,8 @@ class Header extends Component {
 
         let width = this.props.width;
         let userInfo = this.props.userInfo;
-
+        let name = String(userInfo.username).replace(/ /g, "+");
+        let url='https://ui-avatars.com/api/?rounded=true&size=50&background=6699CC&color=FFFFFF&name='+name+'';
         return (
             < header id="header" className="header" >
                 <div className="top-left">
@@ -33,7 +34,7 @@ class Header extends Component {
                     <div className="header-menu">
                         <div className="user-area dropdown float-right">
                             <button href="/" className="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img className="user-avatar rounded-circle" src={avatar} alt="User Avatar" />
+                                <img className="user-avatar rounded-circle" src={url}alt="User Avatar" />
                                 <span className="username">{userInfo.username}</span>
                                 <i className="fa fa-angle-down m-l-10"></i>
                             </button>

@@ -18,6 +18,7 @@ class CircleChart extends React.Component {
           }
         }
       }]
+    
     }
     let series = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
     if (this.props.arrayPrice.length > 0) {
