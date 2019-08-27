@@ -89,7 +89,7 @@ class TongQuan extends Component {
                                     <div className="img-overview">
                                         <img src={carousel1} alt="quản lý sản phẩm" />
                                     </div>
-                                    <Link to={`${this.props.match.url}/quanlysanpham`}>
+                                    <Link to={`${this.props.match.url}/productManagement`}>
                                         <h5 className="text-black text-center m-t-10">1. Quản lý sản phẩm</h5>
                                     </Link>
                                     <p className="text-center">Xem danh sách, tìm kiếm nhanh và chỉnh sửa dữ liệu ngay trong cửa hàng của bạn</p>
@@ -98,7 +98,7 @@ class TongQuan extends Component {
                                     <div className="img-overview">
                                         <img src={carousel2} alt="theo dõi giá" />
                                     </div>
-                                    <Link to={`${this.props.match.url}/theodoigia`}>
+                                    <Link to={`${this.props.match.url}/priceFollows`}>
                                         <h5 className="text-black text-center m-t-10">2. Theo dõi giá</h5>
                                     </Link>
                                     <p className="text-center">Theo dõi giá các sản phẩm trong cửa hàng của bạn trên thị trường  </p>
@@ -107,7 +107,7 @@ class TongQuan extends Component {
                                     <div className="img-overview">
                                         <img src={carousel3} alt="theo dõi đối thủ" />
                                     </div>
-                                    <Link to={`${this.props.match.url}/theodoidoithu`}>
+                                    <Link to={`${this.props.match.url}/competitorFollows`}>
                                         <h5 className="text-black text-center m-t-10">3. Theo dõi đối thủ</h5>
                                     </Link>
                                     <p className="text-center">Theo dõi gia của đối thủ trực tiếp và chỉnh sửa giá tự động!</p>

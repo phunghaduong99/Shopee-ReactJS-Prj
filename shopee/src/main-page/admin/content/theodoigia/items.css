@@ -65,13 +65,11 @@
       }
     .cot5{
       width: 10%;
-      text-align: right;
     }
       .cot6{
        width: 12%;
-       padding-left: 0 !important;
+       padding-left: 10px !important;
        padding-right: 0 !important;
-       text-align: center;
       }
       .cot7{
        width: 16%;
@@ -220,4 +218,14 @@
    }
 .success{
   background-color: #eee !important;
+  min-width: 150px;
 }   
+.chuthich{
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0 !important;
+}
+.form-chu-thich{
+  padding-top: 0 !important;
+}

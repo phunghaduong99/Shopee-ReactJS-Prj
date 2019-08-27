@@ -86,7 +86,7 @@ class ItemsDetail extends Component {
         }
         return (
             <div>
-                <div className="col col-sm-3"><Link to={`/admin/quanlysanpham`} className="txt7"><i className="fa fa-angle-left"></i> Quay lại trang danh sách</Link></div>
+                <div className="col col-sm-3"><Link to={`/admin/productManagement`} className="txt7"><i className="fa fa-angle-left"></i> Quay lại trang danh sách</Link></div>
                 <div className="row ">
                     <div className="col col-sm-7">
                         <h1 className="m-t-15 m-b-25 p-l-15">{itemDetail[0].name}</h1>
@@ -178,8 +178,8 @@ class ItemsDetail extends Component {
                                     <div className="col-md-6 text-center">
                                         <div className="row">
                                             <div className="col-sm-7 ">
-                                                <h2>3,6/5</h2>
-                                                <label className="">{itemDetail[0].rating_count.length} đánh giá</label>
+                                                <h2>{itemDetail[0].rating_star}/5</h2>
+                                                <label className="">{itemDetail[0].rating_count[0]} đánh giá</label>
                                             </div>
                                             <div className=" col-sm-5">
                                                 <div className="row rating-a ">
@@ -192,7 +192,7 @@ class ItemsDetail extends Component {
                                                         />
                                                     </div>
                                                     <div className="col-md-3 count">
-                                                        <label className="txt8">20</label>
+                                                        <label className="txt8">{itemDetail[0].rating_count[1]}</label>
                                                     </div>
                                                 </div>
                                                 <div className="row rating-a ">
@@ -205,7 +205,7 @@ class ItemsDetail extends Component {
                                                         />
                                                     </div>
                                                     <div className="col-md-3 count">
-                                                        <label className="txt8">20</label>
+                                                        <label className="txt8">{itemDetail[0].rating_count[2]}</label>
                                                     </div>
                                                 </div>
                                                 <div className="row rating-a ">
@@ -218,7 +218,7 @@ class ItemsDetail extends Component {
                                                         />
                                                     </div>
                                                     <div className="col-md-3 count">
-                                                        <label className="txt8">20</label>
+                                                        <label className="txt8">{itemDetail[0].rating_count[3]}</label>
                                                     </div>
                                                 </div>
                                                 <div className="row rating-a ">
@@ -231,7 +231,7 @@ class ItemsDetail extends Component {
                                                         />
                                                     </div>
                                                     <div className="col-md-3 count">
-                                                        <label className="txt8">20</label>
+                                                        <label className="txt8">{itemDetail[0].rating_count[4]}</label>
                                                     </div>
                                                 </div>
                                                 <div className="row rating-a ">
@@ -244,7 +244,7 @@ class ItemsDetail extends Component {
                                                         />
                                                     </div>
                                                     <div className="col-md-3 count">
-                                                        <label className="txt8">20</label>
+                                                        <label className="txt8">{itemDetail[0].rating_count[5]}</label>
                                                     </div>
                                                 </div>
 

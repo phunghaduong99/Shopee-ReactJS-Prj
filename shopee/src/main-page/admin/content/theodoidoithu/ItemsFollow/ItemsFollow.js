@@ -36,8 +36,8 @@ class ItemsFollow extends Component {
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <ul>
                                 <li><Link className="a" to={`${this.props.match.url}`}>Đối thủ</Link></li>
-                                <li> <Link className="a" to={`${this.props.match.url}/theodoigia`}>Theo dõi giá</Link></li>
-                                <li><Link className="a" to={`${this.props.match.url}/chinhgiatudong`}>Chỉnh giá tự động</Link></li>
+                                <li> <Link className="a" to={`${this.props.match.url}/competitorPriceFollows`}>Theo dõi giá</Link></li>
+                                <li><Link className="a" to={`${this.props.match.url}/changePriceAuto`}>Chỉnh giá tự động</Link></li>
                             </ul>
                         </div>
                     </div>

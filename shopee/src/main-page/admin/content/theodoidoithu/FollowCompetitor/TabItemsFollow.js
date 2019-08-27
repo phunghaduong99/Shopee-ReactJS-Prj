@@ -33,7 +33,7 @@ class TabItemsFollow extends Component {
                             </div>
                             <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                 
-                            <Link to={`${this.props.match.url}/itemsFollow`} onClick={this.chosenItem}>{this.props.name} </Link>
+                            <Link to={`${this.props.match.url}/${this.props.itemid}`} onClick={this.chosenItem}>{this.props.name} </Link>
                             </div>
                         </div>
                         </td>

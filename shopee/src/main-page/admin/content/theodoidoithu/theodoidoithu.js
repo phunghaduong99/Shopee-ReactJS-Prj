@@ -32,7 +32,7 @@ class Theodoidoithu extends Component {
                 <Route path={`${this.props.match.url}/AddProduct`}
                     render={props =>
                         <AddProduct {...props} Theodoidoithu_url = {this.props.match} />} />
-                <Route path={`${this.props.match.url}/itemsFollow`}
+                <Route path={`${this.props.match.url}/:id`}
                     render={props =>
                         <ItemsFollow {...props}  Theodoidoithu_url = {this.props.match}/>} />
                 

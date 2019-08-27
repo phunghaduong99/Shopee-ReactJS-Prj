@@ -56,7 +56,6 @@ class ItemsInfo extends Component {
         let SoLuongGiaTuongDuong = 0;
         let PhanTramGiaTuongDuong = 0;
         let status = 0;
-        let dulieu=false;
         if (this.state.statistical !== null) {
 
             let table = this.state.statistical.ranks;
@@ -136,21 +135,25 @@ class ItemsInfo extends Component {
                 </div>
                 <div className="card">
                     <div className="card-body">
-                        <h5>Biểu đồ thống kê giá <label className="text-primary" style={{ fontSize: "15px" }}>(theo nghìn đồng)</label> </h5>
+                        <h5>Biểu đồ thống kê giá </h5>
+                        <div className="form-chu-thich">
+                            <div class="col-md-4 offset-md-8 text-right"> {dulieu?<div className="chuthich">Mức giá so với giá sản phẩm của bạn : </div>:<Skeleton height={20} width={300}/>} </div>
+                        </div>
                         <div className="row">
                             <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
                                 <ChartFollow arrayPriceForChart={arrayPriceForChart} percentNumber={percentNumber} />
                             </div>
                             <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                             </div>
-                            <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                            <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5 ">
                                 {dulieu?<CircleChart arrayPrice={arrayPrice} percentNumber={percentNumber} />:
                                     <SkeletonTheme>
+                                        
                                         <div className="row">
-                                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                            <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                                 <Skeleton circle={true} height={300} width={300}/>
                                             </div>
-                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-right">
+                                            <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-right">
                                                 <Skeleton height={20} width={75}/>
                                                 <Skeleton height={20} width={75}/>
                                                 <Skeleton height={20} width={75}/>
@@ -178,7 +181,22 @@ class ItemsInfo extends Component {
                                 <table className="table table-bordered ">
                                     <thead>
                                         <tr >
-                                            <th className="text-center success"><h6>Giá (nghìn đồng)</h6></th>
+                                            <td className="text-center success"><h6>Mức giá <div>(% giá của bạn)</div></h6></td>
+                                            <td className="text-center ">50%-59%</td>
+                                            <td className="text-center ">60%-69%</td>
+                                            <td className="text-center ">70%-79%</td>
+                                            <td className="text-center ">80%-89%</td>
+                                            <td className="text-center ">90%-99%</td>
+                                            <td className="text-center ">100%-109%</td>
+                                            <td className="text-center ">110%-119%</td>
+                                            <td className="text-center ">120%-129%</td>
+                                            <td className="text-center ">130%-139%</td>
+                                            <td className="text-center ">140%-150%</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td className="text-center success"><h6>Giá <div>(theo nghìn đồng)</div></h6></td>
                                             <td className="text-center ">{Math.round(itemDetail[0].price * 0.5 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 0.6 / 1000 * 10) / 10}</td>
                                             <td className="text-center ">{Math.round(itemDetail[0].price * 0.6 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 0.7 / 1000 * 10) / 10}</td>
                                             <td className="text-center ">{Math.round(itemDetail[0].price * 0.7 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 0.8 / 1000 * 10) / 10}</td>
@@ -190,10 +208,8 @@ class ItemsInfo extends Component {
                                             <td className="text-center ">{Math.round(itemDetail[0].price * 1.3 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 1.4 / 1000 * 10) / 10}</td>
                                             <td className="text-center ">{Math.round(itemDetail[0].price * 1.4 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 1.5 / 1000 * 10) / 10}</td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
                                         <tr>
-                                            <th className="text-center success"><h6>Số Lượng</h6></th>
+                                            <td className="text-center success"><h6>Số Lượng</h6></td>
                                             <td className="text-center">{dulieu ? arrayNumber[0] : <Skeleton />}</td>
                                             <td className="text-center">{dulieu ? arrayNumber[1] : <Skeleton />}</td>
                                             <td className="text-center">{dulieu ? arrayNumber[2] : <Skeleton />}</td>
@@ -206,7 +222,7 @@ class ItemsInfo extends Component {
                                             <td className="text-center">{dulieu ? arrayNumber[9] : <Skeleton />}</td>
                                         </tr>
                                         <tr>
-                                            <th className="text-center success"><h6>Tỉ lệ phần trăm (%)</h6></th>
+                                            <td className="text-center success"><h6>Tỉ lệ phần trăm <div>(%)</div></h6></td>
                                             <td className="text-center">{dulieu ? percentNumber[0] : <Skeleton />}</td>
                                             <td className="text-center">{dulieu ? percentNumber[1] : <Skeleton />}</td>
                                             <td className="text-center">{dulieu ? percentNumber[2] : <Skeleton />}</td>
@@ -238,15 +254,14 @@ class ItemsInfo extends Component {
                                             </div>
                                             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                                 <div className="row">
-                                                    <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                                                        <h6>Khoảng giá tương đương:</h6>
+                                                    <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                                        <h6>Giá trung bình :</h6>
                                                     </div>
-                                                    <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                                        {dulieu ? <label> {GiaTuongDuong}</label> : <Skeleton />}
+                                                    <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                        {dulieu ? <label>{medium > 0 ? medium + 'đ' : ''}</label> : <Skeleton />}
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                         <div className="row">
                                             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -261,11 +276,11 @@ class ItemsInfo extends Component {
                                             </div>
                                             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                                 <div className="row">
-                                                    <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                                        <h6>Giá trung bình :</h6>
+                                                    <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                                                        <h6>Khoảng giá tương đương:</h6>
                                                     </div>
-                                                    <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                                        {dulieu ? <label>{medium > 0 ? medium + 'đ' : ''}</label> : <Skeleton />}
+                                                    <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                                        {dulieu ? <label> {GiaTuongDuong}</label> : <Skeleton />}
                                                     </div>
                                                 </div>
                                             </div>

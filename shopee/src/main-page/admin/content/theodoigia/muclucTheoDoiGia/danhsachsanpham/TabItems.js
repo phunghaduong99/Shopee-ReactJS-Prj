@@ -34,7 +34,7 @@ class TabItems extends Component {
                 </td>
                 <td className="cot5">
                     
-                <Link  to={`${this.props.match.url}/thongtinsanpham`} className="btn btn-primary" onClick= {this.saveItemId_ThongKe} >Xem thống kê </Link>
+                <Link  to={`${this.props.match.url}/itemsInformation/${this.props.itemid}`} className="btn btn-primary" onClick= {this.saveItemId_ThongKe} >Xem thống kê </Link>
                 </td>
                 </tr>
                 

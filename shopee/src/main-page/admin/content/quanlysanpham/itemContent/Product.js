@@ -127,7 +127,7 @@ class Product extends Component {
 
                         </div>
                         <div className="col-md-2 offset-md-2 mr-0 ml-0">
-                            <Link to={`/admin/quanlycuahang`} className="btn btn-link">Đổi cửa hàng </Link>
+                            <Link to={`/admin/shopManagement`} className="btn btn-link">Đổi cửa hàng </Link>
                             {/* <button type="button" className="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết nối</button> */}
                         </div>
                     </div>
