@@ -4,7 +4,15 @@ import StarRatings from 'react-star-ratings';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 class ItemsDetail extends Component {
-
+    number_format = ( number, decimals, dec_point, thousands_sep ) => {
+        var n = number, c = isNaN(decimals = Math.abs(decimals)) ? 2 : decimals;
+        var d = dec_point === undefined ? "," : dec_point;
+        var t = thousands_sep === undefined ? "." : thousands_sep, s = n < 0 ? "-" : "";
+        var i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "";
+        var j = i.length;
+        j = ( j) > 3 ? j % 3 : 0;
+        return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+    }
     render() {
         let itemDetail = [
         ];
@@ -264,7 +272,7 @@ class ItemsDetail extends Component {
                                         <label className="form-control-group"><h6>Giá bán (VNĐ)</h6></label>
                                     </div>
                                     <div className="col-md-6 aline">
-                                        <label className="form-control-group "><h6>{itemDetail[0].price}</h6></label>
+                                        <label className="form-control-group "><h6>{this.number_format(parseFloat(itemDetail[0].price), 0, '.', ',') }</h6></label>
                                     </div>
                                 </div>
                                 <div className="row">
@@ -272,7 +280,7 @@ class ItemsDetail extends Component {
                                         <label className="form-control-group"><h6>Giá cao nhất (VNĐ)</h6></label>
                                     </div>
                                     <div className="col-md-6 aline">
-                                        <label className="form-control-group "><h6>{itemDetail[0].price_max}</h6></label>
+                                        <label className="form-control-group "><h6> {this.number_format(parseFloat(itemDetail[0].price_max), 0, '.', ',') } </h6></label>
                                     </div>
                                 </div>
                                 <div className="row">
@@ -280,7 +288,7 @@ class ItemsDetail extends Component {
                                         <label className="form-control-group"><h6>Giá thấp nhất (VNĐ)</h6></label>
                                     </div>
                                     <div className="col-md-6 aline">
-                                        <label className="form-control-group "><h6>{itemDetail[0].price_min}</h6></label>
+                                        <label className="form-control-group "><h6>{this.number_format(parseFloat(itemDetail[0].price_min), 0, '.', ',') }  </h6></label>
                                     </div>
                                 </div>
                                 <div className="row">

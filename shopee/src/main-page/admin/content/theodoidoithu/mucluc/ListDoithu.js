@@ -11,6 +11,15 @@ class ListDoithu extends Component {
         let rivalShopid = this.props.rivalShopid
         this.props.isOnFollowing(indexItem, rivalShopid, rivalItemid);
     }
+    number_format = ( number, decimals, dec_point, thousands_sep ) => {
+        var n = number, c = isNaN(decimals = Math.abs(decimals)) ? 2 : decimals;
+        var d = dec_point === undefined ? "," : dec_point;
+        var t = thousands_sep === undefined ? "." : thousands_sep, s = n < 0 ? "-" : "";
+        var i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "";
+        var j = i.length;
+        j = ( j) > 3 ? j % 3 : 0;
+        return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+    }
     render() {
        
         let rating_star_item = Math.round(this.props.rating_star * 100) / 100;
@@ -44,7 +53,7 @@ class ListDoithu extends Component {
                         </div>
                     </div>
                 </td>
-                <td className="doithu text-center">  {this.props.dulieu ? this.props.price : <Skeleton count={3} />} </td>
+                <td className="doithu text-center">  {this.props.dulieu ? this.number_format(parseFloat(this.props.price), 0, '.', ',')  : <Skeleton count={3} />} </td>
                 <td className="doithu">
                     {this.props.dulieu ? Ischosen : "" }
                 </td>

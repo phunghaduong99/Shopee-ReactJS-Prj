@@ -12,7 +12,15 @@ class InfoRival extends Component {
         }
 
     }
-    
+    number_format = ( number, decimals, dec_point, thousands_sep ) => {
+        var n = number, c = isNaN(decimals = Math.abs(decimals)) ? 2 : decimals;
+        var d = dec_point === undefined ? "," : dec_point;
+        var t = thousands_sep === undefined ? "." : thousands_sep, s = n < 0 ? "-" : "";
+        var i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "";
+        var j = i.length;
+        j = ( j) > 3 ? j % 3 : 0;
+        return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+    }
 
     render() {
 
@@ -35,7 +43,7 @@ class InfoRival extends Component {
                 rivalTable = this.props.listHistoryRivalItem.map((c, index) =>
                     <tr key={index}>
                         <td className="text-center">{c.Date}</td>
-                        <td className="text-center">{c.price}</td>
+                        <td className="text-center">{this.number_format(parseFloat(c.price), 0, '.', ',') }</td>
                     </tr>
                 )
             }
@@ -44,7 +52,7 @@ class InfoRival extends Component {
                 rivalTable = newListRival.map((c, index) =>
                     <tr key={index}>
                         <td className="text-center">{c.Date}</td>
-                        <td className="text-center">{c.price}</td>
+                        <td className="text-center">{this.number_format(parseFloat(c.price), 0, '.', ',') } </td>
                     </tr>
                 )
             }

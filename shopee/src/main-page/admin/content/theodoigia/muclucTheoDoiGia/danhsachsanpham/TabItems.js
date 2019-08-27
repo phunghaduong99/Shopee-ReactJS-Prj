@@ -9,6 +9,15 @@ class TabItems extends Component {
         let itemid = this.props.itemid;
         this.props.saveItemId_ThongKe(itemid);
     }
+    number_format = ( number, decimals, dec_point, thousands_sep ) => {
+        var n = number, c = isNaN(decimals = Math.abs(decimals)) ? 2 : decimals;
+        var d = dec_point === undefined ? "," : dec_point;
+        var t = thousands_sep === undefined ? "." : thousands_sep, s = n < 0 ? "-" : "";
+        var i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "";
+        var j = i.length;
+        j = ( j) > 3 ? j % 3 : 0;
+        return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+    }
     render() {
         return (
             <tr>
@@ -23,7 +32,7 @@ class TabItems extends Component {
                     </div>
                 </td>
                 <td className="cot2"> {this.props.itemid}</td>
-                <td className="cot3"> {this.props.price}</td>
+                <td className="cot3"> {this.number_format(parseFloat(this.props.price), 0, '.', ',') } </td>
                 <td className="cot4">
                     <StarRatings
                         starRatedColor="#FFD203"

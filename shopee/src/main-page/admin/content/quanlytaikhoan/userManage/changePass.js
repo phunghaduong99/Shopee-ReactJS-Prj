@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
-import Popup from "reactjs-popup";
 
 import swal from 'sweetalert';
 class changePass extends Component {
@@ -51,27 +50,22 @@ class changePass extends Component {
         
     
       };
-     closeModal=()=>{
-      this.setState({ open: false });
-     }
     offSubmit=(event)=>{
       event.preventDefault();
-      this.setState({ errorMessage:"Cần nhập chính xác các thông tin" });
     }
     onSubmit=(event)=>{
         event.preventDefault();
         this.callApi();
-        this.setState({ open: true });
-        console.log(`
-            --Data--
-            newPass: ${this.state.newPass}
-          `); 
+        
     }
     callApi = () => {
+      console.log(this.state.pass)
+      console.log(this.state.newPass)
       axios({
         method: 'put',
         url: 'http://172.104.173.222:8081/updateInfor',
         data: {
+          'passwordConfirm': `${this.state.pass}`,
           'password': `${this.state.newPass}`
         },
         headers: {
@@ -81,7 +75,8 @@ class changePass extends Component {
       })
         .then((response) => {
           console.log(response);
-          swal("Đổi mật khẩu thành công!", "", "success",
+          if(response.data === "passwordConfirm không đúng")  swal("Mật khẩu cũ không đúng!", "", "error",)
+          else swal("Đổi mật khẩu thành công!", "", "success",
           );
         })
         .catch((error) => {
@@ -162,15 +157,6 @@ class changePass extends Component {
                             <Link to={`/admin/accountManagement`}><button className="btn btn-danger m-r-10 ">Hủy Bỏ </button></Link>
                             <button type="submit" className="btn btn-primary ">Lưu Lại </button>
                           </div>
-                          <Popup
-                                open={this.state.open}
-                                closeOnDocumentClick
-                                onClose={this.closeModal}
-                            >
-                              <div className="update">
-                                <h5>Đổi mật khẩu thành công</h5>
-                              </div>
-                            </Popup>
                       </div>
                      </form>
                 </div>

@@ -69,7 +69,20 @@ class TabItems extends Component {
     onSlectedItem = () => {
         this.props.saveItemIdSelected(this.props.itemid);
     }
+    number_format = ( number, decimals, dec_point, thousands_sep ) => {
+        var n = number, c = isNaN(decimals = Math.abs(decimals)) ? 2 : decimals;
+        var d = dec_point === undefined ? "," : dec_point;
+        var t = thousands_sep === undefined ? "." : thousands_sep, s = n < 0 ? "-" : "";
+        var i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "";
+        var j = i.length;
+        j = ( j) > 3 ? j % 3 : 0;
+        return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+    }
+    
     render() {
+        let price = this.number_format(parseFloat(this.props.price), 0, '.', ',');
+       
+
 
         return (
 
@@ -86,7 +99,7 @@ class TabItems extends Component {
                     </div>
                 </td>
                 <td className="cot2"> {this.props.dulieu ? this.props.itemid : <Skeleton count={2} />}</td>
-                <td className="cot3"> {this.props.dulieu ? this.props.price : <Skeleton count={2} />}</td>
+                <td className="cot3"> {this.props.dulieu ? price : <Skeleton count={2} />}</td>
                 {this.props.dulieu ?
                     <td className="cot4">
                         <StarRatings
@@ -116,7 +129,7 @@ class TabItems extends Component {
                                                     <label className="form-control-group text-left"><h6>Giá bán hiện tại (VNĐ)</h6></label>
                                                 </div>
                                                 <div className="col-md-4 aline">
-                                                    <label className="form-control-group "><h6>{this.props.price}</h6></label>
+                                                    <label className="form-control-group "><h6>{this.number_format(parseFloat(this.props.price), 0, '.', ',')} </h6></label>
                                                 </div>
                                             </div>
                                             <div className="row ">
