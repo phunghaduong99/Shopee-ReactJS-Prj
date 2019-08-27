@@ -14,14 +14,14 @@ class TabItems extends Component {
         super(props);
         this.state = {
             open: false,
-            newPrice: -1,
+            newPrice: "",
             shop_id: '',
             textError: null
         };
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
     }
-   
+
     openModal() {
         this.setState({ open: true });
     }
@@ -31,11 +31,15 @@ class TabItems extends Component {
     onChange = (event) => {
         event.preventDefault();
         let newPrice = event.target.value;
-        if (newPrice < 0 || newPrice % 100 !== 0) { this.setState({ textError: "Cần nhập giá tiền dương và chẵn đến trăm đồng " }); }
+        newPrice = this.chuyengia(newPrice);
+
+        if (newPrice < 0 || newPrice % 100 !== 0) {
+             this.setState({ textError: "Cần nhập giá tiền dương và chẵn đến trăm đồng " }); }
         else {
-            this.setState({ textError: null });
-            this.setState({ newPrice: newPrice });
+        this.setState({ textError: null });
         };
+        newPrice = this.number_format(parseFloat(newPrice), 0, '.', ',');
+        this.setState({ newPrice: newPrice });
 
     }
     offSubmit = (event) => {
@@ -45,7 +49,7 @@ class TabItems extends Component {
     onSubmit = (event) => {
         axios({
             method: 'put',
-            url: "http://172.104.173.222:8081/updatePrice/" + this.props.shopid + "/" + this.props.itemid + "/" + this.state.newPrice,
+            url: "http://172.104.173.222:8081/updatePrice/" + this.props.shopid + "/" + this.props.itemid + "/" + this.chuyengia(this.state.newPrice) ,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${this.props.token}`
@@ -54,7 +58,7 @@ class TabItems extends Component {
             .then((response) => {
                 console.log(response);
                 if (response.data !== null && response.data !== "") {
-                    this.props.changePriceItem(this.props.itemid, this.state.newPrice);
+                    this.props.changePriceItem(this.props.itemid, this.chuyengia(this.state.newPrice));
                 }
                 else swal("Chỉnh sửa giá thất bại. Xin vui lòng thử lại.", "", "error")
 
@@ -69,23 +73,32 @@ class TabItems extends Component {
     onSlectedItem = () => {
         this.props.saveItemIdSelected(this.props.itemid);
     }
-    number_format = ( number, decimals, dec_point, thousands_sep ) => {
+    number_format = (number, decimals, dec_point, thousands_sep) => {
         var n = number, c = isNaN(decimals = Math.abs(decimals)) ? 2 : decimals;
         var d = dec_point === undefined ? "," : dec_point;
         var t = thousands_sep === undefined ? "." : thousands_sep, s = n < 0 ? "-" : "";
         var i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "";
         var j = i.length;
-        j = ( j) > 3 ? j % 3 : 0;
+        j = (j) > 3 ? j % 3 : 0;
         return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
     }
-    
+
+    chuyengia = (a) => {
+        var gia = a.split(',');
+        for (var i = 1; i < a.length; i++) {
+            gia[0] = gia[0] + gia[i];
+        }
+        gia[0] = parseFloat(gia[0]);
+        return gia[0];
+
+    }
+
+
+
     render() {
         let price = this.number_format(parseFloat(this.props.price), 0, '.', ',');
-       
-
 
         return (
-
             <tr>
                 <td >
                     <div className="row ">
@@ -126,10 +139,10 @@ class TabItems extends Component {
                                         <div className="card-body">
                                             <div className="row ">
                                                 <div className="col-md-8">
-                                                    <label className="form-control-group text-left"><h6>Giá bán hiện tại (VNĐ)</h6></label>
+                                                    <label className="form-control-group text-left"><h6>Giá bán hiện tại</h6></label>
                                                 </div>
                                                 <div className="col-md-4 aline">
-                                                    <label className="form-control-group "><h6>{this.number_format(parseFloat(this.props.price), 0, '.', ',')} </h6></label>
+                                                    <label className="form-control-group "><h6>{this.number_format(parseFloat(this.props.price), 0, '.', ',')} đ</h6></label>
                                                 </div>
                                             </div>
                                             <div className="row ">
@@ -143,6 +156,7 @@ class TabItems extends Component {
                                                         placeholder="Nhập giá mới"
                                                         type="text "
                                                         onChange={this.onChange}
+                                                        value={this.state.newPrice}
                                                         required
                                                     />
                                                 </div>
@@ -162,7 +176,7 @@ class TabItems extends Component {
                                 </div>
                             </Popup>
                         </div>
-                        : <Skeleton count={2}/>}
+                        : <Skeleton count={2} />}
                 </td>
 
             </tr>
