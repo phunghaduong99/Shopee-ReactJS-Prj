@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/Shopee-React/static/css/main.7c051215.chunk.css",
+    "main.js": "/Shopee-React/static/js/main.f02a5a12.chunk.js",
+    "main.js.map": "/Shopee-React/static/js/main.f02a5a12.chunk.js.map",
+    "runtime~main.js": "/Shopee-React/static/js/runtime~main.cfd57ef0.js",
+    "runtime~main.js.map": "/Shopee-React/static/js/runtime~main.cfd57ef0.js.map",
+    "static/css/2.266e55a5.chunk.css": "/Shopee-React/static/css/2.266e55a5.chunk.css",
+    "static/js/2.cd9874fe.chunk.js": "/Shopee-React/static/js/2.cd9874fe.chunk.js",
+    "static/js/2.cd9874fe.chunk.js.map": "/Shopee-React/static/js/2.cd9874fe.chunk.js.map",
+    "index.html": "/Shopee-React/index.html",
+    "precache-manifest.3337dd5e66dc71818a06e02ad41321ec.js": "/Shopee-React/precache-manifest.3337dd5e66dc71818a06e02ad41321ec.js",
+    "service-worker.js": "/Shopee-React/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/Shopee-React/static/css/2.266e55a5.chunk.css.map",
+    "static/css/main.7c051215.chunk.css.map": "/Shopee-React/static/css/main.7c051215.chunk.css.map",
+    "static/media/1.jpg": "/Shopee-React/static/media/1.972a04a9.jpg",
+    "static/media/2.png": "/Shopee-React/static/media/2.46ac8045.png",
+    "static/media/3.png": "/Shopee-React/static/media/3.7b1ffa4c.png",
+    "static/media/material-design-iconic-font.min.css": "/Shopee-React/static/media/Material-Design-Iconic-Font.d2a55d33.woff",
+    "static/media/main.css": "/Shopee-React/static/media/Poppins-SemiBold.e63b93df.ttf",
+    "static/media/index.css": "/Shopee-React/static/media/Montserrat-Regular.a8a11736.ttf",
+    "static/media/S-logo1.png": "/Shopee-React/static/media/S-logo1.86a05340.png",
+    "static/media/font-awesome.css": "/Shopee-React/static/media/fontawesome-webfont.fee66e71.woff",
+    "static/media/agency.css": "/Shopee-React/static/media/header-bg.5dddafea.jpg",
+    "static/media/cs-skin-elastic.css": "/Shopee-React/static/media/icomoon.a1551905.ttf",
+    "static/media/logoadmin.png": "/Shopee-React/static/media/logoadmin.86a05340.png",
+    "static/media/services1.jpg": "/Shopee-React/static/media/services1.ae9e258e.jpg",
+    "static/media/services2.jpg": "/Shopee-React/static/media/services2.877ff8ae.jpg",
+    "static/media/services3.jpg": "/Shopee-React/static/media/services3.4cb9d3a5.jpg"
+  }
+}
