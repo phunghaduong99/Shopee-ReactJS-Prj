@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ea1fc1a766f0420a188fb8085232ba33",
+    "revision": "75c6bb913e3271bb1681d5382e485a63",
     "url": "/Shopee-React/shopee/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Shopee-React/shopee/static/css/2.266e55a5.chunk.css"
   },
   {
-    "revision": "ae3798d05272ef860f30",
+    "revision": "b33c89fd6f331bc7c304",
     "url": "/Shopee-React/shopee/static/css/main.031e4e0e.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Shopee-React/shopee/static/js/2.cd9874fe.chunk.js"
   },
   {
-    "revision": "ae3798d05272ef860f30",
-    "url": "/Shopee-React/shopee/static/js/main.f88ef7d8.chunk.js"
+    "revision": "b33c89fd6f331bc7c304",
+    "url": "/Shopee-React/shopee/static/js/main.711907de.chunk.js"
   },
   {
     "revision": "a400eba942a85d7fc28d",
