@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 class Header extends Component {
     state = {}
     onClick = () => {
-        sessionStorage.clear();
+        localStorage.clear();
     }
 
     render() {

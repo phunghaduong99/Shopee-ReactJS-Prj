@@ -75,7 +75,6 @@ class ChartFollow extends React.Component {
       if (this.props.arrayNumber.length > 0)
         series[0].data = this.props.arrayNumber;
     }
-    console.log(series)
     return (
       <div id="chart">
         <Chart options={options} series={series} type="bar" height="350" />

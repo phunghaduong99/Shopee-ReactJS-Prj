@@ -29,10 +29,10 @@ class Theodoidoithu extends Component {
         return (
             <div>
                 {status}
-                <Route path={`${this.props.match.url}/AddProduct`}
+                <Route  path={`${this.props.match.url}/AddProduct`}
                     render={props =>
                         <AddProduct {...props} Theodoidoithu_url = {this.props.match} />} />
-                <Route path={`${this.props.match.url}/:id`}
+                <Route path={`${this.props.match.url}/ItemsFollow/:id`}
                     render={props =>
                         <ItemsFollow {...props}  Theodoidoithu_url = {this.props.match}/>} />
                 
@@ -41,7 +41,6 @@ class Theodoidoithu extends Component {
     }
 }
 const mapStatetoProps = (state) => {
-    console.log(state);
     return {
         listShop: state.listShop,
         listItems : state.listItems

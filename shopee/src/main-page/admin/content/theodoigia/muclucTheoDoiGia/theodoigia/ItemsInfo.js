@@ -158,7 +158,7 @@ class ItemsInfo extends Component {
                     <div className="card-body">
                         <h5>Biểu đồ thống kê giá </h5>
                         <div className="form-chu-thich">
-                            <div class="col-md-4 offset-md-8 text-right"> {dulieu?<div className="chuthich">Mức giá so với giá sản phẩm của bạn : </div>:<Skeleton height={20} width={300}/>} </div>
+                            <div className="col-md-4 offset-md-8 text-right"> {dulieu?<div className="chuthich">Mức giá so với giá sản phẩm của bạn : </div>:<Skeleton height={20} width={300}/>} </div>
                         </div>
                         <div className="row">
                             <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">

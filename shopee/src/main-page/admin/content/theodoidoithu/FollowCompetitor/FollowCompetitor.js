@@ -128,7 +128,6 @@ class FollowCompetitor extends Component {
 }
 
 const mapStatetoProps = (state) => {
-    console.log(state);
     return {
         token: state.token,
         shopIdSelected: state.shopIdSelected,

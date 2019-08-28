@@ -8,7 +8,6 @@ var myReducer = (state = initialState, action) =>{
         
         case types.SAVE_TOKEN:
             state = action.token;
-            console.log(state);
             localStorage.setItem('token' , JSON.stringify(state) );
             return [...state];
 

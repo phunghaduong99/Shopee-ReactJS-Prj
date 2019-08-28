@@ -42,10 +42,6 @@ class ChartPrice extends Component {
 			})
 
 		}
-		console.log(MyPrice);
-		console.log(RivalPrice);
-		console.log(categories);
-
 
 		let options = {
 			chart: {

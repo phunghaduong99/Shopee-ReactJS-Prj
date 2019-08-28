@@ -38,7 +38,6 @@ class TheoDoiGia extends Component {
 }
 
 const mapStatetoProps = (state) => {
-    console.log(state);
     return {
         listShop: state.listShop,
         listItems : state.listItems

@@ -11,7 +11,6 @@ var myReducer = (state = initialState, action) => {
             return [...state]
 
         case types.DELETE_LIST_RIVALS_SHOP_FOLLOWING:
-            console.log(action)
             let itemid = action.itemId;
             let newListFollowing = state.filter((c) => c.itemid !== itemid);
             state = newListFollowing;

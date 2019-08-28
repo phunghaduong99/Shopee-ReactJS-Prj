@@ -30,7 +30,6 @@ class AddProduct extends Component {
         else this.setState({ isOnSearch: true });
     }
     addItem = (itemid) => {
-        console.log(itemid)
         this.props.addItem(itemid);
         let ItemChosen = this.props.listItems.filter(c => c.itemid === itemid);
         this.props.addListChosenItem(ItemChosen[0]);
@@ -117,7 +116,7 @@ class AddProduct extends Component {
                             <thead>
                                 <tr >
                                     <th >
-                                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 cot1">
+                                        <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7 cot1">
                                             Sản phẩm
                                         </div>
                                     </th>
@@ -140,7 +139,6 @@ class AddProduct extends Component {
 
 
 const mapStatetoProps = (state) => {
-    console.log(state);
     return {
         token: state.token,
         shopNameSelected: state.shopNameSelected,

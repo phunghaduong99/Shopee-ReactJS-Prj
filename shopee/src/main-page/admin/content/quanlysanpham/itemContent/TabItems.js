@@ -34,9 +34,10 @@ class TabItems extends Component {
         newPrice = this.chuyengia(newPrice);
 
         if (newPrice < 0 || newPrice % 100 !== 0) {
-             this.setState({ textError: "Cần nhập giá tiền dương và chẵn đến trăm đồng " }); }
+            this.setState({ textError: "Cần nhập giá tiền dương và chẵn đến trăm đồng " });
+        }
         else {
-        this.setState({ textError: null });
+            this.setState({ textError: null });
         };
         newPrice = this.number_format(parseFloat(newPrice), 0, '.', ',');
         this.setState({ newPrice: newPrice });
@@ -47,27 +48,30 @@ class TabItems extends Component {
 
     }
     onSubmit = (event) => {
-        axios({
-            method: 'put',
-            url: "http://172.104.173.222:8081/updatePrice/" + this.props.shopid + "/" + this.props.itemid + "/" + this.chuyengia(this.state.newPrice) ,
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `${this.props.token}`
-            },
-        })
-            .then((response) => {
-                console.log(response);
-                if (response.data !== null && response.data !== "") {
-                    this.props.changePriceItem(this.props.itemid, this.chuyengia(this.state.newPrice));
-                }
-                else swal("Chỉnh sửa giá thất bại. Xin vui lòng thử lại.", "", "error")
-
+        event.preventDefault();
+        if (this.state.textError === null) {
+            axios({
+                method: 'put',
+                url: "http://172.104.173.222:8081/updatePrice/" + this.props.shopid + "/" + this.props.itemid + "/" + this.chuyengia(this.state.newPrice),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `${this.props.token}`
+                },
             })
-            .catch((error) => {
-                console.log(error);
+                .then((response) => {
+                    console.log(response);
+                    if (response.data !== null && response.data !== "") {
+                        this.props.changePriceItem(this.props.itemid, this.chuyengia(this.state.newPrice));
+                    }
+                    else swal("Chỉnh sửa giá thất bại. Xin vui lòng thử lại.", "", "error")
 
-            });
-        this.closeModal();
+                })
+                .catch((error) => {
+                    console.log(error);
+
+                });
+            this.closeModal();
+        }
     }
 
     onSlectedItem = () => {
@@ -103,7 +107,7 @@ class TabItems extends Component {
                 <td >
                     <div className="row ">
                         <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                            {this.props.dulieu ? <img className="img-toy m-r-7" src={this.props.images} alt="" /> : <Skeleton width={40} height={40} />}
+                            {this.props.dulieu ? <img className="img-toy m-r-7" src={this.props.images} alt="" /> : <Skeleton width={40} height={40}/>}
                         </div>
                         <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                             {this.props.dulieu ? <Link onClick={this.onSlectedItem} to={`${this.props.match.url}/itemsDetail/${this.props.itemid}`}>{this.props.name} </Link> : <Skeleton count={2} />}
@@ -122,7 +126,7 @@ class TabItems extends Component {
                             starSpacing="2px"
                         />
                     </td>
-                    : ""}
+                    : null}
 
                 <td className="cot5">
                     {this.props.dulieu ?
@@ -134,7 +138,7 @@ class TabItems extends Component {
                                 onClose={this.closeModal}
                             >
                                 <div className="card changePiece">
-                                    <form onSubmit={(this.state.textError === null) ? this.onSubmit : this.offSubmit}>
+                                    <form onSubmit={this.onSubmit}>
                                         <div className="card-header "><h6 >{this.props.name}</h6></div>
                                         <div className="card-body" >
                                             <div className="row ">
@@ -158,13 +162,13 @@ class TabItems extends Component {
                                                         onChange={this.onChange}
                                                         value={this.state.newPrice}
                                                         required
-                                                        autocomplete="off"
+                                                        autoComplete="off"
                                                     />
                                                 </div>
                                                 <span className="errorMessage txt4">{(this.state.newPrice !== null) ? this.state.textError : null}</span>
                                             </div>
                                             <div className="col-md-6 offset-md-9 col-sm-6 ml-auto m-t-20 aline">
-                                                <button onClick={this.closeModal}>
+                                                <button type="button" onClick={this.closeModal}>
                                                     HỦY
                                         </button> &nbsp;
                                         <button type="submit" className="text-primary m-l-25 ">

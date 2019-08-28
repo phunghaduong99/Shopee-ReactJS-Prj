@@ -40,7 +40,6 @@ class Product extends Component {
                     c.isChosen = false;
                     return c
                 })
-                console.log(neww);
                 this.props.saveListItems(neww);
                 this.setState({ loading: false });
             })
@@ -81,7 +80,6 @@ class Product extends Component {
         }
         else {
             let search = this.state.search;
-            console.log(search);
             let newListSearchItems;
             newListSearchItems = this.props.listItems.filter((c) => {
                 return c.name.search(search) >= 0 || c.itemid.toString().search(search) >= 0 || c.price.toString().search(search) >= 0;

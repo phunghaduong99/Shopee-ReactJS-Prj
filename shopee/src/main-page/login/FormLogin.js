@@ -76,13 +76,6 @@ class FormLogin extends Component {
         event.preventDefault();
 
         if (formValid(this.state)) {
-            console.log(`
-              --Data--
-              username: ${this.state.username}
-              Password: ${this.state.pass}
-              
-            `);
-
             axios({
                 method: 'post',
                 url: 'http://172.104.173.222:8081/login',
@@ -93,8 +86,6 @@ class FormLogin extends Component {
             })
                 .then((response) => {
                     console.log(response);
-
-                    console.log("token+ " + response.data.token);
                     this.setState({ token: response.data.token });
                     window.location = '/admin';
                     this.props.saveToken(this.state.token);
@@ -221,7 +212,6 @@ class FormLogin extends Component {
 
 
 const mapStatetoProps = (state) => {
-    console.log(state);
     return {
     }
 }

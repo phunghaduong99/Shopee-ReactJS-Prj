@@ -77,15 +77,6 @@ class Register extends Component {
 
     if (formValid(this.state)) {
       event.preventDefault();
-      console.log(`
-            --Data--
-            username: ${this.state.username}
-            Email: ${this.state.email}
-            Password: ${this.state.pass}
-            confirmPassword: ${this.state.confirmPass}
-          `);
-
-
 
       axios({
         method: 'post',
@@ -98,7 +89,7 @@ class Register extends Component {
       })
         .then((response) => {
           console.log(response);
-          console.log('status' + response.status);
+          
           if (response.status === 200) {
 
 

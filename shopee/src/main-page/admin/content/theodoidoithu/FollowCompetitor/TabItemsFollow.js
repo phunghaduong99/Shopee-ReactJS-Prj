@@ -10,7 +10,6 @@ class TabItemsFollow extends Component {
     chosenItem = () => {
         let followingItemSelected = this.props.itemid;
         if(followingItemSelected !== this.props.followingItem){
-            console.log('a')
             this.props.removeListRivalsItem();
             this.props.removeListRivalsShop();
             this.props.removeListRivalsShopFollowing();
@@ -33,7 +32,7 @@ class TabItemsFollow extends Component {
                             </div>
                             <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                 
-                            <Link to={`${this.props.match.url}/${this.props.itemid}`} onClick={this.chosenItem}>{this.props.name} </Link>
+                            <Link to={`${this.props.match.url}/ItemsFollow/${this.props.itemid}`} onClick={this.chosenItem}>{this.props.name} </Link>
                             </div>
                         </div>
                         </td>

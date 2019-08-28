@@ -193,7 +193,6 @@ class TongQuan extends Component {
     }
 }
 const mapStatetoProps = (state) => {
-    console.log(state);
     return {
         userInfo: state.userInfo,
         token: state.token,

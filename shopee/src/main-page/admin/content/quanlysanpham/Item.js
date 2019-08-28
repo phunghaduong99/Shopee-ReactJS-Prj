@@ -31,7 +31,6 @@ class Item extends Component {
 }
 
 const mapStatetoProps = (state) => {
-    console.log(state);
     return {
         listShop: state.listShop
     }

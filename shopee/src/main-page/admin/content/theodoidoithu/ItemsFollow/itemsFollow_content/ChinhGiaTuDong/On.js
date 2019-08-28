@@ -97,7 +97,6 @@ class On extends Component {
             },
         })
             .then((response) => {
-                console.log('response');
                 console.log(response);
                 let tableAutoPrice = response.data;
                 if (tableAutoPrice.length > 0) {
@@ -221,7 +220,7 @@ class On extends Component {
         }
         return (
             <div>
-                <form className="form-horizontal" onSubmit={(this.state.error === null) ? this.onSubmit : this.offSubmit} autocomplete="off">
+                <form className="form-horizontal" onSubmit={(this.state.error === null) ? this.onSubmit : this.offSubmit} autoComplete="off">
                     <div className="row">
                         <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
                             <div className=" row ">

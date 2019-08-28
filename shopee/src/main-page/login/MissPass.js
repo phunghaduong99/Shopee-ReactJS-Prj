@@ -87,12 +87,6 @@ class MissPass extends Component {
         
 
         if (formValid(this.state)) {
-            console.log(`
-              --Data--
-              username: ${this.state.username}
-              Password: ${this.state.pass}
-              
-            `);
             this.onMissPass();
             axios({
                 method: 'put',
@@ -104,8 +98,6 @@ class MissPass extends Component {
             })
             .then((response) => {
                 console.log(response);
-                console.log(response.data);
-               
                 if (response.data === "Đề nghị check mail") {
                     swal("Đã gửi email thành công!", "Vui lòng kiểm tra email!", "success",
                         {

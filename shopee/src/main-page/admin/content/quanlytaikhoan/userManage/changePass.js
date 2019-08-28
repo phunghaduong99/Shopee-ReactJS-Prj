@@ -59,8 +59,6 @@ class changePass extends Component {
         
     }
     callApi = () => {
-      console.log(this.state.pass)
-      console.log(this.state.newPass)
       axios({
         method: 'put',
         url: 'http://172.104.173.222:8081/updateInfor',
@@ -166,7 +164,6 @@ class changePass extends Component {
     }
 }
 const mapStatetoProps = (state) => {
-  console.log(state);
   return {
     token: state.token,
   }
