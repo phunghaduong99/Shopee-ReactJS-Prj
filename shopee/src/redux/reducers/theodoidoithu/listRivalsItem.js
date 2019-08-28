@@ -1,6 +1,6 @@
 import * as types from '../../constants/ActionTypes';
 
-var data = JSON.parse(sessionStorage.getItem('listRivalsItem'));
+var data = JSON.parse(localStorage.getItem('listRivalsItem'));
 var initialState = data ? data : [];
 
 var myReducer = (state = initialState, action) => {
@@ -8,7 +8,7 @@ var myReducer = (state = initialState, action) => {
         case types.SAVE_LIST_RIVALS_ITEM:
             state = action.listRivalsItem
            
-            sessionStorage.setItem('listRivalsItem', JSON.stringify(state));
+            localStorage.setItem('listRivalsItem', JSON.stringify(state));
             return [...state];
         case types.CHOOSE_RIVALS_ITEM:
             let indexx = action.index;
@@ -22,7 +22,7 @@ var myReducer = (state = initialState, action) => {
             );
             state = newlist;
            
-            sessionStorage.setItem('listRivalsItem', JSON.stringify(state));
+            localStorage.setItem('listRivalsItem', JSON.stringify(state));
             return [...state];
         case types.DELETE_RIVALS_ITEM:
             let index3 = action.index;
@@ -36,12 +36,12 @@ var myReducer = (state = initialState, action) => {
             );
             state = newlist3;
           
-            sessionStorage.setItem('listRivalsItem', JSON.stringify(state));
+            localStorage.setItem('listRivalsItem', JSON.stringify(state));
             return [...state];
 
         case types.REMOVE_LIST_RIVALS_ITEM:
             state = []
-            sessionStorage.removeItem('listRivalsItem')
+            localStorage.removeItem('listRivalsItem')
             return [...state];
         default: return state;
     }

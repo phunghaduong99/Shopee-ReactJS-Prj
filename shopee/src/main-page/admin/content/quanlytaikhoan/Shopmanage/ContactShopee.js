@@ -16,7 +16,7 @@ class ContactShopee extends Component {
   }
   componentDidMount() {
     let index = this.state.shop_link.search("shop_id=");
-    let shop_id;
+    let shop_id = 0;
     if (index > 0) {
       shop_id = this.state.shop_link.slice(index + 8, index + 15);
     }
@@ -24,10 +24,10 @@ class ContactShopee extends Component {
       this.setState({ shop_id: shop_id });
     }
     console.log("shop_id la: " + shop_id);
-    if (this.state.shop_id !== null) {
+    if (shop_id !== 0) {
       axios({
         method: 'post',
-        url: 'http://172.104.173.222:8081/shop/' + this.state.shop_id,
+        url: 'http://172.104.173.222:8081/shop/' + shop_id,
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `${this.props.token}`
