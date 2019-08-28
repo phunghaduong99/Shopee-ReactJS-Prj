@@ -136,7 +136,7 @@ class TabItems extends Component {
                                 <div className="card changePiece">
                                     <form onSubmit={(this.state.textError === null) ? this.onSubmit : this.offSubmit}>
                                         <div className="card-header "><h6 >{this.props.name}</h6></div>
-                                        <div className="card-body">
+                                        <div className="card-body" >
                                             <div className="row ">
                                                 <div className="col-md-8">
                                                     <label className="form-control-group text-left"><h6>Giá bán hiện tại</h6></label>
@@ -158,6 +158,7 @@ class TabItems extends Component {
                                                         onChange={this.onChange}
                                                         value={this.state.newPrice}
                                                         required
+                                                        autocomplete="off"
                                                     />
                                                 </div>
                                                 <span className="errorMessage txt4">{(this.state.newPrice !== null) ? this.state.textError : null}</span>
