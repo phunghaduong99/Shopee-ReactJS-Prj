@@ -11,7 +11,7 @@ class ContactShopee extends Component {
       nameShop: null,
       shop_link: window.location.href,
       shop_id: null,
-      thongBao: "Kết nối thành công. Shop_id của cửa hàng vừa kết nối"
+      thongBao: null
     });
 
   }
@@ -43,6 +43,9 @@ class ContactShopee extends Component {
           }
           else {
             this.callApi();
+            this.setState({
+              thongBao: "Kết nối thành công. Shop_id của cửa hàng vừa kết nối"
+            })
           }
         })
         .catch((error) => {
@@ -104,15 +107,21 @@ class ContactShopee extends Component {
   }
   render() {
 
-    let status =
-      <div>
-        <h5 className="text-center m-b-15"> {this.state.thongBao}</h5>
-        <h3 style={{ fontWeight: "bold" }} className="text-center m-b-20">{this.state.shop_id} </h3>
-      </div>
+    let status = null;
+    if (this.state.thongBao !== null) {
+      if (this.state.thongBao === "Kết nối không thành công. Cửa hàng đã được kết nối với tài khoản khác") {
+        status = <h5 className="text-center m-b-15"> {this.state.thongBao}</h5>
+      }
+      else {
+        status =
+          <div>
+            <h5 className="text-center m-b-15"> {this.state.thongBao}</h5>
+            <h3 style={{ fontWeight: "bold" }} className="text-center m-b-20">{this.state.shop_id} </h3>
+          </div>
+      }
 
-    if (this.state.thongBao === "Kết nối không thành công. Cửa hàng đã được kết nối với tài khoản khác") {
-      status = <h5 className="text-center m-b-15"> {this.state.thongBao}</h5>
     }
+    
     return (
       <div  >
         <div className=" card overview col-sm-12">
