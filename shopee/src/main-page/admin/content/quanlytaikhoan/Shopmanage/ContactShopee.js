@@ -18,7 +18,7 @@ class ContactShopee extends Component {
     let index = this.state.shop_link.search("shop_id=");
     let shop_id = 0;
     if (index > 0) {
-      shop_id = this.state.shop_link.slice(index + 8, index + 15);
+      shop_id = this.state.shop_link.slice(index + 8, this.state.shop_link.length);
     }
     if (shop_id !== null) {
       this.setState({ shop_id: shop_id });
