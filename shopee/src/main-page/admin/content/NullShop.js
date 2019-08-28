@@ -8,7 +8,7 @@ class NullShop extends Component {
                 <div className="col-md-4 offset-md-4 card nullShop ">
                     <div className="m-t-10">
                         <h6>Bạn chưa có shop nào được kết nối.</h6>
-                        <h6> Hãy thực hiện kết nối shop <a className="link-to-shopeee" href="https://partner.uat.shopeemobile.com/api/v1/shop/auth_partner?id=840386&token=d0f934508cadbf365ddd5518dc191848a7651fe908e4b42dcc1e8f6fb836ab78&redirect=http%3A%2F%2F192.168.36.27%3A3000%2Fadmin%2Fquanlycuahang%2FContactShopee"> tại đây</a></h6>
+                        <h6> Hãy thực hiện kết nối shop <a className="link-to-shopeee" href="https://partner.shopeemobile.com/api/v1/shop/auth_partner?id=842939&token=a6070d4151efb6f5f0d6b47de0ddc2e338e7e2e60546b5d1c7cbcc654c3e4572&redirect=http%3A%2F%2F172.104.173.222%3A3000%2Fadmin%2FshopManagement%2FContactShopee"> tại đây</a></h6>
                     </div>
                     
                 </div>

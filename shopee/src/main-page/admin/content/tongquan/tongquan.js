@@ -77,7 +77,7 @@ class TongQuan extends Component {
                     <div className="welcome">
                         <h4 className=" text-center connect-shoppee ">Xin chào <span className="welcome-name-user"> {userInfo.username} </span> </h4>
                         <h4 className=" text-center  ">Chào mừng bạn đến với Shopee Price Analytics</h4>
-                        <h6 className=" text-center  connect-shoppee ">Hãy thực hiện kết nối với Shopee <a className="link-to-shopeee" href="https://partner.uat.shopeemobile.com/api/v1/shop/auth_partner?id=840386&token=d0f934508cadbf365ddd5518dc191848a7651fe908e4b42dcc1e8f6fb836ab78&redirect=http%3A%2F%2F192.168.36.27%3A3000%2Fadmin%2Fquanlycuahang%2FContactShopee"> tại đây</a></h6>
+                        <h6 className=" text-center  connect-shoppee ">Hãy thực hiện kết nối với Shopee <a className="link-to-shopeee" href="https://partner.shopeemobile.com/api/v1/shop/auth_partner?id=842939&token=a6070d4151efb6f5f0d6b47de0ddc2e338e7e2e60546b5d1c7cbcc654c3e4572&redirect=http%3A%2F%2F172.104.173.222%3A3000%2Fadmin%2FshopManagement%2FContactShopee"> tại đây</a></h6>
                     </div>
                 </div>
                 <div className="col-sm-12">

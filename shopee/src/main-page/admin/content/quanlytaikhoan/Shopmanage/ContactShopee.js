@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 class ContactShopee extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +10,8 @@ class ContactShopee extends Component {
       ShopID: null,
       nameShop: null,
       shop_link: window.location.href,
-      shop_id: null
+      shop_id: null,
+      thongBao: "Kết nối thành công. Shop_id của cửa hàng vừa kết nối"
     });
 
   }
@@ -35,6 +36,11 @@ class ContactShopee extends Component {
       })
         .then((response) => {
           console.log(response);
+          if (response.data === "Shop đã được thêm cho tài khoản khác") {
+            this.setState({
+              thongBao: "Kết nối không thành công. Cửa hàng đã được kết nối với tài khoản khác"
+            })
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -42,7 +48,7 @@ class ContactShopee extends Component {
     }
 
   }
- 
+
 
 
 
@@ -59,17 +65,24 @@ class ContactShopee extends Component {
   }
   render() {
 
+    let status =
+      <div>
+        <h5 className="text-center m-b-15"> {this.state.thongBao}</h5>
+        <h3 style={{ fontWeight: "bold" }} className="text-center m-b-20">{this.state.shop_id} </h3>
+      </div>
 
+    if(this.state.thongBao === "Kết nối không thành công. Cửa hàng đã được kết nối với tài khoản khác"){
+      status = <h5 className="text-center m-b-15"> {this.state.thongBao}</h5>
+    }
     return (
       <div  >
         <div className=" card overview col-sm-12">
           <h2>Kết nối cửa hàng</h2>
         </div>
         <div className="col-md-8 offset-md-2 mr-auto ml-auto m-t-100">
-          <h5 className="text-center m-b-15"> Kết nối thành công. Shop_id của cửa hàng vừa kết nối</h5>
-          <h3 style={{fontWeight: "bold"}} className="text-center m-b-20">123456789 </h3>
+          {status}
           <div className="col-md-3 offset-md-5" >
-            <Link to ="/admin/shopManagement"><button  className="btn btn-primary text-center ">   Xong   </button> </Link>
+            <Link to="/admin/shopManagement"><button className="btn btn-primary text-center "> {this.state.thongBao === "Kết nối thành công. Shop_id của cửa hàng vừa kết nối" ? "Xong" : "Quay lại"  }     </button> </Link>
           </div>
         </div>
       </div>
