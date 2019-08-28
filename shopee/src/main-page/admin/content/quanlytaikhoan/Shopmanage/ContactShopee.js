@@ -111,18 +111,29 @@ class ContactShopee extends Component {
     let status = null;
     if (this.state.thongBao !== null) {
       if (this.state.thongBao === "Kết nối không thành công. Cửa hàng đã được kết nối với tài khoản khác") {
-        status = <h5 className="text-center m-b-15"> {this.state.thongBao}</h5>
+        status =
+          <div>
+            <h5 className="text-center m-b-15"> {this.state.thongBao}</h5>
+            <div className="col-md-3 offset-md-5" >
+              <Link to="/admin/shopManagement"><button className="btn btn-primary text-center "> {this.state.thongBao === "Kết nối thành công. Shop_id của cửa hàng vừa kết nối" ? "Xong" : "Quay lại"}     </button> </Link>
+            </div>
+          </div>
+
+
       }
       else {
         status =
           <div>
             <h5 className="text-center m-b-15"> {this.state.thongBao}</h5>
             <h3 style={{ fontWeight: "bold" }} className="text-center m-b-20">{this.state.shop_id} </h3>
+            <div className="col-md-3 offset-md-5" >
+              <Link to="/admin/shopManagement"><button className="btn btn-primary text-center "> {this.state.thongBao === "Kết nối thành công. Shop_id của cửa hàng vừa kết nối" ? "Xong" : "Quay lại"}     </button> </Link>
+            </div>
           </div>
       }
 
     }
-    
+
     return (
       <div  >
         <div className=" card overview col-sm-12">
@@ -130,9 +141,6 @@ class ContactShopee extends Component {
         </div>
         <div className="col-md-8 offset-md-2 mr-auto ml-auto m-t-100">
           {status}
-          <div className="col-md-3 offset-md-5" >
-            <Link to="/admin/shopManagement"><button className="btn btn-primary text-center "> {this.state.thongBao === "Kết nối thành công. Shop_id của cửa hàng vừa kết nối" ? "Xong" : "Quay lại"}     </button> </Link>
-          </div>
         </div>
       </div>
     );
@@ -145,15 +153,15 @@ const mapStatetoProps = (state) => {
 }
 const mapDispatchtoProps = (dispatch, props) => {
   return {
-      saveListShop: (listShop) => {
-          dispatch(actions.saveListShop(listShop));
-      },
-      saveShopIdSelected: (shopIdSelected) => {
-          dispatch(actions.saveShopIdSelected(shopIdSelected));
-      },
-      saveShopNameSelected: (shopNameSelected) => {
-          dispatch(actions.saveShopNameSelected(shopNameSelected));
-      },
+    saveListShop: (listShop) => {
+      dispatch(actions.saveListShop(listShop));
+    },
+    saveShopIdSelected: (shopIdSelected) => {
+      dispatch(actions.saveShopIdSelected(shopIdSelected));
+    },
+    saveShopNameSelected: (shopNameSelected) => {
+      dispatch(actions.saveShopNameSelected(shopNameSelected));
+    },
   }
 }
 export default connect(mapStatetoProps, mapDispatchtoProps)(ContactShopee);
