@@ -40,6 +40,8 @@ class ContactShopee extends Component {
             this.setState({
               thongBao: "Kết nối không thành công. Cửa hàng đã được kết nối với tài khoản khác"
             })
+          }
+          else {
             this.callApi();
           }
         })
