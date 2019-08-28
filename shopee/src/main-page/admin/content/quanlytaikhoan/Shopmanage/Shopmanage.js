@@ -112,7 +112,7 @@ callApi = () => {
               <h5> Bạn đã kết nối {number_shop} cửa hàng </h5>
             </div>
             <div className="col-md-2 offset-md-2 mr-0 ml-0">
-              <a href="https://partner.uat.shopeemobile.com/api/v1/shop/auth_partner?id=840386&token=325764591290d0844604564dc15fe8a05b0bed2baed4f61d0308a5ab5a685bd6&redirect=http%3A%2F%2F192.168.36.34%3A3000%2Fadmin%2Fquanlycuahang%2FContactShopee" className="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết Nối </a>
+              <a href="https://partner.shopeemobile.com/api/v1/shop/auth_partner?id=842939&token=a6070d4151efb6f5f0d6b47de0ddc2e338e7e2e60546b5d1c7cbcc654c3e4572&redirect=http%3A%2F%2F172.104.173.222%3A3000%2Fadmin%2FshopManagement%2FContactShopee" className="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết Nối </a>
               {/* <button type="button" className="btn btn-primary"><i className="fa fa-plus-square mr-10"></i>Kết nối</button> */}
             </div>
           </div>
