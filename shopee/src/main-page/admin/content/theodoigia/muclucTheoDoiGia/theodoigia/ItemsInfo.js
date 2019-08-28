@@ -34,6 +34,15 @@ class ItemsInfo extends Component {
 
             });
     }
+    number_format = (number, decimals, dec_point, thousands_sep) => {
+        var n = number, c = isNaN(decimals = Math.abs(decimals)) ? 2 : decimals;
+        var d = dec_point === undefined ? "," : dec_point;
+        var t = thousands_sep === undefined ? "." : thousands_sep, s = n < 0 ? "-" : "";
+        var i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "";
+        var j = i.length;
+        j = (j) > 3 ? j % 3 : 0;
+        return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+    }
     render() {
         let dulieu = false;
         let itemDetail = this.props.listItems.filter((c) =>
@@ -114,6 +123,18 @@ class ItemsInfo extends Component {
         else GiaCaoHon = '';
         if (status === 1) GiaTuongDuong = SoLuongGiaTuongDuong + ' (chiếm ' + PhanTramGiaTuongDuong + '%)';
         else GiaTuongDuong = '';
+
+        let Nam0 = this.number_format(parseFloat(Math.round(itemDetail[0].price * 0.5 / 1000 * 10) / 10), 1, '.', ',')  
+        let Sau0 = this.number_format(parseFloat(Math.round(itemDetail[0].price * 0.6 / 1000 * 10) / 10), 1, '.', ',') 
+        let Bay0 = this.number_format(parseFloat(Math.round(itemDetail[0].price * 0.7 / 1000 * 10) / 10), 1, '.', ',') 
+        let Tam0 = this.number_format(parseFloat(Math.round(itemDetail[0].price * 0.8 / 1000 * 10) / 10), 1, '.', ',') 
+        let Chin0 = this.number_format(parseFloat(Math.round(itemDetail[0].price * 0.9 / 1000 * 10) / 10), 1, '.', ',') 
+        let Muoi0 = this.number_format(parseFloat(Math.round(itemDetail[0].price * 1.0 / 1000 * 10) / 10), 1, '.', ',') 
+        let Mot1 = this.number_format(parseFloat(Math.round(itemDetail[0].price * 1.1 / 1000 * 10) / 10), 1, '.', ',') 
+        let Hai1 = this.number_format(parseFloat(Math.round(itemDetail[0].price * 1.2 / 1000 * 10) / 10), 1, '.', ',') 
+        let Ba1 = this.number_format(parseFloat(Math.round(itemDetail[0].price * 1.3 / 1000 * 10) / 10), 1, '.', ',') 
+        let Bon1 = this.number_format(parseFloat(Math.round(itemDetail[0].price * 1.4 / 1000 * 10) / 10), 1, '.', ',') 
+        let Nam1 = this.number_format(parseFloat(Math.round(itemDetail[0].price * 1.5 / 1000 * 10) / 10), 1, '.', ',') 
         return (
             <div>
                 <div className="col col-sm-3"><Link to={`${this.props.Theodoigia_url.url}`} className="txt7"><i className="fa fa-angle-left"></i> Quay lại trang danh sách</Link></div>
@@ -129,7 +150,7 @@ class ItemsInfo extends Component {
                             </div>
                             <div className="form-control-group "><h6>Mã sản phẩm: {this.props.itemId_thongke}</h6></div>
                             <div className="form-control-group "><h6> Cửa hàng: "{this.props.shopNameSelected}"</h6></div>
-                            <div className="form-control-group "><h6> Giá: {itemDetail[0].price} </h6></div>
+                            <div className="form-control-group "><h6> Giá: {this.number_format(parseFloat(itemDetail[0].price), 0, '.', ',')} đ  </h6></div>
                         </div>
                     </div>
                 </div>
@@ -141,7 +162,7 @@ class ItemsInfo extends Component {
                         </div>
                         <div className="row">
                             <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                <ChartFollow arrayPriceForChart={arrayPriceForChart} percentNumber={percentNumber} />
+                                <ChartFollow arrayPriceForChart={arrayPriceForChart} percentNumber={percentNumber} arrayNumber ={arrayNumber} />
                             </div>
                             <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                             </div>
@@ -182,31 +203,31 @@ class ItemsInfo extends Component {
                                     <thead>
                                         <tr >
                                             <td className="text-center success"><h6>Mức giá <div>(% giá của bạn)</div></h6></td>
-                                            <td className="text-center ">50%-59%</td>
-                                            <td className="text-center ">60%-69%</td>
-                                            <td className="text-center ">70%-79%</td>
-                                            <td className="text-center ">80%-89%</td>
-                                            <td className="text-center ">90%-99%</td>
-                                            <td className="text-center ">100%-109%</td>
-                                            <td className="text-center ">110%-119%</td>
-                                            <td className="text-center ">120%-129%</td>
-                                            <td className="text-center ">130%-139%</td>
+                                            <td className="text-center ">50%-60%</td>
+                                            <td className="text-center ">60%-70%</td>
+                                            <td className="text-center ">70%-80%</td>
+                                            <td className="text-center ">80%-90%</td>
+                                            <td className="text-center ">90%-100%</td>
+                                            <td className="text-center ">100%-110%</td>
+                                            <td className="text-center ">110%-120%</td>
+                                            <td className="text-center ">120%-130%</td>
+                                            <td className="text-center ">130%-140%</td>
                                             <td className="text-center ">140%-150%</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td className="text-center success"><h6>Giá <div>(theo nghìn đồng)</div></h6></td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price * 0.5 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 0.6 / 1000 * 10) / 10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price * 0.6 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 0.7 / 1000 * 10) / 10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price * 0.7 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 0.8 / 1000 * 10) / 10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price * 0.8 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 0.9 / 1000 * 10) / 10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price * 0.9 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 1.0 / 1000 * 10) / 10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price * 1.0 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 1.1 / 1000 * 10) / 10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price * 1.1 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 1.2 / 1000 * 10) / 10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price * 1.2 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 1.3 / 1000 * 10) / 10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price * 1.3 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 1.4 / 1000 * 10) / 10}</td>
-                                            <td className="text-center ">{Math.round(itemDetail[0].price * 1.4 / 1000 * 10) / 10}-{Math.round(itemDetail[0].price * 1.5 / 1000 * 10) / 10}</td>
+                                            <td className="text-center ">{Nam0}-{Sau0}</td>
+                                            <td className="text-center ">{Sau0}-{Bay0}</td>
+                                            <td className="text-center ">{Bay0}-{Tam0}</td>
+                                            <td className="text-center ">{Tam0}-{Chin0}</td>
+                                            <td className="text-center ">{Chin0}-{Muoi0}</td>
+                                            <td className="text-center ">{Muoi0}-{Mot1}</td>
+                                            <td className="text-center ">{Mot1}-{Hai1}</td>
+                                            <td className="text-center ">{Hai1}-{Ba1}</td>
+                                            <td className="text-center ">{Ba1}-{Bon1}</td>
+                                            <td className="text-center ">{Bon1}-{Nam1}</td>
                                         </tr>
                                         <tr>
                                             <td className="text-center success"><h6>Số Lượng</h6></td>

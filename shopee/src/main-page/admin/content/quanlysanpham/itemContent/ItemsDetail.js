@@ -269,26 +269,26 @@ class ItemsDetail extends Component {
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-md-6">
-                                        <label className="form-control-group"><h6>Giá bán (VNĐ)</h6></label>
+                                        <label className="form-control-group"><h6>Giá bán </h6></label>
                                     </div>
                                     <div className="col-md-6 aline">
-                                        <label className="form-control-group "><h6>{this.number_format(parseFloat(itemDetail[0].price), 0, '.', ',') }</h6></label>
+                                        <label className="form-control-group "><h6>{this.number_format(parseFloat(itemDetail[0].price), 0, '.', ',') } đ</h6></label>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-md-6">
-                                        <label className="form-control-group"><h6>Giá cao nhất (VNĐ)</h6></label>
+                                        <label className="form-control-group"><h6>Giá cao nhất </h6></label>
                                     </div>
                                     <div className="col-md-6 aline">
-                                        <label className="form-control-group "><h6> {this.number_format(parseFloat(itemDetail[0].price_max), 0, '.', ',') } </h6></label>
+                                        <label className="form-control-group "><h6> {this.number_format(parseFloat(itemDetail[0].price_max), 0, '.', ',') } đ </h6></label>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-md-6">
-                                        <label className="form-control-group"><h6>Giá thấp nhất (VNĐ)</h6></label>
+                                        <label className="form-control-group"><h6>Giá thấp nhất </h6></label>
                                     </div>
                                     <div className="col-md-6 aline">
-                                        <label className="form-control-group "><h6>{this.number_format(parseFloat(itemDetail[0].price_min), 0, '.', ',') }  </h6></label>
+                                        <label className="form-control-group "><h6>{this.number_format(parseFloat(itemDetail[0].price_min), 0, '.', ',') } đ  </h6></label>
                                     </div>
                                 </div>
                                 <div className="row">
