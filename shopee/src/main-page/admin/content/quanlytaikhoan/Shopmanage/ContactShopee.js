@@ -69,7 +69,7 @@ class ContactShopee extends Component {
           <h5 className="text-center"> Kết nối thành công. Shop_id của cửa hàng vừa kết nối</h5>
         </div><br />
         <div className="col-md-8 offset-md-2 mr-auto ml-auto ">
-          <h3 style={{fontWeight: "bold"}} className="text-center">123456789 </h3>
+          <h3 style={{fontWeight: "bold"}} className="text-center">{this.state.shop_id} </h3>
         </div><br />
 
 
