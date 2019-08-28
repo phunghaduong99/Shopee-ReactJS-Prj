@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import swal from 'sweetalert';
 import * as actions from '../../../../../../../redux/actions/index';
+import Skeleton from 'react-loading-skeleton';
 class On extends Component {
     constructor(props) {
         super(props);
@@ -14,7 +15,7 @@ class On extends Component {
             dataRival: [],
             tableAutoPrice: [],
             index: 0,
-            error:null,
+            error: null,
         });
     }
     onChange = (event) => {
@@ -24,8 +25,7 @@ class On extends Component {
         var value = target.value;
 
         let price = event.target.value;
-        if (price < 0 || price % 100 !== 0) 
-            { this.setState({ error: "Cần nhập giá tiền dương và chẵn đến trăm đồng " }); }
+        if (price < 0 || price % 100 !== 0) { this.setState({ error: "Cần nhập giá tiền dương và chẵn đến trăm đồng " }); }
         else {
             this.setState({ error: null });
         };
@@ -138,7 +138,7 @@ class On extends Component {
         }
 
     }
-    offSubmit=(event)=>{
+    offSubmit = (event) => {
         event.preventDefault();
     }
     onSubmit = (event) => {
@@ -179,17 +179,17 @@ class On extends Component {
         }
         
     }
-    number_format = ( number, decimals, dec_point, thousands_sep ) => {
+    number_format = (number, decimals, dec_point, thousands_sep) => {
         var n = number, c = isNaN(decimals = Math.abs(decimals)) ? 2 : decimals;
         var d = dec_point === undefined ? "," : dec_point;
         var t = thousands_sep === undefined ? "." : thousands_sep, s = n < 0 ? "-" : "";
         var i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "";
         var j = i.length;
-        j = ( j) > 3 ? j % 3 : 0;
+        j = (j) > 3 ? j % 3 : 0;
         return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
     }
     render() {
-        let optionRivals;
+        let optionRivals = null;
         let tableAutoPrice;
 
 
@@ -208,12 +208,12 @@ class On extends Component {
                 return (
                     <tr key={index}>
                         <td> {c.Date} </td>
-                        <td> {this.number_format(parseFloat(c.oldPrice), 0, '.', ',') }  </td>
-                        <td> {this.number_format(parseFloat(c.price), 0, '.', ',') }  </td>
+                        <td> {this.number_format(parseFloat(c.oldPrice), 0, '.', ',')}  </td>
+                        <td> {this.number_format(parseFloat(c.price), 0, '.', ',')}  </td>
                         <td>{c.shopRival}</td>
                         <td style={{ color: c.price > c.oldPrice ? "#81e675" : "red" }}>
-                            <i className={c.price > c.oldPrice ? "fa fa-arrow-up": "fa fa-arrow-down"}></i>
-                            {this.number_format(parseFloat(chenhgia), 0, '.', ',') } 
+                            <i className={c.price > c.oldPrice ? "fa fa-arrow-up" : "fa fa-arrow-down"}></i>
+                            {this.number_format(parseFloat(chenhgia), 0, '.', ',')}
                         </td>
                     </tr>
                 )
@@ -221,7 +221,7 @@ class On extends Component {
         }
         return (
             <div>
-                <form className="form-horizontal" onSubmit={( this.state.error===null)?this.onSubmit:this.offSubmit} autocomplete="off">
+                <form className="form-horizontal" onSubmit={(this.state.error === null) ? this.onSubmit : this.offSubmit} autocomplete="off">
                     <div className="row">
                         <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
                             <div className=" row ">
@@ -229,9 +229,9 @@ class On extends Component {
                                     <label className="col-form-label"><h6>Đối thủ điều chỉnh</h6> </label>
                                 </div>
                                 <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                                    <select className="form-control m-r-0" onChange={this.onChangeRival}>
+                                    {optionRivals ? <select className="form-control m-r-0" onChange={this.onChangeRival}>
                                         {optionRivals}
-                                    </select>
+                                    </select> : <Skeleton height= {30}/>}
                                 </div>
                             </div>
                             <div className=" row ">
@@ -283,7 +283,7 @@ class On extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
