@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import * as actions from '../../../../../redux/actions/index';
 class ContactShopee extends Component {
   constructor(props) {
     super(props);
@@ -138,9 +139,21 @@ class ContactShopee extends Component {
   }
 }
 const mapStatetoProps = (state) => {
-  console.log(state);
   return {
     token: state.token
   }
 }
-export default connect(mapStatetoProps, null)(ContactShopee);
+const mapDispatchtoProps = (dispatch, props) => {
+  return {
+      saveListShop: (listShop) => {
+          dispatch(actions.saveListShop(listShop));
+      },
+      saveShopIdSelected: (shopIdSelected) => {
+          dispatch(actions.saveShopIdSelected(shopIdSelected));
+      },
+      saveShopNameSelected: (shopNameSelected) => {
+          dispatch(actions.saveShopNameSelected(shopNameSelected));
+      },
+  }
+}
+export default connect(mapStatetoProps, mapDispatchtoProps)(ContactShopee);
