@@ -1,13 +1,13 @@
 import * as types from '../constants/ActionTypes';
 
-var data = JSON.parse(sessionStorage.getItem('listItems'));
+var data = JSON.parse(localStorage.getItem('listItems'));
 var initialState = data ? data : [];
 
 var myReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.SAVE_LIST_ITEMS:
             state = action.listItems
-            sessionStorage.setItem('listItems', JSON.stringify(state));
+            localStorage.setItem('listItems', JSON.stringify(state));
             return [...state];
 
         case types.CHANGE_PRICE_ITEM:
@@ -19,7 +19,7 @@ var myReducer = (state = initialState, action) => {
                 return c
             })
             state = newState;
-            sessionStorage.setItem('listItems', JSON.stringify(state));
+            localStorage.setItem('listItems', JSON.stringify(state));
             return [...state];
 
         case types.ADD_ITEM:
@@ -31,7 +31,7 @@ var myReducer = (state = initialState, action) => {
                 return c
             })
             state = listNew;
-            sessionStorage.setItem('listItems', JSON.stringify(state));
+            localStorage.setItem('listItems', JSON.stringify(state));
             return [...state];
         
             case types.DELETE_ITEM:
@@ -43,12 +43,12 @@ var myReducer = (state = initialState, action) => {
                         return c
                     })
                     state = listNew2;
-                    sessionStorage.setItem('listItems', JSON.stringify(state));
+                    localStorage.setItem('listItems', JSON.stringify(state));
                     return [...state];
 
         case types.REMOVE_LIST_ITEMS:
             state = []
-            sessionStorage.removeItem('listItems')
+            localStorage.removeItem('listItems')
             return [...state];
         default: return state;
     }

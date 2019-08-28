@@ -1,18 +1,18 @@
 import * as types from '../../constants/ActionTypes';
 
-var data = JSON.parse(sessionStorage.getItem('listChosenItems'));
+var data = JSON.parse(localStorage.getItem('listChosenItems'));
 var initialState = data ? data : [];
 
 var myReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.SAVE_LIST_CHOSEN_ITEMS:
             state = action.listChosenItems
-            sessionStorage.setItem('listChosenItems', JSON.stringify(state));
+            localStorage.setItem('listChosenItems', JSON.stringify(state));
             return [...state];
 
         case types.ADD_LIST_CHOSEN_ITEM:
             state.push(action.chosenItem)
-            sessionStorage.setItem('listChosenItems', JSON.stringify(state));
+            localStorage.setItem('listChosenItems', JSON.stringify(state));
             return [...state];
 
         case types.DELETE_LIST_CHOSEN_ITEM:
@@ -21,7 +21,7 @@ var myReducer = (state = initialState, action) => {
             NewList = NewList.filter((c) => c.itemid !== itemId);
             state = NewList;
             // state.push(action.itemId)
-            sessionStorage.setItem('listChosenItems', JSON.stringify(state));
+            localStorage.setItem('listChosenItems', JSON.stringify(state));
             return [...state];
 
         case types.ADD_NUMBER_RIVALS_CHOSEN_ITEM:
@@ -32,7 +32,7 @@ var myReducer = (state = initialState, action) => {
                 return c
             })
             state = newList;
-            sessionStorage.setItem('listChosenItems', JSON.stringify(state));
+            localStorage.setItem('listChosenItems', JSON.stringify(state));
             return [...state];
 
         case types.SUBTRACT_NUMBER_RIVALS_CHOSEN_ITEM:
@@ -43,12 +43,12 @@ var myReducer = (state = initialState, action) => {
                 return c
             })
             state = newList2;
-            sessionStorage.setItem('listChosenItems', JSON.stringify(state));
+            localStorage.setItem('listChosenItems', JSON.stringify(state));
             return [...state];
 
         case types.REMOVE_LIST_CHOSEN_ITEMS:
             state = []
-            sessionStorage.removeItem('listChosenItems')
+            localStorage.removeItem('listChosenItems')
             return [...state];
 
         case types.CHANGE_STATUS_AUTO_PRICE:
@@ -60,7 +60,7 @@ var myReducer = (state = initialState, action) => {
                 return c;
             })
             state = UpdateState;
-            sessionStorage.setItem('listChosenItems', JSON.stringify(state));
+            localStorage.setItem('listChosenItems', JSON.stringify(state));
             return [...state];
         default: return state;
     }
