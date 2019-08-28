@@ -216,7 +216,7 @@ class On extends Component {
         }
         return (
             <div>
-                <form className="form-horizontal" onSubmit={( this.state.error===null)?this.onSubmit:this.offSubmit}>
+                <form className="form-horizontal" onSubmit={( this.state.error===null)?this.onSubmit:this.offSubmit} autocomplete="off">
                     <div className="row">
                         <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
                             <div className=" row ">
@@ -278,7 +278,7 @@ class On extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        <span className="errorMessage txt4">{this.state.error}</span>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -298,6 +298,7 @@ class On extends Component {
                                     />
                                 </div>
                             </div>
+                            <span className="errorMessage txt4">{this.state.error}</span>
                         </div>
                     </div>
                     <div className="col-md-2 offset-md-9 col-sm-9 ml-auto text-right" >
