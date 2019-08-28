@@ -82,7 +82,7 @@ class user extends Component {
     // } else {
     //   console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
     // }
-    
+
     if (this.state.isSubmit) {
       console.log('aa')
       this.callApi();
@@ -104,9 +104,25 @@ class user extends Component {
     })
       .then((response) => {
         console.log(response);
-        this.props.saveUserInfo(response.data);
-        swal("Cập nhật tài khoản thành công!", "", "success",
-        );
+        // this.props.saveUserInfo(response.data);
+        axios({
+          method: 'get',
+          url: 'http://172.104.173.222:8081/infor',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${this.props.token}`
+          },
+        })
+          .then((response) => {
+            console.log(response);
+            this.props.saveUserInfo(response.data);
+            swal("Cập nhật tài khoản thành công!", "", "success",);
+          })
+          .catch((error) => {
+            console.log(error);
+            alert("Không lấy được thông tin tài khoản");
+          });
+       
       })
       .catch((error) => {
         console.log(error);
@@ -116,7 +132,7 @@ class user extends Component {
   render() {
     let userInfo = this.props.userInfo;
     console.log(userInfo);
-    if(this.state.phone ===null)  this.setState({
+    if (this.state.phone === null) this.setState({
       phone: ""
     })
     return (
@@ -136,7 +152,7 @@ class user extends Component {
                   name="username"
                   type="text"
                   disabled
-                  value={userInfo.username}
+                  value={this.props.userInfo.username}
                   required
                 />
                 <span className="errorMessage txt4">{this.state.formErrors.username}</span>
@@ -168,7 +184,7 @@ class user extends Component {
                   className="form-control"
                   name="email"
                   type="text"
-                  value={userInfo.email}
+                  value={this.props.userInfo.email}
                   disabled
                 />
               </div>

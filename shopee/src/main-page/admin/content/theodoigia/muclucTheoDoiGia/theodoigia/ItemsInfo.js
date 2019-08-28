@@ -162,7 +162,7 @@ class ItemsInfo extends Component {
                         </div>
                         <div className="row">
                             <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                <ChartFollow arrayPriceForChart={arrayPriceForChart} percentNumber={percentNumber} />
+                                <ChartFollow arrayPriceForChart={arrayPriceForChart} percentNumber={percentNumber} arrayNumber ={arrayNumber} />
                             </div>
                             <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                             </div>
