@@ -8,6 +8,7 @@ class ChangePieceAuto extends Component {
     constructor() {
         super();
         this.state = {
+
             checked: false,
             khongbiet: ''
         };
@@ -47,6 +48,7 @@ class ChangePieceAuto extends Component {
     render() {
         return (
             <div className="card ">
+                {(this.props.listRivalsShopFollowing.length===0)?<label className="text-center m-t-10 m-b-10"><h6>Chưa có đối thủ nào được chọn để theo dõi !</h6> </label> :
                 <div className="card-body">
                     <div className="row">
                         <div className="col-xs-10 col-sm-10 col-md-10 col-lg-10">
@@ -69,7 +71,7 @@ class ChangePieceAuto extends Component {
                         </div>
                     </div>
                     {this.state.checked ? <On /> : null}
-                </div>
+                </div>}
             </div>
         );
     }

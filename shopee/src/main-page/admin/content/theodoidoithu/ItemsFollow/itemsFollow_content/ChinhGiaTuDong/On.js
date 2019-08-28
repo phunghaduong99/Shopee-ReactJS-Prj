@@ -143,36 +143,41 @@ class On extends Component {
     }
     onSubmit = (event) => {
         event.preventDefault();
-        axios({
-            method: 'post',
-            url: 'http://172.104.173.222:8081/rival',
-            data: {
-                "itemid": `${this.props.followingItemSelected}`,
-                "shopid": `${this.props.shopIdSelected}`,
-                "rivalShopid": `${this.state.dataRival[this.state.index].rival.rivalShopid}`,
-                "rivalItemid": `${this.state.dataRival[this.state.index].rival.rivalItemid}`,
-                "auto": 'true',
-                "price": `${this.state.ratingChange}`,
-                "max": `${this.state.maxprice}`,
-                "min": `${this.state.minprice}`,
-                "error":null
-
-            },
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `${this.props.token}`
-            },
-        })
-            .then((response) => {
-                console.log(response);
-                swal("Đã theo dõi tự động", "", "success")
-                this.props.changeStatusAutoPrice("true", this.props.followingItemSelected)
-
+        if(this.state.minprice >= this.state.maxprice){
+            this.setState({error : "Giá lớn nhất cần lớn hơn giá nhỏ nhất"})
+        }
+        else {
+            axios({
+                method: 'post',
+                url: 'http://172.104.173.222:8081/rival',
+                data: {
+                    "itemid": `${this.props.followingItemSelected}`,
+                    "shopid": `${this.props.shopIdSelected}`,
+                    "rivalShopid": `${this.state.dataRival[this.state.index].rival.rivalShopid}`,
+                    "rivalItemid": `${this.state.dataRival[this.state.index].rival.rivalItemid}`,
+                    "auto": 'true',
+                    "price": `${this.state.ratingChange}`,
+                    "max": `${this.state.maxprice}`,
+                    "min": `${this.state.minprice}`,
+                    "error":null
+    
+                },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `${this.props.token}`
+                },
             })
-            .catch((error) => {
-                console.log(error);
-                swal("Theo dõi tự động thất bại", "", "warning")
-            })
+                .then((response) => {
+                    console.log(response);
+                    swal("Đã theo dõi tự động", "", "success")
+                    this.props.changeStatusAutoPrice("true", this.props.followingItemSelected)
+    
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        }
+        
     }
     number_format = ( number, decimals, dec_point, thousands_sep ) => {
         var n = number, c = isNaN(decimals = Math.abs(decimals)) ? 2 : decimals;
