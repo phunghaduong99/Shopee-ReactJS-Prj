@@ -40,6 +40,7 @@ class ContactShopee extends Component {
             this.setState({
               thongBao: "Kết nối không thành công. Cửa hàng đã được kết nối với tài khoản khác"
             })
+            this.callApi();
           }
         })
         .catch((error) => {
@@ -47,6 +48,42 @@ class ContactShopee extends Component {
         });
     }
 
+  }
+
+  callApi = () => {
+    axios({
+      method: 'get',
+      url: 'http://172.104.173.222:8081/shop',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `${this.props.token}`
+      },
+    })
+      .then((response) => {
+        console.log(response);
+        let neww = response.data;
+
+        let newlistShop = neww.map(
+          (c, index) => {
+            if (index === 0) {
+              c.isActive = true;
+
+              this.props.saveShopIdSelected(c.shopid);
+              this.props.saveShopNameSelected(c.name);
+            }
+            else {
+              c.isActive = false;
+            }
+            return c
+          }
+        )
+        this.props.saveListShop(newlistShop);
+
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Không lấy được cửa hàng");
+      });
   }
 
 
@@ -71,7 +108,7 @@ class ContactShopee extends Component {
         <h3 style={{ fontWeight: "bold" }} className="text-center m-b-20">{this.state.shop_id} </h3>
       </div>
 
-    if(this.state.thongBao === "Kết nối không thành công. Cửa hàng đã được kết nối với tài khoản khác"){
+    if (this.state.thongBao === "Kết nối không thành công. Cửa hàng đã được kết nối với tài khoản khác") {
       status = <h5 className="text-center m-b-15"> {this.state.thongBao}</h5>
     }
     return (
@@ -82,7 +119,7 @@ class ContactShopee extends Component {
         <div className="col-md-8 offset-md-2 mr-auto ml-auto m-t-100">
           {status}
           <div className="col-md-3 offset-md-5" >
-            <Link to="/admin/shopManagement"><button className="btn btn-primary text-center "> {this.state.thongBao === "Kết nối thành công. Shop_id của cửa hàng vừa kết nối" ? "Xong" : "Quay lại"  }     </button> </Link>
+            <Link to="/admin/shopManagement"><button className="btn btn-primary text-center "> {this.state.thongBao === "Kết nối thành công. Shop_id của cửa hàng vừa kết nối" ? "Xong" : "Quay lại"}     </button> </Link>
           </div>
         </div>
       </div>
