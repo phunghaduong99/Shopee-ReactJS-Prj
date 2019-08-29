@@ -280,7 +280,7 @@ class ItemsInfo extends Component {
                                                         <h6>Giá trung bình :</h6>
                                                     </div>
                                                     <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                                        {dulieu ? <label>{medium > 0 ? medium + 'đ' : ''}</label> : <Skeleton />}
+                                                        {dulieu ? <label>{medium > 0 ?  this.number_format(parseFloat(medium) , 1, '.', ',')  + 'đ' : ''}</label> : <Skeleton />}
                                                     </div>
                                                 </div>
                                             </div>
