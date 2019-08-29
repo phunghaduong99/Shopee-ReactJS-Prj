@@ -176,16 +176,16 @@ class ItemsInfo extends Component {
                                                 <Skeleton circle={true} height={300} width={300}/>
                                             </div>
                                             <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-right">
-                                                <Skeleton height={20} width={75}/>
-                                                <Skeleton height={20} width={75}/>
-                                                <Skeleton height={20} width={75}/>
-                                                <Skeleton height={20} width={75}/>
-                                                <Skeleton height={20} width={75}/>
-                                                <Skeleton height={20} width={75}/>
-                                                <Skeleton height={20} width={75}/>
-                                                <Skeleton height={20} width={75}/>
-                                                <Skeleton height={20} width={75}/>
-                                                <Skeleton height={20} width={75}/>
+                                                <Skeleton height={20} width={75}/><br/>
+                                                <Skeleton height={20} width={75}/><br/>
+                                                <Skeleton height={20} width={75}/><br/>
+                                                <Skeleton height={20} width={75}/><br/>
+                                                <Skeleton height={20} width={75}/><br/>
+                                                <Skeleton height={20} width={75}/><br/>
+                                                <Skeleton height={20} width={75}/><br/>
+                                                <Skeleton height={20} width={75}/><br/>
+                                                <Skeleton height={20} width={75}/><br/>
+                                                <Skeleton height={20} width={75}/><br/>
                                             </div>
                                         </div>
                                     </SkeletonTheme>}
