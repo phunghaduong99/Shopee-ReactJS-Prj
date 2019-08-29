@@ -152,9 +152,6 @@ const mapDispatchtoProps = (dispatch, props) => {
             dispatch(actions.saveListItems(listItems));
         },
 
-
-
-
     }
 }
 export default connect(mapStatetoProps, mapDispatchtoProps)(FollowCompetitor);

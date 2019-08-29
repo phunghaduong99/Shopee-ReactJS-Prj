@@ -22,15 +22,16 @@ class On extends Component {
         event.preventDefault();
         var target = event.target;
         var name = target.name;
-        var value = target.value;
 
-        let price = event.target.value;
-        if (price < 0 || price % 100 !== 0) { this.setState({ error: "Cần nhập giá tiền dương và chẵn đến trăm đồng " }); }
+        let newPrice = event.target.value;
+        newPrice = this.chuyengia(newPrice);
+        if (newPrice < 0 || newPrice % 100 !== 0) { this.setState({ error: "Cần nhập giá tiền dương và chẵn đến trăm đồng " }); }
         else {
             this.setState({ error: null });
         };
+        newPrice = this.number_format(parseFloat(newPrice), 0, '.', ',');
         this.setState({
-            [name]: value
+            [name]: newPrice
         });
     }
     componentDidMount() {
@@ -68,9 +69,9 @@ class On extends Component {
                     })
                     if (dataRival[0].rival.min !== 0) {
                         this.setState({
-                            minprice: dataRival[0].rival.min,
-                            maxprice: dataRival[0].rival.max,
-                            ratingChange: dataRival[0].rival.price,
+                            minprice: this.number_format(parseFloat(dataRival[0].rival.min), 0, '.', ','),
+                            maxprice: this.number_format(parseFloat(dataRival[0].rival.max), 0, '.', ',') ,
+                            ratingChange:this.number_format(parseFloat(dataRival[0].rival.price), 0, '.', ',')  
                         })
                     }
                     else {
@@ -123,9 +124,9 @@ class On extends Component {
 
         if (this.state.dataRival[index].rival.min !== 0) {
             this.setState({
-                minprice: this.state.dataRival[index].rival.min,
-                maxprice: this.state.dataRival[index].rival.max,
-                ratingChange: this.state.dataRival[index].rival.price,
+                minprice: this.number_format(parseFloat(this.state.dataRival[index].rival.min), 0, '.', ','),
+                maxprice: this.number_format(parseFloat(this.state.dataRival[index].rival.max), 0, '.', ',') ,
+                ratingChange:this.number_format(parseFloat(this.state.dataRival[index].rival.price), 0, '.', ',')  
             })
         }
         else {
@@ -142,7 +143,7 @@ class On extends Component {
     }
     onSubmit = (event) => {
         event.preventDefault();
-        if(this.state.minprice >= this.state.maxprice){
+        if(this.chuyengia(this.state.minprice) >= this.chuyengia(this.state.maxprice)){
             this.setState({error : "Giá lớn nhất cần lớn hơn giá nhỏ nhất"})
         }
         else {
@@ -155,9 +156,9 @@ class On extends Component {
                     "rivalShopid": `${this.state.dataRival[this.state.index].rival.rivalShopid}`,
                     "rivalItemid": `${this.state.dataRival[this.state.index].rival.rivalItemid}`,
                     "auto": 'true',
-                    "price": `${this.state.ratingChange}`,
-                    "max": `${this.state.maxprice}`,
-                    "min": `${this.state.minprice}`,
+                    "price": `${this.chuyengia(this.state.ratingChange)}`,
+                    "max": `${this.chuyengia(this.state.maxprice)}`,
+                    "min": `${this.chuyengia(this.state.minprice)}`,
                     "error":null
     
                 },
@@ -186,6 +187,15 @@ class On extends Component {
         var j = i.length;
         j = (j) > 3 ? j % 3 : 0;
         return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+    }
+    chuyengia = (a) => {
+        var gia = a.split(',');
+        for (var i = 1; i < a.length; i++) {
+            gia[0] = gia[0] + gia[i];
+        }
+        gia[0] = parseFloat(gia[0]);
+        return gia[0];
+
     }
     render() {
         let optionRivals = null;
@@ -296,7 +306,7 @@ class On extends Component {
                                         name="ratingChange"
                                         placeholder="Nhập ...VNĐ"
                                         type="text"
-                                        value={this.state.ratingChange}
+                                        value={  this.state.ratingChange}
                                         onChange={this.onChange}
                                         required
                                     />
