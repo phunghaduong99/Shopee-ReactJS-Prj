@@ -61,8 +61,9 @@ class Product extends Component {
         let tabItems = "";
         let newListItems;
         if (!this.state.isOnSearch) {
-            newListItems = this.props.listItems;
-            if (newListItems !== undefined) {
+
+            if (this.props.listItems.length > 0) {
+                newListItems = this.props.listItems;
                 tabItems = newListItems.map((c, index) =>
                     <TabItems
                         itemid={c.itemid}
@@ -79,13 +80,13 @@ class Product extends Component {
             else { tabItems = null }
         }
         else {
-            let search = this.state.search;
-            let newListSearchItems;
-            newListSearchItems = this.props.listItems.filter((c) => {
-                return c.name.search(search) >= 0 || c.itemid.toString().search(search) >= 0 || c.price.toString().search(search) >= 0;
-            }
-            );
-            if (newListSearchItems !== undefined) {
+            if (this.props.listItems.length > 0) {
+                let search = this.state.search;
+                let newListSearchItems;
+                newListSearchItems = this.props.listItems.filter((c) => {
+                    return c.name.search(search) >= 0 || c.itemid.toString().search(search) >= 0 || c.price.toString().search(search) >= 0;
+                }
+                );
                 tabItems = newListSearchItems.map((c, index) =>
                     <TabItems
                         itemid={c.itemid}
@@ -107,7 +108,7 @@ class Product extends Component {
             map.push(0);
             tabItems = map.map((c, index) => <TabItems
                 dulieu={dulieu}
-                key = {index}
+                key={index}
             />)
 
 
@@ -150,7 +151,7 @@ class Product extends Component {
                         <table className="table">
                             <thead>
                                 <tr >
-                                     <th className="cot1"> Sản phẩm</th>
+                                    <th className="cot1"> Sản phẩm</th>
                                     <th className="cot2">Mã sản phẩm</th>
                                     <th className="cot3">Giá bán</th>
                                     <th className="cot4">Rating</th>
