@@ -62,6 +62,24 @@ class TabItems extends Component {
                     console.log(response);
                     if (response.data !== null && response.data !== "") {
                         this.props.changePriceItem(this.props.itemid, this.chuyengia(this.state.newPrice));
+                        axios({
+                            method: 'put',
+                            url: 'http://172.104.173.222:8081/rivalOff/' + this.props.itemid,
+
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `${this.props.token}`
+                            },
+                        })
+                            .then((response) => {
+                                console.log(response);
+                                if (response.data === "Off Auto") {
+                                    this.props.changeStatusAutoPrice(false, this.props.itemid);
+                                }
+                            })
+                            .catch((error) => {
+                                console.log(error);
+                            });
                     }
                     else swal("Chỉnh sửa giá thất bại. Xin vui lòng thử lại.", "", "error")
 
@@ -107,7 +125,7 @@ class TabItems extends Component {
                 <td >
                     <div className="row ">
                         <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                            {this.props.dulieu ? <img className="img-toy m-r-7" src={this.props.images} alt="" /> : <Skeleton width={40} height={40}/>}
+                            {this.props.dulieu ? <img className="img-toy m-r-7" src={this.props.images} alt="" /> : <Skeleton width={40} height={40} />}
                         </div>
                         <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                             {this.props.dulieu ? <Link onClick={this.onSlectedItem} to={`${this.props.match.url}/itemsDetail/${this.props.itemid}`}>{this.props.name} </Link> : <Skeleton count={2} />}
@@ -204,7 +222,10 @@ const mapDispatchtoProps = (dispatch, props) => {
         },
         saveItemIdSelected: (shopItemIdSelected) => {
             dispatch(actions.saveItemIdSelected(shopItemIdSelected));
-        }
+        },
+        changeStatusAutoPrice: (status, itemid) => {
+            dispatch(actions.changeStatusAutoPrice(status, itemid));
+        },
 
 
     }
