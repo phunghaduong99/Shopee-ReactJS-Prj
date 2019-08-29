@@ -31,8 +31,9 @@ class ChartFollow extends React.Component {
       }
     }
 
-    let series = [{
-      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    let amount = [{
+      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      name :'Số lượng'
     }];
     if (this.props.arrayPriceForChart.length > 0) {
       options = {
@@ -73,11 +74,11 @@ class ChartFollow extends React.Component {
         }
       }
       if (this.props.arrayNumber.length > 0)
-        series[0].data = this.props.arrayNumber;
+        amount[0].data = this.props.arrayNumber;
     }
     return (
       <div id="chart">
-        <Chart options={options} series={series} type="bar" height="350" />
+        <Chart options={options} series={amount} type="bar" height="350" />
       </div>
     );
   }
